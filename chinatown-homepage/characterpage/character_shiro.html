@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>シロ</title>
+    <link rel="stylesheet" href="../style.css">
+   <style>
+        body {
+            background: linear-gradient(135deg, #f5f1f1 40%, #7d7a7a 70%, #2d1a2d 100%);
+            font-family: 'Cinzel', 'Yu Gothic', '游ゴシック', serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #040404;
+        }
+        .title-center {
+            text-align: center;
+            font-size: 3.2em;
+            color: #060606;
+            background: rgba(243, 240, 240, 0.9);
+            border-radius: 16px;
+            padding: 32px 0 32px 0;
+            margin: 32px auto 0 auto;
+            width: 400px;
+            box-shadow: 0 4px 24px rgba(239, 234, 234, 0.8), 0 0 32px rgba(0, 0, 0, 0.4);
+            font-weight: bold;
+            border: 3px solid #333;
+            text-shadow: 0 2px 16px #f1d2e8, 0 0px 4px #666;
+            letter-spacing: 0.1em;
+        }
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px 60px 20px 60px;
+            gap: 60px;
+        }
+        .character-img {
+            width: 350px;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid #000000;
+            margin-top: 40px;
+            box-shadow: 0 4px 24px rgba(241, 179, 179, 0.8), 0 0 16px rgba(0, 0, 0, 0.6);
+            transition: box-shadow 0.3s;
+        }
+        .character-img:hover {
+            box-shadow: 0 6px 32px rgba(245, 210, 210, 0.9), 0 0 24px rgba(102, 102, 102, 0.3);
+        }
+        .info-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 20px;
+            min-width: 320px;
+            margin-top: 40px;
+            background: rgba(236, 229, 229, 0.8);
+            padding: 24px;
+            border-radius: 12px;
+            border: 2px solid #0e0d0d;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+        }
+        .info-row {
+            font-size: 18px;
+            color: #010101;
+            margin-bottom: 2px;
+            text-shadow: 0 1px 4px #f9d5d5;
+        }
+        .color-link {
+            color: #0c0c0c;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 1px dashed #888;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 8px rgba(239, 191, 191, 0.8);
+        }
+        .color-link:hover {
+            color: #f7f3f3;
+            text-shadow: 0 1px 12px rgba(243, 206, 206, 0.4);
+        }
+        .shop-link {
+            color: #6bb6ff;
+            text-decoration: none;
+            border-bottom: 1px dashed #6bb6ff;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 8px rgba(25, 118, 210, 0.4);
+        }
+        .shop-link:hover {
+            color: #4fc3f7;
+            text-shadow: 0 1px 12px rgba(25, 118, 210, 0.6);
+        }
+        .character-link {
+            color: #ff6b6b;
+            text-decoration: none;
+            border-bottom: 1px dashed #ff6b6b;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 8px rgba(211, 47, 47, 0.4);
+        }
+        .character-link:hover {
+            color: #ff8a80;
+            text-shadow: 0 1px 12px rgba(211, 47, 47, 0.6);
+        }
+        .bottom-section {
+            margin: 40px auto 0 auto;
+            max-width: 700px;
+            padding: 0 30px 40px 30px;
+            background: rgba(248, 245, 245, 0.81);
+            border-radius: 16px;
+            border: 2px solid #100f0f;
+            box-shadow: 0 4px 16px rgba(241, 216, 216, 0.6);
+        }
+        .bottom-section h2 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 12px;
+            color: #090909;
+            text-shadow: 0 2px 8px #ebdcdc, 0 0px 2px #666;
+            letter-spacing: 0.05em;
+        }
+        .bottom-section p {
+            font-size: 16px;
+            color: #0f0e0e;
+            margin-bottom: 12px;
+            line-height: 1.7;
+            text-shadow: 0 1px 4px #f4e2e2;
+        }
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .tab-container button {
+            background: #222;
+            color: #fff;
+            border-radius: 6px;
+            border: none;
+            padding: 8px 18px;
+            font-size: 15px;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .tab-container button:hover {
+            background: #444;
+            color: #fff;
+            box-shadow: 0 2px 12px rgba(102, 102, 102, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title-center">シロ</h1>
+    <div class="top-section">
+        <img src="../character_fullbody/shiro.png" alt="シロ" class="character-img">
+        <div class="info-box">
+            <div class="info-row">
+                所属色：<a href="../colorpage/white.html" class="color-link">白</a>
+            </div>
+            <div class="info-row">
+                階級：幹部
+            </div>
+            <div class="info-row">
+                仕事：<a href="../shops.html" class="shop-link">職業斡旋/人員管理</a>
+            </div>
+            <div class="info-row">
+                外見特徴：白髪に赤い中華服を身に纏っている。いつも手に持った煙管を燻らせている。人前では滅多にサングラスを外さないため、その表情や内心を窺い知ることは難しい。
+            </div>
+        </div>
+    </div>
+    <div class="bottom-section">
+        <h2>性格</h2>
+        <p>あとで考える</p>
+        <h2>仕事について</h2>
+        <p>街の人員配置や職業斡旋を担当。各組織の人材を適材適所に割り振ることで、街全体の秩序を維持している。</p>
+        <h2>過去</h2>
+        <p>あとで考える</p>
+        <h2>能力</h2>
+        <p>あとで考える</p>
+        <h2>人間関係</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
+            <!-- サギリ（黒組） -->
+            <a href="../characterpage/character_sagiri.html" style="text-decoration:none;">
+                <div style="background:#030303; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer;">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <img src="../character_icon/sagiri_icon.png" alt="サギリ" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+                        <span style="font-size:18px; font-weight:bold;">サギリ</span>
+                    </div>
+                    <div style="font-size:15px;">仕事上のパートナー</div>
+                </div>
+            </a>
+            <!-- リス（赤組） -->
+            <a href="../characterpage/character_risu.html" style="text-decoration:none;">
+                <div style="background:#b00b0b; border-radius:12px; padding:16px 18px; min-width:220px; color:#222; display:flex; flex-direction:column; border:2px solid #ccc; cursor:pointer;">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <img src="../character_icon/risu_icon.png" alt="リス" style="width:48px; height:48px; border-radius:50%; border:2px solid #ccc; margin-right:12px;">
+                        <span style="font-size:18px; font-weight:bold;">リス</span>
+                    </div>
+                    <div style="font-size:15px;">わからん。なんか仲悪そう</div>
+                </div>
+            </a>
+            <!-- ルカ（黄組） -->
+            <a href="../characterpage/character_ruka.html" style="text-decoration:none;">
+                <div style="background:#778609; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer;">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <img src="../character_icon/ruka_icon.png" alt="ルカ" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+                        <span style="font-size:18px; font-weight:bold;">ルカ</span>
+                    </div>
+                    <div style="font-size:15px;">殺したかも</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px; justify-content: center;">
+        <a href="../index.html"><button>ホーム</button></a>
+        <a href="../rules.html"><button>特殊ルール</button></a>
+        <a href="../jinngai.html"><button>人外設定</button></a>
+        <a href="../world.html"><button>世界観設定</button></a>
+        <a href="../characters.html"><button>キャラクター一覧</button></a>
+        <a href="../shops.html"><button>店舗一覧</button></a>
+    </div>
+</body>
+</html>

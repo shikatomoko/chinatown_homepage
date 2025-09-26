@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿瑠</title>
+    <link rel="stylesheet" href="../style.css">
+     <style>
+        body {
+            background: linear-gradient(135deg, #6f2222 40%, #b52d2d 70%, #2d1a2d 100%);
+            font-family: 'Cinzel', 'Yu Gothic', '游ゴシック', serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #040404;
+        }
+        .title-center {
+            text-align: center;
+            font-size: 3.2em;
+            color: #0c0c0c;
+            background: rgba(251, 1, 1, 0.9);
+            border-radius: 16px;
+            padding: 32px 0 32px 0;
+            margin: 32px auto 0 auto;
+            width: 400px;
+            box-shadow: 0 4px 24px rgba(64, 63, 63, 0.8), 0 0 32px rgba(0, 0, 0, 0.4);
+            font-weight: bold;
+            border: 3px solid #101010;
+            text-shadow: 0 2px 16px #3f3f3f, 0 0px 4px #666;
+            letter-spacing: 0.1em;
+        }
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px 60px 20px 60px;
+            gap: 60px;
+        }
+        .character-img {
+            width: 350px;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid #000000;
+            margin-top: 40px;
+            box-shadow: 0 4px 24px rgba(58, 58, 58, 0.8), 0 0 16px rgba(0, 0, 0, 0.6);
+            transition: box-shadow 0.3s;
+        }
+        .character-img:hover {
+            box-shadow: 0 6px 32px rgba(43, 42, 42, 0.9), 0 0 24px rgba(102, 102, 102, 0.3);
+        }
+        .info-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 20px;
+            min-width: 320px;
+            margin-top: 40px;
+            background: rgba(177, 77, 77, 0.8);
+            padding: 24px;
+            border-radius: 12px;
+            border: 2px solid #0e0d0d;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+        }
+        .info-row {
+            font-size: 18px;
+            color: #f2eded;
+            margin-bottom: 2px;
+            text-shadow: 0 1px 4px #262525;
+        }
+        .color-link {
+            color: #f30606;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 1px dashed #030303;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 8px rgba(91, 90, 90, 0.8);
+        }
+        .color-link:hover {
+            color: #f7f3f3;
+            text-shadow: 0 1px 12px rgba(243, 206, 206, 0.4);
+        }
+        .shop-link {
+            color: #6bb6ff;
+            text-decoration: none;
+            border-bottom: 1px dashed #6bb6ff;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 8px rgba(25, 118, 210, 0.4);
+        }
+        .shop-link:hover {
+            color: #4fc3f7;
+            text-shadow: 0 1px 12px rgba(25, 118, 210, 0.6);
+        }
+        .character-link {
+            color: #ff6b6b;
+            text-decoration: none;
+            border-bottom: 1px dashed #ff6b6b;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 8px rgba(211, 47, 47, 0.4);
+        }
+        .character-link:hover {
+            color: #ff8a80;
+            text-shadow: 0 1px 12px rgba(211, 47, 47, 0.6);
+        }
+        .bottom-section {
+            margin: 40px auto 0 auto;
+            max-width: 700px;
+            padding: 0 30px 40px 30px;
+            background: rgba(189, 85, 85, 0.81);
+            border-radius: 16px;
+            border: 2px solid #100f0f;
+            box-shadow: 0 4px 16px rgba(58, 57, 57, 0.6);
+        }
+        .bottom-section h2 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 12px;
+            color: #f8f6f6;
+            text-shadow: 0 2px 8px #535151, 0 0px 2px #666;
+            letter-spacing: 0.05em;
+        }
+        .bottom-section p {
+            font-size: 16px;
+            color: #f9f7f7;
+            margin-bottom: 12px;
+            line-height: 1.7;
+            text-shadow: 0 1px 4px #f4e2e2;
+        }
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .tab-container button {
+            background: #222;
+            color: #fff;
+            border-radius: 6px;
+            border: none;
+            padding: 8px 18px;
+            font-size: 15px;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .tab-container button:hover {
+            background: #444;
+            color: #fff;
+            box-shadow: 0 2px 12px rgba(102, 102, 102, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title-center">阿瑠</h1>
+    <div class="top-section">
+        <img src="../character_fullbody/aru.png" alt="阿瑠" class="character-img">
+        <div class="info-box">
+            <div class="info-row">
+                所属色：<a href="../colorpage/red.html" class="color-link">赤</a>
+            </div>
+            <div class="info-row">
+                階級：中間構成員
+            </div>
+            <div class="info-row">
+                仕事：<a href="../shoppage/shop_bath.html" class="shop-link">湯治屋</a>
+            </div>
+            <div class="info-row">
+                外見特徴：20代前後の若い男性。細身で蒼白な肌を持ち、長い指先を落ち着きなく動かす癖がある。髪は黒く艶やかだが、顔色の悪さと相まって病的な雰囲気を漂わせている。目元は細く、常に相手を値踏みするような視線を送る。
+            </div>
+        </div>
+    </div>
+    <div class="bottom-section">
+        <h2>性格</h2>
+        <p>神経質で潔癖気味。秩序や清潔を強く好む反面、わずかな乱れに強い苛立ちを覚える。表面上は柔らかな口調で接するが、内心では他人を不快な存在と見做していることが多い。阿蓮と異なり、人間の愚かしさを「恐れる」面が強く、自らがそれに侵されることを極度に嫌う。精神的に脆弱で、強いストレス下では錯乱することもある。</p>
+        <h2>仕事について</h2>
+        <p>湯治屋は表向きは疲れた人々を癒す温泉宿だが、実態は赤組が管理する「監視と選別の場」である。阿瑠は客の身体を観察し、その健康状態や精神の脆さを見極めて報告する役割を担う。時には薬草風呂に薬物を混ぜ、客を弱らせて情報を引き出すこともある。<br>
+        また、組織内で軽度の懲罰を受ける人間は、阿瑠の湯治屋に送り込まれ、温泉療養と称して監禁される。彼はその「回復」を冷徹に監視し、ときに沈める役割も果たす。</p>
+        <h2>過去</h2>
+        <p>阿蓮の「養子」として拾われる前のことは不明。孤児として路上で生き延びていたところを阿蓮に見出され、名前の一文字を授かった。阿蓮の薫陶を受けて育ったが、師と同じ精神性を持つには至らず、代わりに強迫的な秩序志向を抱くようになった。阿蓮に認められたい一心で努力を重ねているが、どこか歪んだ承認欲求を抱えている。</p>
+        <h2>能力</h2>
+        <p>薬草や薬剤の調合に長け、温泉の効能を自在に操ることができる。人体の体質や症状を観察して弱点を見抜く力を持つが、実戦向きではない。武器を扱うよりも、毒や薬でじわじわと効力を及ぼすことを好む。精神的には脆弱だが、環境さえ整えば高い集中力を発揮できる。</p>
+        <h2>人間関係</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
+            <!-- 阿蓮（赤組） -->
+            <a href="../characterpage/character_aren.html" style="text-decoration:none;">
+                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <img src="../character_icon/aren_icon.png" alt="阿蓮" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+                        <span style="font-size:18px; font-weight:bold; color:#fff;">阿蓮</span>
+                    </div>
+                    <div style="font-size:15px; color:#fff;">師であり父のような存在。心から畏敬しているが、同時にその影に押し潰されそうになっている。</div>
+                </div>
+            </a>
+            <!-- リス（赤組） -->
+            <a href="../characterpage/character_risu.html" style="text-decoration:none;">
+                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <img src="../character_icon/risu_icon.png" alt="リス" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+                        <span style="font-size:18px; font-weight:bold; color:#fff;">リス</span>
+                    </div>
+                    <div style="font-size:15px; color:#fff;">誠実さを「弱さ」とみなし、内心軽蔑している。だが自身が心弱いことを悟られるのを恐れて距離を取っている。</div>
+                </div>
+            </a>
+            <!-- 陽炎（赤組） -->
+            <a href="../characterpage/character_kagerou.html" style="text-decoration:none;">
+                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <img src="../character_icon/kagerou_icon.png" alt="陽炎" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+                        <span style="font-size:18px; font-weight:bold; color:#fff;">陽炎</span>
+                    </div>
+                    <div style="font-size:15px; color:#fff;">観察対象としては興味深いが、彼に触れると自分が壊れてしまう恐怖を抱いている。</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px; justify-content: center;">
+        <a href="../index.html"><button>ホーム</button></a>
+        <a href="../rules.html"><button>特殊ルール</button></a>
+        <a href="../jinngai.html"><button>人外設定</button></a>
+        <a href="../world.html"><button>世界観設定</button></a>
+        <a href="../characters.html"><button>キャラクター一覧</button></a>
+        <a href="../shops.html"><button>店舗一覧</button></a>
+    </div>
+</body>
+</html>

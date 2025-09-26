@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>風花</title>
+    <link rel="stylesheet" href="../style.css">
+     <style>
+        body {
+            background: linear-gradient(135deg, #6f2222 40%, #b52d2d 70%, #2d1a2d 100%);
+            font-family: 'Cinzel', 'Yu Gothic', '游ゴシック', serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #040404;
+        }
+        .title-center {
+            text-align: center;
+            font-size: 3.2em;
+            color: #0c0c0c;
+            background: rgba(251, 1, 1, 0.9);
+            border-radius: 16px;
+            padding: 32px 0 32px 0;
+            margin: 32px auto 0 auto;
+            width: 400px;
+            box-shadow: 0 4px 24px rgba(64, 63, 63, 0.8), 0 0 32px rgba(0, 0, 0, 0.4);
+            font-weight: bold;
+            border: 3px solid #101010;
+            text-shadow: 0 2px 16px #3f3f3f, 0 0px 4px #666;
+            letter-spacing: 0.1em;
+        }
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px 60px 20px 60px;
+            gap: 60px;
+        }
+        .character-img {
+            width: 350px;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid #000000;
+            margin-top: 40px;
+            box-shadow: 0 4px 24px rgba(58, 58, 58, 0.8), 0 0 16px rgba(0, 0, 0, 0.6);
+            transition: box-shadow 0.3s;
+        }
+        .character-img:hover {
+            box-shadow: 0 6px 32px rgba(43, 42, 42, 0.9), 0 0 24px rgba(102, 102, 102, 0.3);
+        }
+        .info-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 20px;
+            min-width: 320px;
+            margin-top: 40px;
+            background: rgba(177, 77, 77, 0.8);
+            padding: 24px;
+            border-radius: 12px;
+            border: 2px solid #0e0d0d;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+        }
+        .info-row {
+            font-size: 18px;
+            color: #f2eded;
+            margin-bottom: 2px;
+            text-shadow: 0 1px 4px #262525;
+        }
+        .color-link {
+            color: #f30606;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 1px dashed #030303;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 8px rgba(91, 90, 90, 0.8);
+        }
+        .color-link:hover {
+            color: #f7f3f3;
+            text-shadow: 0 1px 12px rgba(243, 206, 206, 0.4);
+        }
+        .shop-link {
+            color: #6bb6ff;
+            text-decoration: none;
+            border-bottom: 1px dashed #6bb6ff;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 8px rgba(25, 118, 210, 0.4);
+        }
+        .shop-link:hover {
+            color: #4fc3f7;
+            text-shadow: 0 1px 12px rgba(25, 118, 210, 0.6);
+        }
+        .character-link {
+            color: #ff6b6b;
+            text-decoration: none;
+            border-bottom: 1px dashed #ff6b6b;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 8px rgba(211, 47, 47, 0.4);
+        }
+        .character-link:hover {
+            color: #ff8a80;
+            text-shadow: 0 1px 12px rgba(211, 47, 47, 0.6);
+        }
+        .bottom-section {
+            margin: 40px auto 0 auto;
+            max-width: 700px;
+            padding: 0 30px 40px 30px;
+            background: rgba(189, 85, 85, 0.81);
+            border-radius: 16px;
+            border: 2px solid #100f0f;
+            box-shadow: 0 4px 16px rgba(58, 57, 57, 0.6);
+        }
+        .bottom-section h2 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 12px;
+            color: #f8f6f6;
+            text-shadow: 0 2px 8px #535151, 0 0px 2px #666;
+            letter-spacing: 0.05em;
+        }
+        .bottom-section p {
+            font-size: 16px;
+            color: #f9f7f7;
+            margin-bottom: 12px;
+            line-height: 1.7;
+            text-shadow: 0 1px 4px #f4e2e2;
+        }
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .tab-container button {
+            background: #222;
+            color: #fff;
+            border-radius: 6px;
+            border: none;
+            padding: 8px 18px;
+            font-size: 15px;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .tab-container button:hover {
+            background: #444;
+            color: #fff;
+            box-shadow: 0 2px 12px rgba(102, 102, 102, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title-center">風花</h1>
+    <div class="top-section">
+        <img src="../character_fullbody/huuka.png" alt="風花" class="character-img">
+        <div class="info-box">
+            <div class="info-row">
+                所属色：<a href="../colorpage/red.html" class="color-link">赤</a>
+            </div>
+            <div class="info-row">
+                階級：中間構成員
+            </div>
+            <div class="info-row">
+                仕事：
+                <a href="../shoppage/shop_informer.html" class="shop-link">情報屋</a>
+                /
+                <a href="../shops.html#cafe" class="shop-link">喫茶店の経営</a>
+            </div>
+            <div class="info-row">
+                外見特徴：若い女性。風狸族であるが、耳と尻尾は服で常に隠している。見た目は洗練された都会風の女性で、流行の服装を好み、髪を丁寧に整えている。中性的な顔立ちと透明感ある雰囲気のため、男女を問わず人の気を惹く。
+            </div>
+        </div>
+    </div>
+    <div class="bottom-section">
+        <h2>性格</h2>
+        <p>軽妙で人当たりが良い。初対面の相手にもすぐ馴染める柔軟さを持つ一方、内心では誰に対しても一定の距離を置いている。信頼という言葉を信じず、情報と利益でしか人間関係を測らない冷徹さがある。とはいえ、心の底では孤独を抱えており、たまに不用意に誰かへ甘えたくなる衝動を隠している。</p>
+        <h2>仕事について</h2>
+        <p>表向きは街角の小さな喫茶店を営んでおり、客の会話を拾っては情報に変えるのが日常業務。裏では密偵や盗聴、買収など手段を選ばずに情報を集め、赤組へと還元する役割を担う。風狸族特有の嗅覚と耳の良さを活かし、音や匂いから人間関係や心理を察知することができる。<br>
+        そのため、彼女の周囲では「秘密を隠せる人間はいない」と恐れられている。</p>
+        <h2>過去</h2>
+        <p>風狸族として生まれたが、人間社会で暮らすために幼少期から耳と尻尾を隠して生きてきた。差別や偏見を受けることを避けるため、種族のことを誰にも明かさず、むしろ「普通の人間」として周囲に溶け込むことを徹底した。その過程で、他者の心を読む術や、隠し事を見抜く嗅覚を培っていった。暗黒中華街に流れ着いたのち、自分の技能が「武器」として通用することを知り、赤組の一員となる。</p>
+        <h2>能力</h2>
+        <p>風狸族特有の鋭敏な聴覚と嗅覚を持ち、わずかな感情の変化や体臭から相手の心理を察知できる。また、人間観察に優れており、相手の仕草や言葉から虚偽を見抜くことに長けている。直接的な戦闘力は低いが、逃走と隠密行動には優れており、危険を察知して素早く身をかわす。</p>
+        <h2>人間関係</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
+            <!-- ミミコ（赤組） -->
+            <a href="../characterpage/character_mimiko.html" style="text-decoration:none;">
+                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <img src="../character_icon/mimiko_icon.png" alt="ミミコ" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+                        <span style="font-size:18px; font-weight:bold; color:#fff;">ミミコ</span>
+                    </div>
+                    <div style="font-size:15px; color:#fff;">顧客情報を共有する間柄。合理性を評価しつつも「感情のない人形」と思っている。</div>
+                </div>
+            </a>
+            <!-- 阿蓮（赤組） -->
+            <a href="../characterpage/character_aren.html" style="text-decoration:none;">
+                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <img src="../character_icon/aren_icon.png" alt="阿蓮" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+                        <span style="font-size:18px; font-weight:bold; color:#fff;">阿蓮</span>
+                    </div>
+                    <div style="font-size:15px; color:#fff;">骨董楼の顧客としても取引がある。「自分が読まれる側」に立つことを恐れている。</div>
+                </div>
+            </a>
+            <!-- 阿瑠（赤組） -->
+            <a href="../characterpage/character_aru.html" style="text-decoration:none;">
+                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <img src="../character_icon/aru_icon.png" alt="阿瑠" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+                        <span style="font-size:18px; font-weight:bold; color:#fff;">阿瑠</span>
+                    </div>
+                    <div style="font-size:15px; color:#fff;">秩序を重んじる彼をやや煙たく感じているが、裏では互いに監視と補完の関係。</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px; justify-content: center;">
+        <a href="../index.html"><button>ホーム</button></a>
+        <a href="../rules.html"><button>特殊ルール</button></a>
+        <a href="../jinngai.html"><button>人外設定</button></a>
+        <a href="../world.html"><button>世界観設定</button></a>
+        <a href="../characters.html"><button>キャラクター一覧</button></a>
+        <a href="../shops.html"><button>店舗一覧</button></a>
+    </div>
+</body>
+</html>

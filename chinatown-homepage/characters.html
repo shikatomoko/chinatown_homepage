@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キャラクター一覧</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #181818 60%, #2d1a1a 100%);
+            font-family: 'Cinzel', 'Yu Gothic', '游ゴシック', serif;
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        h1 {
+            margin-top: 40px;
+            margin-bottom: 30px;
+            font-size: 2.8em;
+            color: #fff;
+            text-shadow: 0 2px 16px #a00, 0 0px 2px #222;
+            letter-spacing: 0.08em;
+        }
+        .character-list {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .character-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(30, 20, 30, 0.85);
+            border: 2px solid #444;
+            border-radius: 12px;
+            padding: 18px 20px 10px 20px;
+            width: 120px;
+            box-sizing: border-box;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 16px #000a;
+        }
+        .character-item:hover {
+            background: rgba(45, 26, 26, 0.9);
+            box-shadow: 0 4px 24px #a00a;
+        }
+        .character-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #666;
+            background: #222;
+            margin-bottom: 10px;
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+        .character-icon:hover {
+            box-shadow: 0 0 16px #a00;
+            border-color: #a00;
+        }
+        .character-name {
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 2px;
+            text-shadow: 0 1px 4px #000;
+        }
+        .character-name.white { color: #ddd; text-shadow: 0 1px 8px rgba(255, 255, 255, 0.4); }
+        .character-name.black { color: #888; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6); }
+        .character-name.red { color: #ff6b6b; text-shadow: 0 1px 8px rgba(211, 47, 47, 0.6); }
+        .character-name.yellow { color: #ffd93d; text-shadow: 0 1px 8px rgba(251, 192, 45, 0.6); }
+        .character-name.green { color: #6bcf7f; text-shadow: 0 1px 8px rgba(56, 142, 60, 0.6); }
+        .character-name.blue { color: #4fc3f7; text-shadow: 0 1px 8px rgba(25, 118, 210, 0.6); }
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tab-container button {
+            background: #222;
+            color: #fff;
+            border-radius: 6px;
+            border: none;
+            padding: 8px 18px;
+            font-size: 15px;
+            box-shadow: 0 1px 6px #0006;
+            transition: background 0.2s, color 0.2s;
+        }
+        .tab-container button:hover {
+            background: #d32f2f;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>キャラクター一覧</h1>
+    <div class="character-list">
+        <a href="./characterpage/character_shiro.html" style="text-decoration:none;">
+            <div class="character-item">
+                <img src="./character_icon/shiro_icon.png" alt="シロ_アイコン" class="character-icon">
+                <div class="character-name white">シロ</div>
+            </div>
+        </a>
+        <a href="./characterpage/character_sagiri.html" style="text-decoration:none;">
+            <div class="character-item">
+                <img src="./character_icon/sagiri_icon.png" alt="サギリ_アイコン" class="character-icon">
+                <div class="character-name black">サギリ</div>
+            </div>
+        </a>
+        <a href="./characterpage/character_riko.html" style="text-decoration:none;">
+            <div class="character-item">
+                <img src="./character_icon/riko_icon.png" alt="リコ_アイコン" class="character-icon">
+                <div class="character-name red">リコ</div>
+            </div>
+        </a>
+        <a href="./characterpage/character_risu.html" style="text-decoration:none;">
+            <div class="character-item">
+                <img src="./character_icon/risu_icon.png" alt="リス_アイコン" class="character-icon">
+                <div class="character-name red">リス</div>
+            </div>
+        </a>
+        <a href="./characterpage/character_mimiko.html" style="text-decoration:none;">
+            <div class="character-item">
+                <img src="./character_icon/mimiko_icon.png" alt="ミミコ_アイコン" class="character-icon">
+                <div class="character-name red">ミミコ</div>
+            </div>
+        </a>
+        <a href="./characterpage/character_huuka.html" style="text-decoration:none;">
+            <div class="character-item">
+                <img src="./character_icon/huuka_icon.png" alt="風花_アイコン" class="character-icon">
+                <div class="character-name red">風花</div>
+            </div>
+        </a>
+        <a href="./characterpage/character_kagerou.html" style="text-decoration:none;">
+            <div class="character-item">
+                <img src="./character_icon/kagerou_icon.png" alt="陽炎_アイコン" class="character-icon">
+                <div class="character-name red">陽炎</div>
+            </div>
+        </a>
+        <a href="./characterpage/character_aren.html" style="text-decoration:none;">
+            <div class="character-item">
+                <img src="./character_icon/aren_icon.png" alt="阿蓮_アイコン" class="character-icon">
+                <div class="character-name red">阿蓮</div>
+            </div>
+        </a>
+        <a href="./characterpage/character_aru.html" style="text-decoration:none;">
+            <div class="character-item">
+                <img src="./character_icon/aru_icon.png" alt="阿瑠_アイコン" class="character-icon">
+                <div class="character-name red">阿瑠</div>
+            </div>
+        </a>
+        <a href="./characterpage/character_ruka.html" style="text-decoration:none;">
+            <div class="character-item">
+                <img src="./character_icon/ruka_icon.png" alt="ルカ_アイコン" class="character-icon">
+                <div class="character-name yellow">三日月ルカ</div>
+            </div>
+        </a>
+    </div>
+    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
+        <a href="index.html"><button>ホーム</button></a>
+        <a href="rules.html"><button>特殊ルール</button></a>
+        <a href="jinngai.html"><button>人外設定</button></a>
+        <a href="world.html"><button>世界観設定</button></a>
+        <a href="characters.html"><button>キャラクター一覧</button></a>
+     <a href="shops.html"><button>店舗一覧</button></a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>特殊ルール一覧</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #181818 60%, #2d1a1a 100%);
+            font-family: 'Cinzel', 'Yu Gothic', '游ゴシック', serif;
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        h1 {
+            margin-top: 40px;
+            margin-bottom: 30px;
+            font-size: 2.8em;
+            color: #fff;
+            text-shadow: 0 2px 16px #a00, 0 0px 2px #222;
+            letter-spacing: 0.08em;
+        }
+        .rule-list {
+            width: 1000px;
+            margin-bottom: 40px;
+        }
+        .rule-item {
+            background: rgba(30, 20, 30, 0.85);
+            border: 2px solid #444;
+            margin-bottom: 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            padding: 18px 22px 18px 22px;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 16px #000a;
+            font-size: 1.15em;
+        }
+        .rule-item:hover {
+            background: #2d1a1a;
+            box-shadow: 0 4px 24px #a00a;
+        }
+        .rule-detail {
+            display: none;
+            padding: 16px 22px;
+            background: rgba(40, 20, 30, 0.85);
+            border-top: 1px solid #444;
+            font-size: 1em;
+            color: #e0e0e0;
+            margin-top: 10px;
+            border-radius: 0 0 10px 10px;
+        }
+        .active .rule-detail {
+            display: block;
+        }
+        ul, ol {
+            margin: 8px 0 8px 24px;
+        }
+        table {
+            width: 95%;
+            margin: 12px auto;
+            border-collapse: collapse;
+            background: rgba(30, 20, 30, 0.7);
+            color: #e0e0e0;
+            font-size: 0.98em;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 8px 10px;
+            text-align: left;
+        }
+        th {
+            background: #222;
+            color: #fff;
+        }
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tab-container button {
+            background: #222;
+            color: #fff;
+            border-radius: 6px;
+            border: none;
+            padding: 8px 18px;
+            font-size: 15px;
+            box-shadow: 0 1px 6px #0006;
+            transition: background 0.2s, color 0.2s;
+        }
+        .tab-container button:hover {
+            background: #d32f2f;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>特殊ルール一覧</h1>
+    <div class="rule-list">
+        <div class="rule-item" onclick="toggleDetail(this)">
+            麻薬ルール
+            <div class="rule-detail">
+                <ul>
+                    <li>麻薬の種類
+                        <table>
+                            <tr><th>種類</th><th>価格</th><th>効果</th></tr>
+                            <tr><td>廉価品</td><td>2000歯</td><td>跳躍＋0</td></tr>
+                            <tr><td>中級品</td><td>5000歯</td><td>跳躍＋30</td></tr>
+                            <tr><td>高級品</td><td>10000歯</td><td>跳躍＋50</td></tr>
+                        </table>
+                    </li>
+                    <li>摂取時
+                        <ul>
+                            <li>跳躍ロール：成功→トリップ効果／失敗→副作用</li>
+                            <li>トリップ効果
+                                <ul>
+                                    <li>精神高揚：SAN 1d3回復</li>
+                                    <li>疼痛緩和：苦痛度 1d3減少</li>
+                                </ul>
+                            </li>
+                            <li>副作用
+                                <ul>
+                                    <li>動悸・幻覚：判定値 -10</li>
+                                    <li>過剰摂取：HP -1d3</li>
+                                    <li>SANチェック：SAN -1d2</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>禁断症状
+                        <ul>
+                            <li>継続摂取を中断した場合、禁断症状判定</li>
+                            <li>禁断症状表（1D6）
+                                <table>
+                                    <tr><th>出目</th><th>症状</th><th>効果</th></tr>
+                                    <tr><td>1</td><td>震え・発汗</td><td>DEX -20</td></tr>
+                                    <tr><td>2</td><td>幻覚</td><td>SANチェック 1d4</td></tr>
+                                    <tr><td>3</td><td>極度の不安</td><td>技能判定 -10</td></tr>
+                                    <tr><td>4</td><td>激しい嘔吐・衰弱</td><td>CON失敗でHP -1d2</td></tr>
+                                    <tr><td>5</td><td>自傷衝動</td><td>POW失敗でHP -1d3</td></tr>
+                                    <tr><td>6</td><td>昏睡／無気力</td><td>行動不能（1D6R～数時間）</td></tr>
+                                </table>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="rule-item" onclick="toggleDetail(this)">
+            お金ルール
+            <div class="rule-detail">
+                <ul>
+                    <li>初期値決定
+                        <ul>
+                            <li>外部からの両替：100円＝1歯</li>
+                            <li>信用値による初期残高
+                                <table>
+                                    <tr><th>信用値</th><th>初期残高</th></tr>
+                                    <tr><td>1-30</td><td>30d100歯</td></tr>
+                                    <tr><td>31-50</td><td>100d100歯</td></tr>
+                                    <tr><td>51-70</td><td>1000d100歯</td></tr>
+                                    <tr><td>81-100</td><td>5000d100歯</td></tr>
+                                </table>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>金銭の増加
+                        <ul>
+                            <li>仕事の成功：低難易度 10000歯／中難易度 50000歯／高難易度 100000歯</li>
+                            <li>借金：信用値に応じて上限あり</li>
+                            <li>盗む：スリ・店舗侵入など技能判定で獲得</li>
+                        </ul>
+                    </li>
+                    <li>金銭の減少
+                        <ul>
+                            <li>支払い：店舗での購入、値切り判定可</li>
+                            <li>盗まれる：ファンブル等で所持金減少</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="rule-item" onclick="toggleDetail(this)">
+            拷問ルール
+            <div class="rule-detail">
+                <ol>
+                    <li>拷問者：DEX*5ロール
+                        <ul>
+                            <li>成功：狙った通りに苦痛</li>
+                            <li>失敗：HP -1D3、軽度出血</li>
+                            <li>ファンブル：HP -1D6、重度出血</li>
+                        </ul>
+                    </li>
+                    <li>被拷問者：CON*5ロール
+                        <ul>
+                            <li>成功：意識保つが苦痛度蓄積</li>
+                            <li>失敗：ショック状態</li>
+                            <li>ファンブル：気絶、HP -1、以後判定-20</li>
+                        </ul>
+                    </li>
+                    <li>苦痛度：拷問ごとに+1D3。CON超えで気絶。高いとPTSD等後遺症。</li>
+                    <li>後遺症
+                        <table>
+                            <tr><th>種類</th><th>効果</th></tr>
+                            <tr><td>骨折痕</td><td>四肢不自由、判定-20</td></tr>
+                            <tr><td>神経麻痺</td><td>震え、精密動作-10</td></tr>
+                            <tr><td>慢性疼痛</td><td>判定-5</td></tr>
+                            <tr><td>出血性ショック</td><td>CON-10</td></tr>
+                            <tr><td>感染症</td><td>毎日CONロール、失敗でHP-1</td></tr>
+                            <tr><td>フラッシュバック</td><td>行動不能(1D6R)</td></tr>
+                            <tr><td>恐怖症</td><td>対象直面でPOW失敗→逃走</td></tr>
+                            <tr><td>無感情化</td><td>交渉技能-15</td></tr>
+                            <tr><td>被虐的快楽</td><td>SAN回避、セッションごとにSAN-1D2</td></tr>
+                            <tr><td>記憶障害</td><td>INT-15</td></tr>
+                        </table>
+                    </li>
+                    <li>SANチェック
+                        <ul>
+                            <li>拷問者：SAN-1D2</li>
+                            <li>被拷問者：SAN-1D3</li>
+                            <li>目撃者：SAN-1D2</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="rule-item" onclick="toggleDetail(this)">
+            信用ルール
+            <div class="rule-detail">
+                <ul>
+                    <li>各エリアで必要な信用値
+                        <table>
+                            <tr><th>エリア</th><th>必要信用値</th></tr>
+                            <tr><td>中央</td><td>70</td></tr>
+                            <tr><td>周辺</td><td>50</td></tr>
+                            <tr><td>郊外</td><td>40</td></tr>
+                            <tr><td>外縁</td><td>30</td></tr>
+                        </table>
+                    </li>
+                    <li>信用値が下回る場合の処理
+                        <ul>
+                            <li>信用ロール結果に応じて行動制限・ペナルティ</li>
+                            <li>交渉技能で段階アップ可能</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="rule-item" onclick="toggleDetail(this)">
+            食事ルール
+            <div class="rule-detail">
+                <ul>
+                    <li>食事時に正気度チェック
+                        <ul>
+                            <li>成功：SAN 1d3回復</li>
+                            <li>失敗：SAN 1d3減少</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="rule-item" onclick="toggleDetail(this)">
+            仕事ルール
+            <div class="rule-detail">
+                <ul>
+                    <li>仕事難易度ごとの信用値増減
+                        <table>
+                            <tr><th>難易度</th><th>成功</th><th>失敗</th></tr>
+                            <tr><td>低</td><td>+1d3</td><td>-1d3</td></tr>
+                            <tr><td>中</td><td>+1d6</td><td>-1d6</td></tr>
+                            <tr><td>高</td><td>+1d6+3</td><td>-1d6-3</td></tr>
+                        </table>
+                    </li>
+                    <li>三回連続失敗で依頼不可</li>
+                </ul>
+            </div>
+        </div>
+        <div class="rule-item" onclick="toggleDetail(this)">
+            首絞めルール
+            <div class="rule-detail">
+                <ul>
+                    <li>組み付き・STR*5ロールで首絞め状態</li>
+                    <li>首絞め状態：CON*5ロールで抵抗</li>
+                    <li>2R目以降はCON*4,3…と減少</li>
+                    <li>5R継続で気絶</li>
+                    <li>ロープ拘束時は抵抗不可</li>
+                </ul>
+            </div>
+        </div>
+        <div class="rule-item" onclick="toggleDetail(this)">
+            卓後処理ルール
+            <div class="rule-detail">
+                <ul>
+                    <li>SAN 1d10回復</li>
+                    <li>信用成長（達成した仕事量による）</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleDetail(element) {
+            element.classList.toggle('active');
+        }
+    </script>
+    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
+        <a href="index.html"><button>ホーム</button></a>
+        <a href="rules.html"><button>特殊ルール</button></a>
+        <a href="jinngai.html"><button>人外設定</button></a>
+        <a href="world.html"><button>世界観設定</button></a>
+        <a href="characters.html"><button>キャラクター一覧</button></a>
+        <a href="shops.html"><button>店舗一覧</button></a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人外一覧</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #181818 60%, #2d1a1a 100%);
+            font-family: 'Yu Gothic', '游ゴシック', 'Arial', sans-serif;
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        h1 {
+            margin-top: 40px;
+            margin-bottom: 30px;
+            font-size: 2.8em;
+            color: #fff;
+            text-shadow: 0 2px 16px #a00, 0 0px 2px #222;
+            letter-spacing: 0.08em;
+            font-family: 'Cinzel', 'Yu Gothic', '游ゴシック', serif;
+        }
+        .species-list {
+            width: 1000px;
+            margin-bottom: 40px;
+        }
+        .species-item {
+            background: rgba(30, 20, 30, 0.85);
+            border: 2px solid #444;
+            margin-bottom: 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            padding: 18px 22px 18px 22px;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 16px #000a;
+            display: flex;
+            align-items: center;
+        }
+        .species-item:hover {
+            background: #2d1a1a;
+            box-shadow: 0 4px 24px #a00a;
+        }
+        .species-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 28px;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 8px #0008;
+            background: #222;
+        }
+        .species-title {
+            font-size: 1.6em;
+            font-family: 'Cinzel', 'Yu Gothic', serif;
+            color: #fff;
+            font-weight: bold;
+            margin-right: 18px;
+            letter-spacing: 0.05em;
+            text-shadow: 0 2px 8px #a00a;
+        }
+        .species-detail {
+            display: none;
+            padding: 10px 15px;
+            background: rgba(40, 20, 30, 0.85);
+            border-top: 1px solid #444;
+            font-size: 15px;
+            color: #e0e0e0;
+            margin-top: 10px;
+            border-radius: 0 0 10px 10px;
+        }
+        .active .species-detail {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>人外一覧</h1>
+    <div class="species-list">
+        <div class="species-item" onclick="toggleDetail(this)">
+            <img src="./nonhuman_illustlation/huuri.png" alt="風狸アイコン" class="species-icon">
+            <span class="species-title">風狸</span>
+            <div class="species-detail">
+                <p>風の信仰を持つ狸</p>
+                <p>▶︎外見：狸の耳と尻尾を持つ半獣。外見は風のようにそよぎ、視界で収めてもまるで蜃気楼のように映る</p>
+                <p>▶︎能力：風を介して全ての音を聞くことができる。諜報索敵に長けている</p>
+                <p>▶立ち位置：赤組で情報屋として居場所を築いているほか、一部は黄組の傘下に入ってもいる</p>
+                <p>▶︎クトゥルフ接続：あとで考える</p>
+            </div>
+        </div>
+            <div class="species-item" onclick="toggleDetail(this)">
+            <img src="species_icon/shokuryu.png" alt="燭龍アイコン" class="species-icon">
+            <span class="species-title">燭龍（しょくりゅう）</span>
+            <div class="species-detail">
+                <p>中国神話の「燭龍（燭陰）」をモチーフにした存在。
+                <br>伝承では、目を閉じると夜になり、目を開けると昼になるという赤い龍神。</p>
+                <p>▶外見：目は燃える松明のように赤く光り、鱗は煤で黒ずんだ龍。体長は10mを超えるが、暗黒中華街では幻影によって人の姿を取る。</p>
+                <P>▶︎能力：眼を閉じることで周囲に「夜」を生み、開けると「昼」を呼ぶ。つまり局所的に暗黒や光を支配できる。</P>
+                <p>▶︎立ち位置：街の「明かり」と「闇」を供給する存在。提灯や灯籠の火は、燭龍がまぶたを開閉するたびに灯るとも噂される。</p>
+                <p>▶︎クトゥルフ接続：ニャルラトホテプの「千の貌」の一つと関係があるとされる。燭龍のまぶたは異界の扉であり、目を凝視すれば別世界を垣間見る</p>
+            </div>
+        </div>
+        <div class="species-item" onclick="toggleDetail(this)">
+            <img src="species_icon/toutetsu.png" alt="饕餮アイコン" class="species-icon">
+            <span class="species-title">饕餮（とうてつ）</span>
+            <div class="species-detail">
+                <p>中国神話の「四凶」のひとつ、際限ない食欲の怪物。</p>
+                <p>▶︎外見：獣と人の混じった体。口だけが異様に大きく、腹は人間の顔で覆われている。</p>
+                <p>▶︎能力：何でも食べる。人間を食えばその人格を吸収し、顔を腹に刻み込む。街では「食べた者になりすます」ことが可能。</p>
+                <p>▶︎立ち位置：白組の裏市場「肉市場」で雇われている。食べることで変装する能力を利用し、殺し屋や密偵として働く。</p>
+                <p>▶︎クトゥルフ接続：ショゴスの眷属。肉体を喰らい取り込み、変形する性質が近い。饕餮の内部は「原形質スープ」で満たされている。</p>
+            </div>
+        </div>
+        <div class="species-item" onclick="toggleDetail(this)">
+            <img src="species_icon/mouryou.png" alt="魍魎アイコン" class="species-icon">
+            <span class="species-title">魍魎（もうりょう）</span>
+            <div class="species-detail">
+                <p>死者の魂や妖気が集合したもの。</p>
+                <p>▶︎外見：子供のような影が群れでまとわりつく。近づくと「影に噛まれる」感覚に襲われる。</p>
+                <p>▶︎能力：死体を操る。魍魎に憑かれた死体は声を発し、かつての生活を真似る。</p>
+                <p>▶︎立ち位置：赤組の特別区画に多く棲む。人間の遺体を「人形」として売り買いする商人と取引がある。</p>
+                <p>▶︎クトゥルフ接続：奈落の死霊「ナイトゴーント」と関連。魍魎はその幼生とも言われる。夢の中でナイトゴーントに攫われる者は、目覚めれば魍魎に取り憑かれる。</p>
+            </div>
+        </div>
+        <div class="species-item" onclick="toggleDetail(this)">
+            <img src="species_icon/toubi.png" alt="燈魅アイコン" class="species-icon">
+            <span class="species-title">燈魅（とうび）</span>
+            <div class="species-detail">
+                <p>狐火・鬼火をモチーフにした人外。</p>
+                <p>▶︎外見：灯籠や提灯に宿る炎の精。人の形を取るときは、白装束の舞姫の姿で現れる。</p>
+                <p>▶︎能力：人の「未来」を灯すことができる。提灯の炎を覗くと、自分の未来の断片が映る。ただしその未来を見た者は、その運命に抗えなくなる。</p>
+                <p>▶立ち位置：黄組の歓楽街「血蓮街」で人気の見世物。未来を見せる代わりに「心臓の鼓動」を一拍奪う。</p>
+                <p>▶︎クトゥルフ接続：アザトースの夢の火花。人間の時間と生命を炎に変換する存在。</p>
+            </div>
+        </div>
+        <div class="species-item" onclick="toggleDetail(this)">
+            <img src="species_icon/kojo.png" alt="蠱女アイコン" class="species-icon">
+            <span class="species-title">蠱女（こじょ）</span>
+            <div class="species-detail">
+                <p>「蠱毒（こどく）」の呪術から派生した存在。</p>
+                <p>▶︎外見：人間の女性の姿だが、腹部は透明で、中に無数の虫が蠢いている。</p>
+                <p>▶︎能力：体内の虫を使って人を操る。虫を飲ませることで対象の感情や記憶を侵食できる。</p>
+                <p>▶︎立ち位置：赤組の呪術師として暗黒街で恐れられる。愛や依存を商品にする。</p>
+                <p>▶︎クトゥルフ接続：ニャルラトホテプの眷属。蠱女の中の虫は「外なる神の断片」で、虫を通して人の精神を蝕む。</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleDetail(element) {
+            element.classList.toggle('active');
+        }
+    </script>
+    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
+        <a href="index.html"><button>ホーム</button></a>
+        <a href="rules.html"><button>特殊ルール</button></a>
+        <a href="jinngai.html"><button>人外設定</button></a>
+        <a href="world.html"><button>世界観設定</button></a>
+        <a href="characters.html"><button>キャラクター一覧</button></a>
+        <a href="shops.html"><button>店舗一覧</button></a>
+    </div>
+</body>
+</html>

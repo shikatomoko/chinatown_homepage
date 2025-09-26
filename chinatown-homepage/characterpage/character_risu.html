@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リス</title>
+    <link rel="stylesheet" href="../style.css">
+     <style>
+        body {
+            background: linear-gradient(135deg, #6f2222 40%, #b52d2d 70%, #2d1a2d 100%);
+            font-family: 'Cinzel', 'Yu Gothic', '游ゴシック', serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #040404;
+        }
+        .title-center {
+            text-align: center;
+            font-size: 3.2em;
+            color: #0c0c0c;
+            background: rgba(251, 1, 1, 0.9);
+            border-radius: 16px;
+            padding: 32px 0 32px 0;
+            margin: 32px auto 0 auto;
+            width: 400px;
+            box-shadow: 0 4px 24px rgba(64, 63, 63, 0.8), 0 0 32px rgba(0, 0, 0, 0.4);
+            font-weight: bold;
+            border: 3px solid #101010;
+            text-shadow: 0 2px 16px #3f3f3f, 0 0px 4px #666;
+            letter-spacing: 0.1em;
+        }
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px 60px 20px 60px;
+            gap: 60px;
+        }
+        .character-img {
+            width: 350px;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid #000000;
+            margin-top: 40px;
+            box-shadow: 0 4px 24px rgba(58, 58, 58, 0.8), 0 0 16px rgba(0, 0, 0, 0.6);
+            transition: box-shadow 0.3s;
+        }
+        .character-img:hover {
+            box-shadow: 0 6px 32px rgba(43, 42, 42, 0.9), 0 0 24px rgba(102, 102, 102, 0.3);
+        }
+        .info-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 20px;
+            min-width: 320px;
+            margin-top: 40px;
+            background: rgba(177, 77, 77, 0.8);
+            padding: 24px;
+            border-radius: 12px;
+            border: 2px solid #0e0d0d;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+        }
+        .info-row {
+            font-size: 18px;
+            color: #f2eded;
+            margin-bottom: 2px;
+            text-shadow: 0 1px 4px #262525;
+        }
+        .color-link {
+            color: #f30606;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 1px dashed #030303;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 8px rgba(91, 90, 90, 0.8);
+        }
+        .color-link:hover {
+            color: #f7f3f3;
+            text-shadow: 0 1px 12px rgba(243, 206, 206, 0.4);
+        }
+        .shop-link {
+            color: #6bb6ff;
+            text-decoration: none;
+            border-bottom: 1px dashed #6bb6ff;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 8px rgba(25, 118, 210, 0.4);
+        }
+        .shop-link:hover {
+            color: #4fc3f7;
+            text-shadow: 0 1px 12px rgba(25, 118, 210, 0.6);
+        }
+        .character-link {
+            color: #ff6b6b;
+            text-decoration: none;
+            border-bottom: 1px dashed #ff6b6b;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 8px rgba(211, 47, 47, 0.4);
+        }
+        .character-link:hover {
+            color: #ff8a80;
+            text-shadow: 0 1px 12px rgba(211, 47, 47, 0.6);
+        }
+        .bottom-section {
+            margin: 40px auto 0 auto;
+            max-width: 700px;
+            padding: 0 30px 40px 30px;
+            background: rgba(189, 85, 85, 0.81);
+            border-radius: 16px;
+            border: 2px solid #100f0f;
+            box-shadow: 0 4px 16px rgba(58, 57, 57, 0.6);
+        }
+        .bottom-section h2 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 12px;
+            color: #f8f6f6;
+            text-shadow: 0 2px 8px #535151, 0 0px 2px #666;
+            letter-spacing: 0.05em;
+        }
+        .bottom-section p {
+            font-size: 16px;
+            color: #f9f7f7;
+            margin-bottom: 12px;
+            line-height: 1.7;
+            text-shadow: 0 1px 4px #f4e2e2;
+        }
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .tab-container button {
+            background: #222;
+            color: #fff;
+            border-radius: 6px;
+            border: none;
+            padding: 8px 18px;
+            font-size: 15px;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .tab-container button:hover {
+            background: #444;
+            color: #fff;
+            box-shadow: 0 2px 12px rgba(102, 102, 102, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title-center">リス</h1>
+    <div class="top-section">
+        <img src="../character_fullbody/risu.png" alt="リス" class="character-img">
+        <div class="info-box">
+            <div class="info-row">
+                所属色：<a href="../colorpage/red.html" class="color-link">赤</a>
+            </div>
+            <div class="info-row">
+                階級：幹部
+            </div>
+            <div class="info-row">
+                仕事：
+                <a href="../shoppage/redmanagement" class="shop-link">周辺・郊外エリアにおける人材斡旋・人員管理</a>
+                /
+                <a href="../shoppage/rednegotiation" class="shop-link">他の色との渉外担当</a>
+            </div>
+            <div class="info-row">
+                外見特徴：中華服を着た男性。中性的であり、年齢も不詳。よく知らない人々からすれば双子のリコとほとんど見分けがつかない。
+            </div>
+        </div>
+    </div>
+    <div class="bottom-section">
+        <h2>性格</h2>
+        <p>妹（リコ）の正反対で、非常に生真面目な性格。頭が良いからか心配性な部分もある。自分では自身のことを冷酷無比な存在だと思っているが、全くそんなことはなく、一度関わった人間のことは最後まで気にかけてしまう。</p>
+        <h2>仕事について</h2>
+        <p>人材斡旋業は赤組の影響力を外部に広げるための重要な事業であり、リスが主導している。表向きは「人材派遣」と称しているが、実際にはスラムや表の街から人間を仕入れ、赤組に有用な形で再分配しているのだ。従業員、用心棒、時に娼婦としても。<br>
+        リスは組織の外れにいた人間を「最後まで見届ける」姿勢を貫いており、スラムで消える命に葬儀を出したり、働けなくなった人間に最低限の衣食住を与えるなどしている。表には出ないが、彼の人柄を慕っている人間は少なくない。<br>
+        また、他の色との渉外も担当しており、血気盛んなリコが前面に立つと交渉が決裂しかねない場面では、常にリスが出張って事態を収める。赤組の中では「リコが剣ならリスは盾」と評されることもある。</p>
+        <h2>過去</h2>
+        <p>リコと同じく、外の街から暗黒中華街にやってきた存在。その具体的な経緯はリコと同様。二人が血を分けた兄妹なのか、それとも意図的に似せられた存在なのかは不明である。幼少期の記録は一切なく、気づけば赤組の中核にいた。</p>
+        <h2>能力</h2>
+        <p>交渉術、管理能力、そして膨大な人脈。彼自身は武力に乏しく、直接的な戦闘は不得手だが、必要とあらば人材をすぐに集めることで問題を解決できる。また、情報屋や医療班とのコネも深いため、間接的な戦いにおいては赤組の中でも最も頼りになる存在。</p>
+        <h2>人間関係</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
+            <!-- リコ（赤組） -->
+            <a href="../characterpage/character_riko.html" style="text-decoration:none;">
+                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <img src="../character_icon/riko_icon.png" alt="リコ" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+                        <span style="font-size:18px; font-weight:bold;">リコ</span>
+                    </div>
+                    <div style="font-size:15px;">双子と噂される存在。リコが「攻め」であれば、リスは「守り」と言われるほどに補完的な関係。ややリコの奔放さに振り回されがち。</div>
+                </div>
+            </a>
+            <!-- ミミコ（赤組） -->
+            <a href="../characterpage/character_mimiko.html" style="text-decoration:none;">
+                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <img src="../character_icon/mimiko_icon.png" alt="ミミコ" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+                        <span style="font-size:18px; font-weight:bold;">ミミコ</span>
+                    </div>
+                    <div style="font-size:15px;">彼女の合理主義と孤独を理解している。表立っては干渉しないが、陰で支えていることも多い。</div>
+                </div>
+            </a>
+            <!-- 風花（赤組） -->
+            <a href="../characterpage/character_huuka.html" style="text-decoration:none;">
+                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <img src="../character_icon/huuka_icon.png" alt="風花" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+                        <span style="font-size:18px; font-weight:bold;">風花</span>
+                    </div>
+                    <div style="font-size:15px;">仕事上で最もよく顔を合わせる相手。必要な分だけの信頼関係を築いている。</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px; justify-content: center;">
+        <a href="../index.html"><button>ホーム</button></a>
+        <a href="../rules.html"><button>特殊ルール</button></a>
+        <a href="../jinngai.html"><button>人外設定</button></a>
+        <a href="../world.html"><button>世界観設定</button></a>
+        <a href="../characters.html"><button>キャラクター一覧</button></a>
+        <a href="../shops.html"><button>店舗一覧</button></a>
+    </div>
+</body>
+</html>

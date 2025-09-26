@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陽炎</title>
+    <link rel="stylesheet" href="../style.css">
+     <style>
+        body {
+            background: linear-gradient(135deg, #6f2222 40%, #b52d2d 70%, #2d1a2d 100%);
+            font-family: 'Cinzel', 'Yu Gothic', '游ゴシック', serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #040404;
+        }
+        .title-center {
+            text-align: center;
+            font-size: 3.2em;
+            color: #0c0c0c;
+            background: rgba(251, 1, 1, 0.9);
+            border-radius: 16px;
+            padding: 32px 0 32px 0;
+            margin: 32px auto 0 auto;
+            width: 400px;
+            box-shadow: 0 4px 24px rgba(64, 63, 63, 0.8), 0 0 32px rgba(0, 0, 0, 0.4);
+            font-weight: bold;
+            border: 3px solid #101010;
+            text-shadow: 0 2px 16px #3f3f3f, 0 0px 4px #666;
+            letter-spacing: 0.1em;
+        }
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px 60px 20px 60px;
+            gap: 60px;
+        }
+        .character-img {
+            width: 350px;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid #000000;
+            margin-top: 40px;
+            box-shadow: 0 4px 24px rgba(58, 58, 58, 0.8), 0 0 16px rgba(0, 0, 0, 0.6);
+            transition: box-shadow 0.3s;
+        }
+        .character-img:hover {
+            box-shadow: 0 6px 32px rgba(43, 42, 42, 0.9), 0 0 24px rgba(102, 102, 102, 0.3);
+        }
+        .info-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 20px;
+            min-width: 320px;
+            margin-top: 40px;
+            background: rgba(177, 77, 77, 0.8);
+            padding: 24px;
+            border-radius: 12px;
+            border: 2px solid #0e0d0d;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+        }
+        .info-row {
+            font-size: 18px;
+            color: #f2eded;
+            margin-bottom: 2px;
+            text-shadow: 0 1px 4px #262525;
+        }
+        .color-link {
+            color: #f30606;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 1px dashed #030303;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 8px rgba(91, 90, 90, 0.8);
+        }
+        .color-link:hover {
+            color: #f7f3f3;
+            text-shadow: 0 1px 12px rgba(243, 206, 206, 0.4);
+        }
+        .shop-link {
+            color: #6bb6ff;
+            text-decoration: none;
+            border-bottom: 1px dashed #6bb6ff;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 8px rgba(25, 118, 210, 0.4);
+        }
+        .shop-link:hover {
+            color: #4fc3f7;
+            text-shadow: 0 1px 12px rgba(25, 118, 210, 0.6);
+        }
+        .character-link {
+            color: #ff6b6b;
+            text-decoration: none;
+            border-bottom: 1px dashed #ff6b6b;
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 8px rgba(211, 47, 47, 0.4);
+        }
+        .character-link:hover {
+            color: #ff8a80;
+            text-shadow: 0 1px 12px rgba(211, 47, 47, 0.6);
+        }
+        .bottom-section {
+            margin: 40px auto 0 auto;
+            max-width: 700px;
+            padding: 0 30px 40px 30px;
+            background: rgba(189, 85, 85, 0.81);
+            border-radius: 16px;
+            border: 2px solid #100f0f;
+            box-shadow: 0 4px 16px rgba(58, 57, 57, 0.6);
+        }
+        .bottom-section h2 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 12px;
+            color: #f8f6f6;
+            text-shadow: 0 2px 8px #535151, 0 0px 2px #666;
+            letter-spacing: 0.05em;
+        }
+        .bottom-section p {
+            font-size: 16px;
+            color: #f9f7f7;
+            margin-bottom: 12px;
+            line-height: 1.7;
+            text-shadow: 0 1px 4px #f4e2e2;
+        }
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .tab-container button {
+            background: #222;
+            color: #fff;
+            border-radius: 6px;
+            border: none;
+            padding: 8px 18px;
+            font-size: 15px;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .tab-container button:hover {
+            background: #444;
+            color: #fff;
+            box-shadow: 0 2px 12px rgba(102, 102, 102, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title-center">陽炎</h1>
+    <div class="top-section">
+        <img src="../character_fullbody/kagerou.png" alt="陽炎" class="character-img">
+        <div class="info-box">
+            <div class="info-row">
+                所属色：<a href="../colorpage/red.html" class="color-link">赤</a>
+            </div>
+            <div class="info-row">
+                階級：中間構成員
+            </div>
+            <div class="info-row">
+                仕事：<a href="../shoppage/shop_torture.html" class="shop-link">拷問屋</a>
+            </div>
+            <div class="info-row">
+                外見特徴：ふわふわした髪と中性的な顔立ちをした可愛い青年。年齢は20代半ばほどに見える。小柄で華奢な体つきだが、笑顔を絶やさず、ぱっと見はアイドルのような雰囲気すらある。血で汚れた作業着の上に、いつも動物のワッペンが付いたエプロンを掛けている姿が印象的。
+            </div>
+        </div>
+    </div>
+    <div class="bottom-section">
+        <h2>性格</h2>
+        <p>外見の通り人懐っこく柔らかい物腰を持つが、本性は極めて残酷で「人間の反応」を観察することに喜びを覚える倒錯者。基本的に明るく朗らかで、拷問中ですら楽しそうに雑談を交わす。相手の悲鳴や涙を「可愛い」と評し、遊び道具のように人間を扱うが、決して激情に任せず、常に冷静に加虐を楽しむ。</p>
+        <h2>仕事について</h2>
+        <p>拷問屋を経営し、依頼に応じて捕らえられた人間に苦痛を与える。仕事は非常に丁寧で、依頼内容や料金に応じて「死なない程度」から「二度と元に戻れないレベル」まで多彩なコースを用意している。彼自身は情報を抜き取ることにはあまり関心がなく、純粋に「苦痛を演出する職人」としての誇りを持っている。<br>
+        依頼者との会話は愛想が良く親切であるため、常連客も多い。</p>
+        <h2>過去</h2>
+        <p>暗黒中華街に現れる前の記録はほとんどなく、彼がどこから来たのか誰も知らない。幼少期から生物を分解したり、同年代の子供を泣かせることに快楽を覚えていたと噂される。ある時期まではどこかの医者の下で働いていた形跡があるが、彼自身は過去を語りたがらない。<br>
+        ただ、「拷問」ではなく「治療」と称して患者に苦痛を与えていた、という黒い噂だけが残っている。</p>
+        <h2>能力</h2>
+        <p>医学や解剖学に通じており、神経や血管を正確に把握しているため、拷問においては「相手を殺さずに最大限苦痛を与える」ことができる。また、体力は並だが、手先の器用さと冷静な観察眼は一流。戦闘においては刃物や医療器具を使った不意打ちや拘束が得意。</p>
+        <h2>人間関係</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
+            <!-- 阿蓮（赤組） -->
+            <a href="../characterpage/character_aren.html" style="text-decoration:none;">
+                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <img src="../character_icon/aren_icon.png" alt="阿蓮" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+                        <span style="font-size:18px; font-weight:bold; color:#fff;">阿蓮</span>
+                    </div>
+                    <div style="font-size:15px; color:#fff;">互いに「人間観察」という点で通じ合い、よく語らう仲。阿蓮は陽炎の倒錯を面白がっている。</div>
+                </div>
+            </a>
+            <!-- 風花（赤組） -->
+            <a href="../characterpage/character_huuka.html" style="text-decoration:none;">
+                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <img src="../character_icon/huuka_icon.png" alt="風花" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+                        <span style="font-size:18px; font-weight:bold; color:#fff;">風花</span>
+                    </div>
+                    <div style="font-size:15px; color:#fff;">情報屋としてターゲットを紹介されることも。「耳が良いって便利だね」とからかう。</div>
+                </div>
+            </a>
+            <!-- リス（赤組） -->
+            <a href="../characterpage/character_risu.html" style="text-decoration:none;">
+                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+                        <img src="../character_icon/risu_icon.png" alt="リス" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+                        <span style="font-size:18px; font-weight:bold; color:#fff;">リス</span>
+                    </div>
+                    <div style="font-size:15px; color:#fff;">顧客として付き合いがある。「人形みたいで可愛い」と言っては苛立たせている。</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px; justify-content: center;">
+        <a href="../index.html"><button>ホーム</button></a>
+        <a href="../rules.html"><button>特殊ルール</button></a>
+        <a href="../jinngai.html"><button>人外設定</button></a>
+        <a href="../world.html"><button>世界観設定</button></a>
+        <a href="../characters.html"><button>キャラクター一覧</button></a>
+        <a href="../shops.html"><button>店舗一覧</button></a>
+    </div>
+</body>
+</html>
