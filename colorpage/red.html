@@ -3,78 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>赤組</title>
-    <link rel="stylesheet" href="style.css">
+    <title>呑紅街</title>
+    <link rel="stylesheet" href="../style.css">
     <style>
         body {
-            background-color: #8e2809;
-            font-family: Arial, sans-serif;
-            padding: 40px;
-            color: #e8e0e0;
+            background: linear-gradient(135deg, #3a0a0a, #5a1a1a, #4a1010);
+            font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #fff0f0;
+            line-height: 1.7;
         }
-        h1 {
-            color: #000000;
-            background: #bbb;
-            padding: 16px 0;
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: clamp(20px, 4vw, 60px);
+        }
+        
+        .title-center {
             text-align: center;
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.1em;
+            margin: 40px auto 60px;
+            padding: 0;
+        }
+        
+        .content-section {
+            margin-bottom: 50px;
+            padding: clamp(20px, 3vw, 40px);
+            background: rgba(150, 30, 30, 0.8);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 100, 100, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .content-section:hover {
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .section-title {
+            font-size: clamp(22px, 4vw, 28px);
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: clamp(16px, 3vw, 24px);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.02em;
+            border-bottom: 2px solid rgba(255, 150, 150, 0.5);
+            padding-bottom: 8px;
+        }
+        
+        .section-text {
+            font-size: clamp(15px, 2.5vw, 17px);
+            color: #fff0f0;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        }
+        
+        .person-list, .shop-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .person-item, .shop-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: rgba(120, 20, 20, 0.8);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 100, 100, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .person-item:hover, .shop-item:hover {
+            background: rgba(140, 25, 25, 0.95);
+            transform: translateX(4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .role-label {
+            font-weight: 600;
+            color: #ffb8b8;
+            min-width: 100px;
+            margin-right: 12px;
+            font-size: 14px;
+        }
+        
+        .person-link, .shop-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            border-bottom: 1px dashed rgba(255, 150, 150, 0.6);
+            transition: all 0.3s ease;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        
+        .person-link:hover, .shop-link:hover {
+            color: #ffffff;
+            background: rgba(255, 150, 150, 0.2);
+            border-bottom: 1px solid rgba(255, 150, 150, 0.8);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .color-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed rgba(255, 150, 150, 0.6);
+            transition: all 0.3s ease;
+            padding: 1px 2px;
+            border-radius: 3px;
+        }
+        
+        .color-link:hover {
+            background: rgba(255, 150, 150, 0.2);
+            border-bottom: 1px solid rgba(255, 150, 150, 0.8);
+        }
+        
+        .unknown-person {
+            color: #ff9090;
+            font-style: italic;
+            border-bottom: none;
+            cursor: default;
+        }
+        
+        .unknown-person:hover {
+            background: none;
+            color: #ff9090;
+            border-bottom: none;
+        }
+        
+        .tab-container {
+            display: flex;
+            gap: clamp(8px, 2vw, 15px);
+            margin: 60px 0 40px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .tab-container button {
+            background: linear-gradient(135deg, #c02020, #e03030);
+            color: #ffffff;
             border-radius: 8px;
-            font-size: 2em;
-            margin-bottom: 32px;
+            border: 1px solid rgba(255, 150, 150, 0.3);
+            padding: clamp(8px, 2vw, 12px) clamp(16px, 3vw, 24px);
+            font-size: clamp(13px, 2.5vw, 16px);
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        section {
-            margin-bottom: 32px;
+        
+        .tab-container button:hover {
+            background: linear-gradient(135deg, #e03030, #f04040);
+            color: #ffffff;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            transform: translateY(-2px);
         }
-        section h2 {
-            color: #f1ebeb;
-            font-size: 1.3em;
-            margin-bottom: 12px;
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .content-section {
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+            
+            .tab-container {
+                gap: 8px;
+                margin: 40px 0 20px 0;
+            }
         }
-        section p {
-            margin: 0 0 8px 0;
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .content-section {
+                padding: 16px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>赤組</h1>
-    <section>
-        <h2>組織概要</h2>
-        <p>拷問からテーラー、ネイルサロンまで。とにかく幅広くありとあらゆる仕事を受け入れるのが「赤組」の特徴である。一番得意とするのはもちろん拷問だが、それ以外でもなんだって受け入れる。文字通りの何でも屋として、彼らはこの街で認識されているのである。「赤組」は６色の中で最大の人数を誇る。男女を問わず、能力を問わず、人な人でないかも問わず。彼らは全ての人材を吸収する。その貪欲さこそが「赤組」の最大の強さなのだろう。</p>
-        </section>
-        <section>
-        <h2>区画について</h2>
-        <p>最大の面積を誇る。区画の大半は居住地区が占めるが、中央寄りの一部には様々な商店が立ち並ぶ。服やアクセサリーなどのショップは「赤組」の管轄にしか基本的に存在しない。街外れにはスラム街が存在する。「赤組」は大量の人を受け入れるが、彼ら全てに衣食住をきちんと提供してやるなんていつだって明言したことはない。実力がなかったり、運が悪かった人々は「赤組」の中でも役割を与えられず、スラムまで流れ着くのである。スラムの外れには表の街へと繋がる階段が存在する。これが唯一の表の街と暗黒中華街との接続地である。また「赤組」の区画の三分の一程度は、人外用の専用特別地区として割譲されている。</p>
-    </section>
-    <section>
-        <h2>主要人物</h2>
-        <p>首長：？？？</p>
-        <p>幹部：リコ</p>
-        <p>幹部：リス</p>
-        <p>幹部候補：ミミコ</p>
-        <p>中間構成員：阿蓮</p>
-        <p>中間構成員：阿瑠</p>
-        <p>中間構成員：風花</p>
-        <p>中間構成員：陽炎</p>
-        <p>中間構成員：綾</p>
-        <p>中間構成員：燿</p>
-        <h2>店舗情報</h2>
-        <p>ネイルサロン</p>
-        <p>テーラー</p>
-        <P>骨董楼</P>
-        <P>情報屋</P>
-        <P>拷問屋</P>
-        <P>湯治屋</P>
-        <P>印紙屋</P>
-        <P>刺青屋</P>
-        <P>ペットショップ</P>
-
-    </section>
-    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
-        <a href="../index.html"><button>ホーム</button></a>
-        <a href="../rules.html"><button>特殊ルール</button></a>
-        <a href="../jinngai.html"><button>人外設定</button></a>
-        <a href="../world.html"><button>世界観設定</button></a>
-        <a href="../characters.html"><button>キャラクター一覧</button></a>
-        <a href="../shops.html"><button>店舗一覧</button></a>
+    <div class="container">
+        <div class="title-center">呑紅街</div>
+        
+        <div class="content-section">
+            <h2 class="section-title">組織概要</h2>
+            <p class="section-text">拷問からテーラー、ネイルサロンまで。とにかく幅広くありとあらゆる仕事を受け入れるのが「赤組」の特徴である。一番得意とするのはもちろん拷問だが、それ以外でもなんだって受け入れる。文字通りの何でも屋として、彼らはこの街で認識されているのである。</p>
+            <p class="section-text">「赤組」は６色の中で最大の人数を誇る。男女を問わず、能力を問わず、人な人でないかも問わず。彼らは全ての人材を吸収する。その貪欲さこそが「赤組」の最大の強さなのだろう。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">区画について</h2>
+            <p class="section-text">最大の面積を誇る。区画の大半は居住地区が占めるが、中央寄りの一部には様々な商店が立ち並ぶ。服やアクセサリーなどのショップは「赤組」の管轄にしか基本的に存在しない。</p>
+            <p class="section-text">街外れにはスラム街が存在する。「赤組」は大量の人を受け入れるが、彼ら全てに衣食住をきちんと提供してやるなんていつだって明言したことはない。実力がなかったり、運が悪かった人々は「赤組」の中でも役割を与えられず、スラムまで流れ着くのである。</p>
+            <p class="section-text">スラムの外れには表の街へと繋がる階段が存在する。これが唯一の表の街と暗黒中華街との接続地である。また「赤組」の区画の三分の一程度は、人外用の専用特別地区として割譲されている。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">主要人物</h2>
+            <div class="person-list">
+                <div class="person-item">
+                    <span class="role-label">首長：</span>
+                    <span class="person-link unknown-person">？？？</span>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">幹部：</span>
+                    <a href="../characterpage/character_riko.html" class="person-link">リコ</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">幹部：</span>
+                    <a href="../characterpage/character_risu.html" class="person-link">リス</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">幹部候補：</span>
+                    <a href="../characterpage/character_mimiko.html" class="person-link">ミミコ</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">中間構成員：</span>
+                    <a href="../characterpage/character_aren.html" class="person-link">阿蓮</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">中間構成員：</span>
+                    <a href="../characterpage/character_aru.html" class="person-link">阿瑠</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">中間構成員：</span>
+                    <a href="../characterpage/character_huuka.html" class="person-link">風花</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">中間構成員：</span>
+                    <a href="../characterpage/character_kagerou.html" class="person-link">陽炎</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">中間構成員：</span>
+                    <span class="person-link unknown-person">綾</span>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">中間構成員：</span>
+                    <span class="person-link unknown-person">燿</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">店舗情報</h2>
+            <div class="shop-list">
+                <div class="shop-item">
+                    <a href="../shoppage/shop_nailsalon.html" class="shop-link">ネイルサロン</a>
+                </div>
+                <div class="shop-item">
+                    <a href="../shoppage/shop_tailor.html" class="shop-link">テーラー</a>
+                </div>
+                <div class="shop-item">
+                    <a href="../shoppage/shop_antique.html" class="shop-link">骨董楼</a>
+                </div>
+                <div class="shop-item">
+                    <a href="../shoppage/shop_informer.html" class="shop-link">情報屋</a>
+                </div>
+                <div class="shop-item">
+                    <a href="../shoppage/shop_torture.html" class="shop-link">拷問屋</a>
+                </div>
+                <div class="shop-item">
+                    <a href="../shoppage/shop_spa.html" class="shop-link">湯治屋</a>
+                </div>
+                <div class="shop-item">
+                    <a href="../shoppage/shop_stamp.html" class="shop-link">印紙屋</a>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">刺青屋</span>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">ペットショップ</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">関連組織</h2>
+            <div class="section-text">
+                暗黒中華街は赤組の他、五つの色彩組織によって統治されています。
+            </div>
+            <div class="person-list">
+                <div class="person-item">
+                    <span class="role-label">黒組：</span>
+                    <a href="black.html" class="color-link">霧影集団</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">青組：</span>
+                    <a href="blue.html" class="color-link">蒼殉街</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">緑組：</span>
+                    <a href="green.html" class="color-link">滲緑街</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">黄組：</span>
+                    <a href="yellow.html" class="color-link">黄金街</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">白組：</span>
+                    <a href="white.html" class="color-link">白衣街</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-container">
+            <a href="../index.html"><button>ホーム</button></a>
+            <a href="../rules.html"><button>特殊ルール</button></a>
+            <a href="../jinngai.html"><button>人外設定</button></a>
+            <a href="../world.html"><button>世界観設定</button></a>
+            <a href="../characters.html"><button>キャラクター一覧</button></a>
+            <a href="../shops.html"><button>店舗一覧</button></a>
+            <a href="../tools.html"><button>ツール</button></a>
+        </div>
     </div>
 </body>
 </html>

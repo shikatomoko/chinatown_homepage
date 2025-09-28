@@ -3,64 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>緑組</title>
-    <link rel="stylesheet" href="style.css">
+    <title>滲緑街</title>
+    <link rel="stylesheet" href="../style.css">
     <style>
         body {
-            background-color: #198531;
-            font-family: Arial, sans-serif;
-            padding: 40px;
-            color: #e8e0e0;
+            background: linear-gradient(135deg, #0a3020, #1a5030, #124028);
+            font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #f0fff0;
+            line-height: 1.7;
         }
-        h1 {
-            color: #000000;
-            background: #bbb;
-            padding: 16px 0;
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: clamp(20px, 4vw, 60px);
+        }
+        
+        .title-center {
             text-align: center;
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.1em;
+            margin: 40px auto 60px;
+            padding: 0;
+        }
+        
+        .content-section {
+            margin-bottom: 50px;
+            padding: clamp(20px, 3vw, 40px);
+            background: rgba(30, 100, 50, 0.8);
+            border-radius: 16px;
+            border: 1px solid rgba(100, 255, 150, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .content-section:hover {
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .section-title {
+            font-size: clamp(22px, 4vw, 28px);
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: clamp(16px, 3vw, 24px);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.02em;
+            border-bottom: 2px solid rgba(150, 255, 200, 0.5);
+            padding-bottom: 8px;
+        }
+        
+        .section-text {
+            font-size: clamp(15px, 2.5vw, 17px);
+            color: #e8fff0;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        }
+        
+        .person-list, .shop-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .person-item, .shop-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: rgba(20, 80, 40, 0.8);
+            border-radius: 12px;
+            border: 1px solid rgba(100, 255, 150, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .person-item:hover, .shop-item:hover {
+            background: rgba(25, 100, 50, 0.95);
+            transform: translateX(4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .role-label {
+            font-weight: 600;
+            color: #b8ffb8;
+            min-width: 60px;
+            margin-right: 12px;
+            font-size: 14px;
+        }
+        
+        .person-link, .shop-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            border-bottom: 1px dashed rgba(150, 255, 200, 0.6);
+            transition: all 0.3s ease;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        
+        .person-link:hover, .shop-link:hover {
+            color: #ffffff;
+            background: rgba(150, 255, 200, 0.2);
+            border-bottom: 1px solid rgba(150, 255, 200, 0.8);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .color-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed rgba(150, 255, 200, 0.6);
+            transition: all 0.3s ease;
+            padding: 1px 2px;
+            border-radius: 3px;
+        }
+        
+        .color-link:hover {
+            background: rgba(150, 255, 200, 0.2);
+            border-bottom: 1px solid rgba(150, 255, 200, 0.8);
+        }
+        
+        .unknown-person {
+            color: #90ff90;
+            font-style: italic;
+            border-bottom: none;
+            cursor: default;
+        }
+        
+        .unknown-person:hover {
+            background: none;
+            color: #90ff90;
+            border-bottom: none;
+        }
+        
+        .tab-container {
+            display: flex;
+            gap: clamp(8px, 2vw, 15px);
+            margin: 60px 0 40px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .tab-container button {
+            background: linear-gradient(135deg, #20a050, #30c060);
+            color: #ffffff;
             border-radius: 8px;
-            font-size: 2em;
-            margin-bottom: 32px;
+            border: 1px solid rgba(150, 255, 200, 0.3);
+            padding: clamp(8px, 2vw, 12px) clamp(16px, 3vw, 24px);
+            font-size: clamp(13px, 2.5vw, 16px);
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        section {
-            margin-bottom: 32px;
+        
+        .tab-container button:hover {
+            background: linear-gradient(135deg, #30c060, #40d070);
+            color: #ffffff;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            transform: translateY(-2px);
         }
-        section h2 {
-            color: #f1ebeb;
-            font-size: 1.3em;
-            margin-bottom: 12px;
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .content-section {
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+            
+            .tab-container {
+                gap: 8px;
+                margin: 40px 0 20px 0;
+            }
         }
-        section p {
-            margin: 0 0 8px 0;
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .content-section {
+                padding: 16px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>緑組</h1>
-    <section>
-        <h2>組織概要</h2>
-        <p>「緑組」は酷く厳格で気難しい、技術者の集団である。少なくとも他の色から彼らはそのように認識されている。彼らは独自に入手した様々な技術や、様々な実験・検証を重ねて得た智慧を元に、薬の開発を主に行っている。この街で唯一の病院も「緑組」の管轄にある。医療は「緑組」に完全に占有されているが、別に「緑組」はヒポクラテスの誓いになんてサインをしていない。誰に医療が与えられ、誰に与えられないのか。それを決めるのは患者ではなく、医者である。</p>
-    </section>
-    <section>
-        <h2>区画について</h2>
-        <p>狭く、研究機関と病院以外には特に施設や商店も存在しない。「黄組」と隣接したエリアは工業地帯となっており、様々な実験を繰り広げるラボが存在している。実験を数多く行っていることや、機密情報の多さから、「緑組」の区画内は特に厳重な出入りの制御がされている。内部も行き来は決して自由でなく、特に最奥のラボには「緑組」の中でも限られた人間しかアクセスすることができない。</p>
-    </section>
-    <section>
-        <h2>主要人物</h2>
-        <p>首長：？？？</p>
-        <p>幹部：？？？</p>
-        <p>構成員：？？？</p>
-        <h2>店舗情報</h2>
-        <p>病院</p>
-        <p>ケーキ屋</p>
-        <P>お香屋</P>
-    </section>
-    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
-        <a href="../index.html"><button>ホーム</button></a>
-        <a href="../rules.html"><button>特殊ルール</button></a>
-        <a href="../jinngai.html"><button>人外設定</button></a>
-        <a href="../world.html"><button>世界観設定</button></a>
-        <a href="../characters.html"><button>キャラクター一覧</button></a>
-        <a href="../shops.html"><button>店舗一覧</button></a>
+    <div class="container">
+        <div class="title-center">滲緑街</div>
+        
+        <div class="content-section">
+            <h2 class="section-title">組織概要</h2>
+            <p class="section-text">滲緑街は酷く厳格で気難しい、技術者の集団である。少なくとも他の色から彼らはそのように認識されている。彼らは独自に入手した様々な技術や、様々な実験・検証を重ねて得た智慧を元に、薬の開発を主に行っている。</p>
+            <p class="section-text">この街で唯一の病院も「滲緑街」の管轄にある。医療は「滲緑街」に完全に占有されているが、別に「滲緑街」はヒポクラテスの誓いになんてサインをしていない。</p>
+            <p class="section-text">誰に医療が与えられ、誰に与えられないのか。それを決めるのは患者ではなく、医者である。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">区画について</h2>
+            <p class="section-text">狭く、研究機関と病院以外には特に施設や商店も存在しない。「<a href="./yellow.html" class="color-link">黄惑街</a>」と隣接したエリアは工業地帯となっており、様々な実験を繰り広げるラボが存在している。</p>
+            <p class="section-text">実験を数多く行っていることや、機密情報の多さから、滲緑街の区画内は特に厳重な出入りの制御がされている。内部も行き来は決して自由でなく、特に最奥のラボには「滲緑街」の中でも限られた人間しかアクセスすることができない。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">主要人物</h2>
+            <div class="person-list">
+                <div class="person-item">
+                    <span class="role-label">首長：</span>
+                    <span class="person-link unknown-person">？？？</span>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">幹部：</span>
+                    <span class="person-link unknown-person">？？？</span>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">構成員：</span>
+                    <span class="person-link unknown-person">？？？</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">店舗情報</h2>
+            <div class="shop-list">
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">病院</span>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">ケーキ屋</span>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">お香屋</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-container">
+            <a href="../index.html"><button>ホーム</button></a>
+            <a href="../rules.html"><button>特殊ルール</button></a>
+            <a href="../jinngai.html"><button>人外設定</button></a>
+            <a href="../world.html"><button>世界観設定</button></a>
+            <a href="../characters.html"><button>キャラクター一覧</button></a>
+            <a href="../shops.html"><button>店舗一覧</button></a>
+            <a href="../tools.html"><button>ツール</button></a>
+        </div>
     </div>
 </body>
 </html>

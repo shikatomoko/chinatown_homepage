@@ -3,67 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>青組</title>
-    <link rel="stylesheet" href="style.css">
+    <title>蒼殉街</title>
+    <link rel="stylesheet" href="../style.css">
     <style>
         body {
-            background-color: #0e0792;
-            font-family: Arial, sans-serif;
-            padding: 40px;
-            color: #e8e0e0;
+            background: linear-gradient(135deg, #0a1a4a, #1a2a6a, #122050);
+            font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #f0f8ff;
+            line-height: 1.7;
         }
-        h1 {
-            color: #000000;
-            background: #bbb;
-            padding: 16px 0;
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: clamp(20px, 4vw, 60px);
+        }
+        
+        .title-center {
             text-align: center;
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.1em;
+            margin: 40px auto 60px;
+            padding: 0;
+        }
+        
+        .content-section {
+            margin-bottom: 50px;
+            padding: clamp(20px, 3vw, 40px);
+            background: rgba(30, 70, 150, 0.8);
+            border-radius: 16px;
+            border: 1px solid rgba(100, 150, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .content-section:hover {
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .section-title {
+            font-size: clamp(22px, 4vw, 28px);
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: clamp(16px, 3vw, 24px);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.02em;
+            border-bottom: 2px solid rgba(150, 200, 255, 0.5);
+            padding-bottom: 8px;
+        }
+        
+        .section-text {
+            font-size: clamp(15px, 2.5vw, 17px);
+            color: #e8f0ff;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        }
+        
+        .person-list, .shop-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .person-item, .shop-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: rgba(20, 50, 120, 0.8);
+            border-radius: 12px;
+            border: 1px solid rgba(100, 150, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .person-item:hover, .shop-item:hover {
+            background: rgba(25, 60, 140, 0.95);
+            transform: translateX(4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .role-label {
+            font-weight: 600;
+            color: #b8d0ff;
+            min-width: 80px;
+            margin-right: 12px;
+            font-size: 14px;
+        }
+        
+        .person-link, .shop-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            border-bottom: 1px dashed rgba(150, 200, 255, 0.6);
+            transition: all 0.3s ease;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        
+        .person-link:hover, .shop-link:hover {
+            color: #ffffff;
+            background: rgba(150, 200, 255, 0.2);
+            border-bottom: 1px solid rgba(150, 200, 255, 0.8);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .color-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed rgba(150, 200, 255, 0.6);
+            transition: all 0.3s ease;
+            padding: 1px 2px;
+            border-radius: 3px;
+        }
+        
+        .color-link:hover {
+            background: rgba(150, 200, 255, 0.2);
+            border-bottom: 1px solid rgba(150, 200, 255, 0.8);
+        }
+        
+        .unknown-person {
+            color: #90b8ff;
+            font-style: italic;
+            border-bottom: none;
+            cursor: default;
+        }
+        
+        .unknown-person:hover {
+            background: none;
+            color: #90b8ff;
+            border-bottom: none;
+        }
+        
+        .tab-container {
+            display: flex;
+            gap: clamp(8px, 2vw, 15px);
+            margin: 60px 0 40px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .tab-container button {
+            background: linear-gradient(135deg, #2060c0, #3080e0);
+            color: #ffffff;
             border-radius: 8px;
-            font-size: 2em;
-            margin-bottom: 32px;
+            border: 1px solid rgba(150, 200, 255, 0.3);
+            padding: clamp(8px, 2vw, 12px) clamp(16px, 3vw, 24px);
+            font-size: clamp(13px, 2.5vw, 16px);
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        section {
-            margin-bottom: 32px;
+        
+        .tab-container button:hover {
+            background: linear-gradient(135deg, #3080e0, #4090f0);
+            color: #ffffff;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            transform: translateY(-2px);
         }
-        section h2 {
-            color: #f1ebeb;
-            font-size: 1.3em;
-            margin-bottom: 12px;
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .content-section {
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+            
+            .tab-container {
+                gap: 8px;
+                margin: 40px 0 20px 0;
+            }
         }
-        section p {
-            margin: 0 0 8px 0;
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .content-section {
+                padding: 16px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>青組</h1>
-    <section>
-        <h2>組織概要</h2>
-        <p>「「青組」はこの街で最も静謐で正しく、そして醜悪な一団である。彼らは宗教団体の運営を主な役割としている。教義に従った清廉で善良な日々を送ること。それこそが「青組」の唯一で絶対の重要事項なのである。「青組」に所属する人々は全て当該の宗教団体の信者となっている。詳しい教義については別途記載する。彼らは宗教団体として、学校など教育関係の整備にも力を入れている。信者たちの幸福を実現するために、彼らはどんな労苦の惜しまない。信徒たちの幸福のために。そして全ての異教徒どもの不幸のために。彼らは今日も祈りを捧げる。</p>
-        </section>
-        <section>
-        <h2>区画について</h2>
-        <p>「白組」と「赤組」に挟まれた非常に狭い区画を所有している。面積の大半は宗教施設や学校などで埋め尽くされており、商店の類はほとんどない。特徴的なのは街外れにある鉱山と畑である。信者たちは心の底から楽しく農園や鉱山で労働に勤しんでいる。畑で取れるハーブは、「緑組」との取引などに用いられることもある。鉱石については街中に使用されている灯りや、鉄道の動力源など様々に利用されているため、「青組」からの資源供給が絶たれれば街全体が滅びの一途を辿ることだろう。</p>
-    </section>
-
-    <section>
-        <h2>主要人物</h2>
-        <p>首長：？？？</p>
-        <p>幹部：？？？</p>
-        <p>下級構成員：？？？</p>
-        <h2>店舗情報</h2>
-        <p>教団</p>
-        <p>学校</p>
-        <P>動物園</P>
-        <P>水族館</P>
-
-    </section>
-    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
-        <a href="../index.html"><button>ホーム</button></a>
-        <a href="../rules.html"><button>特殊ルール</button></a>
-        <a href="../jinngai.html"><button>人外設定</button></a>
-        <a href="../world.html"><button>世界観設定</button></a>
-        <a href="../characters.html"><button>キャラクター一覧</button></a>
-        <a href="../shops.html"><button>店舗一覧</button></a>
+    <div class="container">
+        <div class="title-center">蒼殉街</div>
+        
+        <div class="content-section">
+            <h2 class="section-title">組織概要</h2>
+            <p class="section-text">蒼殉街はこの街で最も静謐で正しく、そして醜悪な一団である。彼らは宗教団体の運営を主な役割としている。教義に従った清廉で善良な日々を送ること。それこそが蒼殉街の唯一で絶対の重要事項なのである。</p>
+            <p class="section-text">蒼殉街に所属する人々は全て当該の宗教団体の信者となっている。詳しい教義については別途記載する。彼らは宗教団体として、学校など教育関係の整備にも力を入れている。</p>
+            <p class="section-text">信者たちの幸福を実現するために、彼らはどんな労苦の惜しまない。信徒たちの幸福のために。そして全ての異教徒どもの不幸のために。彼らは今日も祈りを捧げる。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">区画について</h2>
+            <p class="section-text">「<a href="./white.html" class="color-link">白葬街</a>」と「<a href="./red.html" class="color-link">呑紅街</a>」に挟まれた非常に狭い区画を所有している。面積の大半は宗教施設や学校などで埋め尽くされており、商店の類はほとんどない。</p>
+            <p class="section-text">特徴的なのは街外れにある鉱山と畑である。信者たちは心の底から楽しく農園や鉱山で労働に勤しんでいる。畑で取れるハーブは、「<a href="./green.html" class="color-link">滲緑街</a>」との取引などに用いられることもある。</p>
+            <p class="section-text">鉱石については街中に使用されている灯りや、鉄道の動力源など様々に利用されているため、蒼殉街からの資源供給が絶たれれば街全体が滅びの一途を辿ることだろう。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">主要人物</h2>
+            <div class="person-list">
+                <div class="person-item">
+                    <span class="role-label">首長：</span>
+                    <span class="person-link unknown-person">？？？</span>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">幹部：</span>
+                    <span class="person-link unknown-person">？？？</span>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">下級構成員：</span>
+                    <span class="person-link unknown-person">？？？</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">店舗情報</h2>
+            <div class="shop-list">
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">教団</span>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">学校</span>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">動物園</span>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">水族館</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-container">
+            <a href="../index.html"><button>ホーム</button></a>
+            <a href="../rules.html"><button>特殊ルール</button></a>
+            <a href="../jinngai.html"><button>人外設定</button></a>
+            <a href="../world.html"><button>世界観設定</button></a>
+            <a href="../characters.html"><button>キャラクター一覧</button></a>
+            <a href="../shops.html"><button>店舗一覧</button></a>
+            <a href="../tools.html"><button>ツール</button></a>
+        </div>
     </div>
 </body>
 </html>

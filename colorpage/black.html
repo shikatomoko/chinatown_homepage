@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
-            background: linear-gradient(135deg, #f8f8f8, #e8e8e8, #f0f0f0);
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d, #242424);
             font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
             min-height: 100vh;
             margin: 0;
             padding: 0;
-            color: #2d2d2d;
+            color: #f0f0f0;
             line-height: 1.7;
         }
         
@@ -25,51 +25,47 @@
         .title-center {
             text-align: center;
             font-size: clamp(3rem, 8vw, 5rem);
-            color: #1a1a1a;
+            color: #ffffff;
             font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
             letter-spacing: 0.1em;
             margin: 40px auto 60px;
             padding: 0;
-            background: linear-gradient(45deg, #333, #555, #333);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
         
         .content-section {
             margin-bottom: 50px;
             padding: clamp(20px, 3vw, 40px);
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(64, 64, 64, 0.8);
             border-radius: 16px;
-            border: 1px solid rgba(64, 64, 64, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(128, 128, 128, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
         
         .content-section:hover {
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
             transform: translateY(-2px);
         }
         
         .section-title {
             font-size: clamp(22px, 4vw, 28px);
-            color: #1a1a1a;
+            color: #ffffff;
             font-weight: 600;
             margin-bottom: clamp(16px, 3vw, 24px);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
             letter-spacing: 0.02em;
-            border-bottom: 2px solid rgba(64, 64, 64, 0.3);
+            border-bottom: 2px solid rgba(192, 192, 192, 0.5);
             padding-bottom: 8px;
         }
         
         .section-text {
             font-size: clamp(15px, 2.5vw, 17px);
-            color: #3a3a3a;
+            color: #e8e8e8;
             line-height: 1.8;
             margin-bottom: 16px;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.02);
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
         }
         
         .person-list, .shop-list {
@@ -82,46 +78,61 @@
             display: flex;
             align-items: center;
             padding: 16px;
-            background: rgba(245, 245, 245, 0.8);
+            background: rgba(48, 48, 48, 0.8);
             border-radius: 12px;
-            border: 1px solid rgba(64, 64, 64, 0.15);
+            border: 1px solid rgba(128, 128, 128, 0.3);
             transition: all 0.3s ease;
         }
         
         .person-item:hover, .shop-item:hover {
-            background: rgba(240, 240, 240, 0.95);
+            background: rgba(56, 56, 56, 0.95);
             transform: translateX(4px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
         }
         
         .role-label {
             font-weight: 600;
-            color: #555;
+            color: #bbb;
             min-width: 60px;
             margin-right: 12px;
             font-size: 14px;
         }
         
         .person-link, .shop-link {
-            color: #2d2d2d;
+            color: #ffffff;
             text-decoration: none;
             font-weight: 500;
             font-size: 16px;
-            border-bottom: 1px dashed rgba(64, 64, 64, 0.4);
+            border-bottom: 1px dashed rgba(192, 192, 192, 0.6);
             transition: all 0.3s ease;
             padding: 2px 4px;
             border-radius: 4px;
         }
         
         .person-link:hover, .shop-link:hover {
-            color: #1a1a1a;
-            background: rgba(64, 64, 64, 0.1);
-            border-bottom: 1px solid rgba(64, 64, 64, 0.6);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            color: #ffffff;
+            background: rgba(192, 192, 192, 0.2);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.8);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .color-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed rgba(192, 192, 192, 0.6);
+            transition: all 0.3s ease;
+            padding: 1px 2px;
+            border-radius: 3px;
+        }
+        
+        .color-link:hover {
+            background: rgba(192, 192, 192, 0.2);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.8);
         }
         
         .unknown-person {
-            color: #888;
+            color: #999;
             font-style: italic;
             border-bottom: none;
             cursor: default;
@@ -129,7 +140,7 @@
         
         .unknown-person:hover {
             background: none;
-            color: #888;
+            color: #999;
             border-bottom: none;
         }
         
@@ -142,22 +153,22 @@
         }
         
         .tab-container button {
-            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
-            color: #2d2d2d;
+            background: linear-gradient(135deg, #404040, #505050);
+            color: #ffffff;
             border-radius: 8px;
-            border: 1px solid rgba(64, 64, 64, 0.2);
+            border: 1px solid rgba(192, 192, 192, 0.3);
             padding: clamp(8px, 2vw, 12px) clamp(16px, 3vw, 24px);
             font-size: clamp(13px, 2.5vw, 16px);
             font-weight: 500;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             cursor: pointer;
         }
         
         .tab-container button:hover {
-            background: linear-gradient(135deg, #e8e8e8, #ddd);
-            color: #1a1a1a;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #505050, #606060);
+            color: #ffffff;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
             transform: translateY(-2px);
         }
         
@@ -194,7 +205,7 @@
         
         <div class="content-section">
             <h2 class="section-title">組織概要</h2>
-            <p class="section-text">暗黒中華街は「黒」「白葬街」「黄惑街」「蒼殉街」「呑紅街」「滲緑街」に分割されて統治されているが、その権力は均衡しているわけではない。６色の中で明確に黒だけは、この街において特別な意味を持っているのである。</p>
+            <p class="section-text">暗黒中華街は「黒」「<a href="./white.html" class="color-link">白葬街</a>」「<a href="./yellow.html" class="color-link">黄惑街</a>」「<a href="./blue.html" class="color-link">蒼殉街</a>」「<a href="./red.html" class="color-link">呑紅街</a>」「<a href="./green.html" class="color-link">滲緑街</a>」に分割されて統治されているが、その権力は均衡しているわけではない。６色の中で明確に黒だけは、この街において特別な意味を持っているのである。</p>
             <p class="section-text">「黒組」の仕事は基本的には殺しである。人、人でないもの、全ての命あるものを殺す。それが黒の仕事であり、最も原初的な悪である。しかし「黒組」が担うのはそれだけでない。鉄道の運営や、治安維持組織の所有、更に街中の最大の重要拠点である城の管理。街での揉め事が発生した際の仲裁を行うのも「黒組」のみに許された特権である。</p>
             <p class="section-text">この街の中枢の全てを牛耳っているのが「黒組」であると言えるだろう。</p>
         </div>
