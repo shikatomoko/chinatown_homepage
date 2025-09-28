@@ -1,7 +1,4 @@
-<!DOCTYP        body {
-            background: linear-gradient(135deg, #1a1a1a, #2d2d2d, #242424);
-            font-family: 'Yu Mincho Demibold', '渂明朝 Demibold', 'Yu Mincho', '渂明朝', serif;
-            min-height: 100vh;ml>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -10,309 +7,218 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
-            background: linear-gradient(135deg, #1a1a1a, #2d2d2d, #242424);
-            font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
-            min-height: 100vh;
+            font-family: 'Yu Mincho Demibold', '游明朝 Demibold', 'Yu Mincho', '游明朝', serif;
             margin: 0;
             padding: 0;
-            color: #f0f0f0;
-            line-height: 1.7;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
         }
         
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: clamp(20px, 4vw, 60px);
+        .header {
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            padding: 40px 60px;
         }
         
-        .title-center {
-            text-align: left;
-            font-size: clamp(4rem, 10vw, 6.5rem);
+        .title {
+            font-size: clamp(5rem, 15vw, 6.5rem);
             color: #ffffff;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '渂明朝', serif;
-            font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: normal;
             letter-spacing: 0.1em;
-            margin: 40px auto 40px;
-            padding: 0 40px;
+            margin: 0;
         }
         
-        .image-gallery {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto 60px;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(128, 128, 128, 0.3);
+        .main-content {
+            padding: 0;
+            margin: 0;
         }
         
-                .gallery-container {
+        .main-image-container {
             position: relative;
             width: 100%;
-            aspect-ratio: 16/9;
-            border-radius: 12px;
+            height: 60vh;
+            min-height: 400px;
             overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            background: rgba(80, 80, 80, 0.8);
         }
         
-        .gallery-slides {
-            display: flex;
-            width: 200%;
-            height: 100%;
-            transition: transform 0.5s ease;
-        }
-        
-        .gallery-slide {
-            width: 50%;
-            height: 100%;
-            flex-shrink: 0;
-        }
-        
-        .gallery-slide img {
+        .main-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
+            transition: opacity 0.5s ease;
         }
         
-        .gallery-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+        .sub-images-container {
+            background: #000;
+            padding: 30px 0;
         }
         
-        .gallery-nav:hover {
-            background: rgba(192, 192, 192, 0.8);
-            color: #000;
-            transform: translateY(-50%) scale(1.1);
-        }
-        
-        .gallery-prev {
-            left: 15px;
-        }
-        
-        .gallery-next {
-            right: 15px;
-        }
-        
-        .gallery-dots {
+        .sub-images-scroll {
             display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 20px;
+            padding: 0 40px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #ffffff #000;
         }
         
-        .gallery-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(192, 192, 192, 0.4);
+        .sub-images-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar-track {
+            background: #000;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar-thumb {
+            background: #ffffff;
+            border-radius: 4px;
+        }
+        
+        .sub-image {
+            flex-shrink: 0;
+            width: 160px;
+            height: 90px;
+            object-fit: cover;
             cursor: pointer;
+            border: 2px solid #333;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
         }
         
-        .gallery-dot.active {
-            background: rgba(192, 192, 192, 1);
-            transform: scale(1.2);
-            border-color: rgba(255, 255, 255, 0.5);
+        .sub-image:hover {
+            border-color: #888;
+            transform: scale(1.05);
         }
         
-        .gallery-dot:hover {
-            background: rgba(192, 192, 192, 0.7);
-            transform: scale(1.1);
+        .sub-image.active {
+            border-color: #888;
+            box-shadow: 0 0 15px rgba(136, 136, 136, 0.6);
+        }
+        
+        .bottom-content {
+            background: #000;
+            padding: 60px 40px;
         }
         
         .content-section {
             margin-bottom: 50px;
-            padding: clamp(20px, 3vw, 40px);
-            background: rgba(64, 64, 64, 0.8);
-            border-radius: 16px;
-            border: 1px solid rgba(128, 128, 128, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .content-section:hover {
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
+        .content-section:last-of-type {
+            margin-bottom: 0;
         }
         
         .section-title {
-            font-size: clamp(22px, 4vw, 28px);
+            font-size: clamp(24px, 4vw, 32px);
             color: #ffffff;
-            font-weight: 600;
-            margin-bottom: clamp(16px, 3vw, 24px);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            letter-spacing: 0.02em;
-            border-bottom: 2px solid rgba(192, 192, 192, 0.5);
-            padding-bottom: 8px;
+            font-weight: normal;
+            margin-bottom: 30px;
+            letter-spacing: 0.05em;
         }
         
         .section-text {
-            font-size: clamp(15px, 2.5vw, 17px);
-            color: #e8e8e8;
+            font-size: clamp(16px, 2.5vw, 18px);
+            color: #e0e0e0;
             line-height: 1.8;
-            margin-bottom: 16px;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
         }
         
         .person-list, .shop-list {
             display: grid;
-            gap: 12px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
         }
         
         .person-item, .shop-item {
             display: flex;
             align-items: center;
-            padding: 16px;
-            background: rgba(48, 48, 48, 0.8);
-            border-radius: 12px;
-            border: 1px solid rgba(128, 128, 128, 0.3);
+            padding: 20px;
+            background: #1a1a1a;
             transition: all 0.3s ease;
         }
         
         .person-item:hover, .shop-item:hover {
-            background: rgba(56, 56, 56, 0.95);
-            transform: translateX(4px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            background: #2a2a2a;
+            transform: translateX(5px);
         }
         
         .role-label {
-            font-weight: 600;
-            color: #bbb;
-            min-width: 60px;
-            margin-right: 12px;
-            font-size: 14px;
+            font-weight: normal;
+            color: #888;
+            min-width: 120px;
+            margin-right: 16px;
+            font-size: 15px;
         }
         
         .person-link, .shop-link {
             color: #ffffff;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: normal;
             font-size: 16px;
-            border-bottom: 1px dashed rgba(192, 192, 192, 0.6);
             transition: all 0.3s ease;
-            padding: 2px 4px;
-            border-radius: 4px;
         }
         
         .person-link:hover, .shop-link:hover {
-            color: #ffffff;
-            background: rgba(192, 192, 192, 0.2);
-            border-bottom: 1px solid rgba(192, 192, 192, 0.8);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-        .color-link {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            border-bottom: 1px dashed rgba(192, 192, 192, 0.6);
-            transition: all 0.3s ease;
-            padding: 1px 2px;
-            border-radius: 3px;
-        }
-        
-        .color-link:hover {
-            background: rgba(192, 192, 192, 0.2);
-            border-bottom: 1px solid rgba(192, 192, 192, 0.8);
+            color: #888;
         }
         
         .unknown-person {
-            color: #999;
+            color: #666;
             font-style: italic;
-            border-bottom: none;
             cursor: default;
         }
         
         .unknown-person:hover {
-            background: none;
-            color: #999;
-            border-bottom: none;
+            color: #666;
+        }
+        
+        .navigation {
+            background: #000;
+            padding: 30px 40px;
         }
         
         .tab-container {
             display: flex;
-            gap: clamp(8px, 2vw, 15px);
-            margin: 60px 0 40px 0;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 30px;
         }
         
         .tab-container button {
-            background: linear-gradient(135deg, #404040, #505050);
+            background: #2a2a2a;
             color: #ffffff;
-            border-radius: 8px;
-            border: 1px solid rgba(192, 192, 192, 0.3);
-            padding: clamp(8px, 2vw, 12px) clamp(16px, 3vw, 24px);
-            font-size: clamp(13px, 2.5vw, 16px);
-            font-weight: 500;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: normal;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
         
         .tab-container button:hover {
-            background: linear-gradient(135deg, #505050, #606060);
-            color: #ffffff;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            background: #888;
             transform: translateY(-2px);
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-            
-            .content-section {
-                padding: 20px;
-                margin-bottom: 30px;
-            }
-            
-            .tab-container {
-                gap: 8px;
-                margin: 40px 0 20px 0;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .content-section {
-                padding: 16px;
-            }
         }
         
         .org-tab-container {
             display: flex;
-            gap: 8px;
-            margin: 40px 0 20px 0;
+            gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
         }
         
         .org-tab {
-            padding: 10px 16px;
+            padding: 12px 20px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: normal;
             border: none;
             border-radius: 6px;
             cursor: pointer;
@@ -323,67 +229,104 @@
         
         .org-tab:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
         
         .black-org {
-            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            background: #2a2a2a;
         }
         
         .white-org {
-            background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+            background: #e0e0e0;
             color: #333 !important;
         }
         
         .red-org {
-            background: linear-gradient(135deg, #c02020, #a01010);
+            background: #cc2936;
         }
         
         .blue-org {
-            background: linear-gradient(135deg, #2060c0, #1050a0);
+            background: #2563eb;
         }
         
         .green-org {
-            background: linear-gradient(135deg, #20a050, #108040);
+            background: #16a34a;
         }
         
         .yellow-org {
-            background: linear-gradient(135deg, #f0a000, #d08000);
+            background: #eab308;
         }
         
         .org-tab.current {
             transform: translateY(-3px);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 0;
+            }
+            
+            .bottom-content {
+                padding: 40px 20px;
+            }
+            
+            .navigation {
+                padding: 20px;
+            }
+            
+            .sub-images-scroll {
+                padding: 0 20px;
+            }
+            
+            .person-list, .shop-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .main-image-container {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .sub-image {
+                width: 120px;
+                height: 68px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="title-center">黒組</div>
-        
-        <div class="image-gallery">
-            <div class="gallery-container">
-                <div class="gallery-slides" id="gallerySlides">
-                    <div class="gallery-slide">
-                        <img src="../shop_image/black/street/backdoor.png" alt="黒の裏通り">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/black/street/garden.png" alt="黒の庭園">
-                    </div>
-                </div>
-                <button class="gallery-nav gallery-prev" onclick="changeSlide(-1)">‹</button>
-                <button class="gallery-nav gallery-next" onclick="changeSlide(1)">›</button>
-            </div>
-            <div class="gallery-dots">
-                <div class="gallery-dot active" onclick="currentSlide(1)"></div>
-                <div class="gallery-dot" onclick="currentSlide(2)"></div>
-            </div>
+    <!-- ヘッダー部分（黒背景） -->
+    <div class="header">
+        <h1 class="title">黒組</h1>
+    </div>
+    
+    <!-- メイン画像部分 -->
+    <div class="main-content">
+        <div class="main-image-container">
+            <img id="mainImage" class="main-image" src="../shop_image/black/street/backdoor.png" alt="黒組のメイン画像">
         </div>
         
+        <!-- サブ画像スライダー -->
+        <div class="sub-images-container">
+            <div class="sub-images-scroll">
+                <img class="sub-image active" src="../shop_image/black/street/backdoor.png" alt="黒の裏通り" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/black/street/garden.png" alt="黒の庭園" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/black/castle/castle.jpg" alt="黒の城" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/black/castle/castle_spring.png" alt="黒の城（春）" onclick="changeMainImage(this)">
+            </div>
+        </div>
+    
+    <!-- 下部コンテンツ（黒背景） -->
+    <div class="bottom-content">
         <div class="content-section">
             <h2 class="section-title">組織概要</h2>
-            <p class="section-text">暗黒中華街は「黒」「<a href="./white.html" class="color-link">白葬街</a>」「<a href="./yellow.html" class="color-link">黄惑街</a>」「<a href="./blue.html" class="color-link">蒼殉街</a>」「<a href="./red.html" class="color-link">呑紅街</a>」「<a href="./green.html" class="color-link">滲緑街</a>」に分割されて統治されているが、その権力は均衡しているわけではない。６色の中で明確に黒だけは、この街において特別な意味を持っているのである。</p>
+            <p class="section-text">暗黒中華街は「黒」「<a href="./white.html" style="color: #ffffff; text-decoration: none;">白葬街</a>」「<a href="./yellow.html" style="color: #ffffff; text-decoration: none;">黄惑街</a>」「<a href="./blue.html" style="color: #ffffff; text-decoration: none;">蒼殉街</a>」「<a href="./red.html" style="color: #ffffff; text-decoration: none;">呑紅街</a>」「<a href="./green.html" style="color: #ffffff; text-decoration: none;">滲緑街</a>」に分割されて統治されているが、その権力は均衡しているわけではない。６色の中で明確に黒だけは、この街において特別な意味を持っているのである。</p>
             <p class="section-text">「黒組」の仕事は基本的には殺しである。人、人でないもの、全ての命あるものを殺す。それが黒の仕事であり、最も原初的な悪である。しかし「黒組」が担うのはそれだけでない。鉄道の運営や、治安維持組織の所有、更に街中の最大の重要拠点である城の管理。街での揉め事が発生した際の仲裁を行うのも「黒組」のみに許された特権である。</p>
             <p class="section-text">この街の中枢の全てを牛耳っているのが「黒組」であると言えるだろう。</p>
         </div>
@@ -425,7 +368,10 @@
                 </div>
             </div>
         </div>
-        
+    </div>
+    
+    <!-- ナビゲーション部分 -->
+    <div class="navigation">
         <div class="tab-container">
             <a href="../index.html"><button>ホーム</button></a>
             <a href="../rules.html"><button>特殊ルール</button></a>
@@ -445,125 +391,20 @@
             <a href="yellow.html"><button class="org-tab yellow-org">黄惑街</button></a>
         </div>
     </div>
-    
+
     <script>
-        let currentSlideIndex = 0;
-        const totalSlides = 2;
-        
-        function changeSlide(direction) {
-            currentSlideIndex += direction;
+        function changeMainImage(clickedImage) {
+            const mainImage = document.getElementById('mainImage');
+            const allSubImages = document.querySelectorAll('.sub-image');
             
-            if (currentSlideIndex >= totalSlides) {
-                currentSlideIndex = 0;
-            } else if (currentSlideIndex < 0) {
-                currentSlideIndex = totalSlides - 1;
-            }
+            // メイン画像を変更
+            mainImage.src = clickedImage.src;
+            mainImage.alt = clickedImage.alt;
             
-            updateSlide();
+            // アクティブクラスを更新
+            allSubImages.forEach(img => img.classList.remove('active'));
+            clickedImage.classList.add('active');
         }
-        
-        function currentSlide(slideIndex) {
-            currentSlideIndex = slideIndex - 1;
-            updateSlide();
-        }
-        
-        function updateSlide() {
-            const slides = document.getElementById('gallerySlides');
-            const dots = document.querySelectorAll('.gallery-dot');
-            
-            slides.style.transform = `translateX(-${currentSlideIndex * 50}%)`;
-            
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlideIndex);
-            });
-        }
-        
-        // タッチ/スワイプ対応
-        let startX = 0;
-        let isDown = false;
-        
-        const gallery = document.querySelector('.gallery-container');
-        
-        gallery.addEventListener('touchstart', handleTouchStart, { passive: true });
-        gallery.addEventListener('touchmove', handleTouchMove, { passive: true });
-        gallery.addEventListener('touchend', handleTouchEnd, { passive: true });
-        
-        gallery.addEventListener('mousedown', handleMouseDown);
-        gallery.addEventListener('mousemove', handleMouseMove);
-        gallery.addEventListener('mouseup', handleMouseUp);
-        gallery.addEventListener('mouseleave', handleMouseUp);
-        
-        function handleTouchStart(e) {
-            startX = e.touches[0].clientX;
-            isDown = true;
-        }
-        
-        function handleMouseDown(e) {
-            startX = e.clientX;
-            isDown = true;
-            gallery.style.cursor = 'grabbing';
-        }
-        
-        function handleTouchMove(e) {
-            if (!isDown) return;
-        }
-        
-        function handleMouseMove(e) {
-            if (!isDown) return;
-            e.preventDefault();
-        }
-        
-        function handleTouchEnd(e) {
-            if (!isDown) return;
-            
-            const endX = e.changedTouches[0].clientX;
-            const diffX = startX - endX;
-            
-            if (Math.abs(diffX) > 30) {
-                if (diffX > 0) {
-                    changeSlide(1);
-                } else {
-                    changeSlide(-1);
-                }
-            }
-            
-            isDown = false;
-        }
-        
-        function handleMouseUp(e) {
-            if (!isDown) return;
-            
-            const endX = e.clientX;
-            const diffX = startX - endX;
-            
-            if (Math.abs(diffX) > 50) {
-                if (diffX > 0) {
-                    changeSlide(1);
-                } else {
-                    changeSlide(-1);
-                }
-            }
-            
-            isDown = false;
-            gallery.style.cursor = 'grab';
-        }
-        
-        // 自動スライド
-        let autoSlideInterval = setInterval(() => {
-            changeSlide(1);
-        }, 5000);
-        
-        gallery.addEventListener('mouseenter', () => {
-            clearInterval(autoSlideInterval);
-        });
-        
-        gallery.addEventListener('mouseleave', () => {
-            autoSlideInterval = setInterval(() => {
-                changeSlide(1);
-            }, 5000);
-        });
-        
-        gallery.style.cursor = 'grab';
     </script>
 </body>
 </html>
