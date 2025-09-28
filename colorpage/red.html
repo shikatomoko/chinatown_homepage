@@ -7,196 +7,157 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
-            background: linear-gradient(135deg, #3a0a0a, #5a1a1a, #4a1010);
             font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
-            min-height: 100vh;
             margin: 0;
             padding: 0;
-            color: #fff0f0;
-            line-height: 1.7;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
         }
         
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: clamp(20px, 4vw, 60px);
-        }
-        
-        .title-center {
+        .header {
+            background: linear-gradient(135deg, #cc2936, #b91c1c);
+            padding: 60px 0;
             text-align: center;
+        }
+        
+        .title {
             font-size: clamp(3rem, 8vw, 5rem);
             color: #ffffff;
             font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
             letter-spacing: 0.1em;
-            margin: 40px auto 40px;
+            margin: 0;
+        }
+        
+        .main-content {
             padding: 0;
+            margin: 0;
         }
         
-        .image-gallery {
-            margin: 20px auto 60px;
-            max-width: 800px;
-            padding: 0 20px;
-        }
-        
-        .gallery-container {
+        .main-image-container {
             position: relative;
             width: 100%;
-            aspect-ratio: 16/9;
-            border-radius: 12px;
+            height: 60vh;
+            min-height: 400px;
             overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            background: rgba(120, 20, 20, 0.8);
         }
         
-        .gallery-slides {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .gallery-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .gallery-slide.active {
-            opacity: 1;
-        }
-        
-        .gallery-slide img {
+        .main-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: opacity 0.5s ease;
         }
         
-        .gallery-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            border: none;
-            font-size: 24px;
-            padding: 15px 20px;
-            cursor: pointer;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            z-index: 10;
+        .sub-images-container {
+            background: #000;
+            padding: 30px 0;
+            border-left: 3px solid #cc2936;
+            border-right: 3px solid #cc2936;
         }
         
-        .gallery-nav:hover {
-            background: rgba(150, 30, 30, 0.9);
-            transform: translateY(-50%) scale(1.1);
-        }
-        
-        .gallery-prev {
-            left: 20px;
-        }
-        
-        .gallery-next {
-            right: 20px;
-        }
-        
-        .gallery-dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+        .sub-images-scroll {
             display: flex;
-            gap: 12px;
-            z-index: 10;
+            gap: 20px;
+            padding: 0 40px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #cc2936 #000;
         }
         
-        .gallery-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
+        .sub-images-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar-track {
+            background: #000;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar-thumb {
+            background: #cc2936;
+            border-radius: 4px;
+        }
+        
+        .sub-image {
+            flex-shrink: 0;
+            width: 160px;
+            height: 90px;
+            object-fit: cover;
             cursor: pointer;
+            border: 2px solid #333;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
         }
         
-        .gallery-dot.active {
-            background: #ff6666;
-            border-color: white;
-            transform: scale(1.2);
+        .sub-image:hover {
+            border-color: #cc2936;
+            transform: scale(1.05);
         }
         
-        .gallery-dot:hover {
-            background: rgba(255, 150, 150, 0.8);
-            transform: scale(1.1);
+        .sub-image.active {
+            border-color: #cc2936;
+            box-shadow: 0 0 15px rgba(204, 41, 54, 0.6);
+        }
+        
+        .bottom-content {
+            background: #000;
+            border-left: 3px solid #cc2936;
+            border-right: 3px solid #cc2936;
+            padding: 60px 40px;
         }
         
         .content-section {
             margin-bottom: 50px;
-            padding: clamp(20px, 3vw, 40px);
-            background: rgba(150, 30, 30, 0.8);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 100, 100, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .content-section:hover {
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
+        .content-section:last-of-type {
+            margin-bottom: 0;
         }
         
         .section-title {
-            font-size: clamp(22px, 4vw, 28px);
+            font-size: clamp(24px, 4vw, 32px);
             color: #ffffff;
             font-weight: 600;
-            margin-bottom: clamp(16px, 3vw, 24px);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            letter-spacing: 0.02em;
-            border-bottom: 2px solid rgba(255, 150, 150, 0.5);
-            padding-bottom: 8px;
+            margin-bottom: 30px;
+            letter-spacing: 0.05em;
         }
         
         .section-text {
-            font-size: clamp(15px, 2.5vw, 17px);
-            color: #fff0f0;
+            font-size: clamp(16px, 2.5vw, 18px);
+            color: #e0e0e0;
             line-height: 1.8;
-            margin-bottom: 16px;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
         }
         
         .person-list, .shop-list {
             display: grid;
-            gap: 12px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
         }
         
         .person-item, .shop-item {
             display: flex;
             align-items: center;
-            padding: 16px;
-            background: rgba(120, 20, 20, 0.8);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 100, 100, 0.3);
+            padding: 20px;
+            background: #1a1a1a;
             transition: all 0.3s ease;
         }
         
         .person-item:hover, .shop-item:hover {
-            background: rgba(140, 25, 25, 0.95);
-            transform: translateX(4px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            background: #2a2a2a;
+            transform: translateX(5px);
         }
         
         .role-label {
             font-weight: 600;
-            color: #ffb8b8;
-            min-width: 100px;
-            margin-right: 12px;
-            font-size: 14px;
+            color: #cc2936;
+            min-width: 120px;
+            margin-right: 16px;
+            font-size: 15px;
         }
         
         .person-link, .shop-link {
@@ -204,111 +165,64 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 16px;
-            border-bottom: 1px dashed rgba(255, 150, 150, 0.6);
             transition: all 0.3s ease;
-            padding: 2px 4px;
-            border-radius: 4px;
         }
         
         .person-link:hover, .shop-link:hover {
-            color: #ffffff;
-            background: rgba(255, 150, 150, 0.2);
-            border-bottom: 1px solid rgba(255, 150, 150, 0.8);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-        .color-link {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            border-bottom: 1px dashed rgba(255, 150, 150, 0.6);
-            transition: all 0.3s ease;
-            padding: 1px 2px;
-            border-radius: 3px;
-        }
-        
-        .color-link:hover {
-            background: rgba(255, 150, 150, 0.2);
-            border-bottom: 1px solid rgba(255, 150, 150, 0.8);
+            color: #cc2936;
         }
         
         .unknown-person {
-            color: #ff9090;
+            color: #888;
             font-style: italic;
-            border-bottom: none;
             cursor: default;
         }
         
         .unknown-person:hover {
-            background: none;
-            color: #ff9090;
-            border-bottom: none;
+            color: #888;
+        }
+        
+        .navigation {
+            background: #000;
+            border-left: 3px solid #cc2936;
+            border-right: 3px solid #cc2936;
+            padding: 30px 40px;
         }
         
         .tab-container {
             display: flex;
-            gap: clamp(8px, 2vw, 15px);
-            margin: 60px 0 40px 0;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 30px;
         }
         
         .tab-container button {
-            background: linear-gradient(135deg, #c02020, #e03030);
+            background: #2a2a2a;
             color: #ffffff;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 150, 150, 0.3);
-            padding: clamp(8px, 2vw, 12px) clamp(16px, 3vw, 24px);
-            font-size: clamp(13px, 2.5vw, 16px);
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            font-size: 14px;
             font-weight: 500;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
         
         .tab-container button:hover {
-            background: linear-gradient(135deg, #e03030, #f04040);
-            color: #ffffff;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            background: #cc2936;
             transform: translateY(-2px);
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-            
-            .content-section {
-                padding: 20px;
-                margin-bottom: 30px;
-            }
-            
-            .tab-container {
-                gap: 8px;
-                margin: 40px 0 20px 0;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .content-section {
-                padding: 16px;
-            }
         }
         
         .org-tab-container {
             display: flex;
-            gap: 8px;
-            margin: 40px 0 20px 0;
+            gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
         }
         
         .org-tab {
-            padding: 10px 16px;
+            padding: 12px 20px;
             font-size: 14px;
             font-weight: 500;
             border: none;
@@ -321,107 +235,119 @@
         
         .org-tab:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
         
         .black-org {
-            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            background: #2a2a2a;
         }
         
         .white-org {
-            background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+            background: #e0e0e0;
             color: #333 !important;
         }
         
         .red-org {
-            background: linear-gradient(135deg, #c02020, #a01010);
+            background: #cc2936;
         }
         
         .blue-org {
-            background: linear-gradient(135deg, #2060c0, #1050a0);
+            background: #2563eb;
         }
         
         .green-org {
-            background: linear-gradient(135deg, #20a050, #108040);
+            background: #16a34a;
         }
         
         .yellow-org {
-            background: linear-gradient(135deg, #f0a000, #d08000);
+            background: #eab308;
         }
         
         .org-tab.current {
             transform: translateY(-3px);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 0;
+            }
+            
+            .bottom-content {
+                padding: 40px 20px;
+            }
+            
+            .navigation {
+                padding: 20px;
+            }
+            
+            .sub-images-scroll {
+                padding: 0 20px;
+            }
+            
+            .person-list, .shop-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .main-image-container {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .sub-image {
+                width: 120px;
+                height: 68px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="title-center">呑紅街</div>
-        
-        <div class="image-gallery">
-            <div class="gallery-container">
-                <div class="gallery-slides" id="redGallery">
-                    <div class="gallery-slide active">
-                        <img src="../shop_image/red/street/Street_stalls01.png" alt="呑紅街の屋台街">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/red/street/Street_stalls03.png" alt="呑紅街の屋台街2">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/red/street/Street_stalls04.png" alt="呑紅街の屋台街3">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/red/street/Street_stalls06.png" alt="呑紅街の屋台街4">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/red/street/Street_stalls09.png" alt="呑紅街の屋台街5">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/red/street/Street_stalls10.png" alt="呑紅街の屋台街6">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/red/street/shop_from_street.png" alt="呑紅街のストリート店舗">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/red/street/Kowloon_Exterior08.png" alt="呑紅街の九龍外観">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/red/street/streetfood.png" alt="呑紅街のストリートフード">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/red/street/streetfood2.png" alt="呑紅街のストリートフード2">
-                    </div>
-                </div>
-                <button class="gallery-nav gallery-prev" onclick="previousSlide('redGallery')">❮</button>
-                <button class="gallery-nav gallery-next" onclick="nextSlide('redGallery')">❯</button>
-                <div class="gallery-dots">
-                    <span class="gallery-dot active" onclick="currentSlide('redGallery', 1)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('redGallery', 2)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('redGallery', 3)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('redGallery', 4)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('redGallery', 5)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('redGallery', 6)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('redGallery', 7)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('redGallery', 8)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('redGallery', 9)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('redGallery', 10)"></span>
-                </div>
-            </div>
+    <!-- ヘッダー部分（朱色背景） -->
+    <div class="header">
+        <h1 class="title">呑紅街</h1>
+    </div>
+    
+    <!-- メイン画像部分 -->
+    <div class="main-content">
+        <div class="main-image-container">
+            <img id="mainImage" class="main-image" src="../shop_image/red/street/Street_stalls01.png" alt="呑紅街のメイン画像">
         </div>
         
+        <!-- サブ画像スライダー -->
+        <div class="sub-images-container">
+            <div class="sub-images-scroll">
+                <img class="sub-image active" src="../shop_image/red/street/Street_stalls01.png" alt="呑紅街の屋台街" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/red/street/Street_stalls03.png" alt="呑紅街の屋台街2" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/red/street/Street_stalls04.png" alt="呑紅街の屋台街3" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/red/street/Street_stalls06.png" alt="呑紅街の屋台街4" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/red/street/Street_stalls09.png" alt="呑紅街の屋台街5" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/red/street/Street_stalls10.png" alt="呑紅街の屋台街6" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/red/street/shop_from_street.png" alt="呑紅街のストリート店舗" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/red/street/Kowloon_Exterior08.png" alt="呑紅街の九龍外観" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/red/street/streetfood.png" alt="呑紅街のストリートフード" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/red/street/streetfood2.png" alt="呑紅街のストリートフード2" onclick="changeMainImage(this)">
+            </div>
+        </div>
+    
+    <!-- 下部コンテンツ（黒背景） -->
+    <div class="bottom-content">
         <div class="content-section">
             <h2 class="section-title">組織概要</h2>
-            <p class="section-text">拷問からテーラー、ネイルサロンまで。とにかく幅広くありとあらゆる仕事を受け入れるのが呑紅街の特徴である。一番得意とするのはもちろん拷問だが、それ以外でもなんだって受け入れる。文字通りの何でも屋として、彼らはこの街で認識されているのである。</p>
-            <p class="section-text">呑紅街は６色の中で最大の人数を誇る。男女を問わず、能力を問わず、人な人でないかも問わず。彼らは全ての人材を吸収する。その貪欲さこそが呑紅街の最大の強さなのだろう。</p>
+            <p class="section-text">拷問からテーラー、ネイルサロンまで。とにかく幅広くありとあらゆる仕事を受け入れるのが「呑紅街」の特徴である。</p>
+            <p class="section-text">一番得意とするのはもちろん拷問だが、それ以外でもなんだって受け入れる。文字通りの何でも屋として、彼らはこの街で認識されているのである。</p>
+            <p class="section-text">「呑紅街」は６色の中で最大の人数を誇る。男女を問わず、能力を問わず、人か人でないかも問わず。彼らは全ての人材を吸収する。その貪欲さこそが「呑紅街」の最大の強さなのだろう。</p>
         </div>
         
         <div class="content-section">
             <h2 class="section-title">区画について</h2>
-            <p class="section-text">最大の面積を誇る。区画の大半は居住地区が占めるが、中央寄りの一部には様々な商店が立ち並ぶ。服やアクセサリーなどのショップは呑紅街の管轄にしか基本的に存在しない。</p>
-            <p class="section-text">街外れにはスラム街が存在する。呑紅街は大量の人を受け入れるが、彼ら全てに衣食住をきちんと提供してやるなんていつだって明言したことはない。実力がなかったり、運が悪かった人々は呑紅街の中でも役割を与えられず、スラムまで流れ着くのである。</p>
-            <p class="section-text">スラムの外れには表の街へと繋がる階段が存在する。これが唯一の表の街と暗黒中華街との接続地である。また呑紅街の区画の三分の一程度は、人外用の専用特別地区として割譲されている。</p>
+            <p class="section-text">最大の面積を誇る。区画の大半は居住地区が占めるが、中央寄りの一部には様々な商店が立ち並ぶ。</p>
+            <p class="section-text">服やアクセサリーなどのショップは「赤組」の管轄にしか基本的に存在しない。</p>
+            <p class="section-text">街外れにはスラム街が存在する。「赤組」は大量の人を受け入れるが、彼ら全てに衣食住をきちんと提供してやるなんていうだって明言したことはない。実力がなかったり、運が悪かった人々は「赤組」の中でも役割を与えられず、スラムまで流れ着くのである。スラムの外れには表の街と暗黒中華街との接続地である。また「赤組」の区画の三分の一程度は、人外用の専用特別地区として割譲されている。</p>
         </div>
         
         <div class="content-section">
@@ -498,11 +424,17 @@
                     <a href="../shoppage/shop_tattoo.html" class="shop-link">刺青屋</a>
                 </div>
                 <div class="shop-item">
+                    <a href="../shoppage/shop_redrestaurant.html" class="shop-link">レストラン</a>
+                </div>
+                <div class="shop-item">
                     <span class="shop-link unknown-person">ペットショップ</span>
                 </div>
             </div>
         </div>
-        
+    </div>
+    
+    <!-- ナビゲーション部分 -->
+    <div class="navigation">
         <div class="tab-container">
             <a href="../index.html"><button>ホーム</button></a>
             <a href="../rules.html"><button>特殊ルール</button></a>
@@ -524,114 +456,18 @@
     </div>
 
     <script>
-        const galleryConfigs = {
-            'redGallery': {
-                totalSlides: 10,
-                currentSlide: 0,
-                autoRotateInterval: null
-            }
-        };
-
-        function showSlide(galleryId, n) {
-            const config = galleryConfigs[galleryId];
-            const slides = document.querySelectorAll(`#${galleryId} .gallery-slide`);
-            const dots = document.querySelector(`#${galleryId}`).parentElement.querySelectorAll('.gallery-dot');
+        function changeMainImage(clickedImage) {
+            const mainImage = document.getElementById('mainImage');
+            const allSubImages = document.querySelectorAll('.sub-image');
             
-            if (n >= config.totalSlides) { config.currentSlide = 0; }
-            if (n < 0) { config.currentSlide = config.totalSlides - 1; }
+            // メイン画像を変更
+            mainImage.src = clickedImage.src;
+            mainImage.alt = clickedImage.alt;
             
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            if (slides[config.currentSlide]) {
-                slides[config.currentSlide].classList.add('active');
-            }
-            if (dots[config.currentSlide]) {
-                dots[config.currentSlide].classList.add('active');
-            }
+            // アクティブクラスを更新
+            allSubImages.forEach(img => img.classList.remove('active'));
+            clickedImage.classList.add('active');
         }
-
-        function nextSlide(galleryId) {
-            const config = galleryConfigs[galleryId];
-            config.currentSlide++;
-            showSlide(galleryId, config.currentSlide);
-        }
-
-        function previousSlide(galleryId) {
-            const config = galleryConfigs[galleryId];
-            config.currentSlide--;
-            showSlide(galleryId, config.currentSlide);
-        }
-
-        function currentSlide(galleryId, n) {
-            const config = galleryConfigs[galleryId];
-            config.currentSlide = n - 1;
-            showSlide(galleryId, config.currentSlide);
-        }
-
-        function startAutoRotate(galleryId) {
-            const config = galleryConfigs[galleryId];
-            config.autoRotateInterval = setInterval(() => {
-                nextSlide(galleryId);
-            }, 5000);
-        }
-
-        function stopAutoRotate(galleryId) {
-            const config = galleryConfigs[galleryId];
-            if (config.autoRotateInterval) {
-                clearInterval(config.autoRotateInterval);
-                config.autoRotateInterval = null;
-            }
-        }
-
-        // タッチスワイプサポート
-        function addTouchSupport(galleryId) {
-            const gallery = document.getElementById(galleryId);
-            let startX = 0;
-            let startY = 0;
-
-            gallery.addEventListener('touchstart', function(e) {
-                startX = e.touches[0].clientX;
-                startY = e.touches[0].clientY;
-                stopAutoRotate(galleryId);
-            }, { passive: true });
-
-            gallery.addEventListener('touchend', function(e) {
-                if (!startX || !startY) return;
-
-                let endX = e.changedTouches[0].clientX;
-                let endY = e.changedTouches[0].clientY;
-
-                let diffX = startX - endX;
-                let diffY = startY - endY;
-
-                if (Math.abs(diffX) > Math.abs(diffY)) {
-                    if (Math.abs(diffX) > 50) {
-                        if (diffX > 0) {
-                            nextSlide(galleryId);
-                        } else {
-                            previousSlide(galleryId);
-                        }
-                    }
-                }
-
-                startX = 0;
-                startY = 0;
-                startAutoRotate(galleryId);
-            }, { passive: true });
-
-            // マウスイベントでも同様の処理
-            gallery.addEventListener('mouseenter', () => stopAutoRotate(galleryId));
-            gallery.addEventListener('mouseleave', () => startAutoRotate(galleryId));
-        }
-
-        // 初期化
-        document.addEventListener('DOMContentLoaded', function() {
-            Object.keys(galleryConfigs).forEach(galleryId => {
-                addTouchSupport(galleryId);
-                startAutoRotate(galleryId);
-            });
-        });
     </script>
 </body>
 </html>

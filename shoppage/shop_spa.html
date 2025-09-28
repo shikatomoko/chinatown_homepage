@@ -48,6 +48,105 @@
             transition: all 0.3s ease;
         }
         
+        .shop-gallery {
+            width: min(600px, 60vw);
+            position: relative;
+        }
+        
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/10;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px rgba(223, 41, 14, 0.3);
+        }
+        
+        .gallery-slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .gallery-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .gallery-slide.active {
+            opacity: 1;
+        }
+        
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            font-size: 20px;
+            padding: 12px 16px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .gallery-nav:hover {
+            background: rgba(150, 30, 30, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .gallery-prev {
+            left: 15px;
+        }
+        
+        .gallery-next {
+            right: 15px;
+        }
+        
+        .gallery-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        
+        .gallery-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .gallery-dot.active {
+            background: #ff6666;
+            border-color: white;
+            transform: scale(1.2);
+        }
+        
+        .gallery-dot:hover {
+            background: rgba(255, 150, 150, 0.8);
+            transform: scale(1.1);
+        }
+        
         .shop-img:hover {
             box-shadow: 0 6px 32px rgba(0, 0, 0, 0.3), 0 0 24px rgba(223, 41, 14, 0.4);
         }
@@ -227,6 +326,69 @@
             justify-content: center;
         }
         
+        .color-group-container {
+            display: flex;
+            gap: 12px;
+            margin: 30px 0 20px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .color-group-btn {
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .color-group-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .color-red {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+        }
+        
+        .color-blue {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        }
+        
+        .color-green {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+        }
+        
+        .color-yellow {
+            background: linear-gradient(135deg, #eab308, #ca8a04);
+        }
+        
+        .color-white {
+            background: linear-gradient(135deg, #f3f4f6, #d1d5db);
+            color: #374151;
+        }
+        
+        .color-black {
+            background: linear-gradient(135deg, #374151, #1f2937);
+        }
+        
+        @media (max-width: 768px) {
+            .color-group-container {
+                gap: 8px;
+                margin: 20px 10px;
+            }
+            
+            .color-group-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+        
         .tab-container button {
             background: #222;
             color: #fff;
@@ -381,6 +543,11 @@
                 margin-bottom: 20px;
             }
             
+            .shop-gallery {
+                width: 90vw;
+                margin-bottom: 20px;
+            }
+            
             .info-box {
                 min-width: 90vw;
                 max-width: 90vw;
@@ -403,6 +570,10 @@
                 width: 95vw;
             }
             
+            .shop-gallery {
+                width: 95vw;
+            }
+            
             .info-box {
                 padding: 16px;
             }
@@ -417,7 +588,24 @@
 <body>
     <div class="title-center">湯治屋</div>
     <div class="top-section">
-        <img src="../shop_image/red/spa/spa.png" alt="湯治屋" class="shop-img">
+        <div class="shop-gallery">
+            <div class="gallery-container">
+                <div class="gallery-slides" id="spaGallery">
+                    <div class="gallery-slide active">
+                        <img src="../shop_image/red/spa/spa.png" alt="湯治屋内部">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="../shop_image/red/spa/spa_front.png" alt="湯治屋外観">
+                    </div>
+                </div>
+                <button class="gallery-nav gallery-prev" onclick="previousSlide('spaGallery')">❮</button>
+                <button class="gallery-nav gallery-next" onclick="nextSlide('spaGallery')">❯</button>
+                <div class="gallery-dots">
+                    <span class="gallery-dot active" onclick="currentSlide('spaGallery', 1)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('spaGallery', 2)"></span>
+                </div>
+            </div>
+        </div>
         <div class="info-box">
             <div class="info-row">
                 所属組織：<a href="../colorpage/red.html" class="color-link">呑紅街</a>
@@ -505,6 +693,15 @@
         </ul>
     </div>
     
+    <div class="color-group-container">
+        <a href="../colorpage/red.html" class="color-group-btn color-red">呑紅街</a>
+        <a href="../colorpage/blue.html" class="color-group-btn color-blue">青組</a>
+        <a href="../colorpage/green.html" class="color-group-btn color-green">緑組</a>
+        <a href="../colorpage/yellow.html" class="color-group-btn color-yellow">黄組</a>
+        <a href="../colorpage/white.html" class="color-group-btn color-white">白組</a>
+        <a href="../colorpage/black.html" class="color-group-btn color-black">黒組</a>
+    </div>
+    
     <div class="tab-container">
         <a href="../index.html"><button>ホーム</button></a>
         <a href="../rules.html"><button>特殊ルール</button></a>
@@ -552,6 +749,116 @@
         }
         
         document.getElementById('overlay').addEventListener('click', hideGroupDetail);
+        
+        // ギャラリー機能
+        const galleryConfigs = {
+            'spaGallery': {
+                totalSlides: 2,
+                currentSlide: 0,
+                autoRotateInterval: null
+            }
+        };
+
+        function showSlide(galleryId, n) {
+            const config = galleryConfigs[galleryId];
+            const slides = document.querySelectorAll(`#${galleryId} .gallery-slide`);
+            const dots = document.querySelector(`#${galleryId}`).parentElement.querySelectorAll('.gallery-dot');
+            
+            if (n >= config.totalSlides) { config.currentSlide = 0; }
+            if (n < 0) { config.currentSlide = config.totalSlides - 1; }
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            if (slides[config.currentSlide]) {
+                slides[config.currentSlide].classList.add('active');
+            }
+            if (dots[config.currentSlide]) {
+                dots[config.currentSlide].classList.add('active');
+            }
+        }
+
+        function nextSlide(galleryId) {
+            const config = galleryConfigs[galleryId];
+            config.currentSlide++;
+            showSlide(galleryId, config.currentSlide);
+        }
+
+        function previousSlide(galleryId) {
+            const config = galleryConfigs[galleryId];
+            config.currentSlide--;
+            showSlide(galleryId, config.currentSlide);
+        }
+
+        function currentSlide(galleryId, n) {
+            const config = galleryConfigs[galleryId];
+            config.currentSlide = n - 1;
+            showSlide(galleryId, config.currentSlide);
+        }
+
+        function startAutoRotate(galleryId) {
+            const config = galleryConfigs[galleryId];
+            config.autoRotateInterval = setInterval(() => {
+                nextSlide(galleryId);
+            }, 5000);
+        }
+
+        function stopAutoRotate(galleryId) {
+            const config = galleryConfigs[galleryId];
+            if (config.autoRotateInterval) {
+                clearInterval(config.autoRotateInterval);
+                config.autoRotateInterval = null;
+            }
+        }
+
+        // タッチスワイプサポート
+        function addTouchSupport(galleryId) {
+            const gallery = document.getElementById(galleryId);
+            let startX = 0;
+            let startY = 0;
+
+            gallery.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                stopAutoRotate(galleryId);
+            }, { passive: true });
+
+            gallery.addEventListener('touchend', function(e) {
+                if (!startX || !startY) return;
+
+                let endX = e.changedTouches[0].clientX;
+                let endY = e.changedTouches[0].clientY;
+
+                let diffX = startX - endX;
+                let diffY = startY - endY;
+
+                if (Math.abs(diffX) > Math.abs(diffY)) {
+                    if (Math.abs(diffX) > 50) {
+                        if (diffX > 0) {
+                            nextSlide(galleryId);
+                        } else {
+                            previousSlide(galleryId);
+                        }
+                    }
+                }
+
+                startX = 0;
+                startY = 0;
+                startAutoRotate(galleryId);
+            }, { passive: true });
+
+            // マウスイベントでも同様の処理
+            gallery.addEventListener('mouseenter', () => stopAutoRotate(galleryId));
+            gallery.addEventListener('mouseleave', () => startAutoRotate(galleryId));
+        }
+
+        // 初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            Object.keys(galleryConfigs).forEach(galleryId => {
+                addTouchSupport(galleryId);
+                startAutoRotate(galleryId);
+            });
+        });
     </script>
 </body>
 </html>

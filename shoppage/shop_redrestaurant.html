@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>印紙屋</title>
+    <title>レストラン</title>
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
@@ -49,7 +49,8 @@
         }
         
         .shop-img:hover {
-            box-shadow: 0 6px 32px rgba(0, 0, 0, 0.3), 0 0 24px rgba(223, 41, 14, 0.4);
+            transform: scale(1.02);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(223, 41, 14, 0.5);
         }
         
         .info-box {
@@ -58,114 +59,73 @@
             align-items: flex-start;
             gap: clamp(12px, 2vw, 20px);
             min-width: min(320px, 40vw);
-            background: rgba(223, 41, 14, 0.9);
+            background: rgba(139, 69, 19, 0.15);
+            backdrop-filter: blur(10px);
             padding: clamp(20px, 3vw, 32px);
             border-radius: 16px;
-            border: 1px solid rgba(223, 41, 14, 0.6);
+            border: 1px solid rgba(223, 41, 14, 0.3);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
         }
         
         .info-row {
             font-size: clamp(16px, 3vw, 18px);
-            color: #ffffff;
+            color: #f5f5f5;
             margin-bottom: 8px;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
             line-height: 1.4;
-            font-weight: 500;
         }
         
         .color-link {
-            color: #ffffff;
+            color: #ff6b6b;
             font-weight: bold;
             text-decoration: none;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.7);
+            border-bottom: 1px dashed #ff6b6b;
             transition: color 0.2s, text-shadow 0.2s;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 1px 8px rgba(211, 47, 47, 0.4);
         }
         
         .color-link:hover {
-            color: #ffcccc;
-            text-shadow: 0 1px 8px rgba(255, 204, 204, 0.5);
+            color: #ff8a80;
+            text-shadow: 0 1px 12px rgba(211, 47, 47, 0.6);
         }
         
         .bottom-section {
             margin: 40px auto 0 auto;
-            max-width: 800px;
+            max-width: 1000px;
             padding: 0 30px 40px 30px;
-            background: rgba(223, 41, 14, 0.9);
-            border-radius: 16px;
-            border: 1px solid rgba(223, 41, 14, 0.6);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            background: rgba(139, 69, 19, 0.15);
             backdrop-filter: blur(10px);
-            margin-bottom: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(223, 41, 14, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         
         .bottom-section h2 {
-            font-size: 22px;
+            font-size: 24px;
             margin-top: 28px;
-            margin-bottom: 12px;
-            color: #ffffff;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 16px;
+            color: #ff6b6b;
+            text-shadow: 0 2px 8px rgba(211, 47, 47, 0.5), 0 0px 2px #666;
             letter-spacing: 0.05em;
+            border-bottom: 2px solid rgba(223, 41, 14, 0.5);
+            padding-bottom: 8px;
+        }
+        
+        .bottom-section h3 {
+            font-size: 20px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #ffb3ba;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+            letter-spacing: 0.03em;
         }
         
         .bottom-section p {
             font-size: 16px;
             color: #f0f0f0;
-            line-height: 1.8;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-        }
-        
-        .employee-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-top: 20px;
-        }
-        
-        .employee-card {
-            background: rgba(180, 30, 10, 0.8);
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid rgba(223, 41, 14, 0.4);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        
-        .employee-card:hover {
-            background: rgba(200, 35, 15, 0.9);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        
-        .employee-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-        
-        .employee-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            margin-right: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.7);
-        }
-        
-        .employee-name {
-            font-weight: bold;
-            font-size: 20px;
-            color: #fff;
-        }
-        
-        .employee-role {
-            font-size: 16px;
-            color: #f0f0f0;
-            margin-top: 8px;
+            margin-bottom: 16px;
+            line-height: 1.7;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
         }
         
         .service-grid {
@@ -189,14 +149,24 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
-        .service-card.premium {
+        .service-card.special {
             border: 2px solid rgba(255, 204, 0, 0.8);
             background: rgba(150, 25, 8, 0.9);
         }
         
-        .service-card.premium:hover {
+        .service-card.special:hover {
             background: rgba(170, 30, 10, 1.0);
             box-shadow: 0 6px 20px rgba(255, 204, 0, 0.2);
+        }
+        
+        .service-card.night {
+            border: 2px solid rgba(138, 43, 226, 0.8);
+            background: rgba(120, 20, 8, 0.9);
+        }
+        
+        .service-card.night:hover {
+            background: rgba(140, 25, 10, 1.0);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.2);
         }
         
         .service-title {
@@ -207,8 +177,12 @@
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         }
         
-        .service-title.premium {
+        .service-title.special {
             color: #ffcc00;
+        }
+        
+        .service-title.night {
+            color: #da70d6;
         }
         
         .service-price {
@@ -238,14 +212,7 @@
             background: rgba(0, 0, 0, 0.3);
             padding: 12px;
             border-radius: 8px;
-            border-left: 3px solid rgba(255, 204, 0, 0.8);
-        }
-        
-        .tab-container {
-            display: flex;
-            gap: 10px;
-            margin: 40px 0 20px 0;
-            justify-content: center;
+            border-left: 3px solid rgba(138, 43, 226, 0.8);
         }
         
         .color-group-container {
@@ -299,33 +266,29 @@
             background: linear-gradient(135deg, #374151, #1f2937);
         }
         
-        @media (max-width: 768px) {
-            .color-group-container {
-                gap: 8px;
-                margin: 20px 10px;
-            }
-            
-            .color-group-btn {
-                padding: 8px 16px;
-                font-size: 14px;
-            }
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
         }
         
         .tab-container button {
-            background: #222;
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
             color: #fff;
             border-radius: 6px;
             border: none;
             padding: 8px 18px;
             font-size: 15px;
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(211, 47, 47, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .tab-container button:hover {
-            background: #444;
-            color: #fff;
-            box-shadow: 0 2px 12px rgba(102, 102, 102, 0.3);
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
         }
         
         .red-group-btn {
@@ -453,6 +416,7 @@
             border-color: rgba(255, 255, 255, 0.5);
         }
         
+        /* レスポンシブデザイン */
         @media (max-width: 768px) {
             .top-section {
                 flex-direction: column;
@@ -460,15 +424,15 @@
                 text-align: center;
             }
             
-            .shop-img {
-                width: 90vw;
-                margin-bottom: 20px;
+            .info-box {
+                width: 100%;
+                align-items: center;
+                text-align: center;
             }
             
-            .info-box {
-                min-width: 90vw;
-                max-width: 90vw;
-                text-align: left;
+            .shop-img {
+                width: min(90vw, 400px);
+                margin-bottom: 20px;
             }
             
             .bottom-section {
@@ -476,95 +440,101 @@
                 padding: 0 20px 20px 20px;
             }
             
-            .employee-grid,
             .service-grid {
                 grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .color-group-container {
+                gap: 8px;
+                margin: 20px 10px;
+            }
+            
+            .color-group-btn {
+                padding: 8px 16px;
+                font-size: 14px;
             }
         }
         
         @media (max-width: 480px) {
-            .shop-img {
-                width: 95vw;
-            }
-            
-            .info-box {
+            .service-card {
                 padding: 16px;
+                margin: 12px 0;
             }
             
-            .bottom-section {
-                margin: 10px 10px 0 10px;
-                padding: 0 15px 15px 15px;
+            .service-title {
+                font-size: 16px;
+            }
+            
+            .service-details {
+                font-size: 13px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="title-center">印紙屋</div>
+    <h1 class="title-center">レストラン</h1>
+    
     <div class="top-section">
-        <img src="../shop_image/red/printing/printing.png" alt="印紙屋" class="shop-img">
+        <img src="../shop_image/red/restaurant/restaurant.png" alt="レストラン" class="shop-img">
+        
         <div class="info-box">
             <div class="info-row">
-                所属組織：<a href="../colorpage/red.html" class="color-link">呑紅街</a>
+                場所：中央区
             </div>
             <div class="info-row">
-                場所：周辺エリア（刺青工房の二階）
+                所属色：<a href="../colorpage/red.html" class="color-link">赤</a>
             </div>
             <div class="info-row">
-                営業時間：完全秘密制
+                店主：メイ（饕餮）
             </div>
             <div class="info-row">
-                業種：印章・証書偽造業
+                従業員：数名の給仕人
+            </div>
+            <div class="info-row">
+                営業時間：昼間は一般営業、夜間は特別宴会
+            </div>
+            <div class="info-row">
+                雰囲気：豪奢な装飾と仄暗い照明に彩られた異界的空間
             </div>
         </div>
     </div>
     
     <div class="bottom-section">
-        <h2>概要</h2>
-        <p>刺青工房の二階にある。外の世界や他組の印章、証書を精巧に偽造する店。ただの偽造屋ではなく、人外由来の「裏墨」を使うことで、短時間だけ公的な認証を模すことが可能。</p>
-        <p>燿の高度な技術と特殊な材料により、一般的な偽造とは一線を画す完成度を誇る。ただし利用には相応のリスクと対価が伴う。</p>
+        <h2>店舗概要</h2>
+        <p>表向きは洒落たレストランだが、実態は饕餮（とうてつ）が営む異様な食堂。人間でも人外でも利用可能であり、昼間は一般的な料理を提供する一方、夜間は「捕食」のための宴が開かれる。店内は豪奢な装飾と仄暗い照明に彩られ、まるで異界に迷い込んだかのような雰囲気を漂わせる。</p>
         
-        <h2>サービス・料金</h2>
+        <h2>利用方法・料金</h2>
         <div class="service-grid">
             <div class="service-card">
-                <div class="service-title">単純偽造</div>
-                <div class="service-price">5,000円～</div>
+                <div class="service-title">通常飲食</div>
+                <div class="service-price">5,000～10,000円</div>
+                <div class="service-requirement">信用条件：なし</div>
                 <div class="service-description">
-                    ものにより適当な値段をふっかけられる。見た目だけの偽装であるため、見る人が見ればバレてしまう。基本的な偽造技術による証書や印章の複製。
+                    人間も人外も普通に食事を楽しめる。洗練された料理と雰囲気を提供する高級レストランとしてのサービス。
+                </div>
+            </div>
+            <div class="service-card special">
+                <div class="service-title special">特製料理</div>
+                <div class="service-price">10,000円～</div>
+                <div class="service-requirement">信用条件：40以上</div>
+                <div class="service-description">
+                    饕餮の血肉を僅かに混ぜ込んだ「特製料理」が提供される。一時的に身体能力が上昇するが、代償として後に強烈な飢餓感と吐き気に襲われる。
                 </div>
                 <div class="service-mechanics">
-                    <strong>判定方法：</strong>紙の提示の際に〈隠す+30〉ロールに成功することで気づかれずに利用可能。失敗すると偽造が発覚する。
+                    <strong>効果：</strong>STR×5、戦闘技能に+30補正 / SANチェック 1d5
                 </div>
             </div>
-            <div class="service-card premium">
-                <div class="service-title premium">裏墨偽装</div>
-                <div class="service-price">30,000円～</div>
-                <div class="service-requirement">信用値70以上が必要</div>
+            <div class="service-card night">
+                <div class="service-title night">捕食サービス</div>
+                <div class="service-price">要相談</div>
+                <div class="service-requirement">信用条件：70以上</div>
                 <div class="service-description">
-                    人外由来の特殊な裏墨を使用した高度な偽装。1週間程度であれば確実にバレない高品質な偽造品を作成する。
+                    客が望めば、人間を食材としてその場で調理・提供。希望すれば「生きたまま食す」ことも可能。拘束された供物が席に連れて来られ、客自身が食すか、メイが目の前で解体するかを選べる。
                 </div>
                 <div class="service-mechanics">
-                    <strong>判定方法：</strong>基本的に気づかれることはない。相手が鑑定眼を持っている場合、〈隠す+50〉の判定成功で問題なく利用可能。
+                    <strong>判定：</strong>SANチェック1d10（以降人肉嗜癖を発症する可能性あり）
                 </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="bottom-section">
-        <h2>従業員</h2>
-        <div class="employee-grid">
-            <div class="employee-card">
-                <div class="employee-header">
-                    <img src="../character_icon/you_icon.png" alt="燿" class="employee-icon">
-                    <span class="employee-name">燿</span>
-                </div>
-                <div class="employee-role">店主・偽造技師</div>
-            </div>
-            <div class="employee-card">
-                <div class="employee-header">
-                    <img src="../character_icon/forger_icon.png" alt="偽造職人" class="employee-icon">
-                    <span class="employee-name">偽造職人達</span>
-                </div>
-                <div class="employee-role">技術者・印章製作</div>
             </div>
         </div>
     </div>
@@ -574,7 +544,7 @@
     <!-- オーバーレイ -->
     <div class="overlay" id="overlay"></div>
     
-    <!-- 赤組詳細ポップアップ -->
+   <!-- 赤組詳細ポップアップ -->
     <div class="group-detail" id="detail-red">
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
         <h3 style="color:#ff6b6b;">呑紅街</h3>
@@ -587,6 +557,7 @@
             <li><img src="../shop_image/red/torture/torture.png" class="shop-icon" alt="拷問屋"><a href="./shop_torture.html">拷問屋</a></li>
             <li><img src="../shop_image/red/tattoo/tattoo.png" class="shop-icon" alt="刺青屋"><a href="./shop_tattoo.html">刺青屋</a></li>
             <li><img src="../shop_image/red/printing/printing.png" class="shop-icon" alt="印紙屋"><a href="./shop_stamp.html">印紙屋</a></li>
+            <li><img src="./shop_image/red/restaurant/restaurant.png" class="shop-icon" alt="レストラン"><a href="./shoppage/shop_redrestaurant.html">レストラン</a></li>
         </ul>
     </div>
     
