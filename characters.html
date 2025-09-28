@@ -176,6 +176,48 @@
                 margin-bottom: 3px;
             }
         }
+        
+        .org-tab {
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .org-tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .black-org {
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+        }
+        
+        .white-org {
+            background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+            color: #333 !important;
+        }
+        
+        .red-org {
+            background: linear-gradient(135deg, #c02020, #a01010);
+        }
+        
+        .blue-org {
+            background: linear-gradient(135deg, #2060c0, #1050a0);
+        }
+        
+        .green-org {
+            background: linear-gradient(135deg, #20a050, #108040);
+        }
+        
+        .yellow-org {
+            background: linear-gradient(135deg, #f0a000, #d08000);
+        }
     </style>
 </head>
 <body>
@@ -250,6 +292,15 @@
         <a href="characters.html"><button>キャラクター一覧</button></a>
         <a href="shops.html"><button>店舗一覧</button></a>
         <a href="tools.html"><button>ツール</button></a>
+    </div>
+    
+    <div class="org-tab-container" style="display: flex; gap: 8px; margin: 20px 0; justify-content: center; flex-wrap: wrap;">
+        <a href="colorpage/black.html"><button class="org-tab black-org">霧影集団</button></a>
+        <a href="colorpage/white.html"><button class="org-tab white-org">白葬街</button></a>
+        <a href="colorpage/red.html"><button class="org-tab red-org">呑紅街</button></a>
+        <a href="colorpage/blue.html"><button class="org-tab blue-org">蒼殉街</button></a>
+        <a href="colorpage/green.html"><button class="org-tab green-org">滲緑街</button></a>
+        <a href="colorpage/yellow.html"><button class="org-tab yellow-org">黄惑街</button></a>
     </div>
 </body>
 </html>

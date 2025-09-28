@@ -29,8 +29,110 @@
             font-weight: 700;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
             letter-spacing: 0.1em;
-            margin: 40px auto 60px;
+            margin: 40px auto 40px;
             padding: 0;
+        }
+        
+        .image-gallery {
+            margin: 20px auto 60px;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            background: rgba(240, 240, 240, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .gallery-slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .gallery-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .gallery-slide.active {
+            opacity: 1;
+        }
+        
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            font-size: 24px;
+            padding: 15px 20px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .gallery-nav:hover {
+            background: rgba(100, 100, 100, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .gallery-prev {
+            left: 20px;
+        }
+        
+        .gallery-next {
+            right: 20px;
+        }
+        
+        .gallery-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+        
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .gallery-dot.active {
+            background: #888888;
+            border-color: white;
+            transform: scale(1.2);
+        }
+        
+        .gallery-dot:hover {
+            background: rgba(150, 150, 150, 0.9);
+            transform: scale(1.1);
         }
         
         .content-section {
@@ -200,11 +302,90 @@
                 padding: 16px;
             }
         }
+        
+        .org-tab-container {
+            display: flex;
+            gap: 8px;
+            margin: 40px 0 20px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .org-tab {
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .org-tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .black-org {
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+        }
+        
+        .white-org {
+            background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+            color: #333 !important;
+        }
+        
+        .red-org {
+            background: linear-gradient(135deg, #c02020, #a01010);
+        }
+        
+        .blue-org {
+            background: linear-gradient(135deg, #2060c0, #1050a0);
+        }
+        
+        .green-org {
+            background: linear-gradient(135deg, #20a050, #108040);
+        }
+        
+        .yellow-org {
+            background: linear-gradient(135deg, #f0a000, #d08000);
+        }
+        
+        .org-tab.current {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="title-center">白葬街</div>
+        
+        <div class="image-gallery">
+            <div class="gallery-container">
+                <div class="gallery-slides" id="whiteGallery">
+                    <div class="gallery-slide active">
+                        <img src="../shop_image/white/street/backstreet.jpg" alt="白葬街の裏通り">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="../shop_image/white/street/govermentoffice.png" alt="白葬街の政庁">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="../shop_image/white/street/smallshop_entrance.png" alt="白葬街の小店入口">
+                    </div>
+                </div>
+                <button class="gallery-nav gallery-prev" onclick="previousSlide('whiteGallery')">❮</button>
+                <button class="gallery-nav gallery-next" onclick="nextSlide('whiteGallery')">❯</button>
+                <div class="gallery-dots">
+                    <span class="gallery-dot active" onclick="currentSlide('whiteGallery', 1)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('whiteGallery', 2)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('whiteGallery', 3)"></span>
+                </div>
+            </div>
+        </div>
         
         <div class="content-section">
             <h2 class="section-title">組織概要</h2>
@@ -280,15 +461,125 @@
             </div>
         </div>
         
-        <div class="tab-container">
-            <a href="../index.html"><button>ホーム</button></a>
-            <a href="../rules.html"><button>特殊ルール</button></a>
-            <a href="../jinngai.html"><button>人外設定</button></a>
-            <a href="../world.html"><button>世界観設定</button></a>
-            <a href="../characters.html"><button>キャラクター一覧</button></a>
-            <a href="../shops.html"><button>店舗一覧</button></a>
-            <a href="../tools.html"><button>ツール</button></a>
+        <div class="org-tab-container">
+            <a href="black.html"><button class="org-tab black-org">霧影集団</button></a>
+            <button class="org-tab white-org current">白葬街</button>
+            <a href="red.html"><button class="org-tab red-org">呑紅街</button></a>
+            <a href="blue.html"><button class="org-tab blue-org">蒼殉街</button></a>
+            <a href="green.html"><button class="org-tab green-org">滲緑街</button></a>
+            <a href="yellow.html"><button class="org-tab yellow-org">黄惑街</button></a>
         </div>
     </div>
+
+    <script>
+        const galleryConfigs = {
+            'whiteGallery': {
+                totalSlides: 3,
+                currentSlide: 0,
+                autoRotateInterval: null
+            }
+        };
+
+        function showSlide(galleryId, n) {
+            const config = galleryConfigs[galleryId];
+            const slides = document.querySelectorAll(`#${galleryId} .gallery-slide`);
+            const dots = document.querySelector(`#${galleryId}`).parentElement.querySelectorAll('.gallery-dot');
+            
+            if (n >= config.totalSlides) { config.currentSlide = 0; }
+            if (n < 0) { config.currentSlide = config.totalSlides - 1; }
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            if (slides[config.currentSlide]) {
+                slides[config.currentSlide].classList.add('active');
+            }
+            if (dots[config.currentSlide]) {
+                dots[config.currentSlide].classList.add('active');
+            }
+        }
+
+        function nextSlide(galleryId) {
+            const config = galleryConfigs[galleryId];
+            config.currentSlide++;
+            showSlide(galleryId, config.currentSlide);
+        }
+
+        function previousSlide(galleryId) {
+            const config = galleryConfigs[galleryId];
+            config.currentSlide--;
+            showSlide(galleryId, config.currentSlide);
+        }
+
+        function currentSlide(galleryId, n) {
+            const config = galleryConfigs[galleryId];
+            config.currentSlide = n - 1;
+            showSlide(galleryId, config.currentSlide);
+        }
+
+        function startAutoRotate(galleryId) {
+            const config = galleryConfigs[galleryId];
+            config.autoRotateInterval = setInterval(() => {
+                nextSlide(galleryId);
+            }, 5000);
+        }
+
+        function stopAutoRotate(galleryId) {
+            const config = galleryConfigs[galleryId];
+            if (config.autoRotateInterval) {
+                clearInterval(config.autoRotateInterval);
+                config.autoRotateInterval = null;
+            }
+        }
+
+        // タッチスワイプサポート
+        function addTouchSupport(galleryId) {
+            const gallery = document.getElementById(galleryId);
+            let startX = 0;
+            let startY = 0;
+
+            gallery.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                stopAutoRotate(galleryId);
+            }, { passive: true });
+
+            gallery.addEventListener('touchend', function(e) {
+                if (!startX || !startY) return;
+
+                let endX = e.changedTouches[0].clientX;
+                let endY = e.changedTouches[0].clientY;
+
+                let diffX = startX - endX;
+                let diffY = startY - endY;
+
+                if (Math.abs(diffX) > Math.abs(diffY)) {
+                    if (Math.abs(diffX) > 50) {
+                        if (diffX > 0) {
+                            nextSlide(galleryId);
+                        } else {
+                            previousSlide(galleryId);
+                        }
+                    }
+                }
+
+                startX = 0;
+                startY = 0;
+                startAutoRotate(galleryId);
+            }, { passive: true });
+
+            // マウスイベントでも同様の処理
+            gallery.addEventListener('mouseenter', () => stopAutoRotate(galleryId));
+            gallery.addEventListener('mouseleave', () => startAutoRotate(galleryId));
+        }
+
+        // 初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            Object.keys(galleryConfigs).forEach(galleryId => {
+                addTouchSupport(galleryId);
+                startAutoRotate(galleryId);
+            });
+        });
+    </script>
 </body>
 </html>
