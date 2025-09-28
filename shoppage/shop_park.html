@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>運び屋</title>
+    <title>遊園地</title>
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
-            background: linear-gradient(135deg, #2d1c0a, #4a3018, #3d2612);
+            background: linear-gradient(135deg, #3d2f00, #665000, #4d3d00);
             font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
             min-height: 100vh;
             margin: 0;
@@ -43,13 +43,112 @@
             max-height: 400px;
             object-fit: cover;
             border-radius: 16px;
-            border: 2px solid rgba(218, 165, 32, 0.8);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px rgba(218, 165, 32, 0.3);
+            border: 2px solid rgba(255, 204, 0, 0.8);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 204, 0, 0.3);
             transition: all 0.3s ease;
         }
         
+        .shop-gallery {
+            width: min(600px, 60vw);
+            position: relative;
+        }
+        
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/10;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 204, 0, 0.3);
+        }
+        
+        .gallery-slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .gallery-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .gallery-slide.active {
+            opacity: 1;
+        }
+        
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            font-size: 20px;
+            padding: 12px 16px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .gallery-nav:hover {
+            background: rgba(255, 204, 0, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .gallery-prev {
+            left: 15px;
+        }
+        
+        .gallery-next {
+            right: 15px;
+        }
+        
+        .gallery-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        
+        .gallery-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .gallery-dot.active {
+            background: #ffcc00;
+            border-color: white;
+            transform: scale(1.2);
+        }
+        
+        .gallery-dot:hover {
+            background: rgba(255, 204, 0, 0.8);
+            transform: scale(1.1);
+        }
+        
         .shop-img:hover {
-            box-shadow: 0 6px 32px rgba(0, 0, 0, 0.3), 0 0 24px rgba(218, 165, 32, 0.4);
+            box-shadow: 0 6px 32px rgba(0, 0, 0, 0.3), 0 0 24px rgba(255, 204, 0, 0.4);
         }
         
         .info-box {
@@ -58,44 +157,44 @@
             align-items: flex-start;
             gap: clamp(12px, 2vw, 20px);
             min-width: min(320px, 40vw);
-            background: rgba(218, 165, 32, 0.9);
+            background: rgba(255, 204, 0, 0.9);
             padding: clamp(20px, 3vw, 32px);
             border-radius: 16px;
-            border: 1px solid rgba(218, 165, 32, 0.6);
+            border: 1px solid rgba(255, 204, 0, 0.6);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
         }
         
         .info-row {
             font-size: clamp(16px, 3vw, 18px);
-            color: #ffffff;
+            color: #000000;
             margin-bottom: 8px;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
             line-height: 1.4;
             font-weight: 500;
         }
         
         .color-link {
-            color: #ffffff;
+            color: #000000;
             font-weight: bold;
             text-decoration: none;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.7);
+            border-bottom: 1px dashed rgba(0, 0, 0, 0.7);
             transition: color 0.2s, text-shadow 0.2s;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
         }
         
         .color-link:hover {
-            color: #ffffcc;
-            text-shadow: 0 1px 8px rgba(255, 255, 204, 0.5);
+            color: #333333;
+            text-shadow: 0 1px 8px rgba(51, 51, 51, 0.3);
         }
         
         .bottom-section {
             margin: 40px auto 0 auto;
             max-width: 800px;
             padding: 0 30px 40px 30px;
-            background: rgba(218, 165, 32, 0.9);
+            background: rgba(255, 204, 0, 0.9);
             border-radius: 16px;
-            border: 1px solid rgba(218, 165, 32, 0.6);
+            border: 1px solid rgba(255, 204, 0, 0.6);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             margin-bottom: 40px;
@@ -105,16 +204,16 @@
             font-size: 22px;
             margin-top: 28px;
             margin-bottom: 12px;
-            color: #ffffff;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            color: #000000;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
             letter-spacing: 0.05em;
         }
         
         .bottom-section p {
             font-size: 16px;
-            color: #f0f0f0;
+            color: #1a1a1a;
             line-height: 1.8;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
             margin-bottom: 20px;
         }
         
@@ -126,10 +225,10 @@
         }
         
         .employee-card {
-            background: rgba(180, 135, 25, 0.8);
+            background: rgba(204, 153, 0, 0.8);
             border-radius: 12px;
             padding: 20px;
-            border: 1px solid rgba(218, 165, 32, 0.4);
+            border: 1px solid rgba(255, 204, 0, 0.4);
             transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
@@ -137,7 +236,7 @@
         }
         
         .employee-card:hover {
-            background: rgba(200, 150, 30, 0.9);
+            background: rgba(230, 173, 0, 0.9);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
@@ -153,111 +252,117 @@
             height: 48px;
             border-radius: 50%;
             margin-right: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.7);
+            border: 2px solid rgba(0, 0, 0, 0.7);
+            background: rgba(255, 255, 255, 0.8);
         }
         
         .employee-name {
             font-weight: bold;
             font-size: 20px;
-            color: #fff;
+            color: #000;
         }
         
         .employee-role {
             font-size: 16px;
-            color: #f0f0f0;
+            color: #1a1a1a;
             margin-top: 8px;
         }
         
         .service-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
         
         .service-card {
-            background: rgba(180, 135, 25, 0.8);
+            background: rgba(204, 153, 0, 0.8);
             border-radius: 12px;
             padding: 20px;
-            border: 1px solid rgba(218, 165, 32, 0.4);
+            border: 1px solid rgba(255, 204, 0, 0.4);
             transition: all 0.3s ease;
         }
         
         .service-card:hover {
-            background: rgba(200, 150, 30, 0.9);
+            background: rgba(230, 173, 0, 0.9);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
-        .service-card.dangerous {
-            border: 2px solid rgba(255, 140, 0, 0.8);
-            background: rgba(150, 115, 20, 0.9);
+        .service-card.normal {
+            border: 2px solid rgba(46, 125, 50, 0.8);
+            background: rgba(153, 102, 0, 0.9);
         }
         
-        .service-card.dangerous:hover {
-            background: rgba(170, 130, 25, 1.0);
-            box-shadow: 0 6px 20px rgba(255, 140, 0, 0.2);
+        .service-card.normal:hover {
+            background: rgba(179, 119, 0, 1.0);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.2);
         }
         
-        .service-card.illegal {
-            border: 2px solid rgba(220, 20, 60, 0.8);
-            background: rgba(140, 100, 15, 0.9);
+        .service-card.underground {
+            border: 2px solid rgba(244, 67, 54, 0.8);
+            background: rgba(102, 68, 0, 0.9);
         }
         
-        .service-card.illegal:hover {
-            background: rgba(160, 115, 20, 1.0);
-            box-shadow: 0 6px 20px rgba(220, 20, 60, 0.2);
+        .service-card.underground:hover {
+            background: rgba(128, 85, 0, 1.0);
+            box-shadow: 0 6px 20px rgba(244, 67, 54, 0.2);
         }
         
         .service-title {
             font-size: 18px;
             font-weight: bold;
-            color: #fff;
+            color: #000;
             margin-bottom: 12px;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
         }
         
-        .service-title.dangerous {
-            color: #ffcc00;
+        .service-title.normal {
+            color: #2e7d32;
         }
         
-        .service-title.illegal {
-            color: #ff6b6b;
+        .service-title.underground {
+            color: #f44336;
         }
         
-        .service-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-        
-        .service-detail-item {
-            font-size: 14px;
-            color: #f0f0f0;
-        }
-        
-        .service-detail-label {
+        .service-price {
+            font-size: 16px;
+            color: #cc6600;
             font-weight: bold;
-            color: #ffffff;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
+        }
+        
+        .service-requirement {
+            font-size: 14px;
+            color: #804d00;
+            margin-bottom: 8px;
+            font-style: italic;
         }
         
         .service-description {
             font-size: 15px;
-            color: #f0f0f0;
+            color: #1a1a1a;
             line-height: 1.6;
-            margin-top: 12px;
+            margin-bottom: 12px;
         }
         
-        .warning-note {
+        .service-mechanics {
             font-size: 14px;
-            color: #ffddaa;
-            background: rgba(255, 140, 0, 0.1);
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid rgba(255, 140, 0, 0.3);
-            margin-top: 12px;
+            color: #2d2d2d;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid rgba(46, 125, 50, 0.8);
+        }
+        
+        .service-warning {
+            font-size: 14px;
+            color: #2d2d2d;
+            background: rgba(244, 67, 54, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid rgba(244, 67, 54, 0.8);
+            margin-top: 8px;
         }
         
         .tab-container {
@@ -348,8 +453,8 @@
         }
         
         .yellow-group-btn {
-            background: rgba(218, 165, 32, 0.8);
-            color: #fff;
+            background: rgba(255, 204, 0, 0.8);
+            color: #000;
             border-radius: 8px;
             border: none;
             padding: 12px 24px;
@@ -363,7 +468,7 @@
         }
         
         .yellow-group-btn:hover {
-            background: rgba(218, 165, 32, 1.0);
+            background: rgba(255, 204, 0, 1.0);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
@@ -495,11 +600,8 @@
                 padding: 0 20px 20px 20px;
             }
             
-            .employee-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .service-details {
+            .employee-grid,
+            .service-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -521,110 +623,75 @@
     </style>
 </head>
 <body>
-    <div class="title-center">運び屋</div>
+    <div class="title-center">遊園地</div>
     <div class="top-section">
-        <img src="../shop_image/yellow/courier/courier.png" alt="運び屋" class="shop-img">
+        <div class="shop-gallery">
+            <div class="gallery-container">
+                <div class="gallery-slides" id="parkGallery">
+                    <div class="gallery-slide active">
+                        <img src="../shop_image/yellow/park/park.jpg" alt="遊園地全景">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="../shop_image/yellow/park/park_mainstreet.jpg" alt="遊園地メインストリート">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="../shop_image/yellow/park/ferriswheel.jpg" alt="遊園地観覧車">
+                    </div>
+                </div>
+                <button class="gallery-nav gallery-prev" onclick="previousSlide('parkGallery')">❮</button>
+                <button class="gallery-nav gallery-next" onclick="nextSlide('parkGallery')">❯</button>
+                <div class="gallery-dots">
+                    <span class="gallery-dot active" onclick="currentSlide('parkGallery', 1)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('parkGallery', 2)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('parkGallery', 3)"></span>
+                </div>
+            </div>
+        </div>
         <div class="info-box">
             <div class="info-row">
-                所属組織：<a href="../colorpage/yellow.html" class="color-link">黄組</a>
+                所属組織：<a href="../colorpage/yellow.html" class="color-link">黄惑街</a>
             </div>
             <div class="info-row">
-                場所：郊外エリア
+                エリア：郊外
             </div>
             <div class="info-row">
-                営業時間：24時間対応
+                営業時間：10:00〜22:00
             </div>
             <div class="info-row">
-                業種：物資・人員運搬業
+                業種：娯楽施設・誘拐ルート
+            </div>
+            <div class="info-row">
+                従業員：園長／運営スタッフ多数
             </div>
         </div>
     </div>
     
     <div class="bottom-section">
         <h2>概要</h2>
-        <p>外の街から暗黒中華街まで物資・人員を運び込む「運び屋」。野菜や日用品のような日常物資から、麻薬や武器、さらには生体（人間）までも依頼を受けて運搬する。</p>
-        <p>倉庫兼事務所は一見すると荷捌き場だが、奥に簡易の小部屋・偽装箱・逃走ルート図が用意されている。ルカの人柄で「頼めば可能な限り引き受ける」が信条。</p>
+        <p>子供から大人まで楽しめる一見華やかな遊園地。メリーゴーラウンドや観覧車、屋台、怪しげな占い小屋、夜間にだけ開かれる怪しいアトラクションなどが並ぶ。表の顔は「庶民の娯楽場」だが、裏では子供の誘致ルート、身代金交渉、密輸のための隠し通路などが張り巡らされている。夜の園内は照明が妖しく、記憶を曖昧にする演出がなされる場所もある。</p>
         
-        <h2>サービス・料金</h2>
+        <h2>利用方法</h2>
         <div class="service-grid">
-            <div class="service-card">
-                <div class="service-title">通常便（非危険物）</div>
-                <div class="service-details">
-                    <div class="service-detail-item">
-                        <div class="service-detail-label">料金</div>
-                        500～10,000円（距離・難易度で増減）
-                    </div>
-                    <div class="service-detail-item">
-                        <div class="service-detail-label">信用条件</div>
-                        不要
-                    </div>
-                    <div class="service-detail-item">
-                        <div class="service-detail-label">納期</div>
-                        即日～2日内
-                    </div>
-                    <div class="service-detail-item">
-                        <div class="service-detail-label">備考</div>
-                        簡単なやり取りで手配可。前払いを推奨。
-                    </div>
-                </div>
+            <div class="service-card normal">
+                <div class="service-title normal">一日フリーパス</div>
+                <div class="service-price">料金：10,000円</div>
+                <div class="service-requirement">必要信用値：50</div>
                 <div class="service-description">
-                    日用品、食材、一般的な商品など。最も基本的な運搬サービスで、特別な許可や手続きは不要。
+                    園内のほぼ全アトラクションが1日自由に使える一般チケット。家族連れや恋人同士で楽しめる普通の遊園地体験。
+                </div>
+                <div class="service-mechanics">
+                    <strong>効果：</strong>SAN値の軽度回復、情報収集判定にボーナス、一般人との接触機会。
                 </div>
             </div>
-            
-            <div class="service-card dangerous">
-                <div class="service-title dangerous">危険物便（麻薬・武器等）</div>
-                <div class="service-details">
-                    <div class="service-detail-item">
-                        <div class="service-detail-label">料金</div>
-                        30,000円～（種類と量で大幅増）
-                    </div>
-                    <div class="service-detail-item">
-                        <div class="service-detail-label">信用条件</div>
-                        信用値65以上・身元確認必須／前金50%
-                    </div>
-                    <div class="service-detail-item">
-                        <div class="service-detail-label">納期</div>
-                        1～4日（隠蔽ルート利用）
-                    </div>
-                    <div class="service-detail-item">
-                        <div class="service-detail-label">特別オプション</div>
-                        燿（印紙屋）による偽造書類オプションあり
-                    </div>
-                </div>
+            <div class="service-card underground">
+                <div class="service-title underground">誘拐（裏オプション）</div>
+                <div class="service-price">料金：50,000円〜</div>
+                <div class="service-requirement">必要信用値：70</div>
                 <div class="service-description">
-                    麻薬、武器、その他法的に問題のある物品の運搬。検問リスクのため特別なルートと手続きが必要。
+                    組織は"遊園地のスタッフ"の一部を用いて特定人物を園内に誘い込み、拘束・搬出することがある。極秘任務。
                 </div>
-                <div class="warning-note">
-                    <strong>注意：</strong>検問や摘発のリスクが伴います。偽造書類オプションの利用を強く推奨。
-                </div>
-            </div>
-            
-            <div class="service-card illegal">
-                <div class="service-title illegal">生体運搬（生きた人間）</div>
-                <div class="service-details">
-                    <div class="service-detail-item">
-                        <div class="service-detail-label">料金</div>
-                        最低50,000円～（要交渉）／人
-                    </div>
-                    <div class="service-detail-item">
-                        <div class="service-detail-label">信用条件</div>
-                        信用値80以上必須
-                    </div>
-                    <div class="service-detail-item">
-                        <div class="service-detail-label">納期</div>
-                        24時間～要相談
-                    </div>
-                    <div class="service-detail-item">
-                        <div class="service-detail-label">担保</div>
-                        大きなデポジット（物または信用の担保）
-                    </div>
-                </div>
-                <div class="service-description">
-                    生きた人間の運搬。拘束・偽装付きだと増額。最も危険で高額なサービス。
-                </div>
-                <div class="warning-note">
-                    <strong>重要：</strong>極めて危険な取引です。発覚した場合の責任は一切負いません。事前の詳細な相談が必須。
+                <div class="service-warning">
+                    <strong>警告：</strong>この業務は極めて危険で違法性が高い。失敗時の処罰や報復は熾烈を極める。慎重な計画と実行が必要。
                 </div>
             </div>
         </div>
@@ -633,19 +700,19 @@
     <div class="bottom-section">
         <h2>従業員</h2>
         <div class="employee-grid">
-            <a href="../characterpage/character_ruka.html" class="employee-card">
-                <div class="employee-header">
-                    <img src="../character_icon/ruka_icon.png" alt="三日月ルカ" class="employee-icon">
-                    <span class="employee-name">三日月ルカ</span>
-                </div>
-                <div class="employee-role">店主・運び屋</div>
-            </a>
             <div class="employee-card">
                 <div class="employee-header">
-                    <img src="../character_icon/coordinator_icon.png" alt="手配係" class="employee-icon">
-                    <span class="employee-name">手配係</span>
+                    <div style="width: 48px; height: 48px; border-radius: 50%; margin-right: 16px; border: 2px solid rgba(0, 0, 0, 0.7); background: rgba(255, 255, 255, 0.8); display: flex; align-items: center; justify-content: center; font-weight: bold; color: #000;">園</div>
+                    <span class="employee-name">園長</span>
                 </div>
-                <div class="employee-role">臨時スタッフ・事務処理</div>
+                <div class="employee-role">総合管理・裏業務統括</div>
+            </div>
+            <div class="employee-card">
+                <div class="employee-header">
+                    <div style="width: 48px; height: 48px; border-radius: 50%; margin-right: 16px; border: 2px solid rgba(0, 0, 0, 0.7); background: rgba(255, 255, 255, 0.8); display: flex; align-items: center; justify-content: center; font-weight: bold; color: #000;">運</div>
+                    <span class="employee-name">運営スタッフ</span>
+                </div>
+                <div class="employee-role">アトラクション運営・表向き業務</div>
             </div>
         </div>
     </div>
@@ -655,8 +722,8 @@
     <!-- オーバーレイ -->
     <div class="overlay" id="overlay"></div>
     
-    <!-- 黄組詳細ポップアップ -->
-   <div class="group-detail" id="detail-yellow">
+   <!-- 黄組詳細ポップアップ -->
+    <div class="group-detail" id="detail-yellow">
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
         <h3 style="color:#ffcc00;">黄惑街</h3>
         <ul class="shop-list">
@@ -672,7 +739,6 @@
             <li><img src="../shop_image/yellow/cosmeticsurgery/cosmetic_surgery.png" class="shop-icon" alt="美容整形外科"><a href="./shop_cosmeticsurgery.html">美容整形外科</a></li>
         </ul>
     </div>
-    
     
     <div class="color-group-container">
         <a href="../colorpage/red.html" class="color-group-btn color-red">呑紅街</a>
@@ -730,6 +796,116 @@
         }
         
         document.getElementById('overlay').addEventListener('click', hideGroupDetail);
+        
+        // ギャラリー機能
+        const galleryConfigs = {
+            'parkGallery': {
+                totalSlides: 3,
+                currentSlide: 0,
+                autoRotateInterval: null
+            }
+        };
+
+        function showSlide(galleryId, n) {
+            const config = galleryConfigs[galleryId];
+            const slides = document.querySelectorAll(`#${galleryId} .gallery-slide`);
+            const dots = document.querySelector(`#${galleryId}`).parentElement.querySelectorAll('.gallery-dot');
+            
+            if (n >= config.totalSlides) { config.currentSlide = 0; }
+            if (n < 0) { config.currentSlide = config.totalSlides - 1; }
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            if (slides[config.currentSlide]) {
+                slides[config.currentSlide].classList.add('active');
+            }
+            if (dots[config.currentSlide]) {
+                dots[config.currentSlide].classList.add('active');
+            }
+        }
+
+        function nextSlide(galleryId) {
+            const config = galleryConfigs[galleryId];
+            config.currentSlide++;
+            showSlide(galleryId, config.currentSlide);
+        }
+
+        function previousSlide(galleryId) {
+            const config = galleryConfigs[galleryId];
+            config.currentSlide--;
+            showSlide(galleryId, config.currentSlide);
+        }
+
+        function currentSlide(galleryId, n) {
+            const config = galleryConfigs[galleryId];
+            config.currentSlide = n - 1;
+            showSlide(galleryId, config.currentSlide);
+        }
+
+        function startAutoRotate(galleryId) {
+            const config = galleryConfigs[galleryId];
+            config.autoRotateInterval = setInterval(() => {
+                nextSlide(galleryId);
+            }, 5000);
+        }
+
+        function stopAutoRotate(galleryId) {
+            const config = galleryConfigs[galleryId];
+            if (config.autoRotateInterval) {
+                clearInterval(config.autoRotateInterval);
+                config.autoRotateInterval = null;
+            }
+        }
+
+        // タッチスワイプサポート
+        function addTouchSupport(galleryId) {
+            const gallery = document.getElementById(galleryId);
+            let startX = 0;
+            let startY = 0;
+
+            gallery.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                stopAutoRotate(galleryId);
+            }, { passive: true });
+
+            gallery.addEventListener('touchend', function(e) {
+                if (!startX || !startY) return;
+
+                let endX = e.changedTouches[0].clientX;
+                let endY = e.changedTouches[0].clientY;
+
+                let diffX = startX - endX;
+                let diffY = startY - endY;
+
+                if (Math.abs(diffX) > Math.abs(diffY)) {
+                    if (Math.abs(diffX) > 50) {
+                        if (diffX > 0) {
+                            nextSlide(galleryId);
+                        } else {
+                            previousSlide(galleryId);
+                        }
+                    }
+                }
+
+                startX = 0;
+                startY = 0;
+                startAutoRotate(galleryId);
+            }, { passive: true });
+
+            // マウスイベントでも同様の処理
+            gallery.addEventListener('mouseenter', () => stopAutoRotate(galleryId));
+            gallery.addEventListener('mouseleave', () => startAutoRotate(galleryId));
+        }
+
+        // 初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            Object.keys(galleryConfigs).forEach(galleryId => {
+                addTouchSupport(galleryId);
+                startAutoRotate(galleryId);
+            });
+        });
     </script>
 </body>
 </html>
