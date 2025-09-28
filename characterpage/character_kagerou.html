@@ -5,46 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>陽炎</title>
     <link rel="stylesheet" href="../style.css">
-     <style>
+    <style>
         body {
-            background: linear-gradient(135deg, #6f2222 40%, #b52d2d 70%, #2d1a2d 100%);
-            font-family: 'Cinzel', 'Yu Gothic', '游ゴシック', serif;
+            background: linear-gradient(135deg, #1a0000, #2d0808, #0f0f0f);
+            font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
             min-height: 100vh;
             margin: 0;
             padding: 0;
-            color: #040404;
+            color: #f0f0f0;
+            line-height: 1.6;
         }
         .title-center {
             text-align: center;
-            font-size: 3.2em;
-            color: #0c0c0c;
-            background: rgba(251, 1, 1, 0.9);
-            border-radius: 16px;
-            padding: 32px 0 32px 0;
-            margin: 32px auto 0 auto;
-            width: 400px;
-            box-shadow: 0 4px 24px rgba(64, 63, 63, 0.8), 0 0 32px rgba(0, 0, 0, 0.4);
-            font-weight: bold;
-            border: 3px solid #101010;
-            text-shadow: 0 2px 16px #3f3f3f, 0 0px 4px #666;
-            letter-spacing: 0.1em;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+            letter-spacing: 0.05em;
+            margin: 40px auto 20px;
+            padding: 0;
         }
         .top-section {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            padding: 40px 60px 20px 60px;
-            gap: 60px;
+            padding: clamp(20px, 4vw, 60px);
+            gap: clamp(20px, 4vw, 60px);
+            max-width: 1200px;
+            margin: 0 auto;
         }
         .character-img {
-            width: 350px;
-            height: 600px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 3px solid #000000;
-            margin-top: 40px;
-            box-shadow: 0 4px 24px rgba(58, 58, 58, 0.8), 0 0 16px rgba(0, 0, 0, 0.6);
-            transition: box-shadow 0.3s;
+            width: min(300px, 40vw);
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 16px;
+            border: 2px solid rgba(223, 41, 14, 0.8);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 20px rgba(139, 69, 19, 0.2);
+            transition: all 0.3s ease;
         }
         .character-img:hover {
             box-shadow: 0 6px 32px rgba(43, 42, 42, 0.9), 0 0 24px rgba(102, 102, 102, 0.3);
@@ -52,21 +50,21 @@
         .info-box {
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
-            gap: 20px;
-            min-width: 320px;
-            margin-top: 40px;
-            background: rgba(177, 77, 77, 0.8);
-            padding: 24px;
-            border-radius: 12px;
-            border: 2px solid #0e0d0d;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+            align-items: flex-start;
+            gap: clamp(12px, 2vw, 20px);
+            min-width: min(320px, 50vw);
+            background: rgba(189, 85, 85, 0.81);
+            padding: clamp(20px, 3vw, 32px);
+            border-radius: 16px;
+            border: 1px solid rgba(139, 69, 19, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         .info-row {
-            font-size: 18px;
-            color: #f2eded;
-            margin-bottom: 2px;
-            text-shadow: 0 1px 4px #262525;
+            font-size: clamp(16px, 3vw, 18px);
+            color: #f5f5f5;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+            line-height: 1.4;
         }
         .color-link {
             color: #f30606;
@@ -108,52 +106,117 @@
             padding: 0 30px 40px 30px;
             background: rgba(189, 85, 85, 0.81);
             border-radius: 16px;
-            border: 2px solid #100f0f;
-            box-shadow: 0 4px 16px rgba(58, 57, 57, 0.6);
+            border: 1px solid rgba(139, 69, 19, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         .bottom-section h2 {
             font-size: 22px;
             margin-top: 28px;
             margin-bottom: 12px;
             color: #f8f6f6;
-            text-shadow: 0 2px 8px #535151, 0 0px 2px #666;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0px 2px #666;
             letter-spacing: 0.05em;
         }
         .bottom-section p {
             font-size: 16px;
-            color: #f9f7f7;
-            margin-bottom: 12px;
-            line-height: 1.7;
-            text-shadow: 0 1px 4px #f4e2e2;
-        }
-        .tab-container {
-            display: flex;
-            gap: 10px;
+            color: #f0f0f0;
+            line-height: 1.8;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
             margin-bottom: 20px;
-            justify-content: center;
         }
-        .tab-container button {
-            background: #222;
-            color: #fff;
-            border-radius: 6px;
-            border: none;
-            padding: 8px 18px;
-            font-size: 15px;
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        .character-relationships {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
         }
-        .tab-container button:hover {
-            background: #444;
+        .character-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .character-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        .character-link-card {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+        }
+        .character-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .character-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            margin-right: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .character-name {
+            font-weight: bold;
+            font-size: 18px;
             color: #fff;
-            box-shadow: 0 2px 12px rgba(102, 102, 102, 0.3);
+        }
+        .character-description {
+            font-size: 14px;
+            color: #ddd;
+            line-height: 1.5;
+        }
+        @media (max-width: 768px) {
+            .top-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .character-img {
+                width: 250px;
+                margin-bottom: 20px;
+            }
+            .info-box {
+                min-width: 100%;
+                max-width: 100%;
+                text-align: left;
+            }
+            .bottom-section {
+                margin: 20px 20px 0 20px;
+                padding: 0 20px 20px 20px;
+            }
+            .character-relationships {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .character-img {
+                width: 200px;
+            }
+            .info-box {
+                padding: 16px;
+            }
+            .bottom-section {
+                margin: 10px 10px 0 10px;
+                padding: 0 15px 15px 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1 class="title-center">陽炎</h1>
+    <div class="title-center">陽炎</div>
     <div class="top-section">
         <img src="../character_fullbody/kagerou.png" alt="陽炎" class="character-img">
         <div class="info-box">
+            <div class="info-row">
+                年齢：２３歳
+            </div>
+            <div class="info-row">
+                種族：人間
+            </div>
             <div class="info-row">
                 所属色：<a href="../colorpage/red.html" class="color-link">赤</a>
             </div>
@@ -164,6 +227,15 @@
                 仕事：<a href="../shoppage/shop_torture.html" class="shop-link">拷問屋</a>
             </div>
             <div class="info-row">
+                一人称：おれ
+            </div>
+            <div class="info-row">
+                二人称：お前
+            </div>
+            <div class="info-row">
+                特殊呼称：風花→ふ〜ちゃん
+            </div>
+            <div class="info-row">
                 外見特徴：ふわふわした髪と中性的な顔立ちをした可愛い青年。年齢は20代半ばほどに見える。小柄で華奢な体つきだが、笑顔を絶やさず、ぱっと見はアイドルのような雰囲気すらある。血で汚れた作業着の上に、いつも動物のワッペンが付いたエプロンを掛けている姿が印象的。
             </div>
         </div>
@@ -171,46 +243,50 @@
     <div class="bottom-section">
         <h2>性格</h2>
         <p>外見の通り人懐っこく柔らかい物腰を持つが、本性は極めて残酷で「人間の反応」を観察することに喜びを覚える倒錯者。基本的に明るく朗らかで、拷問中ですら楽しそうに雑談を交わす。相手の悲鳴や涙を「可愛い」と評し、遊び道具のように人間を扱うが、決して激情に任せず、常に冷静に加虐を楽しむ。</p>
+        
         <h2>仕事について</h2>
         <p>拷問屋を経営し、依頼に応じて捕らえられた人間に苦痛を与える。仕事は非常に丁寧で、依頼内容や料金に応じて「死なない程度」から「二度と元に戻れないレベル」まで多彩なコースを用意している。彼自身は情報を抜き取ることにはあまり関心がなく、純粋に「苦痛を演出する職人」としての誇りを持っている。<br>
         依頼者との会話は愛想が良く親切であるため、常連客も多い。</p>
+        
         <h2>過去</h2>
         <p>暗黒中華街に現れる前の記録はほとんどなく、彼がどこから来たのか誰も知らない。幼少期から生物を分解したり、同年代の子供を泣かせることに快楽を覚えていたと噂される。ある時期まではどこかの医者の下で働いていた形跡があるが、彼自身は過去を語りたがらない。<br>
         ただ、「拷問」ではなく「治療」と称して患者に苦痛を与えていた、という黒い噂だけが残っている。</p>
+        
         <h2>能力</h2>
         <p>医学や解剖学に通じており、神経や血管を正確に把握しているため、拷問においては「相手を殺さずに最大限苦痛を与える」ことができる。また、体力は並だが、手先の器用さと冷静な観察眼は一流。戦闘においては刃物や医療器具を使った不意打ちや拘束が得意。</p>
+        
         <h2>人間関係</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
+        <div class="character-relationships">
             <!-- 阿蓮（赤組） -->
-            <a href="../characterpage/character_aren.html" style="text-decoration:none;">
-                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
-                    <div style="display:flex; align-items:center; margin-bottom:10px;">
-                        <img src="../character_icon/aren_icon.png" alt="阿蓮" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
-                        <span style="font-size:18px; font-weight:bold; color:#fff;">阿蓮</span>
+            <div class="character-card">
+                <a href="../characterpage/character_aren.html" class="character-link-card">
+                    <div class="character-info">
+                        <img src="../character_icon/aren_icon.png" alt="阿蓮" class="character-avatar">
+                        <span class="character-name">阿蓮</span>
                     </div>
-                    <div style="font-size:15px; color:#fff;">互いに「人間観察」という点で通じ合い、よく語らう仲。阿蓮は陽炎の倒錯を面白がっている。</div>
-                </div>
-            </a>
+                    <div class="character-description">互いに「人間観察」という点で通じ合い、よく語らう仲。陽炎は阿蓮の知識を楽しみ、阿蓮は陽炎の倒錯を面白がっている。</div>
+                </a>
+            </div>
             <!-- 風花（赤組） -->
-            <a href="../characterpage/character_huuka.html" style="text-decoration:none;">
-                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
-                    <div style="display:flex; align-items:center; margin-bottom:10px;">
-                        <img src="../character_icon/huuka_icon.png" alt="風花" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
-                        <span style="font-size:18px; font-weight:bold; color:#fff;">風花</span>
+            <div class="character-card">
+                <a href="../characterpage/character_huuka.html" class="character-link-card">
+                    <div class="character-info">
+                        <img src="../character_icon/huuka_icon.png" alt="風花" class="character-avatar">
+                        <span class="character-name">風花</span>
                     </div>
-                    <div style="font-size:15px; color:#fff;">情報屋としてターゲットを紹介されることも。「耳が良いって便利だね」とからかう。</div>
-                </div>
-            </a>
+                    <div class="character-description">仕事の性質上、情報屋としての風花からターゲットを紹介されることもある。彼女に対しては「耳が良いって便利だね」と笑いながらからかうことが多い。</div>
+                </a>
+            </div>
             <!-- リス（赤組） -->
-            <a href="../characterpage/character_risu.html" style="text-decoration:none;">
-                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
-                    <div style="display:flex; align-items:center; margin-bottom:10px;">
-                        <img src="../character_icon/risu_icon.png" alt="リス" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
-                        <span style="font-size:18px; font-weight:bold; color:#fff;">リス</span>
+            <div class="character-card">
+                <a href="../characterpage/character_risu.html" class="character-link-card">
+                    <div class="character-info">
+                        <img src="../character_icon/risu_icon.png" alt="リス" class="character-avatar">
+                        <span class="character-name">リス</span>
                     </div>
-                    <div style="font-size:15px; color:#fff;">顧客として付き合いがある。「人形みたいで可愛い」と言っては苛立たせている。</div>
-                </div>
-            </a>
+                    <div class="character-description">顧客として付き合いがある。リスの冷静さを「人形みたいで可愛い」と言っては、彼を苛立たせている。</div>
+                </a>
+            </div>
         </div>
     </div>
     <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px; justify-content: center;">
@@ -220,6 +296,7 @@
         <a href="../world.html"><button>世界観設定</button></a>
         <a href="../characters.html"><button>キャラクター一覧</button></a>
         <a href="../shops.html"><button>店舗一覧</button></a>
+        <a href="../tools.html"><button>ツール</button></a>
     </div>
 </body>
 </html>

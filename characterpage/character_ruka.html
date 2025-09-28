@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>サギリ</title>
+    <title>三日月ルカ</title>
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
-            background: linear-gradient(135deg, #0a0a0a, #1a1a1a, #2a2a2a);
+            background: linear-gradient(135deg, #8b7355, #6b5d42, #5a4d38);
             font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
             min-height: 100vh;
             margin: 0;
             padding: 0;
-            color: #f0f0f0;
+            color: #2c2c2c;
             line-height: 1.6;
         }
         .title-center {
             text-align: center;
             font-size: clamp(2.5rem, 6vw, 4rem);
-            color: #ffffff;
+            color: #333333;
             font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             letter-spacing: 0.05em;
             margin: 40px auto 20px;
             padding: 0;
@@ -40,12 +40,12 @@
             max-height: 500px;
             object-fit: contain;
             border-radius: 16px;
-            border: 2px solid rgba(128, 128, 128, 0.8);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 20px rgba(64, 64, 64, 0.2);
+            border: 2px solid rgba(218, 165, 32, 0.8);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 0 20px rgba(218, 165, 32, 0.3);
             transition: all 0.3s ease;
         }
         .character-img:hover {
-            box-shadow: 0 6px 32px rgba(0, 0, 0, 0.9), 0 0 24px rgba(128, 128, 128, 0.3);
+            box-shadow: 0 6px 32px rgba(0, 0, 0, 0.2), 0 0 24px rgba(218, 165, 32, 0.4);
         }
         .info-box {
             display: flex;
@@ -53,30 +53,30 @@
             align-items: flex-start;
             gap: clamp(12px, 2vw, 20px);
             min-width: min(320px, 50vw);
-            background: rgba(64, 64, 64, 0.81);
+            background: rgba(218, 165, 32, 0.8);
             padding: clamp(20px, 3vw, 32px);
             border-radius: 16px;
-            border: 1px solid rgba(128, 128, 128, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(218, 165, 32, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
         .info-row {
             font-size: clamp(16px, 3vw, 18px);
-            color: #f5f5f5;
+            color: #333333;
             margin-bottom: 8px;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
             line-height: 1.4;
         }
         .color-link {
-            color: #666666;
+            color: #b8860b;
             font-weight: bold;
             text-decoration: none;
-            border-bottom: 1px dashed #333333;
+            border-bottom: 1px dashed #b8860b;
             transition: color 0.2s, text-shadow 0.2s;
-            text-shadow: 0 1px 8px rgba(128, 128, 128, 0.8);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
         }
         .color-link:hover {
-            color: #888888;
-            text-shadow: 0 1px 12px rgba(192, 192, 192, 0.4);
+            color: #8b7355;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
         }
         .shop-link {
             color: #6bb6ff;
@@ -104,24 +104,24 @@
             margin: 40px auto 0 auto;
             max-width: 700px;
             padding: 0 30px 40px 30px;
-            background: rgba(64, 64, 64, 0.81);
+            background: rgba(218, 165, 32, 0.8);
             border-radius: 16px;
-            border: 1px solid rgba(128, 128, 128, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(218, 165, 32, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
         .bottom-section h2 {
             font-size: 22px;
             margin-top: 28px;
             margin-bottom: 12px;
-            color: #f8f6f6;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0px 2px #666;
+            color: #333333;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             letter-spacing: 0.05em;
         }
         .bottom-section p {
             font-size: 16px;
-            color: #f0f0f0;
+            color: #444444;
             line-height: 1.8;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
             margin-bottom: 20px;
         }
         .character-relationships {
@@ -131,16 +131,16 @@
             margin-top: 20px;
         }
         .character-card {
-            background: rgba(32, 32, 32, 0.8);
+            background: rgba(245, 222, 179, 0.9);
             border-radius: 8px;
             padding: 16px;
-            border: 1px solid rgba(128, 128, 128, 0.3);
+            border: 1px solid rgba(218, 165, 32, 0.4);
             transition: all 0.3s ease;
         }
         .character-card:hover {
-            background: rgba(48, 48, 48, 0.9);
+            background: rgba(255, 235, 205, 0.95);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         .character-link-card {
             color: inherit;
@@ -157,16 +157,16 @@
             height: 36px;
             border-radius: 50%;
             margin-right: 12px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(218, 165, 32, 0.6);
         }
         .character-name {
             font-weight: bold;
             font-size: 18px;
-            color: #fff;
+            color: #333;
         }
         .character-description {
             font-size: 14px;
-            color: #ddd;
+            color: #666;
             line-height: 1.5;
         }
         @media (max-width: 768px) {
@@ -207,76 +207,83 @@
     </style>
 </head>
 <body>
-    <div class="title-center">サギリ</div>
+    <div class="title-center">三日月ルカ</div>
     <div class="top-section">
-        <img src="../character_fullbody/sagiri.png" alt="サギリ" class="character-img">
+        <img src="../character_fullbody/ruka.png" alt="三日月ルカ" class="character-img">
         <div class="info-box">
             <div class="info-row">
-                年齢：21歳
+                年齢：27歳
             </div>
             <div class="info-row">
-                種族：人間（1/4だけ燈魅の血が混じっている）
+                種族：人間
             </div>
             <div class="info-row">
-                所属色：<a href="../colorpage/black.html" class="color-link">黒</a>
+                所属色：<a href="../colorpage/yellow.html" class="color-link">黄</a>
             </div>
             <div class="info-row">
-                階級：中間構成員
+                階級：下級構成員
             </div>
             <div class="info-row">
-                仕事：殺し屋（治安維持部隊所属としての「合法的」な立場も持つ）
+                仕事：運び屋
             </div>
             <div class="info-row">
-                一人称：私
+                一人称：俺
             </div>
             <div class="info-row">
-                二人称：あなた
+                二人称：お前
             </div>
             <div class="info-row">
-                特殊呼称：ミミコ→ミミ／クロ→パパ
-            </div>
-            <div class="info-row">
-                外見特徴：背が高く、すらりとした体躯を持つ女性。黒のパンツスーツをきっちり着こなし、腰には常にホルスターと拳銃を携えている。長い黒髪を後ろで流し、切れ長の目には冷酷な光が宿る。無駄な装飾は好まず、化粧も薄いが、その分だけ鋭い雰囲気を際立たせている。歩く姿は機械仕掛けのように無駄がなく、威圧感と洗練された冷ややかさを漂わせる。
+                外見特徴：金髪にサングラスをかけ、アロハシャツにデニムというラフな服装を好む。気安い笑顔を絶やさず、軽快な立ち振る舞いを見せるため、第一印象は陽気な青年そのもの。だがサングラスの奥の視線は鋭く、場数を踏んできたことを感じさせる。
             </div>
         </div>
     </div>
     <div class="bottom-section">
         <h2>性格</h2>
-        <p>退屈を何よりも嫌い、常に「刺激」を追い求めている。そのため危険や死の匂いがする状況に惹かれ、自ら危うい場所へ身を投じる傾向がある。自由奔放に見えて、心の内側では冷静に物事を計算しており、相手の反応や状況の変化を読み取る観察眼を持っている。<br>
-        人に対しては基本的に無関心で、感情移入を避けるために皮肉や冷たい態度で距離を取ることが多い。しかし一度でも「自分の領域」に入り込んだ人間に対しては執着が強く、守ろうとする姿勢を見せる。その温度差が彼女の人間関係を複雑にしており、冷酷と優しさの両極端が同居しているように見える。<br>
-        また、心の底には「自分が人間として完全ではない」という劣等感を燈魅の血ゆえに抱えており、それを覆い隠すように冷徹な仮面をつけて生きている。</p>
+        <p>基本的にはお人好しで、困っている人間を見ると放っておけない。子供や弱者に対しては特に優しく、彼らを守ろうとする強い衝動を抱く。<br>
+        その一方で、組織に属している以上、運び屋として冷徹な判断を下さなければならない場面も多い。自分の良心と仕事の現実の間で揺れ動く性格を持っている。</p>
         
         <h2>仕事について</h2>
-        <p>治安維持部隊に所属しながら裏で「殺し屋」としても活動する二重の顔を持つ。表向きは「秩序の守護者」として振る舞うが、実際は標的の抹消や裏社会の粛清に関与している。<br>
-        銃器の扱いに長け、特に拳銃による精密射撃は組織随一。また、燈魅の血をわずかに引くため、感覚の鋭さや直感力に異常な冴えを見せる。</p>
+        <p>黄組に関わるあらゆるものを運ぶのが仕事で、麻薬・武器・金・人間といった、正規では扱えない品物を安全に運ぶことを得意としている。<br>
+        特に「目立たずに通す」技術に優れており、笑顔で話し相手を安心させながら、裏では厳密にリスク管理を行っている。本人は「便利屋みたいなもんだ」と気楽に語るが、実際は彼に依頼が集中するほど信頼されている。</p>
         
         <h2>過去</h2>
-        <p>出生は不明瞭で、幼少期に「燈魅の血」を引くことを理由に孤立や差別を受けた形跡がある。若くして戦闘の才を見出され、治安維持部隊に拾われた。<br>
-        その冷酷さと卓越した技術が評価され、21歳にして中間構成員としての地位を確立。ただし、過去の詳細を本人は語らず、燈魅としての自分を意識しているのか否かも定かではない。</p>
+        <p>黄組の娼婦の子として生まれ、幼少期から裏社会の空気の中で育った。表の社会に行く手段もなく、悪事に関わることが生き延びる唯一の道だった。<br>
+        母の死後は孤児として街を転々としながら生き延び、やがて黄組に拾われ、運び屋としての才覚を買われる。生まれに恵まれなかったが、人情を失わずに大人になったことが彼の特異性である。</p>
         
         <h2>能力</h2>
-        <p>サギリは拳銃をはじめとする火器の扱いに卓越しており、至近距離での速射と急所狙いにおいては比類なき精度を誇る。接近戦でも動きが素早く、格闘術を駆使して相手を無力化することができる。さらに燈魅の血を引くことで得た直感力があり、危機的状況を察知する力や、相手の気配を敏感に捉える嗅覚めいた感覚に優れている。その存在自体が周囲に緊張を与えるほどの威圧感を持ち、言葉よりも先に相手を屈服させる力を発揮する。</p>
+        <p>俊敏な身のこなしと危機回避能力に長けており、追跡や検問を切り抜ける判断力を持つ。地理感覚に優れ、街中の抜け道や隠しルートを熟知している。<br>
+        また「人に警戒されない」柔らかい雰囲気を身にまとい、それを武器にして仕事を遂行する。戦闘は得意ではないが、逃げることに関しては一流。</p>
         
         <h2>人間関係</h2>
         <div class="character-relationships">
-            <!-- ミミコ（赤組） -->
-            <div class="character-card" style="background: rgba(211, 47, 47, 0.8);">
-                <a href="../characterpage/character_mimiko.html" class="character-link-card">
+            <!-- シロ（白組） -->
+            <div class="character-card" style="background: rgba(248, 248, 248, 0.9);">
+                <a href="../characterpage/character_shiro.html" class="character-link-card">
                     <div class="character-info">
-                        <img src="../character_icon/mimiko_icon.png" alt="ミミコ" class="character-avatar">
-                        <span class="character-name">ミミコ</span>
+                        <img src="../character_icon/shiro_icon.png" alt="シロ" class="character-avatar">
+                        <span class="character-name" style="color: #333;">シロ</span>
                     </div>
-                    <div class="character-description">妹分のように扱い、時にからかいながらも庇護している。彼女の存在はサギリにとって唯一の大切なものである。</div>
+                    <div class="character-description">仕事上の直属の上司。飄々として掴みどころのないシロに対し、ルカは苦手意識を抱いているが、彼からは「便利で面倒見のいい下っ端」と評価されている。ルカ自身は利用されている自覚がありながらも、シロの器量を恐れて逆らえない。</div>
                 </a>
             </div>
-            <!-- クロ（黒組） -->
-            <div class="character-card">
-                <a href="../characterpage/character_kuro.html" class="character-link-card">
+            <!-- 綾（赤組） -->
+            <div class="character-card" style="background: rgba(211, 47, 47, 0.8);">
+                <a href="../characterpage/character_aya.html" class="character-link-card">
                     <div class="character-info">
-                        <img src="../character_icon/kuro_icon.png" alt="クロ" class="character-avatar">
-                        <span class="character-name">クロ</span>
+                        <img src="../character_icon/aya_icon.png" alt="綾" class="character-avatar">
+                        <span class="character-name" style="color: #fff;">綾</span>
                     </div>
-                    <div class="character-description">父親のように慕い、同時に反抗的な視線を向ける複雑な関係。命令には従うが、自分のやり方を崩さない。</div>
+                    <div class="character-description" style="color: #ddd;">気安く話せる友人のような関係。綾の大雑把さに呆れることもあるが、同時にその豪快さに救われることも多い。酒や賭け事を一緒にする相手であり、裏社会における「息抜き仲間」。</div>
+                </a>
+            </div>
+            <!-- 燿（赤組） -->
+            <div class="character-card" style="background: rgba(211, 47, 47, 0.8);">
+                <a href="../characterpage/character_you.html" class="character-link-card">
+                    <div class="character-info">
+                        <img src="../character_icon/you_icon.png" alt="燿" class="character-avatar">
+                        <span class="character-name" style="color: #fff;">燿</span>
+                    </div>
+                    <div class="character-description" style="color: #ddd;">寡黙な燿に対しては気を使い、無理に話しかけず見守る立場をとる。綾を通じて同席することが多く、燿が人見知りであることを理解しているため、さりげなく配慮する。内心では弟のように思っている節がある。</div>
                 </a>
             </div>
         </div>

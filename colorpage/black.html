@@ -4,64 +4,248 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>黒組</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <style>
         body {
-            background-color: #2a2828;
-            font-family: Arial, sans-serif;
-            padding: 40px;
-            color: #e8e0e0;
+            background: linear-gradient(135deg, #f8f8f8, #e8e8e8, #f0f0f0);
+            font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #2d2d2d;
+            line-height: 1.7;
         }
-        h1 {
-            color: #000000;
-            background: #bbb;
-            padding: 16px 0;
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: clamp(20px, 4vw, 60px);
+        }
+        
+        .title-center {
             text-align: center;
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: #1a1a1a;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.1em;
+            margin: 40px auto 60px;
+            padding: 0;
+            background: linear-gradient(45deg, #333, #555, #333);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .content-section {
+            margin-bottom: 50px;
+            padding: clamp(20px, 3vw, 40px);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            border: 1px solid rgba(64, 64, 64, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .content-section:hover {
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+            transform: translateY(-2px);
+        }
+        
+        .section-title {
+            font-size: clamp(22px, 4vw, 28px);
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: clamp(16px, 3vw, 24px);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            letter-spacing: 0.02em;
+            border-bottom: 2px solid rgba(64, 64, 64, 0.3);
+            padding-bottom: 8px;
+        }
+        
+        .section-text {
+            font-size: clamp(15px, 2.5vw, 17px);
+            color: #3a3a3a;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.02);
+        }
+        
+        .person-list, .shop-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .person-item, .shop-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: rgba(245, 245, 245, 0.8);
+            border-radius: 12px;
+            border: 1px solid rgba(64, 64, 64, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .person-item:hover, .shop-item:hover {
+            background: rgba(240, 240, 240, 0.95);
+            transform: translateX(4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+        
+        .role-label {
+            font-weight: 600;
+            color: #555;
+            min-width: 60px;
+            margin-right: 12px;
+            font-size: 14px;
+        }
+        
+        .person-link, .shop-link {
+            color: #2d2d2d;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            border-bottom: 1px dashed rgba(64, 64, 64, 0.4);
+            transition: all 0.3s ease;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        
+        .person-link:hover, .shop-link:hover {
+            color: #1a1a1a;
+            background: rgba(64, 64, 64, 0.1);
+            border-bottom: 1px solid rgba(64, 64, 64, 0.6);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .unknown-person {
+            color: #888;
+            font-style: italic;
+            border-bottom: none;
+            cursor: default;
+        }
+        
+        .unknown-person:hover {
+            background: none;
+            color: #888;
+            border-bottom: none;
+        }
+        
+        .tab-container {
+            display: flex;
+            gap: clamp(8px, 2vw, 15px);
+            margin: 60px 0 40px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .tab-container button {
+            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+            color: #2d2d2d;
             border-radius: 8px;
-            font-size: 2em;
-            margin-bottom: 32px;
+            border: 1px solid rgba(64, 64, 64, 0.2);
+            padding: clamp(8px, 2vw, 12px) clamp(16px, 3vw, 24px);
+            font-size: clamp(13px, 2.5vw, 16px);
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        section {
-            margin-bottom: 32px;
+        
+        .tab-container button:hover {
+            background: linear-gradient(135deg, #e8e8e8, #ddd);
+            color: #1a1a1a;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
         }
-        section h2 {
-            color: #f1ebeb;
-            font-size: 1.3em;
-            margin-bottom: 12px;
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .content-section {
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+            
+            .tab-container {
+                gap: 8px;
+                margin: 40px 0 20px 0;
+            }
         }
-        section p {
-            margin: 0 0 8px 0;
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .content-section {
+                padding: 16px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>黒組</h1>
-    <section>
-        <h2>組織概要</h2>
-        <p>暗黒中華街は「黒組」「白組」「黄組」「青組」「赤組」「緑組」に分割されて統治されているが、その権力は均衡しているわけではない。６色の中で明確に黒だけは、この街において特別な意味を持っているのである。「黒組」の仕事は基本的には殺しである。人、人でないもの、全ての命あるものを殺す。それが黒の仕事であり、最も原初的な悪である。しかし「黒組」が担うのはそれだけでない。鉄道の運営や、治安維持組織の所有、更に街中の最大の重要拠点である城の管理。街での揉め事が発生した際の仲裁を行うのも「黒組」のみに許された特権である。この街の中枢の全てを牛耳っているのが「黒組」であると言えるだろう。
-</p>
-    </section>
-    <section>
-        <h2>区画について</h2>
-        <p>「黒組」は街の中に特別の区画を持たない。その代わりに彼らは最も重要な拠点である城を所有している。「黒組」に所属する人の数は相当に少ないため、それでも居住には困らないのである。</p>
-    </section>
-    <section>
-        <h2>主要人物</h2>
-        <p>首長：？？？</p>
-        <p>幹部：クロ</p>
-        <p>構成員：サギリ</p>
-        <h2>店舗情報</h2>
-        <p>掃除屋</p>
-        <p>郵便局</p>
-        <P>カフェ</P>
-    </section>
-<div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
-    <a href="../index.html"><button>ホーム</button></a>
-    <a href="../rules.html"><button>特殊ルール</button></a>
-    <a href="../jinngai.html"><button>人外設定</button></a>
-    <a href="../world.html"><button>世界観設定</button></a>
-    <a href="../characters.html"><button>キャラクター一覧</button></a>
-    <a href="../shops.html"><button>店舗一覧</button></a>
-</div>
+    <div class="container">
+        <div class="title-center">黒組</div>
+        
+        <div class="content-section">
+            <h2 class="section-title">組織概要</h2>
+            <p class="section-text">暗黒中華街は「黒」「白葬街」「黄惑街」「蒼殉街」「呑紅街」「滲緑街」に分割されて統治されているが、その権力は均衡しているわけではない。６色の中で明確に黒だけは、この街において特別な意味を持っているのである。</p>
+            <p class="section-text">「黒組」の仕事は基本的には殺しである。人、人でないもの、全ての命あるものを殺す。それが黒の仕事であり、最も原初的な悪である。しかし「黒組」が担うのはそれだけでない。鉄道の運営や、治安維持組織の所有、更に街中の最大の重要拠点である城の管理。街での揉め事が発生した際の仲裁を行うのも「黒組」のみに許された特権である。</p>
+            <p class="section-text">この街の中枢の全てを牛耳っているのが「黒組」であると言えるだろう。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">区画について</h2>
+            <p class="section-text">「黒」は街の中に特別の区画を持たない。その代わりに彼らは最も重要な拠点である城を所有している。「黒組」に所属する人の数は相当に少ないため、それでも居住には困らないのである。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">主要人物</h2>
+            <div class="person-list">
+                <div class="person-item">
+                    <span class="role-label">首長：</span>
+                    <span class="person-link unknown-person">？？？</span>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">幹部：</span>
+                    <span class="person-link unknown-person">クロ</span>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">構成員：</span>
+                    <a href="../characterpage/character_sagiri.html" class="person-link">サギリ</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">店舗情報</h2>
+            <div class="shop-list">
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">掃除屋</span>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">郵便局</span>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">カフェ</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-container">
+            <a href="../index.html"><button>ホーム</button></a>
+            <a href="../rules.html"><button>特殊ルール</button></a>
+            <a href="../jinngai.html"><button>人外設定</button></a>
+            <a href="../world.html"><button>世界観設定</button></a>
+            <a href="../characters.html"><button>キャラクター一覧</button></a>
+            <a href="../shops.html"><button>店舗一覧</button></a>
+            <a href="../tools.html"><button>ツール</button></a>
+        </div>
+    </div>
 </body>
 </html>

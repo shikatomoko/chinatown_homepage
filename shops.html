@@ -70,8 +70,8 @@
         }
         /* 各組のラベル位置と色 */
         .label-yellow {
-            top: 30%;
-            left: 20%;
+            top: 20%;
+            left: 30%;
             color: #fbc02d;
             background: rgba(251, 192, 45, 0.15);
         }
@@ -94,13 +94,13 @@
             background: rgba(255, 255, 255, 0.15);
         }
         .label-red {
-            bottom: 25%;
-            left: 50%;
+            bottom: 20%;
+            left: 40%;
             color: #ff6b6b;
             background: rgba(255, 107, 107, 0.15);
         }
         .label-blue {
-            top: 60%;
+            top: 70%;
             left: 80%;
             transform: translate(-50%, -50%);
             color: #4fc3f7;
@@ -311,80 +311,82 @@
         <img src="./picture/map.png" alt="Map" class="map-img">
         
         <!-- 各組のラベル -->
-        <div class="group-label label-yellow" onclick="showGroupDetail('yellow')">黄組</div>
-        <div class="group-label label-black" onclick="showGroupDetail('black')">黒組</div>
-        <div class="group-label label-green" onclick="showGroupDetail('green')">緑組</div>
-        <div class="group-label label-white" onclick="showGroupDetail('white')">白組</div>
-        <div class="group-label label-red" onclick="showGroupDetail('red')">赤組</div>
-        <div class="group-label label-blue" onclick="showGroupDetail('blue')">青組</div>
+        <div class="group-label label-yellow" onclick="showGroupDetail('yellow')">黄惑街</div>
+        <div class="group-label label-black" onclick="showGroupDetail('black')">黒</div>
+        <div class="group-label label-green" onclick="showGroupDetail('green')">滲緑街</div>
+        <div class="group-label label-white" onclick="showGroupDetail('white')">白葬街</div>
+        <div class="group-label label-red" onclick="showGroupDetail('red')">呑紅街</div>
+        <div class="group-label label-blue" onclick="showGroupDetail('blue')">蒼殉街</div>
     </div>
     
     <!-- 詳細ボックス群 -->
     <div class="group-detail" id="detail-yellow">
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3 style="color:#fbc02d;">黄組</h3>
+        <h3 style="color:#fbc02d;">黄惑街</h3>
         <ul class="shop-list">
-            <li><img src="./shop_image/109205746_p9.png" class="shop-icon" alt="ホストクラブ"><a href="shop_hostclub.html">ホストクラブ</a></li>
-            <li><img src="shop_icon/casino.png" class="shop-icon" alt="両替所"><a href="shop_casino.html">両替所</a></li>
-            <li><img src="shop_icon/cosmeticsurgery.png" class="shop-icon" alt="美容整形外科"><a href="shop_cosmeticsurgery.html">美容整形外科</a></li>
-            <li><img src="shop_icon/bank.png" class="shop-icon" alt="銀行"><a href="shop_bank.html">銀行</a></li>
+            <li><img src="./shop_image/yellow/09205746_p9.png" class="shop-icon" alt="ホストクラブ"><a href="./shoppage/shop_hostclub.html">ホストクラブ</a></li>
+            <li><img src="./shop_image/yellow/trade.png" class="shop-icon" alt="両替所"><a href="./shoppage/shop_casino.html">両替所</a></li>
+            <li><img src="/shop_image/yellow/cosmeticsurgery.png" class="shop-icon" alt="美容整形外科"><a href="./shoppage/shop_cosmeticsurgery.html">美容整形外科</a></li>
+            <li><img src="./shop_image/yellow/casino.png" class="shop-icon" alt="カジノ"><a href="./shoppage/shop_casino.html">カジノ</a></li>
+            <li><img src="./shop_image/yellow/courier.png" class="shop-icon" alt="運び屋"><a href="./shoppage/shop_courier.html">運び屋</a></li>
+            <li><img src="./shop_image/yellow/park.png" class="shop-icon" alt="遊園地"><a href="./shoppage/shop_park.html">遊園地</a></li>
         </ul>
     </div>
     
     <div class="group-detail" id="detail-black">
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3 style="color:#fcfbfb;">黒組</h3>
+        <h3 style="color:#fcfbfb;">黒</h3>
         <ul class="shop-list">
-            <li><img src="shop_icon/castle.png" class="shop-icon" alt="城"><a href="shop_castle.html">城</a></li>
-            <li><img src="shop_icon/cleaner.png" class="shop-icon" alt="掃除屋"><a href="shop_cleaner.html">掃除屋</a></li>
-            <li><img src="shop_icon/postoffice.png" class="shop-icon" alt="郵便局"><a href="shop_postoffice.html">郵便局</a></li>
-            <li><img src="shop_icon/blackcafe.png" class="shop-icon" alt="カフェ"><a href="shop_blackcafe.html">カフェ</a></li>
+            <li><img src="./shop_image/black/castle.jpg" class="shop-icon" alt="城"><a href="./shoppage/shop_castle.html">城</a></li>
+            <li><img src="./shop_image/black/cleaner.png" class="shop-icon" alt="掃除屋"><a href="./shoppage/shop_cleaner.html">掃除屋</a></li>
+            <li><img src="./shop_image/black/postoffice.png" class="shop-icon" alt="郵便局"><a href="./shoppage/shop_postoffice.html">郵便局</a></li>
+            <li><img src="./shop_image/black/blackcafe.png" class="shop-icon" alt="カフェ"><a href="./shoppage/shop_blackcafe.html">カフェ</a></li>
         </ul>
     </div>
     
     <div class="group-detail" id="detail-green">
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3 style="color:#43ff43;">緑組</h3>
+        <h3 style="color:#43ff43;">滲緑街</h3>
         <ul class="shop-list">
-            <li><img src="shop_icon/hospital.png" class="shop-icon" alt="病院"><a href="shop_hospital.html">病院</a></li>
-            <li><img src="shop_icon/pastry.png" class="shop-icon" alt="ケーキ屋"><a href="shop_pastry.html">ケーキ屋</a></li>
-            <li><img src="shop_icon/incense.png" class="shop-icon" alt="お香屋"><a href="shop_incense.html">お香屋</a></li>
+            <li><img src="./shop_image/green/hospital.png" class="shop-icon" alt="病院"><a href="./shoppage/shop_hospital.html">病院</a></li>
+            <li><img src="./shop_image/green/cakeshop.png" class="shop-icon" alt="ケーキ屋"><a href="./shoppage/shop_cakeshop.html">ケーキ屋</a></li>
+            <li><img src="./shop_image/green/incense.png" class="shop-icon" alt="お香屋"><a href="./shoppage/shop_incense.html">お香屋</a></li>
         </ul>
     </div>
     
     <div class="group-detail" id="detail-white">
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3 style="color:#ffffff;">白組</h3>
+        <h3 style="color:#ffffff;">白葬街</h3>
         <ul class="shop-list">
-            <li><img src="shop_icon/butcher.png" class="shop-icon" alt="肉屋"><a href="shop_butcher.html">肉屋</a></li>
-            <li><img src="shop_icon/leather.png" class="shop-icon" alt="皮屋"><a href="shop_leather.html">皮屋</a></li>
-            <li><img src="shop_icon/undertaker.png" class="shop-icon" alt="葬儀屋"><a href="shop_undertaker.html">葬儀屋</a></li>
+            <li><img src="./shop_image/white/butcher.jpg" class="shop-icon" alt="肉屋"><a href="./shoppage/shop_butcher.html">肉屋</a></li>
+            <li><img src="./shop_image/white/leather.png" class="shop-icon" alt="皮屋"><a href="./shoppage/shop_leather.html">皮屋</a></li>
+            <li><img src="./shop_image/white/undertaker.png" class="shop-icon" alt="葬儀屋"><a href="./shoppage/shop_undertaker.html">葬儀屋</a></li>
         </ul>
     </div>
     
     <div class="group-detail" id="detail-red">
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3 style="color:#ff6b6b;">赤組</h3>
+        <h3 style="color:#ff6b6b;">呑紅街</h3>
         <ul class="shop-list">
-            <li><img src="./shop_image/nailsalon.png" class="shop-icon" alt="ネイルサロン"><a href="./shoppage/shop_nailsalon.html">ネイルサロン</a></li>
-            <li><img src="./shop_image/tailor.png" class="shop-icon" alt="テーラー"><a href="shop_tailor.html">テーラー</a></li>
-            <li><img src="./shop_image/antique.png" class="shop-icon" alt="骨董楼"><a href="shop_antique.html">骨董楼</a></li>
-            <li><img src="./shop_image/spa.png" class="shop-icon" alt="湯治屋"><a href="shop_bath.html">湯治屋</a></li>
-            <li><img src="./shop_image/informer.png" class="shop-icon" alt="情報屋"><a href="shop_informer.html">情報屋</a></li>
-            <li><img src="./shop_image/torture.png" class="shop-icon" alt="拷問屋"><a href="./shoppage/shop_torture.html">拷問屋</a></li>
-            <li><img src="./shop_image/tattoo.png" class="shop-icon" alt="刺青屋"><a href="shop_tattoo.html">刺青屋</a></li>
-            <li><img src="./shop_image/printing.png" class="shop-icon" alt="印紙屋"><a href="shop_stamp.html">印紙屋</a></li>
+            <li><img src="./shop_image/red/nailsalon.png" class="shop-icon" alt="ネイルサロン"><a href="./shoppage/shop_nailsalon.html">ネイルサロン</a></li>
+            <li><img src="./shop_image/red/tailor.png" class="shop-icon" alt="テーラー"><a href="./shoppage/shop_tailor.html">テーラー</a></li>
+            <li><img src="./shop_image/red/antique.png" class="shop-icon" alt="骨董楼"><a href="./shoppage/shop_antique.html">骨董楼</a></li>
+            <li><img src="./shop_image/red/spa.png" class="shop-icon" alt="湯治屋"><a href="./shoppage/shop_spa.html">湯治屋</a></li>
+            <li><img src="./shop_image/red/informer.png" class="shop-icon" alt="情報屋"><a href="./shoppage/shop_informer.html">情報屋</a></li>
+            <li><img src="./shop_image/red/torture.png" class="shop-icon" alt="拷問屋"><a href="./shoppage/shop_torture.html">拷問屋</a></li>
+            <li><img src="./shop_image/red/tattoo.png" class="shop-icon" alt="刺青屋"><a href="./shoppage/shop_tattoo.html">刺青屋</a></li>
+            <li><img src="./shop_image/red/printing.png" class="shop-icon" alt="印紙屋"><a href="./shoppage/shop_stamp.html">印紙屋</a></li>
         </ul>
     </div>
     
     <div class="group-detail" id="detail-blue">
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3 style="color:#4fc3f7;">青組</h3>
+        <h3 style="color:#4fc3f7;">蒼殉街</h3>
         <ul class="shop-list">
-            <li><img src="shop_icon/cult.png" class="shop-icon" alt="教団"><a href="shop_cult.html">教団</a></li>
-            <li><img src="shop_icon/school.png" class="shop-icon" alt="学校"><a href="shop_school.html">学校</a></li>
-            <li><img src="shop_icon/zoo.png" class="shop-icon" alt="動物園"><a href="shop_zoo.html">動物園</a></li>
-            <li><img src="shop_icon/aquarium.png" class="shop-icon" alt="水族館"><a href="shop_aquarium.html">水族館</a></li>
+            <li><img src="./shop_image/blue/cult.png" class="shop-icon" alt="教団"><a href="./shoppage/shop_cult.html">教団</a></li>
+            <li><img src="./shop_image/blue/museum.png" class="shop-icon" alt="学校"><a href="./shoppage/shop_school.html">学校</a></li>
+            <li><img src="./shop_image/blue/zoo.png" class="shop-icon" alt="動物園"><a href="./shoppage/shop_zoo.html">動物園</a></li>
+            <li><img src="./shop_image/blue/aquarium.png" class="shop-icon" alt="水族館"><a href="./shoppage/shop_aquarium.html">水族館</a></li>
         </ul>
     </div>
     

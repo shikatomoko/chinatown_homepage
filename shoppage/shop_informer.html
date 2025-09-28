@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>拷問屋</title>
+    <title>情報屋</title>
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
@@ -166,6 +166,41 @@
             font-size: 16px;
             color: #f0f0f0;
             margin-top: 8px;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .service-card {
+            background: rgba(180, 30, 10, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(223, 41, 14, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            background: rgba(200, 35, 15, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 12px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-description {
+            font-size: 15px;
+            color: #f0f0f0;
+            line-height: 1.6;
         }
         
         .tab-container {
@@ -340,7 +375,8 @@
                 padding: 0 20px 20px 20px;
             }
             
-            .employee-grid {
+            .employee-grid,
+            .service-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -362,45 +398,64 @@
     </style>
 </head>
 <body>
-    <div class="title-center">拷問屋</div>
+    <div class="title-center">情報屋</div>
     <div class="top-section">
-        <img src="../shop_image/red/torture.png" alt="拷問屋" class="shop-img">
+        <img src="../shop_image/red/informer.png" alt="情報屋" class="shop-img">
         <div class="info-box">
             <div class="info-row">
                 所属組織：<a href="../colorpage/red.html" class="color-link">呑紅街</a>
             </div>
             <div class="info-row">
-                エリア：周辺エリア
+                場所：周辺エリア
             </div>
             <div class="info-row">
-                業種：拷問代行業
+                営業時間：24時間
             </div>
             <div class="info-row">
-                価格帯：20,000円～100,000円
+                業種：情報売買業
             </div>
         </div>
     </div>
     
     <div class="bottom-section">
         <h2>概要</h2>
-        <p>情報屋の隣にある。店舗に人間を持ち込むことで、拷問を代行してくれる。扱う人間は主に中級〜下層部の人間であり、リーズナブルな庶民派の拷問専門店。組織の抗争の報復であったり、情報の聞き出しを行うために依頼を持ちかけてくるケースが多い。</p>
+        <p>この街にあるすべての情報を売り買いできる店。風が知っていることならば全てがここにある。隣の店の明日の日替わりメニューから、再来月の上層部の会合予定まで、文字通りなんでも取扱中。</p>
+        <p>ただし誰にでも無条件で情報を売っているわけではない。必要なのは金と、それから十分な信用である。</p>
         
         <h2>利用方法</h2>
-        <p><strong>ゆるふわコース：</strong>20,000円で請負可能。一通り苦痛を与えてはくれるが、運が悪いと殺してしまう場合もある。</p>
-        <p><strong>しっかりコース：</strong>50,000円で請負可能。殺さないように細心の注意を払ってくれる。対象者を必ず生きた状態で返還してくれる補償付き。</p>
-        <p><strong>がんばるコース：</strong>100,000円で請負可能。店の技術を総結晶させた最高の苦痛を与えてくれる。コースの完遂にはおおよそ1-2週間が必要となる。</p>
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-title">情報を買う</div>
+                <div class="service-description">
+                    言い値の支払いと、信用値70以上が必要。風花の言いくるめに成功することで利用可能になる場合もある。
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-title">情報を売る</div>
+                <div class="service-description">
+                    信用値が80以上かつ店舗の利用が10回以上である場合に限り、情報を売ることができる。
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="bottom-section">
         <h2>従業員</h2>
         <div class="employee-grid">
-            <a href="../characterpage/character_kagerou.html" class="employee-card">
+            <a href="../characterpage/character_huuka.html" class="employee-card">
                 <div class="employee-header">
-                    <img src="../character_icon/kagerou_icon.png" alt="陽炎" class="employee-icon">
-                    <span class="employee-name">陽炎</span>
+                    <img src="../character_icon/huuka_icon.png" alt="風花" class="employee-icon">
+                    <span class="employee-name">風花</span>
                 </div>
                 <div class="employee-role">店長</div>
             </a>
+            <div class="employee-card">
+                <div class="employee-header">
+                    <img src="../nonhuman_illustlation/huuri.png" alt="風狸族" class="employee-icon">
+                    <span class="employee-name">風狸族</span>
+                </div>
+                <div class="employee-role">配下・情報収集員</div>
+            </div>
         </div>
     </div>
     

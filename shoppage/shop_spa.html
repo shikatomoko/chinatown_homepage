@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>拷問屋</title>
+    <title>湯治屋</title>
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
@@ -166,6 +166,58 @@
             font-size: 16px;
             color: #f0f0f0;
             margin-top: 8px;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .service-card {
+            background: rgba(180, 30, 10, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(223, 41, 14, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            background: rgba(200, 35, 15, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 12px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-price {
+            font-size: 16px;
+            color: #ffcc00;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .service-description {
+            font-size: 15px;
+            color: #f0f0f0;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .service-mechanics {
+            font-size: 14px;
+            color: #e0e0e0;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid rgba(255, 204, 0, 0.8);
         }
         
         .tab-container {
@@ -340,7 +392,8 @@
                 padding: 0 20px 20px 20px;
             }
             
-            .employee-grid {
+            .employee-grid,
+            .service-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -362,45 +415,72 @@
     </style>
 </head>
 <body>
-    <div class="title-center">拷問屋</div>
+    <div class="title-center">湯治屋</div>
     <div class="top-section">
-        <img src="../shop_image/red/torture.png" alt="拷問屋" class="shop-img">
+        <img src="../shop_image/red/spa.png" alt="湯治屋" class="shop-img">
         <div class="info-box">
             <div class="info-row">
                 所属組織：<a href="../colorpage/red.html" class="color-link">呑紅街</a>
             </div>
             <div class="info-row">
-                エリア：周辺エリア
+                場所：周辺エリア
             </div>
             <div class="info-row">
-                業種：拷問代行業
+                営業時間：要予約制
             </div>
             <div class="info-row">
-                価格帯：20,000円～100,000円
+                業種：東洋医学・湯治療法
             </div>
         </div>
     </div>
     
     <div class="bottom-section">
         <h2>概要</h2>
-        <p>情報屋の隣にある。店舗に人間を持ち込むことで、拷問を代行してくれる。扱う人間は主に中級〜下層部の人間であり、リーズナブルな庶民派の拷問専門店。組織の抗争の報復であったり、情報の聞き出しを行うために依頼を持ちかけてくるケースが多い。</p>
+        <p>傷や毒、呪いを癒す「湯」を提供している。緑組の提供する医療が科学に基づく西洋医学とすれば、こちらはまじないじみた東洋医学・民間療法である。</p>
+        <p>薬草・人外の体液・古い儀式を組み合わせているらしい。軽症ならば目に見えて治るが、運が悪ければ後遺症を負う場合もある。</p>
         
-        <h2>利用方法</h2>
-        <p><strong>ゆるふわコース：</strong>20,000円で請負可能。一通り苦痛を与えてはくれるが、運が悪いと殺してしまう場合もある。</p>
-        <p><strong>しっかりコース：</strong>50,000円で請負可能。殺さないように細心の注意を払ってくれる。対象者を必ず生きた状態で返還してくれる補償付き。</p>
-        <p><strong>がんばるコース：</strong>100,000円で請負可能。店の技術を総結晶させた最高の苦痛を与えてくれる。コースの完遂にはおおよそ1-2週間が必要となる。</p>
+        <h2>利用方法・料金</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-title">軽傷治療</div>
+                <div class="service-price">入湯料：5,000円</div>
+                <div class="service-description">
+                    ほぼ確実に治り、後遺症の発生確率は5%程度。日常的な怪我や軽い呪いに対応。
+                </div>
+                <div class="service-mechanics">
+                    <strong>判定方法：</strong>POT4との対抗ロール成功で後遺症なし（HPが1d3回復）。失敗の場合、手足の痺れや鈍痛などに襲われる場合がある。
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-title">重傷治療</div>
+                <div class="service-price">価格：要交渉</div>
+                <div class="service-description">
+                    重篤な怪我や強力な呪いに対応。後遺症の確率は30%程度と高くなるが、他に治療法がない場合の最後の手段。
+                </div>
+                <div class="service-mechanics">
+                    <strong>判定方法：</strong>POT8との対抗ロール成功で後遺症なし（HPが2d3回復）。失敗の場合、手足の痺れに加え、意識の混濁や酩酊、記憶障害が発生する場合がある。
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="bottom-section">
         <h2>従業員</h2>
         <div class="employee-grid">
-            <a href="../characterpage/character_kagerou.html" class="employee-card">
+            <a href="../characterpage/character_aru.html" class="employee-card">
                 <div class="employee-header">
-                    <img src="../character_icon/kagerou_icon.png" alt="陽炎" class="employee-icon">
-                    <span class="employee-name">陽炎</span>
+                    <img src="../character_icon/aru_icon.png" alt="阿瑠" class="employee-icon">
+                    <span class="employee-name">阿瑠</span>
                 </div>
-                <div class="employee-role">店長</div>
+                <div class="employee-role">薬師</div>
             </a>
+            <div class="employee-card">
+                <div class="employee-header">
+                    <img src="../character_icon/apprentice_icon.png" alt="見習い" class="employee-icon">
+                    <span class="employee-name">見習い達</span>
+                </div>
+                <div class="employee-role">助手・薬草調合</div>
+            </div>
         </div>
     </div>
     
