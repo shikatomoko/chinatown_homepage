@@ -7,44 +7,42 @@
     <link rel="stylesheet" href="../style.css">
      <style>
         body {
-            background: linear-gradient(135deg, #6f2222 40%, #b52d2d 70%, #2d1a2d 100%);
-            font-family: 'Cinzel', 'Yu Gothic', '游ゴシック', serif;
+            background: linear-gradient(135deg, #1a0000, #2d0808, #0f0f0f);
+            font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
             min-height: 100vh;
             margin: 0;
             padding: 0;
-            color: #040404;
+            color: #f0f0f0;
+            line-height: 1.6;
         }
         .title-center {
             text-align: center;
-            font-size: 3.2em;
-            color: #0c0c0c;
-            background: rgba(251, 1, 1, 0.9);
-            border-radius: 16px;
-            padding: 32px 0 32px 0;
-            margin: 32px auto 0 auto;
-            width: 400px;
-            box-shadow: 0 4px 24px rgba(64, 63, 63, 0.8), 0 0 32px rgba(0, 0, 0, 0.4);
-            font-weight: bold;
-            border: 3px solid #101010;
-            text-shadow: 0 2px 16px #3f3f3f, 0 0px 4px #666;
-            letter-spacing: 0.1em;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+            letter-spacing: 0.05em;
+            margin: 40px auto 20px;
+            padding: 0;
         }
         .top-section {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            padding: 40px 60px 20px 60px;
-            gap: 60px;
+            padding: clamp(20px, 4vw, 60px);
+            gap: clamp(20px, 4vw, 60px);
+            max-width: 1200px;
+            margin: 0 auto;
         }
         .character-img {
-            width: 350px;
-            height: 600px;
+            width: min(350px, 45vw);
+            height: auto;
+            aspect-ratio: 7/12;
             object-fit: cover;
-            border-radius: 12px;
-            border: 3px solid #000000;
-            margin-top: 40px;
-            box-shadow: 0 4px 24px rgba(58, 58, 58, 0.8), 0 0 16px rgba(0, 0, 0, 0.6);
-            transition: box-shadow 0.3s;
+            border-radius: 16px;
+            border: 2px solid rgba(139, 69, 19, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 20px rgba(139, 69, 19, 0.2);
+            transition: all 0.3s ease;
         }
         .character-img:hover {
             box-shadow: 0 6px 32px rgba(43, 42, 42, 0.9), 0 0 24px rgba(102, 102, 102, 0.3);
@@ -52,21 +50,22 @@
         .info-box {
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
-            gap: 20px;
-            min-width: 320px;
-            margin-top: 40px;
-            background: rgba(177, 77, 77, 0.8);
-            padding: 24px;
-            border-radius: 12px;
-            border: 2px solid #0e0d0d;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+            align-items: flex-start;
+            gap: clamp(12px, 2vw, 20px);
+            min-width: min(320px, 50vw);
+            background: linear-gradient(135deg, rgba(85, 26, 26, 0.9), rgba(139, 69, 19, 0.8));
+            backdrop-filter: blur(10px);
+            padding: clamp(20px, 3vw, 32px);
+            border-radius: 16px;
+            border: 1px solid rgba(139, 69, 19, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         .info-row {
-            font-size: 18px;
-            color: #f2eded;
-            margin-bottom: 2px;
-            text-shadow: 0 1px 4px #262525;
+            font-size: clamp(16px, 3vw, 18px);
+            color: #f5f5f5;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+            line-height: 1.4;
         }
         .color-link {
             color: #f30606;
@@ -147,6 +146,100 @@
             color: #fff;
             box-shadow: 0 2px 12px rgba(102, 102, 102, 0.3);
         }
+        
+        /* 人間関係のスタイル */
+        .character-relationships {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(16px, 3vw, 24px);
+            margin-top: 20px;
+        }
+        .character-card {
+            background: linear-gradient(135deg, rgba(85, 26, 26, 0.8), rgba(139, 69, 19, 0.7));
+            border-radius: 16px;
+            border: 1px solid rgba(139, 69, 19, 0.4);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            display: flex;
+        }
+        .character-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            border-color: rgba(139, 69, 19, 0.7);
+        }
+        .character-link-card {
+            text-decoration: none;
+            color: inherit;
+            padding: clamp(16px, 3vw, 20px);
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .character-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .character-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            margin-right: 12px;
+            object-fit: cover;
+        }
+        .character-name {
+            font-size: clamp(16px, 3vw, 18px);
+            font-weight: 600;
+            color: #ffffff;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+        }
+        .character-description {
+            font-size: clamp(14px, 2.5vw, 15px);
+            color: #e8e8e8;
+            line-height: 1.5;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+            flex-grow: 1;
+        }
+        
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            .top-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .info-box {
+                width: 100%;
+                align-items: center;
+                text-align: center;
+            }
+            .character-img {
+                width: min(280px, 80vw);
+                margin-bottom: 20px;
+            }
+            .character-relationships {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+            .character-img {
+                width: min(240px, 85vw);
+            }
+            .character-card {
+                min-height: 100px;
+            }
+            .character-avatar {
+                width: 40px;
+                height: 40px;
+                margin-right: 8px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -164,6 +257,15 @@
                 仕事：<a href="../shoppage/shop_bath.html" class="shop-link">湯治屋</a>
             </div>
             <div class="info-row">
+                一人称：僕
+            </div>
+            <div class="info-row">
+                二人称：君/●●さん
+            </div>
+            <div class="info-row">
+                特殊呼称：阿蓮→父さん
+            </div>
+            <div class="info-row">
                 外見特徴：20代前後の若い男性。細身で蒼白な肌を持ち、長い指先を落ち着きなく動かす癖がある。髪は黒く艶やかだが、顔色の悪さと相まって病的な雰囲気を漂わせている。目元は細く、常に相手を値踏みするような視線を送る。
             </div>
         </div>
@@ -179,37 +281,27 @@
         <h2>能力</h2>
         <p>薬草や薬剤の調合に長け、温泉の効能を自在に操ることができる。人体の体質や症状を観察して弱点を見抜く力を持つが、実戦向きではない。武器を扱うよりも、毒や薬でじわじわと効力を及ぼすことを好む。精神的には脆弱だが、環境さえ整えば高い集中力を発揮できる。</p>
         <h2>人間関係</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
+        <div class="character-relationships">
             <!-- 阿蓮（赤組） -->
-            <a href="../characterpage/character_aren.html" style="text-decoration:none;">
-                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
-                    <div style="display:flex; align-items:center; margin-bottom:10px;">
-                        <img src="../character_icon/aren_icon.png" alt="阿蓮" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
-                        <span style="font-size:18px; font-weight:bold; color:#fff;">阿蓮</span>
+            <div class="character-card">
+                <a href="../characterpage/character_aren.html" class="character-link-card">
+                    <div class="character-info">
+                        <img src="../character_icon/aren_icon.png" alt="阿蓮" class="character-avatar">
+                        <span class="character-name">阿蓮</span>
                     </div>
-                    <div style="font-size:15px; color:#fff;">師であり父のような存在。心から畏敬しているが、同時にその影に押し潰されそうになっている。</div>
-                </div>
-            </a>
+                    <div class="character-description">師であり父のような存在。心から畏敬しているが、同時にその影に押し潰されそうになっている。</div>
+                </a>
+            </div>
             <!-- リス（赤組） -->
-            <a href="../characterpage/character_risu.html" style="text-decoration:none;">
-                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
-                    <div style="display:flex; align-items:center; margin-bottom:10px;">
-                        <img src="../character_icon/risu_icon.png" alt="リス" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
-                        <span style="font-size:18px; font-weight:bold; color:#fff;">リス</span>
+            <div class="character-card">
+                <a href="../characterpage/character_risu.html" class="character-link-card">
+                    <div class="character-info">
+                        <img src="../character_icon/risu_icon.png" alt="リス" class="character-avatar">
+                        <span class="character-name">リス</span>
                     </div>
-                    <div style="font-size:15px; color:#fff;">誠実さを「弱さ」とみなし、内心軽蔑している。だが自身が心弱いことを悟られるのを恐れて距離を取っている。</div>
-                </div>
-            </a>
-            <!-- 陽炎（赤組） -->
-            <a href="../characterpage/character_kagerou.html" style="text-decoration:none;">
-                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
-                    <div style="display:flex; align-items:center; margin-bottom:10px;">
-                        <img src="../character_icon/kagerou_icon.png" alt="陽炎" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
-                        <span style="font-size:18px; font-weight:bold; color:#fff;">陽炎</span>
-                    </div>
-                    <div style="font-size:15px; color:#fff;">観察対象としては興味深いが、彼に触れると自分が壊れてしまう恐怖を抱いている。</div>
-                </div>
-            </a>
+                    <div class="character-description">誠実さを「弱さ」とみなし、内心軽蔑している。だが自身が心弱いことを悟られるのを恐れて距離を取っている。</div>
+                </a>
+            </div>
         </div>
     </div>
     <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px; justify-content: center;">
@@ -219,6 +311,7 @@
         <a href="../world.html"><button>世界観設定</button></a>
         <a href="../characters.html"><button>キャラクター一覧</button></a>
         <a href="../shops.html"><button>店舗一覧</button></a>
+        <a href="../tools.html"><button>ツール</button></a>
     </div>
 </body>
 </html>

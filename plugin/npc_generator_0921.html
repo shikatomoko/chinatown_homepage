@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>敵NPCジェネレーター</title>
+<style>
+body { 
+  font-family: sans-serif; 
+  margin: 20px; 
+  background: #f0f0f0; 
+  line-height: 1.6;
+}
+.container { 
+  max-width: 800px; 
+  margin: 0 auto; 
+  background: white; 
+  padding: 20px; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+h1 { 
+  color: #333; 
+  text-align: center; 
+  margin-bottom: 30px; 
+}
+.section { 
+  margin-bottom: 20px; 
+  padding: 15px; 
+  border: 1px solid #ddd; 
+  border-radius: 5px; 
+  background: #fafafa;
+}
+.section-title { 
+  font-weight: bold; 
+  color: #555; 
+  margin-bottom: 10px; 
+}
+.form-row { 
+  display: flex; 
+  align-items: center; 
+  margin-bottom: 10px; 
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.form-row label { 
+  min-width: 80px; 
+  font-weight: bold; 
+}
+input[type="text"], input[type="number"] { 
+  padding: 8px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  font-size: 14px;
+}
+input[type="text"] { 
+  width: 200px; 
+}
+input[type="number"] { 
+  width: 80px; 
+}
+.checkbox-group { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 15px; 
+  margin-top: 5px;
+}
+.checkbox-item { 
+  display: flex; 
+  align-items: center; 
+  gap: 5px;
+}
+.color-palette {
+  display: grid;
+  grid-template-columns: repeat(5, 40px);
+  gap: 8px;
+  margin-top: 10px;
+}
+.color-option {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.color-option:hover {
+  transform: scale(1.1);
+  border-color: #333;
+}
+.color-option.selected {
+  border-color: #333;
+  border-width: 4px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+button { 
+  padding: 12px 24px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  margin: 10px 5px; 
+  background: #007bff; 
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  transition: background-color 0.2s;
+}
+button:hover { 
+  background: #0056b3; 
+}
+.generate-btn { 
+  background: #28a745; 
+  font-size: 18px; 
+  padding: 15px 30px;
+}
+.generate-btn:hover { 
+  background: #1e7e34; 
+}
+pre { 
+  background: #fff; 
+  padding: 15px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  overflow-x: auto; 
+  font-size: 12px; 
+  max-height: 400px; 
+  overflow-y: auto;
+}
+.center { 
+  text-align: center; 
+}
+.note { 
+  font-size: 12px; 
+  color: #666; 
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>敵NPCジェネレーター</h1>
+  
+  <div class="section">
+    <div class="section-title">NPC設定</div>
+    
+    <div class="form-row">
+      <label>名前</label>
+      <input type="text" id="customName" placeholder="例）敵A">
+      <span class="note">※空白にするとランダムで中華風の名前が生成されます</span>
+    </div>
+    
+    <div class="form-row">
+      <label>サイズ</label>
+      <input type="number" id="charSize" value="10" min="1" max="50">
+    </div>
+    
+    <div class="form-row">
+      <label>カラー</label>
+    </div>
+    <div class="color-palette">
+      <div class="color-option" data-color="#ff5722" style="background-color: #ff5722;" title="赤"></div>
+      <div class="color-option" data-color="#e91e63" style="background-color: #e91e63;" title="ピンク"></div>
+      <div class="color-option" data-color="#9c27b0" style="background-color: #9c27b0;" title="紫"></div>
+      <div class="color-option" data-color="#3f51b5" style="background-color: #3f51b5;" title="ブルー"></div>
+      <div class="color-option selected" data-color="#00bcd4" style="background-color: #00bcd4;" title="シアン（デフォルト）"></div>
+      <div class="color-option" data-color="#4caf50" style="background-color: #4caf50;" title="グリーン"></div>
+      <div class="color-option" data-color="#ffeb3b" style="background-color: #ffeb3b;" title="イエロー"></div>
+      <div class="color-option" data-color="#ff9800" style="background-color: #ff9800;" title="オレンジ"></div>
+      <div class="color-option" data-color="#795548" style="background-color: #795548;" title="ブラウン"></div>
+      <div class="color-option" data-color="#9e9e9e" style="background-color: #9e9e9e;" title="グレー"></div>
+    </div>
+    
+    <div class="form-row" style="margin-top: 20px;">
+      <label>戦闘技能</label>
+    </div>
+    <div class="checkbox-group">
+      <div class="checkbox-item">
+        <input type="checkbox" id="fist" checked>
+        <label for="fist">こぶし (1d3)</label>
+      </div>
+      <div class="checkbox-item">
+        <input type="checkbox" id="kick">
+        <label for="kick">キック (1d6)</label>
+      </div>
+      <div class="checkbox-item">
+        <input type="checkbox" id="knife">
+        <label for="knife">ナイフ (1d4)</label>
+      </div>
+      <div class="checkbox-item">
+        <input type="checkbox" id="randomWeapon">
+        <label for="randomWeapon">ランダム (上記3つから1つ)</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="center">
+    <button id="generateBtn" class="generate-btn">NPCを生成してコピー</button>
+  </div>
+
+  <pre id="output"></pre>
+</div>
+
+<script>
+let selectedColor = "#00bcd4"; // デフォルトカラー（シアン）
+
+// カラーパレット機能
+document.querySelectorAll('.color-option').forEach(option => {
+  option.addEventListener('click', function() {
+    // 既存の選択を解除
+    document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
+    
+    // 新しい選択を適用
+    this.classList.add('selected');
+    selectedColor = this.dataset.color;
+  });
+});
+
+// ランダム戦闘技能の選択処理
+document.getElementById('randomWeapon').addEventListener('change', function() {
+  if (this.checked) {
+    // ランダムがチェックされたら他のチェックを外す
+    document.getElementById('fist').checked = false;
+    document.getElementById('kick').checked = false;
+    document.getElementById('knife').checked = false;
+  }
+});
+
+// 個別戦闘技能がチェックされたらランダムを外す
+['fist', 'kick', 'knife'].forEach(id => {
+  document.getElementById(id).addEventListener('change', function() {
+    if (this.checked) {
+      document.getElementById('randomWeapon').checked = false;
+    }
+  });
+});
+
+// ダイス関数
+function roll3d6() { return Math.floor(Math.random()*6+1) + Math.floor(Math.random()*6+1) + Math.floor(Math.random()*6+1); }
+function roll2d6plus6() { return Math.floor(Math.random()*6+1) + Math.floor(Math.random()*6+1) + 6; }
+function clampWeak(value) { return value > 9 ? 9 : value; }
+function randomAvoid(dex) { return dex*2 + Math.floor(Math.random()*21); }
+
+// 名前と読み仮名
+const surnames = [
+  {kanji:"李", reading:"り"}, {kanji:"王", reading:"おう"}, {kanji:"張", reading:"ちょう"},
+  {kanji:"陳", reading:"ちん"}, {kanji:"劉", reading:"りゅう"}, {kanji:"楊", reading:"よう"},
+  {kanji:"趙", reading:"ちょう"}, {kanji:"黄", reading:"こう"}, {kanji:"周", reading:"しゅう"},
+  {kanji:"呉", reading:"ご"}, {kanji:"徐", reading:"じょ"}, {kanji:"孫", reading:"そん"},
+  {kanji:"馬", reading:"ば"}, {kanji:"朱", reading:"しゅ"}, {kanji:"胡", reading:"こ"}
+];
+const givenNames = [
+  {kanji:"偉", reading:"い"}, {kanji:"強", reading:"きょう"}, {kanji:"敏", reading:"びん"},
+  {kanji:"勇", reading:"ゆう"}, {kanji:"明", reading:"あき"}, {kanji:"峰", reading:"みね"},
+  {kanji:"龍", reading:"りゅう"}, {kanji:"虎", reading:"とら"}, {kanji:"華", reading:"はな"},
+  {kanji:"浩", reading:"ひろ"}, {kanji:"翔", reading:"しょう"}, {kanji:"健", reading:"けん"},
+  {kanji:"亮", reading:"りょう"}, {kanji:"信", reading:"しん"}, {kanji:"義", reading:"よし"},
+  {kanji:"忠", reading:"ただ"}, {kanji:"豪", reading:"ごう"}, {kanji:"楽", reading:"らく"},
+  {kanji:"仁", reading:"じん"}, {kanji:"哲", reading:"てつ"}
+];
+
+function randomName() {
+  const surname = surnames[Math.floor(Math.random()*surnames.length)];
+  const given = givenNames[Math.floor(Math.random()*givenNames.length)];
+  return { kanji: surname.kanji + given.kanji, reading: surname.reading + given.reading };
+}
+
+// 戦闘技能
+const weapons = [
+  {name:"こぶし", base:"1d3"},
+  {name:"キック", base:"1d6"},
+  {name:"ナイフ", base:"1d4"}
+];
+
+// DB計算
+function calcDB(STR, SIZ){
+  const total = STR + SIZ;
+  if(total <= 12) return "-1d6";
+  if(total <= 16) return "-1d4";
+  if(total <= 24) return "0";
+  if(total <= 32) return "1d4";
+  return "1d6";
+}
+
+// 戦闘技能の選択処理
+function getSelectedWeapons() {
+  const isRandom = document.getElementById('randomWeapon').checked;
+  
+  if (isRandom) {
+    const randomWeapon = weapons[Math.floor(Math.random() * weapons.length)];
+    return [randomWeapon];
+  } else {
+    const selectedWeapons = [];
+    if (document.getElementById('fist').checked) selectedWeapons.push(weapons[0]);
+    if (document.getElementById('kick').checked) selectedWeapons.push(weapons[1]);
+    if (document.getElementById('knife').checked) selectedWeapons.push(weapons[2]);
+    return selectedWeapons;
+  }
+}
+
+// NPC生成
+function generateNPC() {
+  let STR = clampWeak(roll3d6());
+  let CON = clampWeak(roll3d6());
+  let DEX = clampWeak(roll3d6());
+  let APP = clampWeak(roll3d6());
+  let INT = clampWeak(roll2d6plus6());
+  let POW = roll2d6plus6();
+  let SIZ = roll2d6plus6();
+  let EDU = roll2d6plus6();
+  let HP = Math.ceil((CON+SIZ)/2);
+  let DB = calcDB(STR, SIZ);
+
+  // 名前の設定
+  let nameObj;
+  const customName = document.getElementById('customName').value.trim();
+  if (customName) {
+    nameObj = { kanji: customName, reading: customName };
+  } else {
+    nameObj = randomName();
+  }
+
+  // キャラクターサイズの取得（正方形）
+  const size = parseInt(document.getElementById('charSize').value) || 10;
+
+  // 画像URLの設定（デフォルト画像固定）
+  const iconUrl = "https://storage.ccfolia-cdn.net/users/hFFa0wYfSjRctAQh3RSLe1qcCT13/files/cdd6c8a2c8565c4fa51eccaa87925240b9277426a3f01d8bb6dba423cc4ba47d?t=1758285503109";
+
+  // 選択された戦闘技能を取得
+  const selectedWeapons = getSelectedWeapons();
+  
+  if (selectedWeapons.length === 0) {
+    alert("戦闘技能を少なくとも1つ選択してください。");
+    return;
+  }
+
+  // チャットパレット用のコマンド生成
+  let weaponCommands = [];
+  let weaponInfo = [];
+  
+  selectedWeapons.forEach(weapon => {
+    const skill = Math.floor(Math.random()*31)+20; // 20-50のランダム
+    weaponCommands.push(`CCB<=${skill} 【${weapon.name}】`);
+    weaponCommands.push(`${weapon.base}+${DB} 【ダメージ判定（${weapon.name}）】`);
+    weaponInfo.push(`${weapon.name}(${skill})`);
+  });
+
+  const npc = {
+    kind: "character",
+    data: {
+      name: nameObj.kanji,
+      initiative: DEX,
+      iconUrl: iconUrl,
+      x:0, y:0, z:0, angle:0,
+      width: size, height: size, // 同じ値を設定（正方形）
+      active:true, secret:false, invisible:false, hideStatus:false,
+      color: selectedColor, // 選択されたカラーを使用
+      params:[
+        {label:"STR", value: STR.toString()},
+        {label:"CON", value: CON.toString()},
+        {label:"POW", value: POW.toString()},
+        {label:"DEX", value: DEX.toString()},
+        {label:"APP", value: APP.toString()},
+        {label:"SIZ", value: SIZ.toString()},
+        {label:"INT", value: INT.toString()},
+        {label:"EDU", value: EDU.toString()},
+        {label:"DB", value: DB}
+      ],
+      status:[
+        {label:"HP", value: HP, max: HP},
+        {label:"MP", value: POW, max: POW},
+      ],
+      memo: customName ? nameObj.kanji : `${nameObj.kanji}（${nameObj.reading}）`,
+      commands: `
+${weaponCommands.join('\n')}
+CCB<=${randomAvoid(DEX)} 【回避】
+CCB<=${STR}*5 【STR ×5】
+CCB<=${CON}*5 【CON ×5】
+CCB<=${POW}*5 【POW ×5】
+CCB<=${DEX}*5 【DEX ×5】
+CCB<=${APP}*5 【APP ×5】
+CCB<=${SIZ}*5 【SIZ ×5】
+CCB<=${INT}*5 【INT ×5】
+CCB<=${EDU}*5 【EDU ×5}
+`.trim()
+    }
+  };
+
+  const jsonText = JSON.stringify(npc, null, 2);
+  document.getElementById("output").textContent = jsonText;
+  
+  navigator.clipboard.writeText(jsonText).then(()=> {
+    alert(`NPC "${nameObj.kanji}"をコピーしました！\n戦闘技能: ${weaponInfo.join(', ')}\nDB: ${DB}`);
+  }).catch(()=> {
+    alert("コピーに失敗しました。手動でコピーしてください。");
+  });
+}
+
+document.getElementById("generateBtn").addEventListener("click", generateNPC);
+</script>
+</body>
+</html>

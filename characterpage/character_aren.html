@@ -1,151 +1,771 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html><!DOCTYPE html>
+
 <html lang="ja">
-<head>
+
+<head><html lang="ja"><html lang="ja">
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><head><head>
+
     <title>阿蓮</title>
-    <link rel="stylesheet" href="../style.css">
-     <style>
-        body {
-            background: linear-gradient(135deg, #6f2222 40%, #b52d2d 70%, #2d1a2d 100%);
-            font-family: 'Cinzel', 'Yu Gothic', '游ゴシック', serif;
+
+    <link rel="stylesheet" href="../style.css">    <meta charset="UTF-8">    <meta charset="UTF-8">
+
+    <style>
+
+        body {    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            background: linear-gradient(135deg, #1a0000, #2d0808, #0f0f0f);
+
+            font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;    <title>阿蓮</title>    <title>阿蓮</title>
+
             min-height: 100vh;
-            margin: 0;
+
+            margin: 0;    <link rel="stylesheet" href="../style.css">    <link rel="stylesheet" href="../style.css">
+
             padding: 0;
-            color: #040404;
-        }
+
+            color: #f0f0f0;    <style>     <style>
+
+            line-height: 1.6;
+
+        }        body {        body {
+
         .title-center {
-            text-align: center;
-            font-size: 3.2em;
-            color: #0c0c0c;
-            background: rgba(251, 1, 1, 0.9);
-            border-radius: 16px;
-            padding: 32px 0 32px 0;
-            margin: 32px auto 0 auto;
-            width: 400px;
-            box-shadow: 0 4px 24px rgba(64, 63, 63, 0.8), 0 0 32px rgba(0, 0, 0, 0.4);
-            font-weight: bold;
-            border: 3px solid #101010;
-            text-shadow: 0 2px 16px #3f3f3f, 0 0px 4px #666;
-            letter-spacing: 0.1em;
-        }
-        .top-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 40px 60px 20px 60px;
-            gap: 60px;
-        }
-        .character-img {
-            width: 350px;
-            height: 600px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 3px solid #000000;
-            margin-top: 40px;
-            box-shadow: 0 4px 24px rgba(58, 58, 58, 0.8), 0 0 16px rgba(0, 0, 0, 0.6);
-            transition: box-shadow 0.3s;
-        }
-        .character-img:hover {
-            box-shadow: 0 6px 32px rgba(43, 42, 42, 0.9), 0 0 24px rgba(102, 102, 102, 0.3);
-        }
-        .info-box {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 20px;
-            min-width: 320px;
-            margin-top: 40px;
-            background: rgba(177, 77, 77, 0.8);
-            padding: 24px;
-            border-radius: 12px;
-            border: 2px solid #0e0d0d;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
-        }
-        .info-row {
-            font-size: 18px;
-            color: #f2eded;
-            margin-bottom: 2px;
-            text-shadow: 0 1px 4px #262525;
-        }
-        .color-link {
-            color: #f30606;
-            font-weight: bold;
-            text-decoration: none;
-            border-bottom: 1px dashed #030303;
-            transition: color 0.2s, text-shadow 0.2s;
-            text-shadow: 0 1px 8px rgba(91, 90, 90, 0.8);
-        }
-        .color-link:hover {
-            color: #f7f3f3;
-            text-shadow: 0 1px 12px rgba(243, 206, 206, 0.4);
-        }
-        .shop-link {
-            color: #6bb6ff;
-            text-decoration: none;
-            border-bottom: 1px dashed #6bb6ff;
-            transition: color 0.2s, text-shadow 0.2s;
-            text-shadow: 0 1px 8px rgba(25, 118, 210, 0.4);
-        }
-        .shop-link:hover {
-            color: #4fc3f7;
-            text-shadow: 0 1px 12px rgba(25, 118, 210, 0.6);
-        }
-        .character-link {
-            color: #ff6b6b;
-            text-decoration: none;
-            border-bottom: 1px dashed #ff6b6b;
-            transition: color 0.2s, text-shadow 0.2s;
-            text-shadow: 0 1px 8px rgba(211, 47, 47, 0.4);
-        }
-        .character-link:hover {
-            color: #ff8a80;
-            text-shadow: 0 1px 12px rgba(211, 47, 47, 0.6);
-        }
-        .bottom-section {
-            margin: 40px auto 0 auto;
-            max-width: 700px;
-            padding: 0 30px 40px 30px;
-            background: rgba(189, 85, 85, 0.81);
-            border-radius: 16px;
-            border: 2px solid #100f0f;
-            box-shadow: 0 4px 16px rgba(58, 57, 57, 0.6);
-        }
-        .bottom-section h2 {
-            font-size: 22px;
-            margin-top: 28px;
-            margin-bottom: 12px;
-            color: #f8f6f6;
-            text-shadow: 0 2px 8px #535151, 0 0px 2px #666;
+
+            text-align: center;            background: linear-gradient(135deg, #1a0000, #2d0808, #0f0f0f);            background: linear-gradient(135deg, #1a0000, #2d0808, #0f0f0f);
+
+            font-size: clamp(2rem, 5vw, 3.2rem);
+
+            color: #ffffff;            font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;            font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
+
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(85, 26, 26, 0.9));
+
+            backdrop-filter: blur(10px);            min-height: 100vh;            min-height: 100vh;
+
+            border-radius: 20px;
+
+            padding: clamp(20px, 4vw, 32px);            margin: 0;            margin: 0;
+
+            margin: 32px auto;
+
+            width: min(400px, 90vw);            padding: 0;            padding: 0;
+
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+            font-weight: 600;            color: #f0f0f0;            color: #f0f0f0;
+
+            border: 1px solid rgba(139, 69, 19, 0.3);
+
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);            line-height: 1.6;            line-height: 1.6;
+
             letter-spacing: 0.05em;
+
+        }        }        }
+
+        .top-section {
+
+            display: flex;        .title-center {        .title-center {
+
+            justify-content: space-between;
+
+            align-items: flex-start;            text-align: center;            text-align: center;
+
+            padding: clamp(20px, 4vw, 60px);
+
+            gap: clamp(20px, 4vw, 60px);            font-size: clamp(2rem, 5vw, 3.2rem);            font-size: clamp(2rem, 5vw, 3.2rem);
+
+            max-width: 1200px;
+
+            margin: 0 auto;            color: #ffffff;            color: #ffffff;
+
         }
+
+        .character-img {            background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(85, 26, 26, 0.9));            background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(85, 26, 26, 0.9));
+
+            width: min(350px, 45vw);
+
+            height: auto;            backdrop-filter: blur(10px);            backdrop-filter: blur(10px);
+
+            aspect-ratio: 7/12;
+
+            object-fit: cover;            border-radius: 20px;            border-radius: 20px;
+
+            border-radius: 16px;
+
+            border: 2px solid rgba(139, 69, 19, 0.6);            padding: clamp(20px, 4vw, 32px);            padding: clamp(20px, 4vw, 32px);
+
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 20px rgba(139, 69, 19, 0.2);
+
+            transition: all 0.3s ease;            margin: 32px auto;            margin: 32px auto;
+
+        }
+
+        .character-img:hover {            width: min(400px, 90vw);            width: min(400px, 90vw);
+
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.9), 0 0 32px rgba(139, 69, 19, 0.4);
+
+        }            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+        .info-box {
+
+            display: flex;            font-weight: 600;            font-weight: 600;
+
+            flex-direction: column;
+
+            align-items: flex-start;            border: 1px solid rgba(139, 69, 19, 0.3);            border: 1px solid rgba(139, 69, 19, 0.3);
+
+            gap: clamp(12px, 2vw, 20px);
+
+            min-width: min(320px, 50vw);            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+
+            background: linear-gradient(135deg, rgba(85, 26, 26, 0.9), rgba(139, 69, 19, 0.8));
+
+            backdrop-filter: blur(10px);            letter-spacing: 0.05em;            letter-spacing: 0.05em;
+
+            padding: clamp(20px, 3vw, 32px);
+
+            border-radius: 16px;        }        }
+
+            border: 1px solid rgba(139, 69, 19, 0.3);
+
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);        .top-section {        .top-section {
+
+        }
+
+        .info-row {            display: flex;            display: flex;
+
+            font-size: clamp(16px, 3vw, 18px);
+
+            color: #f5f5f5;            justify-content: space-between;            justify-content: space-between;
+
+            margin-bottom: 8px;
+
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);            align-items: flex-start;            align-items: flex-start;
+
+        }
+
+        .color-link {            padding: clamp(20px, 4vw, 60px);            padding: clamp(20px, 4vw, 60px);
+
+            color: #ff6b6b;
+
+            font-weight: 600;            gap: clamp(20px, 4vw, 60px);            gap: clamp(20px, 4vw, 60px);
+
+            text-decoration: none;
+
+            border-bottom: 1px solid rgba(255, 107, 107, 0.6);            max-width: 1200px;            max-width: 1200px;
+
+            transition: all 0.3s ease;
+
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);            margin: 0 auto;            margin: 0 auto;
+
+        }
+
+        .color-link:hover {        }        }
+
+            color: #ff8a80;
+
+            border-bottom-color: #ff8a80;        .character-img {        .character-img {
+
+            text-shadow: 0 1px 8px rgba(255, 138, 128, 0.4);
+
+        }            width: min(350px, 45vw);            width: min(350px, 45vw);
+
+        .shop-link {
+
+            color: #81c784;            height: auto;            height: auto;
+
+            text-decoration: none;
+
+            border-bottom: 1px solid rgba(129, 199, 132, 0.6);            aspect-ratio: 7/12;            aspect-ratio: 7/12;
+
+            transition: all 0.3s ease;
+
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);            object-fit: cover;            object-fit: cover;
+
+        }
+
+        .shop-link:hover {            border-radius: 16px;            border-radius: 16px;
+
+            color: #a5d6a7;
+
+            border-bottom-color: #a5d6a7;            border: 2px solid rgba(139, 69, 19, 0.6);            border: 2px solid rgba(139, 69, 19, 0.6);
+
+            text-shadow: 0 1px 8px rgba(165, 214, 167, 0.4);
+
+        }            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 20px rgba(139, 69, 19, 0.2);            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 20px rgba(139, 69, 19, 0.2);
+
+        .bottom-section {
+
+            margin: 40px auto;            transition: all 0.3s ease;            transition: all 0.3s ease;
+
+            max-width: min(700px, 90vw);
+
+            padding: clamp(20px, 4vw, 40px);        }        }
+
+            background: linear-gradient(135deg, rgba(85, 26, 26, 0.9), rgba(139, 69, 19, 0.8));
+
+            backdrop-filter: blur(10px);        .character-img:hover {        .character-img:hover {
+
+            border-radius: 20px;
+
+            border: 1px solid rgba(139, 69, 19, 0.3);            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.9), 0 0 32px rgba(139, 69, 19, 0.4);            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.9), 0 0 32px rgba(139, 69, 19, 0.4);
+
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+        }        }        }
+
+        .bottom-section h2 {
+
+            font-size: clamp(20px, 4vw, 24px);        .info-box {        .info-box {
+
+            margin: 0 0 16px 0;
+
+            color: #f5f5f5;            display: flex;            display: flex;
+
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+
+            letter-spacing: 0.02em;            flex-direction: column;            flex-direction: column;
+
+            font-weight: 600;
+
+        }            align-items: flex-start;            align-items: flex-start;
+
         .bottom-section p {
-            font-size: 16px;
-            color: #f9f7f7;
-            margin-bottom: 12px;
-            line-height: 1.7;
-            text-shadow: 0 1px 4px #f4e2e2;
+
+            font-size: clamp(14px, 3vw, 16px);            gap: clamp(12px, 2vw, 20px);            gap: clamp(12px, 2vw, 20px);
+
+            color: #e8e8e8;
+
+            margin-bottom: 16px;            min-width: min(320px, 50vw);            min-width: min(320px, 50vw);
+
+            line-height: 1.8;
+
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);            background: linear-gradient(135deg, rgba(85, 26, 26, 0.9), rgba(139, 69, 19, 0.8));            background: linear-gradient(135deg, rgba(85, 26, 26, 0.9), rgba(139, 69, 19, 0.8));
+
         }
+
+        .related-characters {            backdrop-filter: blur(10px);            backdrop-filter: blur(10px);
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));            padding: clamp(20px, 3vw, 32px);            padding: clamp(20px, 3vw, 32px);
+
+            gap: clamp(16px, 3vw, 24px);
+
+            margin-top: 20px;            border-radius: 16px;            border-radius: 16px;
+
+        }
+
+        .character-item {            border: 1px solid rgba(139, 69, 19, 0.3);            border: 1px solid rgba(139, 69, 19, 0.3);
+
+            background: rgba(85, 26, 26, 0.6);
+
+            backdrop-filter: blur(5px);            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+            border-radius: 12px;
+
+            padding: 16px;        }        }
+
+            border: 1px solid rgba(139, 69, 19, 0.3);
+
+            transition: all 0.3s ease;        .info-row {                }\n        .info-row {\n            font-size: clamp(16px, 3vw, 18px);\n            color: #f5f5f5;\n            margin-bottom: 8px;\n            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);\n        }\n        .color-link {\n            color: #ff6b6b;\n            font-weight: 600;\n            text-decoration: none;\n            border-bottom: 1px solid rgba(255, 107, 107, 0.6);\n            transition: all 0.3s ease;\n            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);\n        }\n        .color-link:hover {\n            color: #ff8a80;\n            border-bottom-color: #ff8a80;\n            text-shadow: 0 1px 8px rgba(255, 138, 128, 0.4);\n        }\n        .shop-link {\n            color: #81c784;\n            text-decoration: none;\n            border-bottom: 1px solid rgba(129, 199, 132, 0.6);\n            transition: all 0.3s ease;\n            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);\n        }\n        .shop-link:hover {\n            color: #a5d6a7;\n            border-bottom-color: #a5d6a7;\n            text-shadow: 0 1px 8px rgba(165, 214, 167, 0.4);\n        }\n        .character-link {\n            color: #ffab91;\n            text-decoration: none;\n            border-bottom: 1px solid rgba(255, 171, 145, 0.6);\n            transition: all 0.3s ease;\n            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);\n        }
+
+        }
+
+        .character-item:hover {            font-size: clamp(16px, 3vw, 18px);            text-shadow: 0 1px 8px rgba(91, 90, 90, 0.8);
+
+            background: rgba(139, 69, 19, 0.8);
+
+            transform: translateY(-2px);            color: #f5f5f5;        }
+
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+
+        }            margin-bottom: 8px;        .color-link:hover {
+
+        .character-item a {
+
+            display: flex;            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);            color: #f7f3f3;
+
+            align-items: center;
+
+            text-decoration: none;        }            text-shadow: 0 1px 12px rgba(243, 206, 206, 0.4);
+
+            color: inherit;
+
+        }        .color-link {        }
+
+        .character-item img {
+
+            width: 48px;            color: #ff6b6b;        .shop-link {
+
+            height: 48px;
+
+            border-radius: 50%;            font-weight: 600;            color: #6bb6ff;
+
+            border: 2px solid rgba(255, 255, 255, 0.8);
+
+            margin-right: 12px;            text-decoration: none;            text-decoration: none;
+
+            object-fit: cover;
+
+        }            border-bottom: 1px solid rgba(255, 107, 107, 0.6);            border-bottom: 1px dashed #6bb6ff;
+
+        .character-item span {
+
+            font-size: 16px;            transition: all 0.3s ease;            transition: color 0.2s, text-shadow 0.2s;
+
+            font-weight: 600;
+
+            color: #f0f0f0;            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);            text-shadow: 0 1px 8px rgba(25, 118, 210, 0.4);
+
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+
+        }        }        }
+
         .tab-container {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+
+            display: flex;        .color-link:hover {        .shop-link:hover {
+
+            gap: clamp(8px, 2vw, 12px);
+
+            margin: 40px auto 20px;            color: #ff8a80;            color: #4fc3f7;
+
             justify-content: center;
-        }
+
+            flex-wrap: wrap;            border-bottom-color: #ff8a80;            text-shadow: 0 1px 12px rgba(25, 118, 210, 0.6);
+
+            max-width: 90vw;
+
+        }            text-shadow: 0 1px 8px rgba(255, 138, 128, 0.4);        }
+
         .tab-container button {
-            background: #222;
-            color: #fff;
-            border-radius: 6px;
-            border: none;
-            padding: 8px 18px;
-            font-size: 15px;
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-        }
+
+            background: linear-gradient(135deg, #2c2c2c, #1a1a1a);        }        .character-link {
+
+            color: #f0f0f0;
+
+            border-radius: 8px;        .shop-link {            color: #ff6b6b;
+
+            border: 1px solid rgba(139, 69, 19, 0.3);
+
+            padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 18px);            color: #81c784;            text-decoration: none;
+
+            font-size: clamp(13px, 2.5vw, 15px);
+
+            font-weight: 500;            text-decoration: none;            border-bottom: 1px dashed #ff6b6b;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+            transition: all 0.3s ease;            border-bottom: 1px solid rgba(129, 199, 132, 0.6);            transition: color 0.2s, text-shadow 0.2s;
+
+            cursor: pointer;
+
+        }            transition: all 0.3s ease;            text-shadow: 0 1px 8px rgba(211, 47, 47, 0.4);
+
         .tab-container button:hover {
-            background: #444;
-            color: #fff;
-            box-shadow: 0 2px 12px rgba(102, 102, 102, 0.3);
+
+            background: linear-gradient(135deg, #8b4513, #a0522d);            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);        }
+
+            color: #ffffff;
+
+            transform: translateY(-2px);        }        .character-link:hover {
+
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+
+        }        .shop-link:hover {            color: #ff8a80;
+
+        
+
+        /* レスポンシブデザイン */            color: #a5d6a7;            text-shadow: 0 1px 12px rgba(211, 47, 47, 0.6);
+
+        @media (max-width: 768px) {
+
+            .top-section {            border-bottom-color: #a5d6a7;        }
+
+                flex-direction: column;
+
+                align-items: center;            text-shadow: 0 1px 8px rgba(165, 214, 167, 0.4);        .bottom-section {
+
+                text-align: center;
+
+            }        }            margin: 40px auto 0 auto;
+
+            .info-box {
+
+                width: 100%;        .character-link {            max-width: 700px;
+
+                align-items: center;
+
+            }            color: #ffab91;            padding: 0 30px 40px 30px;
+
+            .character-img {
+
+                width: min(280px, 80vw);            text-decoration: none;            background: rgba(189, 85, 85, 0.81);
+
+                margin-bottom: 20px;
+
+            }            border-bottom: 1px solid rgba(255, 171, 145, 0.6);            border-radius: 16px;
+
+            .related-characters {
+
+                grid-template-columns: 1fr;            transition: all 0.3s ease;            border: 2px solid #100f0f;
+
+            }
+
+        }            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);            box-shadow: 0 4px 16px rgba(58, 57, 57, 0.6);
+
+        
+
+        @media (max-width: 480px) {        }        }
+
+            .character-img {
+
+                width: min(240px, 85vw);        .character-link:hover {        .bottom-section h2 {
+
+            }
+
+            .character-item {            color: #ffcc02;            font-size: 22px;
+
+                padding: 12px;
+
+            }            border-bottom-color: #ffcc02;            margin-top: 28px;
+
+            .character-item img {
+
+                width: 40px;            text-shadow: 0 1px 8px rgba(255, 204, 2, 0.4);            margin-bottom: 12px;
+
+                height: 40px;
+
+                margin-right: 8px;        }            color: #f8f6f6;
+
+            }
+
+            .character-item span {        .bottom-section {            text-shadow: 0 2px 8px #535151, 0 0px 2px #666;
+
+                font-size: 14px;
+
+            }            margin: 40px auto;            letter-spacing: 0.05em;
+
+        }
+
+    </style>            max-width: min(700px, 90vw);        }
+
+</head>
+
+<body>            padding: clamp(20px, 4vw, 40px);        .bottom-section p {
+
+    <h1 class="title-center">阿蓮</h1>
+
+    <div class="top-section">            background: linear-gradient(135deg, rgba(85, 26, 26, 0.9), rgba(139, 69, 19, 0.8));            font-size: 16px;
+
+        <img src="../character_fullbody/aren.png" alt="阿蓮" class="character-img">
+
+        <div class="info-box">            backdrop-filter: blur(10px);            color: #f9f7f7;
+
+            <div class="info-row">
+
+                所属色：<a href="../colorpage/red.html" class="color-link">赤</a>            border-radius: 20px;            margin-bottom: 12px;
+
+            </div>
+
+            <div class="info-row">            border: 1px solid rgba(139, 69, 19, 0.3);            line-height: 1.7;
+
+                階級：中級構成員
+
+            </div>            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);            text-shadow: 0 1px 4px #f4e2e2;
+
+            <div class="info-row">
+
+                仕事：<a href="../shops.html" class="shop-link">骨董楼</a>        }        }
+
+            </div>
+
+            <div class="info-row">        .bottom-section h2 {        .tab-container {
+
+                外見特徴：深紅のチャイナドレスと黒いスリッパを身に纏っている。黒髪はロングヘアでサイドテールにしており、そこに赤いリボンで結んでいる。首には真珠のネックレスをつけている。
+
+            </div>            font-size: clamp(20px, 4vw, 24px);            display: flex;
+
+        </div>
+
+    </div>            margin: 0 0 16px 0;            gap: 10px;
+
+    
+
+    <div class="bottom-section">            color: #f5f5f5;            margin-bottom: 20px;
+
+        <h2>設定</h2>
+
+        <p>骨董楼は表向きは古美術や古書を扱う店だが、実態は赤組の「裏市場」の一角を担っている。違法な呪具や、呪われた骨董品、人間の臓器や死体を利用した「工芸品」すら扱っていると噂される。顧客は富裕層のコレクターから、怪異を求める人外まで多岐にわたる。<br>            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);            justify-content: center;
+
+        阿蓮はこの店の店主であり、商品の真贋を見極める「目利き」として組織内で高く評価されている。彼女自身も多数のオカルト的知識を持ち、時には顧客に「呪術的コンサルティング」を提供することもある。</p>
+
+                    letter-spacing: 0.02em;        }
+
+        <h2>人間関係</h2>
+
+        <div class="related-characters">            font-weight: 600;        .tab-container button {
+
+            <div class="character-item">
+
+                <a href="character_risu.html">        }            background: #222;
+
+                    <img src="../character_icon/risu_icon.png" alt="リス">
+
+                    <span>リス</span>        .bottom-section p {            color: #fff;
+
+                </a>
+
+            </div>            font-size: clamp(14px, 3vw, 16px);            border-radius: 6px;
+
+            <div class="character-item">
+
+                <a href="character_riko.html">            color: #e8e8e8;            border: none;
+
+                    <img src="../character_icon/riko_icon.png" alt="リコ">
+
+                    <span>リコ</span>            margin-bottom: 16px;            padding: 8px 18px;
+
+                </a>
+
+            </div>            line-height: 1.8;            font-size: 15px;
+
+            <div class="character-item">
+
+                <a href="character_kagerou.html">            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+
+                    <img src="../character_icon/kagerou_icon.png" alt="陽炎">
+
+                    <span>陽炎</span>        }            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+
+                </a>
+
+            </div>        .tab-container {        }
+
+            <div class="character-item">
+
+                <a href="character_aru.html">            display: flex;        .tab-container button:hover {
+
+                    <img src="../character_icon/aru_icon.png" alt="阿瑠">
+
+                    <span>阿瑠</span>            gap: clamp(8px, 2vw, 12px);            background: #444;
+
+                </a>
+
+            </div>            margin: 40px auto 20px;            color: #fff;
+
+        </div>
+
+    </div>            justify-content: center;            box-shadow: 0 2px 12px rgba(102, 102, 102, 0.3);
+
+    
+
+    <div class="tab-container">            flex-wrap: wrap;        }
+
+        <a href="../index.html"><button>ホーム</button></a>
+
+        <a href="../rules.html"><button>特殊ルール</button></a>            max-width: 90vw;    </style>
+
+        <a href="../jinngai.html"><button>人外設定</button></a>
+
+        <a href="../world.html"><button>世界観設定</button></a>        }</head>
+
+        <a href="../characters.html"><button>キャラクター一覧</button></a>
+
+        <a href="../shops.html"><button>店舗一覧</button></a>        .tab-container button {<body>
+
+        <a href="../tools.html"><button>ツール</button></a>
+
+    </div>            background: linear-gradient(135deg, #2c2c2c, #1a1a1a);    <h1 class="title-center">阿蓮</h1>
+
+</body>
+
+</html>            color: #f0f0f0;    <div class="top-section">
+
+            border-radius: 8px;        <img src="../character_fullbody/aren.png" alt="阿蓮" class="character-img">
+
+            border: 1px solid rgba(139, 69, 19, 0.3);        <div class="info-box">
+
+            padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 18px);            <div class="info-row">
+
+            font-size: clamp(13px, 2.5vw, 15px);                所属色：<a href="../colorpage/red.html" class="color-link">赤</a>
+
+            font-weight: 500;            </div>
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);            <div class="info-row">
+
+            transition: all 0.3s ease;                階級：中間構成員
+
+            cursor: pointer;            </div>
+
+        }            <div class="info-row">
+
+        .tab-container button:hover {                仕事：<a href="../shoppage/shop_antique.html" class="shop-link">骨董楼の経営</a>
+
+            background: linear-gradient(135deg, #8b4513, #a0522d);            </div>
+
+            color: #ffffff;            <div class="info-row">
+
+            transform: translateY(-2px);                外見特徴：30～40代程度の男性。年を重ねた落ち着いた雰囲気。髭を整えており、中華服に身を包む姿は一見すると教養ある骨董商人にしか見えない。
+
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);            </div>
+
+        }        </div>
+
+        .related-characters {    </div>
+
+            display: grid;    <div class="bottom-section">
+
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));        <h2>性格</h2>
+
+            gap: clamp(16px, 3vw, 24px);        <p>穏やかで理知的。ただし非常に猜疑心が強く、骨董を見抜くように人間の心の底を覗き込む癖がある。会話の中で相手の欲望や恐怖を見抜くことを楽しんでいる。人間の愚かしさや欲深さを冷笑しつつも、それを糧に生きている現実主義者。</p>
+
+            margin-top: 20px;        <h2>仕事について</h2>
+
+        }        <p>骨董楼は表向きは古美術や古書を扱う店だが、実態は赤組の「裏市場」の一角を担っている。違法な呪具や、呪われた骨董品、人間の臓器や死体を利用した「工芸品」すら扱っていると噂される。顧客は富裕層のコレクターから、怪異を求める人外まで多岐にわたる。<br>
+
+        .character-item {        阿蓮は鑑定眼に優れており、本物と贋作を即座に見抜くことができるため、骨董楼は「外れのない店」として信頼を集めている。一方で、裏社会の権力者にとっては「自分の秘密を握っている危険人物」でもある。</p>
+
+            display: flex;        <h2>過去</h2>
+
+            align-items: center;        <p>暗黒中華街に流れ着く前の経歴は一切不明。本人は「古き国で官吏をしていた」と語るが、誰もその真偽を確かめたことはない。かつては学者肌だったとも言われるが、今や血塗られた骨董と呪物に囲まれて暮らしている。<br>
+
+            background: rgba(85, 26, 26, 0.6);        彼の過去を探ろうとした者は例外なく消息を絶っており、阿蓮自身が彼らを「骨董品」にしてしまったのではないかという噂もある。</p>
+
+            backdrop-filter: blur(5px);        <h2>能力</h2>
+
+            padding: 16px;        <p>圧倒的な鑑定眼と広い知識。古美術、宗教儀礼、呪術的アイテムに関する情報には精通している。また、人間の心理を読むのも得意で、交渉や尋問においては驚くべき成果を上げる。肉体的な力は大したことがないが、毒や薬物を用いた暗殺術を心得ている。</p>
+
+            border-radius: 12px;        <h2>人間関係</h2>
+
+            border: 1px solid rgba(139, 69, 19, 0.3);        <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
+
+            transition: all 0.3s ease;            <!-- リス（赤組） -->
+
+        }            <a href="../characterpage/character_risu.html" style="text-decoration:none;">
+
+        .character-item:hover {                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+
+            background: rgba(139, 69, 19, 0.8);                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+
+            transform: translateY(-2px);                        <img src="../character_icon/risu_icon.png" alt="リス" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);                        <span style="font-size:18px; font-weight:bold; color:#fff;">リス</span>
+
+        }                    </div>
+
+        .character-item a {                    <div style="font-size:15px; color:#fff;">仕事柄よく顔を合わせる。誠実さを評価しているが、その人情深さを「弱さ」と見ている節がある。</div>
+
+            display: flex;                </div>
+
+            align-items: center;            </a>
+
+            text-decoration: none;            <!-- リコ（赤組） -->
+
+            width: 100%;            <a href="../characterpage/character_riko.html" style="text-decoration:none;">
+
+        }                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+
+        .character-item img {                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+
+            width: 48px;                        <img src="../character_icon/riko_icon.png" alt="リコ" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+
+            height: 48px;                        <span style="font-size:18px; font-weight:bold; color:#fff;">リコ</span>
+
+            border-radius: 50%;                    </div>
+
+            border: 2px solid rgba(255, 255, 255, 0.8);                    <div style="font-size:15px; color:#fff;">ビジネス上の顧客でもあり、希少品を買い付けることも。だが、お互いが決して心を許さない関係。</div>
+
+            margin-right: 12px;                </div>
+
+            object-fit: cover;            </a>
+
+        }            <!-- 陽炎（赤組） -->
+
+        .character-item span {            <a href="../characterpage/character_kagerou.html" style="text-decoration:none;">
+
+            font-size: 16px;                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+
+            font-weight: 600;                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+
+            color: #f0f0f0;                        <img src="../character_icon/kagerou_icon.png" alt="陽炎" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);                        <span style="font-size:18px; font-weight:bold; color:#fff;">陽炎</span>
+
+        }                    </div>
+
+                            <div style="font-size:15px; color:#fff;">互いに人間を観察対象として楽しんでいる奇妙な友誼関係。</div>
+
+        /* レスポンシブデザイン */                </div>
+
+        @media (max-width: 768px) {            </a>
+
+            .top-section {            <!-- 阿瑠（赤組） -->
+
+                flex-direction: column;            <a href="../characterpage/character_aru.html" style="text-decoration:none;">
+
+                align-items: center;                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
+
+                text-align: center;                    <div style="display:flex; align-items:center; margin-bottom:10px;">
+
+            }                        <img src="../character_icon/aru_icon.png" alt="阿瑠" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
+
+            .info-box {                        <span style="font-size:18px; font-weight:bold; color:#fff;">阿瑠</span>
+
+                width: 100%;                    </div>
+
+                align-items: center;                    <div style="font-size:15px; color:#fff;">血縁的なつながりはないが、自身の名前の一文字を与えるなど息子のように扱っている。</div>
+
+            }                </div>
+
+            .character-img {            </a>
+
+                width: min(280px, 80vw);        </div>
+
+                margin-bottom: 20px;    </div>
+
+            }    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px; justify-content: center;">
+
+            .tab-container {        <a href="../index.html"><button>ホーム</button></a>
+
+                gap: 8px;        <a href="../rules.html"><button>特殊ルール</button></a>
+
+            }        <a href="../jinngai.html"><button>人外設定</button></a>
+
+            .related-characters {        <a href="../world.html"><button>世界観設定</button></a>
+
+                grid-template-columns: 1fr;        <a href="../characters.html"><button>キャラクター一覧</button></a>
+
+            }        <a href="../shops.html"><button>店舗一覧</button></a>
+
+        }    </div>
+
+        </body>
+
+        @media (max-width: 480px) {</html>
+            body {
+                font-size: 14px;
+            }
+            .character-img {
+                width: min(240px, 85vw);
+            }
+            .tab-container button {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+            .character-item {
+                padding: 12px;
+            }
+            .character-item img {
+                width: 40px;
+                height: 40px;
+                margin-right: 8px;
+            }
+            .character-item span {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -158,78 +778,59 @@
                 所属色：<a href="../colorpage/red.html" class="color-link">赤</a>
             </div>
             <div class="info-row">
-                階級：中間構成員
+                階級：中級構成員
             </div>
             <div class="info-row">
-                仕事：<a href="../shoppage/shop_antique.html" class="shop-link">骨董楼の経営</a>
+                仕事：<a href="../shops.html" class="shop-link">骨董楼</a>
             </div>
             <div class="info-row">
-                外見特徴：30～40代程度の男性。年を重ねた落ち着いた雰囲気。髭を整えており、中華服に身を包む姿は一見すると教養ある骨董商人にしか見えない。
+                外見特徴：深紅のチャイナドレスと黒いスリッパを身に纏っている。黒髪はロングヘアでサイドテールにしており、そこに赤いリボンで結んでいる。首には真珠のネックレスをつけている。
             </div>
         </div>
     </div>
+    
     <div class="bottom-section">
-        <h2>性格</h2>
-        <p>穏やかで理知的。ただし非常に猜疑心が強く、骨董を見抜くように人間の心の底を覗き込む癖がある。会話の中で相手の欲望や恐怖を見抜くことを楽しんでいる。人間の愚かしさや欲深さを冷笑しつつも、それを糧に生きている現実主義者。</p>
-        <h2>仕事について</h2>
+        <h2>設定</h2>
         <p>骨董楼は表向きは古美術や古書を扱う店だが、実態は赤組の「裏市場」の一角を担っている。違法な呪具や、呪われた骨董品、人間の臓器や死体を利用した「工芸品」すら扱っていると噂される。顧客は富裕層のコレクターから、怪異を求める人外まで多岐にわたる。<br>
-        阿蓮は鑑定眼に優れており、本物と贋作を即座に見抜くことができるため、骨董楼は「外れのない店」として信頼を集めている。一方で、裏社会の権力者にとっては「自分の秘密を握っている危険人物」でもある。</p>
-        <h2>過去</h2>
-        <p>暗黒中華街に流れ着く前の経歴は一切不明。本人は「古き国で官吏をしていた」と語るが、誰もその真偽を確かめたことはない。かつては学者肌だったとも言われるが、今や血塗られた骨董と呪物に囲まれて暮らしている。<br>
-        彼の過去を探ろうとした者は例外なく消息を絶っており、阿蓮自身が彼らを「骨董品」にしてしまったのではないかという噂もある。</p>
-        <h2>能力</h2>
-        <p>圧倒的な鑑定眼と広い知識。古美術、宗教儀礼、呪術的アイテムに関する情報には精通している。また、人間の心理を読むのも得意で、交渉や尋問においては驚くべき成果を上げる。肉体的な力は大したことがないが、毒や薬物を用いた暗殺術を心得ている。</p>
+        阿蓮はこの店の店主であり、商品の真贋を見極める「目利き」として組織内で高く評価されている。彼女自身も多数のオカルト的知識を持ち、時には顧客に「呪術的コンサルティング」を提供することもある。</p>
+        
         <h2>人間関係</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
-            <!-- リス（赤組） -->
-            <a href="../characterpage/character_risu.html" style="text-decoration:none;">
-                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
-                    <div style="display:flex; align-items:center; margin-bottom:10px;">
-                        <img src="../character_icon/risu_icon.png" alt="リス" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
-                        <span style="font-size:18px; font-weight:bold; color:#fff;">リス</span>
-                    </div>
-                    <div style="font-size:15px; color:#fff;">仕事柄よく顔を合わせる。誠実さを評価しているが、その人情深さを「弱さ」と見ている節がある。</div>
-                </div>
-            </a>
-            <!-- リコ（赤組） -->
-            <a href="../characterpage/character_riko.html" style="text-decoration:none;">
-                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
-                    <div style="display:flex; align-items:center; margin-bottom:10px;">
-                        <img src="../character_icon/riko_icon.png" alt="リコ" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
-                        <span style="font-size:18px; font-weight:bold; color:#fff;">リコ</span>
-                    </div>
-                    <div style="font-size:15px; color:#fff;">ビジネス上の顧客でもあり、希少品を買い付けることも。だが、お互いが決して心を許さない関係。</div>
-                </div>
-            </a>
-            <!-- 陽炎（赤組） -->
-            <a href="../characterpage/character_kagerou.html" style="text-decoration:none;">
-                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
-                    <div style="display:flex; align-items:center; margin-bottom:10px;">
-                        <img src="../character_icon/kagerou_icon.png" alt="陽炎" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
-                        <span style="font-size:18px; font-weight:bold; color:#fff;">陽炎</span>
-                    </div>
-                    <div style="font-size:15px; color:#fff;">互いに人間を観察対象として楽しんでいる奇妙な友誼関係。</div>
-                </div>
-            </a>
-            <!-- 阿瑠（赤組） -->
-            <a href="../characterpage/character_aru.html" style="text-decoration:none;">
-                <div style="background:#d32f2f; border-radius:12px; padding:16px 18px; min-width:220px; color:#fff; display:flex; flex-direction:column; cursor:pointer; border:2px solid #fff;">
-                    <div style="display:flex; align-items:center; margin-bottom:10px;">
-                        <img src="../character_icon/aru_icon.png" alt="阿瑠" style="width:48px; height:48px; border-radius:50%; border:2px solid #fff; margin-right:12px;">
-                        <span style="font-size:18px; font-weight:bold; color:#fff;">阿瑠</span>
-                    </div>
-                    <div style="font-size:15px; color:#fff;">血縁的なつながりはないが、自身の名前の一文字を与えるなど息子のように扱っている。</div>
-                </div>
-            </a>
+        <div class="related-characters">
+            <div class="character-item">
+                <a href="character_risu.html">
+                    <img src="../character_icon/risu_icon.png" alt="リス">
+                    <span>リス</span>
+                </a>
+            </div>
+            <div class="character-item">
+                <a href="character_riko.html">
+                    <img src="../character_icon/riko_icon.png" alt="リコ">
+                    <span>リコ</span>
+                </a>
+            </div>
+            <div class="character-item">
+                <a href="character_kagerou.html">
+                    <img src="../character_icon/kagerou_icon.png" alt="陽炎">
+                    <span>陽炎</span>
+                </a>
+            </div>
+            <div class="character-item">
+                <a href="character_aru.html">
+                    <img src="../character_icon/aru_icon.png" alt="阿瑠">
+                    <span>阿瑠</span>
+                </a>
+            </div>
         </div>
     </div>
-    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px; justify-content: center;">
+    
+    <div class="tab-container">
         <a href="../index.html"><button>ホーム</button></a>
         <a href="../rules.html"><button>特殊ルール</button></a>
         <a href="../jinngai.html"><button>人外設定</button></a>
         <a href="../world.html"><button>世界観設定</button></a>
         <a href="../characters.html"><button>キャラクター一覧</button></a>
         <a href="../shops.html"><button>店舗一覧</button></a>
+        <a href="../tools.html"><button>ツール</button></a>
     </div>
 </body>
 </html>

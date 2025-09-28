@@ -11,78 +11,161 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #181818 60%, #2d1a1a 100%);
-            font-family: 'Segoe UI', 'Arial', sans-serif;
-            color: #e0e0e0;
+            min-height: 100vh;
+            margin: 0;
+            padding: 15px;
+            background: linear-gradient(145deg, #0f0f0f 0%, #1a1a1a 50%, #2a2a2a 100%);
+            font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+            color: #e8e8e8;
+            overflow-x: auto;
+            box-sizing: border-box;
         }
         h1 {
-            margin-bottom: 20px;
-            font-size: 3em;
-            color: #fff;
-            text-shadow: 0 2px 16px #a00, 0 0px 2px #222;
-            letter-spacing: 0.1em;
+            margin-bottom: 25px;
+            font-size: clamp(2.2em, 6vw, 3.2em);
+            font-weight: 300;
+            color: #ffffff;
+            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.8);
+            letter-spacing: 0.15em;
+            text-align: center;
+            width: 100%;
         }
         .button-container {
             display: flex;
-            gap: 10px;
-            margin-bottom: 24px;
+            gap: clamp(8px, 2vw, 12px);
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 600px;
         }
         button {
-            padding: 10px 24px;
-            font-size: 17px;
+            padding: clamp(8px, 2vw, 12px) clamp(16px, 4vw, 28px);
+            font-size: clamp(14px, 3vw, 16px);
+            font-weight: 500;
             cursor: pointer;
             border-radius: 8px;
-            border: none;
-            background: #222;
-            color: #fff;
-            box-shadow: 0 2px 8px #0008;
-            transition: background 0.2s, color 0.2s, transform 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(30, 30, 30, 0.9);
+            color: #f0f0f0;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            flex: 0 1 auto;
+            min-width: 60px;
         }
         button:hover {
-            background: #a00;
-            color: #fff;
-            transform: translateY(-2px) scale(1.05);
+            background: rgba(50, 50, 50, 0.95);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
-        .btn-white { background: #eee; color: #222; }
-        .btn-black { background: #222; color: #eee; }
-        .btn-red { background: #d32f2f; color: #fff; }
-        .btn-yellow { background: #fbc02d; color: #222; }
-        .btn-green { background: #388e3c; color: #fff; }
-        .btn-blue { background: #1976d2; color: #fff; }
-        .btn-white:hover { background: #fff; color: #a00; }
-        .btn-black:hover { background: #444; color: #fff; }
-        .btn-red:hover { background: #a00; color: #fff; }
-        .btn-yellow:hover { background: #ffe082; color: #a00; }
-        .btn-green:hover { background: #2e7031; color: #fff; }
-        .btn-blue:hover { background: #0d47a1; color: #fff; }
+        .btn-white { background: linear-gradient(145deg, #f8f8f8, #e0e0e0); color: #2a2a2a; border-color: rgba(200, 200, 200, 0.3); }
+        .btn-black { background: linear-gradient(145deg, #2a2a2a, #1a1a1a); color: #f0f0f0; border-color: rgba(100, 100, 100, 0.3); }
+        .btn-red { background: linear-gradient(145deg, #c62828, #b71c1c); color: #ffffff; border-color: rgba(255, 100, 100, 0.3); }
+        .btn-yellow { background: linear-gradient(145deg, #f9a825, #f57f17); color: #2a2a2a; border-color: rgba(255, 200, 100, 0.3); }
+        .btn-green { background: linear-gradient(145deg, #2e7d32, #1b5e20); color: #ffffff; border-color: rgba(100, 200, 100, 0.3); }
+        .btn-blue { background: linear-gradient(145deg, #1565c0, #0d47a1); color: #ffffff; border-color: rgba(100, 150, 255, 0.3); }
+        .btn-white:hover { background: linear-gradient(145deg, #ffffff, #f0f0f0); transform: translateY(-3px); }
+        .btn-black:hover { background: linear-gradient(145deg, #404040, #2a2a2a); transform: translateY(-3px); }
+        .btn-red:hover { background: linear-gradient(145deg, #d32f2f, #c62828); transform: translateY(-3px); }
+        .btn-yellow:hover { background: linear-gradient(145deg, #fbc02d, #f9a825); transform: translateY(-3px); }
+        .btn-green:hover { background: linear-gradient(145deg, #388e3c, #2e7d32); transform: translateY(-3px); }
+        .btn-blue:hover { background: linear-gradient(145deg, #1976d2, #1565c0); transform: translateY(-3px); }
         .tab-container {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 900px;
+            padding: 0 15px;
+            box-sizing: border-box;
         }
         .tab-container button {
-            background: #222;
-            color: #fff;
+            background: rgba(40, 40, 40, 0.9);
+            color: #e8e8e8;
             border-radius: 6px;
-            border: none;
-            padding: 8px 18px;
-            font-size: 15px;
-            box-shadow: 0 1px 6px #0006;
-            transition: background 0.2s, color 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 14px;
+            font-size: clamp(12px, 3vw, 13px);
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            flex: 0 1 auto;
+            min-width: 0;
         }
         .tab-container button:hover {
-            background: #d32f2f;
-            color: #fff;
+            background: rgba(60, 60, 60, 0.95);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
         img[alt="Map"] {
-            max-width: 40%;
+            max-width: clamp(80%, 50vw, 45%);
             height: auto;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            border-radius: 16px;
-            box-shadow: 0 4px 32px #000a;
-            border: 2px solid #333;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 3px 6px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        img[alt="Map"]:hover {
+            transform: scale(1.02);
+        }
+        
+        /* モバイル対応 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                margin-bottom: 20px;
+                font-size: 2.5em;
+            }
+            .button-container {
+                gap: 8px;
+                margin-bottom: 20px;
+            }
+            button {
+                padding: 8px 18px;
+                font-size: 14px;
+            }
+            .tab-container {
+                gap: 6px;
+                padding: 0 10px;
+            }
+            .tab-container button {
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+            img[alt="Map"] {
+                max-width: 90%;
+                margin: 15px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            .button-container {
+                gap: 6px;
+            }
+            button {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            .tab-container button {
+                padding: 5px 8px;
+                font-size: 10px;
+                margin-bottom: 3px;
+            }
+            img[alt="Map"] {
+                max-width: 95%;
+            }
         }
     </style>
 </head>
@@ -104,6 +187,7 @@
     <a href="world.html"><button>世界観設定</button></a>
     <a href="characters.html"><button>キャラクター一覧</button></a>
     <a href="shops.html"><button>店舗一覧</button></a>
+    <a href="tools.html"><button>ツール</button></a>
 </div>
 </body>
 </html>

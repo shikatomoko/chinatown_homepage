@@ -10,60 +10,153 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: linear-gradient(135deg, #181818 60%, #2d1a1a 100%);
-            font-family: 'Cinzel', 'Yu Gothic', '游ゴシック', serif;
             min-height: 100vh;
-            color: #e0e0e0;
+            margin: 0;
+            padding: 15px;
+            background: linear-gradient(145deg, #0f0f0f 0%, #1a1a1a 50%, #2a2a2a 100%);
+            font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+            color: #e8e8e8;
+            box-sizing: border-box;
         }
         h1 {
-            margin-top: 40px;
+            margin-top: 20px;
             margin-bottom: 30px;
-            font-size: 2.8em;
-            color: #fff;
-            text-shadow: 0 2px 16px #a00, 0 0px 2px #222;
-            letter-spacing: 0.08em;
+            font-size: clamp(2em, 5vw, 3em);
+            font-weight: 300;
+            color: #ffffff;
+            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.8);
+            letter-spacing: 0.15em;
+            text-align: center;
+            width: 100%;
         }
         .map-area {
             position: relative;
-            width: 600px;
-            height: 500px;
-            margin-bottom: 40px;
+            width: 90vw;
+            max-width: 1000px;
+            height: 70vh;
+            min-height: 500px;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .map-img {
-            width: 400px;
-            height: auto;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
-            margin: 0 auto;
-            border-radius: 16px;
-            box-shadow: 0 4px 32px #000a;
-            border: 2px solid #333;
+            border-radius: 15px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.15);
         }
-        .group-box {
+        .group-label {
             position: absolute;
-            background: rgba(30, 20, 30, 0.92);
-            border: 2px solid #444;
-            border-radius: 12px;
-            padding: 14px 20px;
-            min-width: 140px;
-            box-shadow: 0 2px 16px #000a;
+            font-size: clamp(18px, 4vw, 28px);
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 10;
         }
-        .group-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 18px;
-            font-family: 'Cinzel', 'Yu Gothic', serif;
-            text-shadow: 0 2px 8px #a00a;
+        .group-label:hover {
+            transform: scale(1.1);
+            text-shadow: 0 4px 16px rgba(0, 0, 0, 1), 0 0 30px rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border-color: rgba(255, 255, 255, 0.4);
         }
-        .group-red .group-title {
-            color: #ff3b3b; /* 彩度を上げた鮮やかな赤 */
-            text-shadow: 0 2px 12px #ff3b3b88, 0 0px 2px #222;
+        /* 各組のラベル位置と色 */
+        .label-yellow {
+            top: 30%;
+            left: 20%;
+            color: #fbc02d;
+            background: rgba(251, 192, 45, 0.15);
         }
-        .group-green .group-title {
-            color: #43ff43; /* 彩度を上げた鮮やかな緑 */
-            text-shadow: 0 2px 12px #43ff4388, 0 0px 2px #222;
+        .label-black {
+            top: 18%;
+            right: 18%;
+            color: #f5f5f5;
+            background: rgba(245, 245, 245, 0.15);
+        }
+        .label-green {
+            top: 45%;
+            left: 10%;
+            color: #43ff43;
+            background: rgba(67, 255, 67, 0.15);
+        }
+        .label-white {
+            top: 40%;
+            right: 18%;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .label-red {
+            bottom: 25%;
+            left: 50%;
+            color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.15);
+        }
+        .label-blue {
+            top: 60%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            color: #4fc3f7;
+            background: rgba(79, 195, 247, 0.15);
+        }
+        .group-detail {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(30, 30, 30, 0.95);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            max-width: 400px;
+            max-height: 70vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: none;
+        }
+        .group-detail.active {
+            display: block;
+        }
+        .group-detail h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .close-btn:hover {
+            color: #ff6b6b;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: none;
+        }
+        .overlay.active {
+            display: block;
         }
         .shop-list {
             list-style: none;
@@ -76,115 +169,225 @@
             align-items: center;
         }
         .shop-list a {
-            color: #e0e0e0;
+            color: #e8e8e8;
             text-decoration: none;
-            font-size: 16px;
-            font-family: 'Yu Gothic', '游ゴシック', serif;
-            transition: color 0.2s;
+            font-size: clamp(13px, 3vw, 16px);
+            font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+            transition: all 0.3s ease;
             margin-left: 8px;
+            font-weight: 500;
         }
         .shop-list a:hover {
-            color: #d32f2f;
-            text-decoration: underline;
+            color: #ffffff;
+            text-decoration: none;
+            text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+            transform: translateX(3px);
         }
         .shop-icon {
-            width: 24px;
-            height: 24px;
+            width: clamp(20px, 4vw, 26px);
+            height: clamp(20px, 4vw, 26px);
             object-fit: cover;
             border-radius: 50%;
-            border: 1.5px solid #fff;
-            box-shadow: 0 1px 6px #0008;
-            background: #222;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            background: rgba(30, 30, 30, 0.9);
+            transition: all 0.3s ease;
         }
-        /* 配置 */
-        .group-yellow { top: 0px; left: 30px; }
-        .group-black { top: 10px; right: 0px; }
-        .group-green { top: 60px; left: -220px; }
-        .group-white { top: 120px; right: -150px; }
-        .group-red { bottom: -39px; left: -100px; }
-        .group-blue { bottom: 10px; right: 30px; }
+        .shop-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
         .tab-container {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .tab-container button {
-            background: #222;
-            color: #fff;
-            border-radius: 6px;
-            border: none;
-            padding: 8px 18px;
-            font-size: 15px;
-            box-shadow: 0 1px 6px #0006;
-            transition: background 0.2s, color 0.2s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #e8e8e8;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
         }
         .tab-container button:hover {
-            background: #d32f2f;
-            color: #fff;
+            background: rgba(60, 60, 60, 0.95);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* モバイル対応 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                margin-top: 15px;
+                margin-bottom: 20px;
+                font-size: 2.2em;
+            }
+            .map-area {
+                width: 95vw;
+                height: 70vw;
+                margin-bottom: 25px;
+            }
+            .map-img {
+                width: 60vw;
+            }
+            .group-box {
+                padding: 10px 14px;
+                min-width: 100px;
+            }
+            .group-title {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+            .shop-list a {
+                font-size: 13px;
+                margin-left: 6px;
+            }
+            .shop-icon {
+                width: 18px;
+                height: 18px;
+            }
+            .tab-container {
+                gap: 6px;
+                padding: 0 10px;
+            }
+            .tab-container button {
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .map-area {
+                width: 98vw;
+                height: 75vw;
+            }
+            .map-img {
+                width: 70vw;
+            }
+            .group-box {
+                padding: 8px 12px;
+                min-width: 90px;
+            }
+            .group-title {
+                font-size: 12px;
+            }
+            .shop-list a {
+                font-size: 11px;
+            }
+            .shop-icon {
+                width: 16px;
+                height: 16px;
+            }
+            .tab-container button {
+                padding: 5px 8px;
+                font-size: 10px;
+                margin-bottom: 3px;
+            }
         }
     </style>
 </head>
 <body>
     <h1>店舗一覧</h1>
+    
+    <!-- オーバーレイ -->
+    <div class="overlay" id="overlay"></div>
+    
     <div class="map-area">
-        <div class="group-box group-yellow">
-            <div class="group-title" style="color:#fbc02d;">黄組</div>
-            <ul class="shop-list">
-                <li><img src="./shop_image/109205746_p9.png" class="shop-icon" alt="ホストクラブ"><a href="shop_hostclub.html">ホストクラブ</a></li>
-                <li><img src="shop_icon/casino.png" class="shop-icon" alt="両替所"><a href="shop_casino.html">両替所</a></li>
-                <li><img src="shop_icon/cosmeticsurgery.png" class="shop-icon" alt="美容整形外科"><a href="shop_cosmeticsurgery.html">美容整形外科</a></li>
-                <li><img src="shop_icon/bank.png" class="shop-icon" alt="銀行"><a href="shop_bank.html">銀行</a></li>
-            </ul>
-        </div>
-        <div class="group-box group-black">
-            <div class="group-title" style="color:#fcfbfb;">黒組</div>
-            <ul class="shop-list">
-                <li><img src="shop_icon/castle.png" class="shop-icon" alt="城"><a href="shop_castle.html">城</a></li>
-                <li><img src="shop_icon/cleaner.png" class="shop-icon" alt="掃除屋"><a href="shop_cleaner.html">掃除屋</a></li>
-                <li><img src="shop_icon/postoffice.png" class="shop-icon" alt="郵便局"><a href="shop_postoffice.html">郵便局</a></li>
-                <li><img src="shop_icon/blackcafe.png" class="shop-icon" alt="カフェ"><a href="shop_blackcafe.html">カフェ</a></li>
-            </ul>
-        </div>
-        <div class="group-box group-green">
-            <div class="group-title" style="color:#388e3c;">緑組</div>
-            <ul class="shop-list">
-                <li><img src="shop_icon/hospital.png" class="shop-icon" alt="病院"><a href="shop_hospital.html">病院</a></li>
-                <li><img src="shop_icon/pastry.png" class="shop-icon" alt="ケーキ屋"><a href="shop_pastry.html">ケーキ屋</a></li>
-                <li><img src="shop_icon/incense.png" class="shop-icon" alt="お香屋"><a href="shop_incense.html">お香屋</a></li>
-            </ul>
-        </div>
-        <div class="group-box group-white">
-            <div class="group-title" style="color:#aaa;">白組</div>
-            <ul class="shop-list">
-                <li><img src="shop_icon/butcher.png" class="shop-icon" alt="肉屋"><a href="shop_butcher.html">肉屋</a></li>
-                <li><img src="shop_icon/leather.png" class="shop-icon" alt="皮屋"><a href="shop_leather.html">皮屋</a></li>
-                <li><img src="shop_icon/undertaker.png" class="shop-icon" alt="葬儀屋"><a href="shop_undertaker.html">葬儀屋</a></li>
-            </ul>
-        </div>
-        <div class="group-box group-red">
-            <div class="group-title" style="color:#d32f2f;">赤組</div>
-            <ul class="shop-list">
-                <li><img src="./shop_image/nailsalon.png" class="shop-icon" alt="ネイルサロン"><a href="./shoppage/shop_nailsalon.html">ネイルサロン</a></li>
-                <li><img src="./shop_image/tailor.png" class="shop-icon" alt="テーラー"><a href="shop_tailor.html">テーラー</a></li>
-                <li><img src="./shop_image/antique.png" class="shop-icon" alt="骨董楼"><a href="shop_antique.html">骨董楼</a></li>
-                <li><img src="./shop_image/spa.png" class="shop-icon" alt="湯治屋"><a href="shop_bath.html">湯治屋</a></li>
-                <li><img src="./shop_image/informer.png" class="shop-icon" alt="情報屋"><a href="shop_informer.html">情報屋</a></li>
-                <li><img src="./shop_image/torture.png" class="shop-icon" alt="拷問屋"><a href="./shoppage/shop_torture.html">拷問屋</a></li>
-                <li><img src="./shop_image/tattoo.png" class="shop-icon" alt="刺青屋"><a href="shop_tattoo.html">刺青屋</a></li>
-                <li><img src="./shop_image/printing.png" class="shop-icon" alt="印紙屋"><a href="shop_stamp.html">印紙屋</a></li>
-            </ul>
-        </div>
-        <div class="group-box group-blue">
-            <div class="group-title" style="color:#1976d2;">青組</div>
-            <ul class="shop-list">
-                <li><img src="shop_icon/cult.png" class="shop-icon" alt="教団"><a href="shop_cult.html">教団</a></li>
-                <li><img src="shop_icon/school.png" class="shop-icon" alt="学校"><a href="shop_school.html">学校</a></li>
-                <li><img src="shop_icon/zoo.png" class="shop-icon" alt="動物園"><a href="shop_zoo.html">動物園</a></li>
-                <li><img src="shop_icon/aquarium.png" class="shop-icon" alt="水族館"><a href="shop_aquarium.html">水族館</a></li>
-            </ul>
-        </div>
+        <!-- マップ画像 -->
         <img src="./picture/map.png" alt="Map" class="map-img">
+        
+        <!-- 各組のラベル -->
+        <div class="group-label label-yellow" onclick="showGroupDetail('yellow')">黄組</div>
+        <div class="group-label label-black" onclick="showGroupDetail('black')">黒組</div>
+        <div class="group-label label-green" onclick="showGroupDetail('green')">緑組</div>
+        <div class="group-label label-white" onclick="showGroupDetail('white')">白組</div>
+        <div class="group-label label-red" onclick="showGroupDetail('red')">赤組</div>
+        <div class="group-label label-blue" onclick="showGroupDetail('blue')">青組</div>
     </div>
+    
+    <!-- 詳細ボックス群 -->
+    <div class="group-detail" id="detail-yellow">
+        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
+        <h3 style="color:#fbc02d;">黄組</h3>
+        <ul class="shop-list">
+            <li><img src="./shop_image/109205746_p9.png" class="shop-icon" alt="ホストクラブ"><a href="shop_hostclub.html">ホストクラブ</a></li>
+            <li><img src="shop_icon/casino.png" class="shop-icon" alt="両替所"><a href="shop_casino.html">両替所</a></li>
+            <li><img src="shop_icon/cosmeticsurgery.png" class="shop-icon" alt="美容整形外科"><a href="shop_cosmeticsurgery.html">美容整形外科</a></li>
+            <li><img src="shop_icon/bank.png" class="shop-icon" alt="銀行"><a href="shop_bank.html">銀行</a></li>
+        </ul>
+    </div>
+    
+    <div class="group-detail" id="detail-black">
+        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
+        <h3 style="color:#fcfbfb;">黒組</h3>
+        <ul class="shop-list">
+            <li><img src="shop_icon/castle.png" class="shop-icon" alt="城"><a href="shop_castle.html">城</a></li>
+            <li><img src="shop_icon/cleaner.png" class="shop-icon" alt="掃除屋"><a href="shop_cleaner.html">掃除屋</a></li>
+            <li><img src="shop_icon/postoffice.png" class="shop-icon" alt="郵便局"><a href="shop_postoffice.html">郵便局</a></li>
+            <li><img src="shop_icon/blackcafe.png" class="shop-icon" alt="カフェ"><a href="shop_blackcafe.html">カフェ</a></li>
+        </ul>
+    </div>
+    
+    <div class="group-detail" id="detail-green">
+        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
+        <h3 style="color:#43ff43;">緑組</h3>
+        <ul class="shop-list">
+            <li><img src="shop_icon/hospital.png" class="shop-icon" alt="病院"><a href="shop_hospital.html">病院</a></li>
+            <li><img src="shop_icon/pastry.png" class="shop-icon" alt="ケーキ屋"><a href="shop_pastry.html">ケーキ屋</a></li>
+            <li><img src="shop_icon/incense.png" class="shop-icon" alt="お香屋"><a href="shop_incense.html">お香屋</a></li>
+        </ul>
+    </div>
+    
+    <div class="group-detail" id="detail-white">
+        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
+        <h3 style="color:#ffffff;">白組</h3>
+        <ul class="shop-list">
+            <li><img src="shop_icon/butcher.png" class="shop-icon" alt="肉屋"><a href="shop_butcher.html">肉屋</a></li>
+            <li><img src="shop_icon/leather.png" class="shop-icon" alt="皮屋"><a href="shop_leather.html">皮屋</a></li>
+            <li><img src="shop_icon/undertaker.png" class="shop-icon" alt="葬儀屋"><a href="shop_undertaker.html">葬儀屋</a></li>
+        </ul>
+    </div>
+    
+    <div class="group-detail" id="detail-red">
+        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
+        <h3 style="color:#ff6b6b;">赤組</h3>
+        <ul class="shop-list">
+            <li><img src="./shop_image/nailsalon.png" class="shop-icon" alt="ネイルサロン"><a href="./shoppage/shop_nailsalon.html">ネイルサロン</a></li>
+            <li><img src="./shop_image/tailor.png" class="shop-icon" alt="テーラー"><a href="shop_tailor.html">テーラー</a></li>
+            <li><img src="./shop_image/antique.png" class="shop-icon" alt="骨董楼"><a href="shop_antique.html">骨董楼</a></li>
+            <li><img src="./shop_image/spa.png" class="shop-icon" alt="湯治屋"><a href="shop_bath.html">湯治屋</a></li>
+            <li><img src="./shop_image/informer.png" class="shop-icon" alt="情報屋"><a href="shop_informer.html">情報屋</a></li>
+            <li><img src="./shop_image/torture.png" class="shop-icon" alt="拷問屋"><a href="./shoppage/shop_torture.html">拷問屋</a></li>
+            <li><img src="./shop_image/tattoo.png" class="shop-icon" alt="刺青屋"><a href="shop_tattoo.html">刺青屋</a></li>
+            <li><img src="./shop_image/printing.png" class="shop-icon" alt="印紙屋"><a href="shop_stamp.html">印紙屋</a></li>
+        </ul>
+    </div>
+    
+    <div class="group-detail" id="detail-blue">
+        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
+        <h3 style="color:#4fc3f7;">青組</h3>
+        <ul class="shop-list">
+            <li><img src="shop_icon/cult.png" class="shop-icon" alt="教団"><a href="shop_cult.html">教団</a></li>
+            <li><img src="shop_icon/school.png" class="shop-icon" alt="学校"><a href="shop_school.html">学校</a></li>
+            <li><img src="shop_icon/zoo.png" class="shop-icon" alt="動物園"><a href="shop_zoo.html">動物園</a></li>
+            <li><img src="shop_icon/aquarium.png" class="shop-icon" alt="水族館"><a href="shop_aquarium.html">水族館</a></li>
+        </ul>
+    </div>
+    
     <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
         <a href="index.html"><button>ホーム</button></a>
         <a href="rules.html"><button>特殊ルール</button></a>
@@ -192,6 +395,52 @@
         <a href="world.html"><button>世界観設定</button></a>
         <a href="characters.html"><button>キャラクター一覧</button></a>
         <a href="shops.html"><button>店舗一覧</button></a>
+        <a href="tools.html"><button>ツール</button></a>
     </div>
+    
+    <script>
+        function showGroupDetail(groupName) {
+            // すべての詳細を非表示にする
+            hideGroupDetail();
+            
+            // 指定されたグループの詳細を表示
+            const detail = document.getElementById('detail-' + groupName);
+            const overlay = document.getElementById('overlay');
+            
+            if (detail && overlay) {
+                detail.classList.add('active');
+                overlay.classList.add('active');
+                
+                // ESCキーで閉じる
+                document.addEventListener('keydown', handleEscKey);
+            }
+        }
+        
+        function hideGroupDetail() {
+            // すべての詳細ボックスを非表示にする
+            const details = document.querySelectorAll('.group-detail');
+            const overlay = document.getElementById('overlay');
+            
+            details.forEach(detail => {
+                detail.classList.remove('active');
+            });
+            
+            if (overlay) {
+                overlay.classList.remove('active');
+            }
+            
+            // ESCキーのイベントリスナーを削除
+            document.removeEventListener('keydown', handleEscKey);
+        }
+        
+        function handleEscKey(event) {
+            if (event.key === 'Escape') {
+                hideGroupDetail();
+            }
+        }
+        
+        // オーバーレイをクリックして閉じる
+        document.getElementById('overlay').addEventListener('click', hideGroupDetail);
+    </script>
 </body>
 </html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ツール一覧 - 暗黒中華街</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 15px;
+            background: linear-gradient(145deg, #0f0f0f 0%, #1a1a1a 50%, #2a2a2a 100%);
+            font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+            color: #e8e8e8;
+            box-sizing: border-box;
+        }
+        h1 {
+            margin-bottom: 25px;
+            margin-top: 15px;
+            font-size: clamp(2em, 5vw, 3em);
+            font-weight: 300;
+            color: #ffffff;
+            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.8);
+            letter-spacing: 0.15em;
+            text-align: center;
+            width: 100%;
+        }
+        .tab-container {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 900px;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+        .tab-container button {
+            background: rgba(40, 40, 40, 0.9);
+            color: #e8e8e8;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 14px;
+            font-size: clamp(12px, 3vw, 13px);
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            flex: 0 1 auto;
+            min-width: 0;
+        }
+        .tab-container button:hover {
+            background: rgba(60, 60, 60, 0.95);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+        .tools-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(20px, 4vw, 30px);
+            max-width: 900px;
+            width: 100%;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+        .tool-card {
+            background: rgba(40, 40, 40, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: clamp(18px, 4vw, 25px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        .tool-card:hover {
+            background: rgba(50, 50, 50, 0.95);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+        }
+        .tool-card h3 {
+            font-size: clamp(1.2em, 4vw, 1.5em);
+            margin-bottom: 12px;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        .tool-card p {
+            color: #d0d0d0;
+            line-height: 1.6;
+            margin-bottom: 18px;
+            font-size: clamp(0.9em, 2.5vw, 1em);
+        }
+        .tool-link {
+            display: inline-block;
+            padding: clamp(10px, 2.5vw, 12px) clamp(18px, 4vw, 25px);
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: clamp(0.9em, 2.5vw, 1em);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .tool-link:hover {
+            background: linear-gradient(145deg, #404040, #2a2a2a);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            color: #ffffff;
+        }
+        .external-link {
+            background: linear-gradient(145deg, #1565c0, #0d47a1);
+            border-color: rgba(100, 150, 255, 0.3);
+        }
+        .external-link:hover {
+            background: linear-gradient(145deg, #1976d2, #1565c0);
+        }
+        
+        /* モバイル対応 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                margin-top: 10px;
+                margin-bottom: 20px;
+                font-size: 2.2em;
+            }
+            .tab-container {
+                gap: 6px;
+                padding: 0 10px;
+                margin-bottom: 25px;
+            }
+            .tab-container button {
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+            .tools-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 10px;
+            }
+            .tool-card {
+                padding: 16px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tab-container button {
+                padding: 5px 8px;
+                font-size: 10px;
+                margin-bottom: 3px;
+            }
+            .tool-link {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>ツール一覧</h1>
+    
+    <div class="tab-container">
+        <a href="index.html"><button>ホーム</button></a>
+        <a href="rules.html"><button>特殊ルール</button></a>
+        <a href="jinngai.html"><button>人外設定</button></a>
+        <a href="world.html"><button>世界観設定</button></a>
+        <a href="characters.html"><button>キャラクター一覧</button></a>
+        <a href="shops.html"><button>店舗一覧</button></a>
+        <a href="tools.html"><button>ツール</button></a>
+    </div>
+
+    <div class="tools-container">
+        <div class="tool-card">
+            <h3>NPCジェネレーター</h3>
+            <p>ランダムなNPC（ノンプレイヤーキャラクター）を生成するツールです。キャラクターの技能値などを自動で作成します。</p>
+            <a href="./plugin/npc_generator_0921.html" class="tool-link">NPCジェネレーターを起動</a>
+        </div>
+
+        <div class="tool-card">
+            <h3>食べ物ジェネレーター</h3>
+            <p>食事の内容を生成できるアプリケーションです。名称や特徴、変動SAN値を確認できますS</p>
+            <a href="https://aistudio.google.com/apps/drive/1zqxS19m3t2pdVS5NSeSBxF6qXWtl97my?showPreview=true&showAssistant=true" class="tool-link external-link" target="_blank" rel="noopener noreferrer">食べ物ジェネレーターを開く</a>
+        </div>
+    </div>
+</body>
+</html>

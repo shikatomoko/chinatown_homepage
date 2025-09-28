@@ -10,63 +10,81 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: linear-gradient(135deg, #181818 60%, #2d1a1a 100%);
-            font-family: 'Cinzel', 'Yu Gothic', '游ゴシック', serif;
             min-height: 100vh;
-            color: #e0e0e0;
+            margin: 0;
+            padding: 15px;
+            background: linear-gradient(145deg, #0f0f0f 0%, #1a1a1a 50%, #2a2a2a 100%);
+            font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+            color: #e8e8e8;
+            box-sizing: border-box;
         }
         h1 {
-            margin-top: 40px;
+            margin-top: 20px;
             margin-bottom: 30px;
-            font-size: 2.8em;
-            color: #fff;
-            text-shadow: 0 2px 16px #a00, 0 0px 2px #222;
-            letter-spacing: 0.08em;
+            font-size: clamp(2em, 5vw, 3em);
+            font-weight: 300;
+            color: #ffffff;
+            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.8);
+            letter-spacing: 0.15em;
+            text-align: center;
+            width: 100%;
         }
         .character-list {
-            display: flex;
-            gap: 40px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: clamp(25px, 5vw, 40px);
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 1000px;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
         .character-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: rgba(30, 20, 30, 0.85);
-            border: 2px solid #444;
+            background: rgba(40, 40, 40, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            padding: 18px 20px 10px 20px;
-            width: 120px;
+            padding: clamp(16px, 3vw, 20px) clamp(18px, 3vw, 22px) clamp(10px, 2vw, 12px);
             box-sizing: border-box;
-            transition: background 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 16px #000a;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            min-width: 120px;
         }
         .character-item:hover {
-            background: rgba(45, 26, 26, 0.9);
-            box-shadow: 0 4px 24px #a00a;
+            background: rgba(50, 50, 50, 0.95);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
         }
         .character-icon {
-            width: 60px;
-            height: 60px;
+            width: clamp(50px, 10vw, 64px);
+            height: clamp(50px, 10vw, 64px);
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #666;
-            background: #222;
-            margin-bottom: 10px;
-            transition: box-shadow 0.2s, border-color 0.2s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(30, 30, 30, 0.9);
+            margin-bottom: clamp(8px, 2vw, 12px);
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
         }
         .character-icon:hover {
-            box-shadow: 0 0 16px #a00;
-            border-color: #a00;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.5);
         }
         .character-name {
-            font-size: 14px;
-            font-weight: bold;
+            font-size: clamp(13px, 2.5vw, 15px);
+            font-weight: 600;
             text-align: center;
-            margin-top: 2px;
-            text-shadow: 0 1px 4px #000;
+            margin-top: 3px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+            transition: all 0.3s ease;
+            word-wrap: break-word;
+            hyphens: auto;
         }
         .character-name.white { color: #ddd; text-shadow: 0 1px 8px rgba(255, 255, 255, 0.4); }
         .character-name.black { color: #888; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6); }
@@ -76,22 +94,87 @@
         .character-name.blue { color: #4fc3f7; text-shadow: 0 1px 8px rgba(25, 118, 210, 0.6); }
         .tab-container {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .tab-container button {
-            background: #222;
-            color: #fff;
-            border-radius: 6px;
-            border: none;
-            padding: 8px 18px;
-            font-size: 15px;
-            box-shadow: 0 1px 6px #0006;
-            transition: background 0.2s, color 0.2s;
+            background: rgba(40, 40, 40, 0.9);
+            color: #e8e8e8;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
         }
         .tab-container button:hover {
-            background: #d32f2f;
-            color: #fff;
+            background: rgba(60, 60, 60, 0.95);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* モバイル対応 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                margin-top: 15px;
+                margin-bottom: 20px;
+                font-size: 2.2em;
+            }
+            .character-list {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 20px;
+                padding: 0 10px;
+            }
+            .character-item {
+                padding: 14px 16px 8px;
+            }
+            .character-icon {
+                width: 45px;
+                height: 45px;
+                margin-bottom: 8px;
+            }
+            .character-name {
+                font-size: 13px;
+            }
+            .tab-container {
+                gap: 6px;
+                padding: 0 10px;
+            }
+            .tab-container button {
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .character-list {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 15px;
+            }
+            .character-item {
+                padding: 12px 14px 6px;
+            }
+            .character-icon {
+                width: 40px;
+                height: 40px;
+            }
+            .character-name {
+                font-size: 11px;
+            }
+            .tab-container button {
+                padding: 5px 8px;
+                font-size: 10px;
+                margin-bottom: 3px;
+            }
         }
     </style>
 </head>
@@ -165,7 +248,8 @@
         <a href="jinngai.html"><button>人外設定</button></a>
         <a href="world.html"><button>世界観設定</button></a>
         <a href="characters.html"><button>キャラクター一覧</button></a>
-     <a href="shops.html"><button>店舗一覧</button></a>
+        <a href="shops.html"><button>店舗一覧</button></a>
+        <a href="tools.html"><button>ツール</button></a>
     </div>
 </body>
 </html>
