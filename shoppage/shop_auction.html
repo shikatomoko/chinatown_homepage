@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オークション</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #3d2f00, #665000, #4d3d00);
+            font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+        
+        .title-center {
+            text-align: center;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.05em;
+            margin: 40px auto 20px;
+            padding: 0;
+        }
+        
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: clamp(20px, 4vw, 60px);
+            gap: clamp(20px, 4vw, 60px);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .shop-img {
+            width: min(600px, 60vw);
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 204, 0, 0.8);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 204, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .shop-gallery {
+            width: min(600px, 60vw);
+            position: relative;
+        }
+        
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/10;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 204, 0, 0.3);
+        }
+        
+        .gallery-slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .gallery-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .gallery-slide.active {
+            opacity: 1;
+        }
+        
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            font-size: 20px;
+            padding: 12px 16px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .gallery-nav:hover {
+            background: rgba(255, 204, 0, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .gallery-prev {
+            left: 15px;
+        }
+        
+        .gallery-next {
+            right: 15px;
+        }
+        
+        .gallery-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        
+        .gallery-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .gallery-dot.active {
+            background: #ffcc00;
+            border-color: white;
+            transform: scale(1.2);
+        }
+        
+        .gallery-dot:hover {
+            background: rgba(255, 204, 0, 0.8);
+            transform: scale(1.1);
+        }
+        
+        .shop-img:hover {
+            box-shadow: 0 6px 32px rgba(0, 0, 0, 0.3), 0 0 24px rgba(255, 204, 0, 0.4);
+        }
+        
+        .info-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: clamp(12px, 2vw, 20px);
+            min-width: min(320px, 40vw);
+            background: rgba(255, 204, 0, 0.9);
+            padding: clamp(20px, 3vw, 32px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 204, 0, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .info-row {
+            font-size: clamp(16px, 3vw, 18px);
+            color: #000000;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+            line-height: 1.4;
+            font-weight: 500;
+        }
+        
+        .color-link {
+            color: #000000;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(0, 0, 0, 0.7);
+            transition: color 0.2s, text-shadow 0.2s;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .color-link:hover {
+            color: #333333;
+            text-shadow: 0 1px 8px rgba(51, 51, 51, 0.3);
+        }
+        
+        .bottom-section {
+            margin: 40px auto 0 auto;
+            max-width: 800px;
+            padding: 0 30px 40px 30px;
+            background: rgba(255, 204, 0, 0.9);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 204, 0, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
+        }
+        
+        .bottom-section h2 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 12px;
+            color: #000000;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
+        
+        .bottom-section p {
+            font-size: 16px;
+            color: #1a1a1a;
+            line-height: 1.8;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+        }
+        
+        .employee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        
+        .employee-card {
+            background: rgba(204, 153, 0, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 204, 0, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .employee-card:hover {
+            background: rgba(230, 173, 0, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .employee-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .employee-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            margin-right: 16px;
+            border: 2px solid rgba(0, 0, 0, 0.7);
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .employee-name {
+            font-weight: bold;
+            font-size: 20px;
+            color: #000;
+        }
+        
+        .employee-role {
+            font-size: 16px;
+            color: #1a1a1a;
+            margin-top: 8px;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .service-card {
+            background: rgba(204, 153, 0, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(255, 204, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            background: rgba(230, 173, 0, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-card.seller {
+            border: 2px solid rgba(34, 139, 34, 0.8);
+            background: rgba(153, 102, 0, 0.9);
+        }
+        
+        .service-card.seller:hover {
+            background: rgba(179, 119, 0, 1.0);
+            box-shadow: 0 6px 20px rgba(34, 139, 34, 0.2);
+        }
+        
+        .service-card.vip {
+            border: 2px solid rgba(138, 43, 226, 0.8);
+            background: rgba(128, 85, 0, 0.9);
+        }
+        
+        .service-card.vip:hover {
+            background: rgba(153, 102, 0, 1.0);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.2);
+        }
+        
+        .service-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 12px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+        }
+        
+        .service-title.seller {
+            color: #228b22;
+        }
+        
+        .service-title.vip {
+            color: #8a2be2;
+        }
+        
+        .service-price {
+            font-size: 16px;
+            color: #cc6600;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .service-requirement {
+            font-size: 14px;
+            color: #804d00;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+        
+        .service-description {
+            font-size: 15px;
+            color: #1a1a1a;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .service-mechanics {
+            font-size: 14px;
+            color: #2d2d2d;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid rgba(220, 20, 60, 0.8);
+        }
+        
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin: 40px 0 20px 0;
+            justify-content: center;
+        }
+        
+        .color-group-container {
+            display: flex;
+            gap: 12px;
+            margin: 30px 0 20px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .color-group-btn {
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .color-group-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .color-red {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+        }
+        
+        .color-blue {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        }
+        
+        .color-green {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+        }
+        
+        .color-yellow {
+            background: linear-gradient(135deg, #eab308, #ca8a04);
+        }
+        
+        .color-white {
+            background: linear-gradient(135deg, #f3f4f6, #d1d5db);
+            color: #374151;
+        }
+        
+        .color-black {
+            background: linear-gradient(135deg, #374151, #1f2937);
+        }
+        
+        @media (max-width: 768px) {
+            .color-group-container {
+                gap: 8px;
+                margin: 20px 10px;
+            }
+            
+            .color-group-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+        
+        .tab-container button {
+            background: #222;
+            color: #fff;
+            border-radius: 6px;
+            border: none;
+            padding: 8px 18px;
+            font-size: 15px;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        
+        .tab-container button:hover {
+            background: #444;
+            color: #fff;
+            box-shadow: 0 2px 12px rgba(102, 102, 102, 0.3);
+        }
+        
+        .yellow-group-btn {
+            background: rgba(255, 204, 0, 0.8);
+            color: #000;
+            border-radius: 8px;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .yellow-group-btn:hover {
+            background: rgba(255, 204, 0, 1.0);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .group-detail {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(30, 30, 30, 0.95);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            max-width: 400px;
+            max-height: 70vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: none;
+        }
+        
+        .group-detail.active {
+            display: block;
+        }
+        
+        .group-detail h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            color: #ffcc00;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        .shop-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .shop-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .shop-list a {
+            color: #e8e8e8;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+        
+        .shop-list a:hover {
+            color: #ffffff;
+            text-decoration: none;
+            text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+            transform: translateX(3px);
+        }
+        
+        .shop-icon {
+            width: 26px;
+            height: 26px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            background: rgba(30, 30, 30, 0.9);
+            transition: all 0.3s ease;
+        }
+        
+        .shop-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .top-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .shop-img {
+                width: 90vw;
+                margin-bottom: 20px;
+            }
+            
+            .info-box {
+                min-width: 90vw;
+                max-width: 90vw;
+                text-align: left;
+            }
+            
+            .bottom-section {
+                margin: 20px 20px 0 20px;
+                padding: 0 20px 20px 20px;
+            }
+            
+            .employee-grid,
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .shop-img {
+                width: 95vw;
+            }
+            
+            .info-box {
+                padding: 16px;
+            }
+            
+            .bottom-section {
+                margin: 10px 10px 0 10px;
+                padding: 0 15px 15px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="title-center">オークション</div>
+    <div class="top-section">
+        <div class="shop-gallery">
+            <div class="gallery-container">
+                <div class="gallery-slides" id="auctionGallery">
+                    <div class="gallery-slide active">
+                        <img src="../shop_image/yellow/auction/auction_stage.png" alt="オークション会場">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="../shop_image/yellow/auction/auction_entrance.png" alt="オークション入口">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="../shop_image/yellow/auction/auction_open.png" alt="オークション開催">
+                    </div>
+                </div>
+                <button class="gallery-nav gallery-prev" onclick="previousSlide('auctionGallery')">❮</button>
+                <button class="gallery-nav gallery-next" onclick="nextSlide('auctionGallery')">❯</button>
+                <div class="gallery-dots">
+                    <span class="gallery-dot active" onclick="currentSlide('auctionGallery', 1)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('auctionGallery', 2)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('auctionGallery', 3)"></span>
+                </div>
+            </div>
+        </div>
+        <div class="info-box">
+            <div class="info-row">
+                所属組織：<a href="../colorpage/yellow.html" class="color-link">黄惑街</a>
+            </div>
+            <div class="info-row">
+                エリア：郊外
+            </div>
+            <div class="info-row">
+                営業時間：不定期開催
+            </div>
+            <div class="info-row">
+                業種：競売・オークション
+            </div>
+            <div class="info-row">
+                従業員：競売人／監査人（鑑定眼を持つ人外）／用心棒多数
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-section">
+        <h2>概要</h2>
+        <p>この世に存在するありとあらゆるものが売買される巨大オークション会場。表向きは芸術品や宝飾品を扱うが、裏の部では臓器・人間・怪異・呪物・魂すらも取引対象になる。黄組にとって莫大な資金源であり、外の富裕層や闇社会の人間、人外が多数集まる。</p>
+        
+        <h2>利用方法・料金</h2>
+        <div class="service-grid">
+            <div class="service-card seller">
+                <div class="service-title seller">売り手</div>
+                <div class="service-price">手数料：落札額の1割を黄惑組に納付</div>
+                <div class="service-requirement">信用値条件：50以上</div>
+                <div class="service-description">
+                    人間・人外・呪具・芸術品・情報など、基本的に何でも出品可能。オークション成立時に手数料が発生する。
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-title">買い手（一般）</div>
+                <div class="service-price">入場料：10,000円</div>
+                <div class="service-requirement">信用値条件：なし</div>
+                <div class="service-description">
+                    服装や身分は問われないが、一般席では芸術品・宝飾品・小規模呪具などが中心。人間や大規模呪物は取り扱われない。
+                </div>
+                <div class="service-mechanics">
+                    <strong>リスク：</strong>&lt;幸運&gt;判定に失敗するとあなた自身が売り物になるリスクを負う。
+                </div>
+            </div>
+            <div class="service-card vip">
+                <div class="service-title vip">買い手（VIP）</div>
+                <div class="service-price">入場料：500,000円</div>
+                <div class="service-requirement">信用値条件：80以上</div>
+                <div class="service-description">
+                    取引対象：奴隷・臓器・禁呪の書・生きた怪異・異界の品々。中には「寿命の一部」や「魂」まで競売される。
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button class="yellow-group-btn" onclick="showYellowGroupDetail()">黄組のその他の店舗</button>
+    
+    <!-- オーバーレイ -->
+    <div class="overlay" id="overlay"></div>
+    
+   <!-- 黄組詳細ポップアップ -->
+    <div class="group-detail" id="detail-yellow">
+        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
+        <h3 style="color:#ffcc00;">黄惑街</h3>
+        <ul class="shop-list">
+            <li><img src="../shop_image/yellow/casino/casino.png" class="shop-icon" alt="カジノ"><a href="./shop_casino.html">カジノ</a></li>
+            <li><img src="../shop_image/yellow/auction/auction_stage.png" class="shop-icon" alt="オークション"><a href="./shop_auction.html">オークション</a></li>
+            <li><img src="../shop_image/yellow/bank/bank.png" class="shop-icon" alt="銀行"><a href="./shop_bank.html">銀行</a></li>
+            <li><img src="../shop_image/yellow/brothel/brothel.png" class="shop-icon" alt="娼館"><a href="./shop_brothel.html">娼館</a></li>
+            <li><img src="../shop_image/yellow/courier/courier.png" class="shop-icon" alt="運び屋"><a href="./shop_courier.html">運び屋</a></li>
+            <li><img src="../shop_image/yellow/hostclub/hostclub.png" class="shop-icon" alt="ホストクラブ"><a href="./shop_hostclub.html">ホストクラブ</a></li>
+            <li><img src="../shop_image/yellow/hotel/hotel.png" class="shop-icon" alt="ホテル"><a href="./shop_hotel.html">ホテル</a></li>
+            <li><img src="../shop_image/yellow/trade/trade.png" class="shop-icon" alt="交易所"><a href="./shop_trade.html">交易所</a></li>
+        </ul>
+    </div>
+    
+    <div class="color-group-container">
+        <a href="../colorpage/red.html" class="color-group-btn color-red">呑紅街</a>
+        <a href="../colorpage/blue.html" class="color-group-btn color-blue">青組</a>
+        <a href="../colorpage/green.html" class="color-group-btn color-green">緑組</a>
+        <a href="../colorpage/yellow.html" class="color-group-btn color-yellow">黄組</a>
+        <a href="../colorpage/white.html" class="color-group-btn color-white">白組</a>
+        <a href="../colorpage/black.html" class="color-group-btn color-black">黒組</a>
+    </div>
+    
+    <div class="tab-container">
+        <a href="../index.html"><button>ホーム</button></a>
+        <a href="../rules.html"><button>特殊ルール</button></a>
+        <a href="../jinngai.html"><button>人外設定</button></a>
+        <a href="../world.html"><button>世界観設定</button></a>
+        <a href="../characters.html"><button>キャラクター一覧</button></a>
+        <a href="../shops.html"><button>店舗一覧</button></a>
+        <a href="../tools.html"><button>ツール</button></a>
+    </div>
+    
+    <script>
+        function showYellowGroupDetail() {
+            hideGroupDetail();
+            
+            const detail = document.getElementById('detail-yellow');
+            const overlay = document.getElementById('overlay');
+            
+            if (detail && overlay) {
+                detail.classList.add('active');
+                overlay.classList.add('active');
+                
+                document.addEventListener('keydown', handleEscKey);
+            }
+        }
+        
+        function hideGroupDetail() {
+            const details = document.querySelectorAll('.group-detail');
+            const overlay = document.getElementById('overlay');
+            
+            details.forEach(detail => {
+                detail.classList.remove('active');
+            });
+            
+            if (overlay) {
+                overlay.classList.remove('active');
+            }
+            
+            document.removeEventListener('keydown', handleEscKey);
+        }
+        
+        function handleEscKey(event) {
+            if (event.key === 'Escape') {
+                hideGroupDetail();
+            }
+        }
+        
+        document.getElementById('overlay').addEventListener('click', hideGroupDetail);
+        
+        // ギャラリー機能
+        const galleryConfigs = {
+            'auctionGallery': {
+                totalSlides: 3,
+                currentSlide: 0,
+                autoRotateInterval: null
+            }
+        };
+
+        function showSlide(galleryId, n) {
+            const config = galleryConfigs[galleryId];
+            const slides = document.querySelectorAll(`#${galleryId} .gallery-slide`);
+            const dots = document.querySelector(`#${galleryId}`).parentElement.querySelectorAll('.gallery-dot');
+            
+            if (n >= config.totalSlides) { config.currentSlide = 0; }
+            if (n < 0) { config.currentSlide = config.totalSlides - 1; }
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            if (slides[config.currentSlide]) {
+                slides[config.currentSlide].classList.add('active');
+            }
+            if (dots[config.currentSlide]) {
+                dots[config.currentSlide].classList.add('active');
+            }
+        }
+
+        function nextSlide(galleryId) {
+            const config = galleryConfigs[galleryId];
+            config.currentSlide++;
+            showSlide(galleryId, config.currentSlide);
+        }
+
+        function previousSlide(galleryId) {
+            const config = galleryConfigs[galleryId];
+            config.currentSlide--;
+            showSlide(galleryId, config.currentSlide);
+        }
+
+        function currentSlide(galleryId, n) {
+            const config = galleryConfigs[galleryId];
+            config.currentSlide = n - 1;
+            showSlide(galleryId, config.currentSlide);
+        }
+
+        function startAutoRotate(galleryId) {
+            const config = galleryConfigs[galleryId];
+            config.autoRotateInterval = setInterval(() => {
+                nextSlide(galleryId);
+            }, 5000);
+        }
+
+        function stopAutoRotate(galleryId) {
+            const config = galleryConfigs[galleryId];
+            if (config.autoRotateInterval) {
+                clearInterval(config.autoRotateInterval);
+                config.autoRotateInterval = null;
+            }
+        }
+
+        // タッチスワイプサポート
+        function addTouchSupport(galleryId) {
+            const gallery = document.getElementById(galleryId);
+            let startX = 0;
+            let startY = 0;
+
+            gallery.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                stopAutoRotate(galleryId);
+            }, { passive: true });
+
+            gallery.addEventListener('touchend', function(e) {
+                if (!startX || !startY) return;
+
+                let endX = e.changedTouches[0].clientX;
+                let endY = e.changedTouches[0].clientY;
+
+                let diffX = startX - endX;
+                let diffY = startY - endY;
+
+                if (Math.abs(diffX) > Math.abs(diffY)) {
+                    if (Math.abs(diffX) > 50) {
+                        if (diffX > 0) {
+                            nextSlide(galleryId);
+                        } else {
+                            previousSlide(galleryId);
+                        }
+                    }
+                }
+
+                startX = 0;
+                startY = 0;
+                startAutoRotate(galleryId);
+            }, { passive: true });
+
+            // マウスイベントでも同様の処理
+            gallery.addEventListener('mouseenter', () => stopAutoRotate(galleryId));
+            gallery.addEventListener('mouseleave', () => startAutoRotate(galleryId));
+        }
+
+        // 初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            Object.keys(galleryConfigs).forEach(galleryId => {
+                addTouchSupport(galleryId);
+                startAutoRotate(galleryId);
+            });
+        });
+    </script>
+</body>
+</html>
