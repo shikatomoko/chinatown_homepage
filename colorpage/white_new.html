@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>黄惑街</title>
+    <title>白葬街</title>
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
@@ -16,14 +16,14 @@
         }
         
         .header {
-            background: linear-gradient(135deg, #d97706, #f59e0b);
+            background: linear-gradient(135deg, #e5e5e5, #d0d0d0);
             padding: 60px 40px;
             text-align: left;
         }
         
         .title {
             font-size: clamp(4rem, 10vw, 6.5rem);
-            color: #ffffff;
+            color: #333333;
             font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
             font-weight: normal;
             letter-spacing: 0.1em;
@@ -89,13 +89,13 @@
         }
         
         .sub-image:hover {
-            border-color: #eab308;
+            border-color: #e5e5e5;
             transform: scale(1.05);
         }
         
         .sub-image.active {
-            border-color: #eab308;
-            box-shadow: 0 0 15px rgba(234, 179, 8, 0.6);
+            border-color: #e5e5e5;
+            box-shadow: 0 0 15px rgba(229, 229, 229, 0.6);
         }
         
         .bottom-content {
@@ -151,7 +151,7 @@
         
         .role-label {
             font-weight: normal;
-            color: #eab308;
+            color: #e5e5e5;
             min-width: 120px;
             margin-right: 16px;
             font-size: 15px;
@@ -166,7 +166,7 @@
         }
         
         .person-link:hover, .shop-link:hover {
-            color: #eab308;
+            color: #e5e5e5;
         }
         
         .unknown-person {
@@ -205,7 +205,8 @@
         }
         
         .tab-container button:hover {
-            background: #eab308;
+            background: #e5e5e5;
+            color: #333333;
             transform: translateY(-2px);
         }
         
@@ -302,25 +303,23 @@
     </style>
 </head>
 <body>
-    <!-- ヘッダー部分（黄色背景） -->
+    <!-- ヘッダー部分（白色背景） -->
     <div class="header">
-        <h1 class="title">黄惑街</h1>
+        <h1 class="title">白葬街</h1>
     </div>
     
     <!-- メイン画像部分 -->
     <div class="main-content">
         <div class="main-image-container">
-            <img id="mainImage" class="main-image" src="../shop_image/yellow/street/street.png" alt="黄惑街のメイン画像">
+            <img id="mainImage" class="main-image" src="../shop_image/white/street/backstreet.jpg" alt="白葬街のメイン画像">
         </div>
         
         <!-- サブ画像スライダー -->
         <div class="sub-images-container">
             <div class="sub-images-scroll">
-                <img class="sub-image active" src="../shop_image/yellow/street/street.png" alt="黄惑街の街" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../shop_image/yellow/street/street2.png" alt="黄惑街の街角" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../shop_image/yellow/street/square.png" alt="黄惑街の広場" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../shop_image/yellow/street/backstreet.png" alt="黄惑街の裏通り" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../shop_image/yellow/street/corridor.png" alt="黄惑街の廊下" onclick="changeMainImage(this)">
+                <img class="sub-image active" src="../shop_image/white/street/backstreet.jpg" alt="白葬街の裏通り" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/white/street/govermentoffice.png" alt="白葬街の政庁" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/white/street/smallshop_entrance.png" alt="白葬街の小店入口" onclick="changeMainImage(this)">
             </div>
         </div>
     
@@ -328,52 +327,47 @@
     <div class="bottom-content">
         <div class="content-section">
             <h2 class="section-title">組織概要</h2>
-            <p class="section-text">黄惑街のモットーは酷く単純で明確である。稼ぐ。それだけである。</p>
-            <p class="section-text">黄惑街は金稼ぎに繋がる全ての仕事を担う。ホストクラブの運営にカジノ、遊園地から飲み屋。場合によっては他の色とも積極的に手を組み、自身の利益を増幅させることを目指す。</p>
-            <p class="section-text">そのため黄惑街は非常に豪華絢爛な組織である。所属する人の数は呑紅街に次いで２番目であり、構成員は皆、派手に金を使う煌びやかなやり方を好む。</p>
-            <p class="section-text">彼らは中央銀行の経営を担っている。通貨の造幣は黄惑街の仕事だ。彼らこそが暗黒中華街の経済を握っているのである。</p>
+            <p class="section-text">白組の主な仕事は「死体処理」である。この街では一日に生まれる人間の数より死ぬ人間の数の方が当然多い。そうして発生する死体を放置していては様々な害の元である。</p>
+            <p class="section-text">死体だって「白組」の手にかかればただのゴミではないのである。利用価値のある素材をみすみす逃すような行為を、「白組」は許容しない。</p>
         </div>
         
         <div class="content-section">
             <h2 class="section-title">区画について</h2>
-            <p class="section-text">区画は比較的広く、城にも程近い。構成人数が相当に多く経営施設も多数あるため、広大な面積が必要なのである。</p>
-            <p class="section-text">滝緑街と隣接している部分には工業地帯がある。ここでは様々な薬品や技術の開発を行っているが、工場から垂れ流される危険物質で周辺は酷く汚染されている。慣れている人間がガスマスクをつけても、３時間保てば良い方と言ったところだろう。</p>
+            <p class="section-text">「白組」の区画は城に程近いところにある。これは「白組」が「黒組」を除く他の４色よりも比較的強い権力を握っていることの証左であるのかもしれない。</p>
+            <p class="section-text">面積はさほど広くないが、住居エリアに対して商業エリアの割合が大きいことが特徴である。「白組」は死体処理のなかで発生した様々な素材を生かした商店を多く営んでいる。</p>
         </div>
         
         <div class="content-section">
             <h2 class="section-title">主要人物</h2>
             <div class="person-list">
                 <div class="person-item">
-                    <span class="role-label">下級構成員：</span>
-                    <a href="../characterpage/character_ruka.html" class="person-link">三日月ルカ</a>
+                    <span class="role-label">首長：</span>
+                    <span class="person-link unknown-person">？？？</span>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">幹部：</span>
+                    <a href="../characterpage/character_shiro.html" class="person-link">シロ</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">構成員：</span>
+                    <span class="person-link unknown-person">？？？</span>
                 </div>
             </div>
         </div>
         
         <div class="content-section">
-            <h2 class="section-title">経営店舗</h2>
+            <h2 class="section-title">店舗情報</h2>
             <div class="shop-list">
                 <div class="shop-item">
-                    <span class="shop-link unknown-person">ホストクラブ</span>
+                    <span class="shop-link unknown-person">肉屋</span>
                 </div>
                 <div class="shop-item">
-                    <span class="shop-link unknown-person">カジノ</span>
+                    <span class="shop-link unknown-person">皮屋</span>
                 </div>
                 <div class="shop-item">
-                    <span class="shop-link unknown-person">両替所</span>
-                </div>
-                <div class="shop-item">
-                    <span class="shop-link unknown-person">美容整形外科</span>
-                </div>
-                <div class="shop-item">
-                    <span class="shop-link unknown-person">銀行</span>
+                    <span class="shop-link unknown-person">葬儀屋</span>
                 </div>
             </div>
-        </div>
-        
-        <div class="content-section">
-            <h2 class="section-title">神話生物との関係</h2>
-            <p class="section-text">（情報未公開）</p>
         </div>
     </div>
     
@@ -391,11 +385,11 @@
         
         <div class="org-tab-container">
             <a href="black.html"><button class="org-tab black-org">黒</button></a>
-            <a href="white.html"><button class="org-tab white-org">白葬街</button></a>
+            <button class="org-tab white-org current">白葬街</button>
             <a href="red.html"><button class="org-tab red-org">呑紅街</button></a>
             <a href="blue.html"><button class="org-tab blue-org">蒼殉街</button></a>
             <a href="green.html"><button class="org-tab green-org">滲緑街</button></a>
-            <button class="org-tab yellow-org current">黄惑街</button>
+            <a href="yellow.html"><button class="org-tab yellow-org">黄惑街</button></a>
         </div>
     </div>
 
