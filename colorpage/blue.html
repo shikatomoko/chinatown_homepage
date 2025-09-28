@@ -7,196 +7,154 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
-            background: linear-gradient(135deg, #0a1a4a, #1a2a6a, #122050);
-            font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
-            min-height: 100vh;
+            font-family: 'Yu Mincho Demibold', '游明朝 Demibold', 'Yu Mincho', '游明朝', serif;
             margin: 0;
             padding: 0;
-            color: #f0f8ff;
-            line-height: 1.7;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
         }
         
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: clamp(20px, 4vw, 60px);
+        .header {
+            background: linear-gradient(135deg, #1e3a8a, #1e40af);
+            padding: 60px 40px;
+            text-align: left;
         }
         
-        .title-center {
-            text-align: center;
-            font-size: clamp(3rem, 8vw, 5rem);
+        .title {
+            font-size: clamp(4rem, 10vw, 6.5rem);
             color: #ffffff;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
             font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
             letter-spacing: 0.1em;
-            margin: 40px auto 40px;
+            margin: 0;
+        }
+        
+        .main-content {
             padding: 0;
+            margin: 0;
         }
         
-        .image-gallery {
-            margin: 20px auto 60px;
-            max-width: 800px;
-            padding: 0 20px;
-        }
-        
-        .gallery-container {
+        .main-image-container {
             position: relative;
             width: 100%;
-            aspect-ratio: 16/9;
-            border-radius: 12px;
+            height: 60vh;
+            min-height: 400px;
             overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            background: rgba(30, 70, 150, 0.8);
         }
         
-        .gallery-slides {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .gallery-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .gallery-slide.active {
-            opacity: 1;
-        }
-        
-        .gallery-slide img {
+        .main-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: opacity 0.5s ease;
         }
         
-        .gallery-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            border: none;
-            font-size: 24px;
-            padding: 15px 20px;
-            cursor: pointer;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            z-index: 10;
+        .sub-images-container {
+            background: #000;
+            padding: 30px 0;
         }
         
-        .gallery-nav:hover {
-            background: rgba(30, 100, 200, 0.9);
-            transform: translateY(-50%) scale(1.1);
-        }
-        
-        .gallery-prev {
-            left: 20px;
-        }
-        
-        .gallery-next {
-            right: 20px;
-        }
-        
-        .gallery-dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+        .sub-images-scroll {
             display: flex;
-            gap: 12px;
-            z-index: 10;
+            gap: 20px;
+            padding: 0 40px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #ffffff #000;
         }
         
-        .gallery-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
+        .sub-images-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar-track {
+            background: #000;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar-thumb {
+            background: #ffffff;
+            border-radius: 4px;
+        }
+        
+        .sub-image {
+            flex-shrink: 0;
+            width: 160px;
+            height: 90px;
+            object-fit: cover;
             cursor: pointer;
+            border: 2px solid #333;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
         }
         
-        .gallery-dot.active {
-            background: #6699ff;
-            border-color: white;
-            transform: scale(1.2);
+        .sub-image:hover {
+            border-color: #3b82f6;
+            transform: scale(1.05);
         }
         
-        .gallery-dot:hover {
-            background: rgba(150, 180, 255, 0.8);
-            transform: scale(1.1);
+        .sub-image.active {
+            border-color: #3b82f6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+        }
+        
+        .bottom-content {
+            background: #000;
+            padding: 60px 40px;
         }
         
         .content-section {
             margin-bottom: 50px;
-            padding: clamp(20px, 3vw, 40px);
-            background: rgba(30, 70, 150, 0.8);
-            border-radius: 16px;
-            border: 1px solid rgba(100, 150, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .content-section:hover {
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
+        .content-section:last-of-type {
+            margin-bottom: 0;
         }
         
         .section-title {
-            font-size: clamp(22px, 4vw, 28px);
+            font-size: clamp(24px, 4vw, 32px);
             color: #ffffff;
             font-weight: 600;
-            margin-bottom: clamp(16px, 3vw, 24px);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            letter-spacing: 0.02em;
-            border-bottom: 2px solid rgba(150, 200, 255, 0.5);
-            padding-bottom: 8px;
+            margin-bottom: 30px;
+            letter-spacing: 0.05em;
         }
         
         .section-text {
-            font-size: clamp(15px, 2.5vw, 17px);
-            color: #e8f0ff;
+            font-size: clamp(16px, 2.5vw, 18px);
+            color: #e0e0e0;
             line-height: 1.8;
-            margin-bottom: 16px;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
         }
         
         .person-list, .shop-list {
             display: grid;
-            gap: 12px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
         }
         
         .person-item, .shop-item {
             display: flex;
             align-items: center;
-            padding: 16px;
-            background: rgba(20, 50, 120, 0.8);
-            border-radius: 12px;
-            border: 1px solid rgba(100, 150, 255, 0.3);
+            padding: 20px;
+            background: #1a1a1a;
             transition: all 0.3s ease;
         }
         
         .person-item:hover, .shop-item:hover {
-            background: rgba(25, 60, 140, 0.95);
-            transform: translateX(4px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            background: #2a2a2a;
+            transform: translateX(5px);
         }
         
         .role-label {
             font-weight: 600;
-            color: #b8d0ff;
-            min-width: 80px;
-            margin-right: 12px;
-            font-size: 14px;
+            color: #3b82f6;
+            min-width: 120px;
+            margin-right: 16px;
+            font-size: 15px;
         }
         
         .person-link, .shop-link {
@@ -204,111 +162,62 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 16px;
-            border-bottom: 1px dashed rgba(150, 200, 255, 0.6);
             transition: all 0.3s ease;
-            padding: 2px 4px;
-            border-radius: 4px;
         }
         
         .person-link:hover, .shop-link:hover {
-            color: #ffffff;
-            background: rgba(150, 200, 255, 0.2);
-            border-bottom: 1px solid rgba(150, 200, 255, 0.8);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-        .color-link {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            border-bottom: 1px dashed rgba(150, 200, 255, 0.6);
-            transition: all 0.3s ease;
-            padding: 1px 2px;
-            border-radius: 3px;
-        }
-        
-        .color-link:hover {
-            background: rgba(150, 200, 255, 0.2);
-            border-bottom: 1px solid rgba(150, 200, 255, 0.8);
+            color: #3b82f6;
         }
         
         .unknown-person {
-            color: #90b8ff;
+            color: #888;
             font-style: italic;
-            border-bottom: none;
             cursor: default;
         }
         
         .unknown-person:hover {
-            background: none;
-            color: #90b8ff;
-            border-bottom: none;
+            color: #888;
+        }
+        
+        .navigation {
+            background: #000;
+            padding: 30px 40px;
         }
         
         .tab-container {
             display: flex;
-            gap: clamp(8px, 2vw, 15px);
-            margin: 60px 0 40px 0;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 30px;
         }
         
         .tab-container button {
-            background: linear-gradient(135deg, #2060c0, #3080e0);
+            background: #2a2a2a;
             color: #ffffff;
-            border-radius: 8px;
-            border: 1px solid rgba(150, 200, 255, 0.3);
-            padding: clamp(8px, 2vw, 12px) clamp(16px, 3vw, 24px);
-            font-size: clamp(13px, 2.5vw, 16px);
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            font-size: 14px;
             font-weight: 500;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
         
         .tab-container button:hover {
-            background: linear-gradient(135deg, #3080e0, #4090f0);
-            color: #ffffff;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            background: #3b82f6;
             transform: translateY(-2px);
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-            
-            .content-section {
-                padding: 20px;
-                margin-bottom: 30px;
-            }
-            
-            .tab-container {
-                gap: 8px;
-                margin: 40px 0 20px 0;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .content-section {
-                padding: 16px;
-            }
         }
         
         .org-tab-container {
             display: flex;
-            gap: 8px;
-            margin: 40px 0 20px 0;
+            gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
         }
         
         .org-tab {
-            padding: 10px 16px;
+            padding: 12px 20px;
             font-size: 14px;
             font-weight: 500;
             border: none;
@@ -321,76 +230,111 @@
         
         .org-tab:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
         
         .black-org {
-            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            background: #2a2a2a;
         }
         
         .white-org {
-            background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+            background: #e0e0e0;
             color: #333 !important;
         }
         
         .red-org {
-            background: linear-gradient(135deg, #c02020, #a01010);
+            background: #cc2936;
         }
         
         .blue-org {
-            background: linear-gradient(135deg, #2060c0, #1050a0);
+            background: #2563eb;
         }
         
         .green-org {
-            background: linear-gradient(135deg, #20a050, #108040);
+            background: #16a34a;
         }
         
         .yellow-org {
-            background: linear-gradient(135deg, #f0a000, #d08000);
+            background: #eab308;
         }
         
         .org-tab.current {
             transform: translateY(-3px);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 0;
+            }
+            
+            .bottom-content {
+                padding: 40px 20px;
+            }
+            
+            .navigation {
+                padding: 20px;
+            }
+            
+            .sub-images-scroll {
+                padding: 0 20px;
+            }
+            
+            .person-list, .shop-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .main-image-container {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .sub-image {
+                width: 120px;
+                height: 68px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="title-center">蒼殉街</div>
-        
-        <div class="image-gallery">
-            <div class="gallery-container">
-                <div class="gallery-slides" id="blueGallery">
-                    <div class="gallery-slide active">
-                        <img src="../shop_image/blue/street/entrance_chinese.png" alt="蒼殉街の中華街入口">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/blue/street/entrance_smallshop.png" alt="蒼殉街の小店入口">
-                    </div>
-                </div>
-                <button class="gallery-nav gallery-prev" onclick="previousSlide('blueGallery')">❮</button>
-                <button class="gallery-nav gallery-next" onclick="nextSlide('blueGallery')">❯</button>
-                <div class="gallery-dots">
-                    <span class="gallery-dot active" onclick="currentSlide('blueGallery', 1)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('blueGallery', 2)"></span>
-                </div>
-            </div>
+    <!-- ヘッダー部分（青色背景） -->
+    <div class="header">
+        <h1 class="title">蒼殉街</h1>
+    </div>
+    
+    <!-- メイン画像部分 -->
+    <div class="main-content">
+        <div class="main-image-container">
+            <img id="mainImage" class="main-image" src="../shop_image/blue/street/entrance_chinese.png" alt="蒼殉街のメイン画像">
         </div>
         
+        <!-- サブ画像スライダー -->
+        <div class="sub-images-container">
+            <div class="sub-images-scroll">
+                <img class="sub-image active" src="../shop_image/blue/street/entrance_chinese.png" alt="蒼殉街の中華街入口" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/blue/street/entrance_smallshop.png" alt="蒼殉街の小店舗入口" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/blue/museum/museumpng.png" alt="蒼殉街の博物館" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/blue/other/bedroom_blue.jpg" alt="蒼殉街の寝室" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/blue/other/warehouse.png" alt="蒼殉街の倉庫" onclick="changeMainImage(this)">
+            </div>
+        </div>
+    
+    <!-- 下部コンテンツ（黒背景） -->
+    <div class="bottom-content">
         <div class="content-section">
             <h2 class="section-title">組織概要</h2>
-            <p class="section-text">蒼殉街はこの街で最も静謐で正しく、そして醜悪な一団である。彼らは宗教団体の運営を主な役割としている。教義に従った清廉で善良な日々を送ること。それこそが蒼殉街の唯一で絶対の重要事項なのである。</p>
-            <p class="section-text">蒼殉街に所属する人々は全て当該の宗教団体の信者となっている。詳しい教義については別途記載する。彼らは宗教団体として、学校など教育関係の整備にも力を入れている。</p>
-            <p class="section-text">信者たちの幸福を実現するために、彼らはどんな労苦の惜しまない。信徒たちの幸福のために。そして全ての異教徒どもの不幸のために。彼らは今日も祈りを捧げる。</p>
+            <p class="section-text">蒼殉街はこの街で最も静謐で正しく、そして醜悪な一団である。彼らは宗教団体の運営を主な役割としている。教義に従った清廉で善良な日々を送ること。それこそが蒼殉街の唯一で絶対の重要事項なのである。蒼殉街に所属する人々は全て当該の宗教団体の信者となっている。詳しい教義については別途記載する。彼らは宗教団体として、学校など教育関係の整備にも力を入れている。信者たちの幸福を実現するために、彼らはどんな労苦の惜しまない。信徒たちの幸福のために。そして全ての異教徒どもの不幸のために。彼らは今日も祈りを捧げる。</p>
         </div>
         
         <div class="content-section">
             <h2 class="section-title">区画について</h2>
-            <p class="section-text">「<a href="./white.html" class="color-link">白葬街</a>」と「<a href="./red.html" class="color-link">呑紅街</a>」に挟まれた非常に狭い区画を所有している。面積の大半は宗教施設や学校などで埋め尽くされており、商店の類はほとんどない。</p>
-            <p class="section-text">特徴的なのは街外れにある鉱山と畑である。信者たちは心の底から楽しく農園や鉱山で労働に勤しんでいる。畑で取れるハーブは、「<a href="./green.html" class="color-link">滲緑街</a>」との取引などに用いられることもある。</p>
-            <p class="section-text">鉱石については街中に使用されている灯りや、鉄道の動力源など様々に利用されているため、蒼殉街からの資源供給が絶たれれば街全体が滅びの一途を辿ることだろう。</p>
+            <p class="section-text">　白葬街と呑紅街に挟まれた非常に狭い区画を所有している。面積の大半は宗教施設や学校などで埋め尽くされており、商店の類はほとんどない。特徴的なのは街外れにある鉱山と畑である。信者たちは心の底から楽しく農園や鉱山で労働に勤しんでいる。畑で取れるハーブは、滲緑街との取引などに用いられることもある。鉱石については街中に使用されている灯りや、鉄道の動力源など様々に利用されているため、蒼殉街からの資源供給が絶たれれば街全体が滅びの一途を辿ることだろう。
+</p>
         </div>
         
         <div class="content-section">
@@ -405,7 +349,11 @@
                     <span class="person-link unknown-person">？？？</span>
                 </div>
                 <div class="person-item">
-                    <span class="role-label">下級構成員：</span>
+                    <span class="role-label">幹部補佐：</span>
+                    <span class="person-link unknown-person">？？？</span>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">中韓組織員：</span>
                     <span class="person-link unknown-person">？？？</span>
                 </div>
             </div>
@@ -421,14 +369,17 @@
                     <span class="shop-link unknown-person">学校</span>
                 </div>
                 <div class="shop-item">
-                    <span class="shop-link unknown-person">動物園</span>
+                    <span class="shop-link unknown-person">水族館</span>
                 </div>
                 <div class="shop-item">
-                    <span class="shop-link unknown-person">水族館</span>
+                    <span class="shop-link unknown-person">動物園</span>
                 </div>
             </div>
         </div>
-        
+    </div>
+    
+    <!-- ナビゲーション部分 -->
+    <div class="navigation">
         <div class="tab-container">
             <a href="../index.html"><button>ホーム</button></a>
             <a href="../rules.html"><button>特殊ルール</button></a>
@@ -450,114 +401,18 @@
     </div>
 
     <script>
-        const galleryConfigs = {
-            'blueGallery': {
-                totalSlides: 2,
-                currentSlide: 0,
-                autoRotateInterval: null
-            }
-        };
-
-        function showSlide(galleryId, n) {
-            const config = galleryConfigs[galleryId];
-            const slides = document.querySelectorAll(`#${galleryId} .gallery-slide`);
-            const dots = document.querySelector(`#${galleryId}`).parentElement.querySelectorAll('.gallery-dot');
+        function changeMainImage(clickedImage) {
+            const mainImage = document.getElementById('mainImage');
+            const allSubImages = document.querySelectorAll('.sub-image');
             
-            if (n >= config.totalSlides) { config.currentSlide = 0; }
-            if (n < 0) { config.currentSlide = config.totalSlides - 1; }
+            // メイン画像を変更
+            mainImage.src = clickedImage.src;
+            mainImage.alt = clickedImage.alt;
             
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            if (slides[config.currentSlide]) {
-                slides[config.currentSlide].classList.add('active');
-            }
-            if (dots[config.currentSlide]) {
-                dots[config.currentSlide].classList.add('active');
-            }
+            // アクティブクラスを更新
+            allSubImages.forEach(img => img.classList.remove('active'));
+            clickedImage.classList.add('active');
         }
-
-        function nextSlide(galleryId) {
-            const config = galleryConfigs[galleryId];
-            config.currentSlide++;
-            showSlide(galleryId, config.currentSlide);
-        }
-
-        function previousSlide(galleryId) {
-            const config = galleryConfigs[galleryId];
-            config.currentSlide--;
-            showSlide(galleryId, config.currentSlide);
-        }
-
-        function currentSlide(galleryId, n) {
-            const config = galleryConfigs[galleryId];
-            config.currentSlide = n - 1;
-            showSlide(galleryId, config.currentSlide);
-        }
-
-        function startAutoRotate(galleryId) {
-            const config = galleryConfigs[galleryId];
-            config.autoRotateInterval = setInterval(() => {
-                nextSlide(galleryId);
-            }, 5000);
-        }
-
-        function stopAutoRotate(galleryId) {
-            const config = galleryConfigs[galleryId];
-            if (config.autoRotateInterval) {
-                clearInterval(config.autoRotateInterval);
-                config.autoRotateInterval = null;
-            }
-        }
-
-        // タッチスワイプサポート
-        function addTouchSupport(galleryId) {
-            const gallery = document.getElementById(galleryId);
-            let startX = 0;
-            let startY = 0;
-
-            gallery.addEventListener('touchstart', function(e) {
-                startX = e.touches[0].clientX;
-                startY = e.touches[0].clientY;
-                stopAutoRotate(galleryId);
-            }, { passive: true });
-
-            gallery.addEventListener('touchend', function(e) {
-                if (!startX || !startY) return;
-
-                let endX = e.changedTouches[0].clientX;
-                let endY = e.changedTouches[0].clientY;
-
-                let diffX = startX - endX;
-                let diffY = startY - endY;
-
-                if (Math.abs(diffX) > Math.abs(diffY)) {
-                    if (Math.abs(diffX) > 50) {
-                        if (diffX > 0) {
-                            nextSlide(galleryId);
-                        } else {
-                            previousSlide(galleryId);
-                        }
-                    }
-                }
-
-                startX = 0;
-                startY = 0;
-                startAutoRotate(galleryId);
-            }, { passive: true });
-
-            // マウスイベントでも同様の処理
-            gallery.addEventListener('mouseenter', () => stopAutoRotate(galleryId));
-            gallery.addEventListener('mouseleave', () => startAutoRotate(galleryId));
-        }
-
-        // 初期化
-        document.addEventListener('DOMContentLoaded', function() {
-            Object.keys(galleryConfigs).forEach(galleryId => {
-                addTouchSupport(galleryId);
-                startAutoRotate(galleryId);
-            });
-        });
     </script>
 </body>
 </html>
