@@ -7,888 +7,501 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
-            background: linear-gradient(135deg, #2d1014, #4a1a20, #3d161c);
-            font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
-            min-height: 100vh;
+            font-family: 'Yu Mincho Demibold', '游明朝 Demibold', 'Yu Mincho', '游明朝', serif;
             margin: 0;
             padding: 0;
-            color: #f0f0f0;
+            background-color: #000;
+            color: #fff;
             line-height: 1.6;
         }
         
-        .title-center {
-            text-align: center;
-            font-size: clamp(2.5rem, 6vw, 4rem);
+        .header {
+            background-image: url("../picture/red_header.png");
+            background-size: cover;
+            padding: 40px 60px;
+            background-repeat: no-repeat;
+        }
+        
+        .title {
+            font-size: clamp(4rem, 12vw, 5.5rem);
             color: #ffffff;
-            font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            letter-spacing: 0.05em;
-            margin: 40px auto 20px;
-            padding: 0;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: normal;
+            letter-spacing: 0.1em;
+            margin: 0;
         }
         
         .top-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: clamp(20px, 4vw, 60px);
-            gap: clamp(20px, 4vw, 60px);
-            max-width: 1200px;
+            padding: 0 40px 40px;
             margin: 0 auto;
+            max-width: 1200px;
         }
         
-        .shop-img {
-            width: min(600px, 60vw);
-            height: auto;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 16px;
-            border: 2px solid rgba(223, 41, 14, 0.8);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px rgba(223, 41, 14, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .shop-gallery {
-            width: min(600px, 60vw);
-            position: relative;
-        }
-        
-        .gallery-container {
+        .main-image-container {
             position: relative;
             width: 100%;
-            aspect-ratio: 16/10;
-            border-radius: 16px;
+            height: 60vh;
+            min-height: 400px;
             overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 20px rgba(223, 41, 14, 0.3);
+            margin-bottom: 30px;
         }
         
-        .gallery-slides {
-            position: relative;
+        .main-image {
             width: 100%;
             height: 100%;
-        }
-        
-        .gallery-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
+            object-fit: cover;
             transition: opacity 0.5s ease;
         }
         
-        .gallery-slide.active {
-            opacity: 1;
+        .sub-images-container {
+            background: #000;
+            padding: 30px 0;
         }
         
-        .gallery-slide img {
-            width: 100%;
-            height: 100%;
+        .sub-images-scroll {
+            display: flex;
+            gap: 20px;
+            padding: 0 40px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #cc2936 #000;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar-track {
+            background: #000;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar-thumb {
+            background: #cc2936;
+            border-radius: 4px;
+        }
+        
+        .sub-image {
+            flex-shrink: 0;
+            width: 160px;
+            height: 90px;
             object-fit: cover;
-        }
-        
-        .gallery-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            border: none;
-            font-size: 20px;
-            padding: 12px 16px;
             cursor: pointer;
-            border-radius: 50%;
+            border: 2px solid #333;
             transition: all 0.3s ease;
-            z-index: 10;
         }
         
-        .gallery-nav:hover {
-            background: rgba(150, 30, 30, 0.9);
-            transform: translateY(-50%) scale(1.1);
+        .sub-image:hover {
+            border-color: #cc2936;
+            transform: scale(1.05);
         }
         
-        .gallery-prev {
-            left: 15px;
+        .sub-image.active {
+            border-color: #cc2936;
+            box-shadow: 0 0 15px rgba(204, 41, 54, 0.6);
         }
         
-        .gallery-next {
-            right: 15px;
-        }
-        
-        .gallery-dots {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            z-index: 10;
-        }
-        
-        .gallery-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .gallery-dot.active {
-            background: #ff6666;
-            border-color: white;
-            transform: scale(1.2);
-        }
-        
-        .gallery-dot:hover {
-            background: rgba(255, 150, 150, 0.8);
-            transform: scale(1.1);
-        }
-        
-        .shop-img:hover {
-            box-shadow: 0 6px 32px rgba(0, 0, 0, 0.3), 0 0 24px rgba(223, 41, 14, 0.4);
-        }
-        
-        .info-box {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: clamp(12px, 2vw, 20px);
-            min-width: min(320px, 40vw);
-            background: rgba(223, 41, 14, 0.9);
-            padding: clamp(20px, 3vw, 32px);
-            border-radius: 16px;
-            border: 1px solid rgba(223, 41, 14, 0.6);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-        
-        .info-row {
-            font-size: clamp(16px, 3vw, 18px);
-            color: #ffffff;
-            margin-bottom: 8px;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            line-height: 1.4;
-            font-weight: 500;
-        }
-        
-        .color-link {
-            color: #ffffff;
-            font-weight: bold;
-            text-decoration: none;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.7);
-            transition: color 0.2s, text-shadow 0.2s;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .color-link:hover {
-            color: #ffcccc;
-            text-shadow: 0 1px 8px rgba(255, 204, 204, 0.5);
-        }
-        
-        .bottom-section {
-            margin: 40px auto 0 auto;
-            max-width: 800px;
-            padding: 0 30px 40px 30px;
-            background: rgba(223, 41, 14, 0.9);
-            border-radius: 16px;
-            border: 1px solid rgba(223, 41, 14, 0.6);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+        .shop-info {
+            padding: 20px 0;
+            text-align: center;
             margin-bottom: 40px;
         }
         
-        .bottom-section h2 {
-            font-size: 22px;
-            margin-top: 28px;
-            margin-bottom: 12px;
+        .shop-info p {
+            font-size: 18px;
+            color: #e0e0e0;
+            margin: 8px 0;
+            font-weight: normal;
+        }
+        
+        .color-link {
+            color: #cc2936;
+            text-decoration: none;
+            font-weight: normal;
+            transition: color 0.3s ease;
+        }
+        
+        .color-link:hover {
+            color: #ff4444;
+        }
+        
+        .bottom-content {
+            background: #000;
+            padding: 60px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            margin-bottom: 80px;
+        }
+        
+        .content-section:last-of-type {
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-size: clamp(24px, 4vw, 32px);
             color: #ffffff;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: normal;
+            margin-bottom: 30px;
             letter-spacing: 0.05em;
         }
         
-        .bottom-section p {
-            font-size: 16px;
-            color: #f0f0f0;
+        .section-text {
+            font-size: clamp(16px, 2.5vw, 18px);
+            color: #e0e0e0;
             line-height: 1.8;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
         }
         
-        .employee-grid {
+        .service-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-top: 20px;
+            gap: 30px;
+            margin-top: 30px;
         }
         
-        .employee-card {
-            background: rgba(180, 30, 10, 0.8);
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid rgba(223, 41, 14, 0.4);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        
-        .employee-card:hover {
-            background: rgba(200, 35, 15, 0.9);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        
-        .employee-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-        
-        .employee-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            margin-right: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.7);
-        }
-        
-        .employee-name {
-            font-weight: bold;
-            font-size: 20px;
-            color: #fff;
-        }
-        
-        .employee-role {
-            font-size: 16px;
-            color: #f0f0f0;
-            margin-top: 8px;
-        }
-        
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .service-card {
-            background: rgba(180, 30, 10, 0.8);
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid rgba(223, 41, 14, 0.4);
+        .service-item {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 8px;
             transition: all 0.3s ease;
         }
         
-        .service-card:hover {
-            background: rgba(200, 35, 15, 0.9);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        
-        .service-card.special {
-            border: 2px solid rgba(255, 204, 0, 0.8);
-            background: rgba(150, 25, 8, 0.9);
-        }
-        
-        .service-card.special:hover {
-            background: rgba(170, 30, 10, 1.0);
-            box-shadow: 0 6px 20px rgba(255, 204, 0, 0.2);
-        }
-        
-        .service-card.night {
-            border: 2px solid rgba(138, 43, 226, 0.8);
-            background: rgba(120, 20, 8, 0.9);
-        }
-        
-        .service-card.night:hover {
-            background: rgba(140, 25, 10, 1.0);
-            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.2);
+        .service-item:hover {
+            background: #2a2a2a;
+            transform: translateY(-3px);
         }
         
         .service-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 12px;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-        .service-title.special {
-            color: #ffcc00;
-        }
-        
-        .service-title.night {
-            color: #da70d6;
+            font-size: 22px;
+            color: #cc2936;
+            font-weight: normal;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #cc2936;
+            padding-bottom: 8px;
         }
         
         .service-price {
             font-size: 16px;
-            color: #ffcc00;
-            font-weight: bold;
+            color: #ffffff;
+            font-weight: normal;
             margin-bottom: 8px;
         }
         
         .service-requirement {
             font-size: 14px;
-            color: #ffccaa;
-            margin-bottom: 8px;
+            color: #888;
+            margin-bottom: 12px;
             font-style: italic;
         }
         
         .service-description {
-            font-size: 15px;
-            color: #f0f0f0;
+            font-size: 16px;
+            color: #e0e0e0;
             line-height: 1.6;
             margin-bottom: 12px;
         }
         
         .service-mechanics {
             font-size: 14px;
-            color: #e0e0e0;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 12px;
+            color: #ccc;
+            margin-top: 12px;
+            padding-left: 16px;
+            border-left: 3px solid #cc2936;
+        }
+        
+        .person-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .person-item {
+            background: #1a1a1a;
+            padding: 25px;
             border-radius: 8px;
-            border-left: 3px solid rgba(138, 43, 226, 0.8);
-        }
-        
-        .tab-container {
-            display: flex;
-            gap: 10px;
-            margin: 40px 0 20px 0;
-            justify-content: center;
-        }
-        
-        .color-group-container {
-            display: flex;
-            gap: 12px;
-            margin: 30px 0 20px 0;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .color-group-btn {
-            border: none;
-            border-radius: 8px;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            color: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        
-        .color-group-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .color-red {
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
-        }
-        
-        .color-blue {
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
-        }
-        
-        .color-green {
-            background: linear-gradient(135deg, #16a34a, #15803d);
-        }
-        
-        .color-yellow {
-            background: linear-gradient(135deg, #eab308, #ca8a04);
-        }
-        
-        .color-white {
-            background: linear-gradient(135deg, #f3f4f6, #d1d5db);
-            color: #374151;
-        }
-        
-        .color-black {
-            background: linear-gradient(135deg, #374151, #1f2937);
-        }
-        
-        @media (max-width: 768px) {
-            .color-group-container {
-                gap: 8px;
-                margin: 20px 10px;
-            }
-            
-            .color-group-btn {
-                padding: 8px 16px;
-                font-size: 14px;
-            }
-        }
-        
-        .tab-container button {
-            background: #222;
-            color: #fff;
-            border-radius: 6px;
-            border: none;
-            padding: 8px 18px;
-            font-size: 15px;
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-        }
-        
-        .tab-container button:hover {
-            background: #444;
-            color: #fff;
-            box-shadow: 0 2px 12px rgba(102, 102, 102, 0.3);
-        }
-        
-        .red-group-btn {
-            background: rgba(223, 41, 14, 0.8);
-            color: #fff;
-            border-radius: 8px;
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 20px auto;
-            display: block;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        
-        .red-group-btn:hover {
-            background: rgba(223, 41, 14, 1.0);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .group-detail {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(30, 30, 30, 0.95);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 25px;
-            max-width: 400px;
-            max-height: 70vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            display: none;
-        }
-        
-        .group-detail.active {
-            display: block;
-        }
-        
-        .group-detail h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            color: #ffffff;
-            font-size: 24px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        
-        .close-btn:hover {
-            color: #ff6b6b;
-        }
-        
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-            display: none;
-        }
-        
-        .overlay.active {
-            display: block;
-        }
-        
-        .shop-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .shop-list li {
-            margin-bottom: 8px;
+            color: inherit;
             display: flex;
             align-items: center;
         }
         
-        .shop-list a {
-            color: #e8e8e8;
-            text-decoration: none;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            margin-left: 8px;
-            font-weight: 500;
+        .person-item:hover {
+            background: #2a2a2a;
+            transform: translateY(-3px);
         }
         
-        .shop-list a:hover {
-            color: #ffffff;
-            text-decoration: none;
-            text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
-            transform: translateX(3px);
-        }
-        
-        .shop-icon {
-            width: 26px;
-            height: 26px;
-            object-fit: cover;
+        .employee-icon {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-            background: rgba(30, 30, 30, 0.9);
+            margin-right: 20px;
+            border: 3px solid #cc2936;
+        }
+        
+        .employee-info {
+            flex: 1;
+        }
+        
+        .employee-name {
+            font-size: 20px;
+            color: #cc2936;
+            font-weight: normal;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #cc2936;
+            padding-bottom: 5px;
+        }
+        
+        .employee-role {
+            font-size: 16px;
+            color: #e0e0e0;
+        }
+        
+        .navigation {
+            background: #000;
+            padding: 30px 40px;
+        }
+        
+        .tab-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .tab-container button {
+            background: #2a2a2a;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: normal;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
         
-        .shop-icon:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-            border-color: rgba(255, 255, 255, 0.5);
+        .tab-container button:hover {
+            background: #cc2936;
+            transform: translateY(-2px);
+        }
+        
+        .org-tab-container {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .org-tab {
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: normal;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .org-tab:hover {
+            transform: translateY(-2px);
+        }
+        
+        .black-org {
+            background: #2a2a2a;
+        }
+        
+        .white-org {
+            background: #e0e0e0;
+            color: #333 !important;
+        }
+        
+        .red-org {
+            background: #cc2936;
+        }
+        
+        .blue-org {
+            background: #2563eb;
+        }
+        
+        .green-org {
+            background: #16a34a;
+        }
+        
+        .yellow-org {
+            background: #eab308;
+        }
+        
+        .org-tab.current {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
         }
         
         @media (max-width: 768px) {
-            .top-section {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+            .navigation {
+                padding: 20px;
             }
             
-            .shop-img {
-                width: 90vw;
-                margin-bottom: 20px;
+            .bottom-content {
+                padding: 40px 20px;
             }
             
-            .info-box {
-                min-width: 90vw;
-                max-width: 90vw;
-                text-align: left;
+            .sub-images-scroll {
+                padding: 0 20px;
             }
             
-            .bottom-section {
-                margin: 20px 20px 0 20px;
-                padding: 0 20px 20px 20px;
-            }
-            
-            .employee-grid,
-            .service-grid {
+            .person-list, .service-list {
                 grid-template-columns: 1fr;
             }
         }
         
         @media (max-width: 480px) {
-            .shop-img {
-                width: 95vw;
+            .title-center {
+                font-size: 2.5rem;
             }
             
-            .info-box {
-                padding: 16px;
+            .main-image-container {
+                height: 40vh;
+                min-height: 300px;
             }
             
-            .bottom-section {
-                margin: 10px 10px 0 10px;
-                padding: 0 15px 15px 15px;
+            .sub-image {
+                width: 120px;
+                height: 68px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="title-center">ネイルサロン</div>
+    <!-- ヘッダー部分（赤色背景） -->
+    <div class="header">
+        <h1 class="title">ネイルサロン</h1>
+    </div>
+    
+    <!-- メインコンテンツ -->
     <div class="top-section">
-        <div class="shop-gallery">
-            <div class="gallery-container">
-                <div class="gallery-slides" id="nailsalonGallery">
-                    <div class="gallery-slide active">
-                        <img src="../shop_image/red/nailsalon/nailsalon.png" alt="ネイルサロン内部">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/red/nailsalon/nailsalon_front.png" alt="ネイルサロン外観">
-                    </div>
-                </div>
-                <button class="gallery-nav gallery-prev" onclick="previousSlide('nailsalonGallery')">❮</button>
-                <button class="gallery-nav gallery-next" onclick="nextSlide('nailsalonGallery')">❯</button>
-                <div class="gallery-dots">
-                    <span class="gallery-dot active" onclick="currentSlide('nailsalonGallery', 1)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('nailsalonGallery', 2)"></span>
-                </div>
-            </div>
+        <!-- 店舗情報 -->
+        <div class="shop-info">
+            <p>所属組織：<a href="../colorpage/red.html" class="color-link">呑紅街</a></p>
+            <p>エリア：中央区 ・ 営業時間：昼営業・夜営業 ・ 業種：美容サロン / 特殊資材調達</p>
         </div>
-        <div class="info-box">
-            <div class="info-row">
-                所属組織：<a href="../colorpage/red.html" class="color-link">呑紅街</a>
-            </div>
-            <div class="info-row">
-                エリア：中央区
-            </div>
-            <div class="info-row">
-                営業時間：昼営業・夜営業
-            </div>
-            <div class="info-row">
-                業種：美容サロン / 特殊資材調達
+        
+        <!-- メイン画像部分 -->
+        <div class="main-image-container">
+            <img id="mainImage" class="main-image" src="../shop_image/red/nailsalon/nailsalon.png" alt="ネイルサロンのメイン画像">
+        </div>
+        
+        <!-- サブ画像スライダー -->
+        <div class="sub-images-container">
+            <div class="sub-images-scroll">
+                <img class="sub-image active" src="../shop_image/red/nailsalon/nailsalon.png" alt="ネイルサロン内部" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/red/nailsalon/nailsalon_front.png" alt="ネイルサロン外観" onclick="changeMainImage(this)">
             </div>
         </div>
     </div>
     
-    <div class="bottom-section">
-        <h2>概要</h2>
-        <p>開けた街の通りにあるネイルサロン。昼の間は通常の美容サロンとしてジェルネイルの施術を行っている。爪さえ生えていれば、人間だろうがそれ以外のものであろうが、可愛く彩ってくれる。</p>
-        <p>しかし、夜間営業は少々趣が異なる。夜間においては昼間のための「資材の調達」を行っている。ネイルチップに利用するための人間の生爪の入手は、店主自ら行っているのである。</p>
+    <!-- 下部コンテンツ（黒背景） -->
+    <div class="bottom-content">
+        <div class="content-section">
+            <h2 class="section-title">概要</h2>
+            <p class="section-text">開けた街の通りにあるネイルサロン。昼の間は通常の美容サロンとしてジェルネイルの施術を行っている。爪さえ生えていれば、人間だろうがそれ以外のものであろうが、可愛く彩ってくれる。</p>
+            <p class="section-text">しかし、夜間営業は少々趣が異なる。夜間においては昼間のための「資材の調達」を行っている。ネイルチップに利用するための人間の生爪の入手は、店主自ら行っているのである。</p>
+        </div>
         
-        <h2>利用方法・料金</h2>
-        <div class="service-grid">
-            <div class="service-card">
-                <div class="service-title">通常ネイル</div>
-                <div class="service-price">20,000～30,000円</div>
-                <div class="service-requirement">信用条件：なし</div>
-                <div class="service-description">
-                    依頼人のオーダー通り、素敵に爪を彩ってくれる。デザインや素材により追加料金が発生する場合がある。
+        <div class="content-section">
+            <h2 class="section-title">利用方法・料金</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-title">通常ネイル</div>
+                    <div class="service-price">20,000～30,000円</div>
+                    <div class="service-requirement">信用条件：なし</div>
+                    <div class="service-description">
+                        依頼人のオーダー通り、素敵に爪を彩ってくれる。デザインや素材により追加料金が発生する場合がある。
+                    </div>
                 </div>
-            </div>
-            <div class="service-card special">
-                <div class="service-title special">護符・隠し文様オプション</div>
-                <div class="service-price">追加10,000円～</div>
-                <div class="service-requirement">信用条件：なし</div>
-                <div class="service-description">
-                    「護符」や「隠し文様」を刻むオプション。符牒として扱われ、特定の相手にのみ意味を持つ特殊な装飾。
+                <div class="service-item">
+                    <div class="service-title">護符・隠し文様オプション</div>
+                    <div class="service-price">追加10,000円～</div>
+                    <div class="service-requirement">信用条件：なし</div>
+                    <div class="service-description">
+                        「護符」や「隠し文様」を刻むオプション。符牒として扱われ、特定の相手にのみ意味を持つ特殊な装飾。
+                    </div>
                 </div>
-            </div>
-            <div class="service-card night">
-                <div class="service-title night">夜営業：爪の買い取り</div>
-                <div class="service-price">1枚あたり5,000円前後（10枚セットで最大100,000円）</div>
-                <div class="service-requirement">信用条件：60以上</div>
-                <div class="service-description">
-                    健康状態・形の美しさ・希少性によって値段が大きく変動する。人間の若者の生爪は高値で取引される。
-                </div>
-                <div class="service-mechanics">
-                    <strong>代わりの義爪オプション：</strong>買い取り後、希望者は「代わりの義爪」を付けてもらうことも可能。ただしこの義爪は呪的な作用を持ち、一定時間で剥がれると強烈な幻覚や幻聴を誘発する。
+                <div class="service-item">
+                    <div class="service-title">夜営業：爪の買い取り</div>
+                    <div class="service-price">1枚あたり5,000円前後（10枚セットで最大100,000円）</div>
+                    <div class="service-requirement">信用条件：60以上</div>
+                    <div class="service-description">
+                        健康状態・形の美しさ・希少性によって値段が大きく変動する。人間の若者の生爪は高値で取引される。
+                    </div>
+                    <div class="service-mechanics">
+                        <strong>代わりの義爪オプション：</strong>買い取り後、希望者は「代わりの義爪」を付けてもらうことも可能。ただしこの義爪は呪的な作用を持ち、一定時間で剥がれると強烈な幻覚や幻聴を誘発する。
+                    </div>
                 </div>
             </div>
         </div>
         
-        <h2>特色</h2>
-        <p>表の顔としては、暗黒中華街でも屈指の技術力を誇るネイルサロン。裏の顔としては、人間の生爪という特殊な資材を扱う闇商人的な側面を持つ。二面性を持つ店舗として、赤組の資金源の一翼を担っている。</p>
-    </div>
-    
-    <div class="bottom-section">
-        <h2>従業員</h2>
-        <div class="employee-grid">
-            <a href="../characterpage/character_mimiko.html" class="employee-card">
-                <div class="employee-header">
+        <div class="content-section">
+            <h2 class="section-title">特色</h2>
+            <p class="section-text">表の顔としては、暗黒中華街でも屈指の技術力を誇るネイルサロン。裏の顔としては、人間の生爪という特殊な資材を扱う闇商人的な側面を持つ。二面性を持つ店舗として、赤組の資金源の一翼を担っている。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">従業員</h2>
+            <div class="person-list">
+                <a href="../characterpage/character_mimiko.html" class="person-item">
                     <img src="../character_icon/mimiko_icon.png" alt="ミミコ" class="employee-icon">
-                    <span class="employee-name">ミミコ</span>
-                </div>
-                <div class="employee-role">店長・オーナー</div>
-            </a>
+                    <div class="employee-info">
+                        <div class="employee-name">ミミコ</div>
+                        <div class="employee-role">店長・オーナー</div>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
     
-    <button class="red-group-btn" onclick="showRedGroupDetail()">赤組のその他の店舗</button>
-    
-    <!-- オーバーレイ -->
-    <div class="overlay" id="overlay"></div>
-    
-   <!-- 赤組詳細ポップアップ -->
-    <div class="group-detail" id="detail-red">
-        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3 style="color:#ff6b6b;">呑紅街</h3>
-        <ul class="shop-list">
-            <li><img src="../shop_image/red/nailsalon/nailsalon.png" class="shop-icon" alt="ネイルサロン"><a href="./shop_nailsalon.html">ネイルサロン</a></li>
-            <li><img src="../shop_image/red/tailor/tailor.png" class="shop-icon" alt="テーラー"><a href="./shop_tailor.html">テーラー</a></li>
-            <li><img src="../shop_image/red/antique/antique.png" class="shop-icon" alt="骨董楼"><a href="./shop_antique.html">骨董楼</a></li>
-            <li><img src="../shop_image/red/spa/spa.png" class="shop-icon" alt="湯治屋"><a href="./shop_spa.html">湯治屋</a></li>
-            <li><img src="../shop_image/red/informer/informer.png" class="shop-icon" alt="情報屋"><a href="./shop_informer.html">情報屋</a></li>
-            <li><img src="../shop_image/red/torture/torture.png" class="shop-icon" alt="拷問屋"><a href="./shop_torture.html">拷問屋</a></li>
-            <li><img src="../shop_image/red/tattoo/tattoo.png" class="shop-icon" alt="刺青屋"><a href="./shop_tattoo.html">刺青屋</a></li>
-            <li><img src="../shop_image/red/printing/printing.png" class="shop-icon" alt="印紙屋"><a href="./shop_stamp.html">印紙屋</a></li>
-             <li><img src="./shop_image/red/restaurant/restaurant.png" class="shop-icon" alt="レストラン"><a href="./shoppage/shop_redrestaurant.html">レストラン</a></li>
-        </ul>
-    </div>
-    
-    <div class="color-group-container">
-        <a href="../colorpage/red.html" class="color-group-btn color-red">呑紅街</a>
-        <a href="../colorpage/blue.html" class="color-group-btn color-blue">青組</a>
-        <a href="../colorpage/green.html" class="color-group-btn color-green">緑組</a>
-        <a href="../colorpage/yellow.html" class="color-group-btn color-yellow">黄組</a>
-        <a href="../colorpage/white.html" class="color-group-btn color-white">白組</a>
-        <a href="../colorpage/black.html" class="color-group-btn color-black">黒組</a>
-    </div>
-    
-    <div class="tab-container">
-        <a href="../index.html"><button>ホーム</button></a>
-        <a href="../rules.html"><button>特殊ルール</button></a>
-        <a href="../jinngai.html"><button>人外設定</button></a>
-        <a href="../world.html"><button>世界観設定</button></a>
-        <a href="../characters.html"><button>キャラクター一覧</button></a>
-        <a href="../shops.html"><button>店舗一覧</button></a>
-        <a href="../tools.html"><button>ツール</button></a>
+    <!-- ナビゲーション部分 -->
+    <div class="navigation">
+        <div class="tab-container">
+            <a href="../index.html"><button>ホーム</button></a>
+            <a href="../rules.html"><button>特殊ルール</button></a>
+            <a href="../jinngai.html"><button>人外設定</button></a>
+            <a href="../world.html"><button>世界観設定</button></a>
+            <a href="../characters.html"><button>キャラクター一覧</button></a>
+            <a href="../shops.html"><button>店舗一覧</button></a>
+            <a href="../tools.html"><button>ツール</button></a>
+        </div>
+        
+        <div class="org-tab-container">
+            <a href="../colorpage/black.html"><button class="org-tab black-org">黒</button></a>
+            <a href="../colorpage/white.html"><button class="org-tab white-org">白葬街</button></a>
+            <button class="org-tab red-org current">呑紅街</button>
+            <a href="../colorpage/blue.html"><button class="org-tab blue-org">蒼殉街</button></a>
+            <a href="../colorpage/green.html"><button class="org-tab green-org">滋緑街</button></a>
+            <a href="../colorpage/yellow.html"><button class="org-tab yellow-org">黄惑街</button></a>
+        </div>
     </div>
     
     <script>
-        function showRedGroupDetail() {
-            hideGroupDetail();
+        function changeMainImage(clickedImage) {
+            const mainImage = document.getElementById('mainImage');
+            const allSubImages = document.querySelectorAll('.sub-image');
             
-            const detail = document.getElementById('detail-red');
-            const overlay = document.getElementById('overlay');
+            // メイン画像を変更
+            mainImage.src = clickedImage.src;
+            mainImage.alt = clickedImage.alt;
             
-            if (detail && overlay) {
-                detail.classList.add('active');
-                overlay.classList.add('active');
-                
-                document.addEventListener('keydown', handleEscKey);
-            }
+            // アクティブクラスを更新
+            allSubImages.forEach(img => img.classList.remove('active'));
+            clickedImage.classList.add('active');
         }
-        
-        function hideGroupDetail() {
-            const details = document.querySelectorAll('.group-detail');
-            const overlay = document.getElementById('overlay');
-            
-            details.forEach(detail => {
-                detail.classList.remove('active');
-            });
-            
-            if (overlay) {
-                overlay.classList.remove('active');
-            }
-            
-            document.removeEventListener('keydown', handleEscKey);
-        }
-        
-        function handleEscKey(event) {
-            if (event.key === 'Escape') {
-                hideGroupDetail();
-            }
-        }
-        
-        document.getElementById('overlay').addEventListener('click', hideGroupDetail);
-        
-        // ギャラリー機能
-        const galleryConfigs = {
-            'nailsalonGallery': {
-                totalSlides: 2,
-                currentSlide: 0,
-                autoRotateInterval: null
-            }
-        };
-
-        function showSlide(galleryId, n) {
-            const config = galleryConfigs[galleryId];
-            const slides = document.querySelectorAll(`#${galleryId} .gallery-slide`);
-            const dots = document.querySelector(`#${galleryId}`).parentElement.querySelectorAll('.gallery-dot');
-            
-            if (n >= config.totalSlides) { config.currentSlide = 0; }
-            if (n < 0) { config.currentSlide = config.totalSlides - 1; }
-            
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            if (slides[config.currentSlide]) {
-                slides[config.currentSlide].classList.add('active');
-            }
-            if (dots[config.currentSlide]) {
-                dots[config.currentSlide].classList.add('active');
-            }
-        }
-
-        function nextSlide(galleryId) {
-            const config = galleryConfigs[galleryId];
-            config.currentSlide++;
-            showSlide(galleryId, config.currentSlide);
-        }
-
-        function previousSlide(galleryId) {
-            const config = galleryConfigs[galleryId];
-            config.currentSlide--;
-            showSlide(galleryId, config.currentSlide);
-        }
-
-        function currentSlide(galleryId, n) {
-            const config = galleryConfigs[galleryId];
-            config.currentSlide = n - 1;
-            showSlide(galleryId, config.currentSlide);
-        }
-
-        function startAutoRotate(galleryId) {
-            const config = galleryConfigs[galleryId];
-            config.autoRotateInterval = setInterval(() => {
-                nextSlide(galleryId);
-            }, 5000);
-        }
-
-        function stopAutoRotate(galleryId) {
-            const config = galleryConfigs[galleryId];
-            if (config.autoRotateInterval) {
-                clearInterval(config.autoRotateInterval);
-                config.autoRotateInterval = null;
-            }
-        }
-
-        // タッチスワイプサポート
-        function addTouchSupport(galleryId) {
-            const gallery = document.getElementById(galleryId);
-            let startX = 0;
-            let startY = 0;
-
-            gallery.addEventListener('touchstart', function(e) {
-                startX = e.touches[0].clientX;
-                startY = e.touches[0].clientY;
-                stopAutoRotate(galleryId);
-            }, { passive: true });
-
-            gallery.addEventListener('touchend', function(e) {
-                if (!startX || !startY) return;
-
-                let endX = e.changedTouches[0].clientX;
-                let endY = e.changedTouches[0].clientY;
-
-                let diffX = startX - endX;
-                let diffY = startY - endY;
-
-                if (Math.abs(diffX) > Math.abs(diffY)) {
-                    if (Math.abs(diffX) > 50) {
-                        if (diffX > 0) {
-                            nextSlide(galleryId);
-                        } else {
-                            previousSlide(galleryId);
-                        }
-                    }
-                }
-
-                startX = 0;
-                startY = 0;
-                startAutoRotate(galleryId);
-            }, { passive: true });
-
-            // マウスイベントでも同様の処理
-            gallery.addEventListener('mouseenter', () => stopAutoRotate(galleryId));
-            gallery.addEventListener('mouseleave', () => startAutoRotate(galleryId));
-        }
-
-        // 初期化
-        document.addEventListener('DOMContentLoaded', function() {
-            Object.keys(galleryConfigs).forEach(galleryId => {
-                addTouchSupport(galleryId);
-                startAutoRotate(galleryId);
-            });
-        });
     </script>
 </body>
 </html>
