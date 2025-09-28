@@ -1,7 +1,4 @@
-<!DOCTYP        body {
-            background: linear-gradient(135deg, #4a3500, #6a5500, #5a4500);
-            font-family: 'Yu Mincho Demibold', '渂明朝 Demibold', 'Yu Mincho', '渂明朝', serif;
-            min-height: 100vh;ml>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -10,325 +7,219 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
-            background: linear-gradient(135deg, #4a3500, #6a5500, #5a4500);
-            font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
-            min-height: 100vh;
+            font-family: 'Yu Mincho Demibold', '游明朝 Demibold', 'Yu Mincho', '游明朝', serif;
             margin: 0;
             padding: 0;
-            color: #fff5e6;
-            line-height: 1.7;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
         }
         
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: clamp(20px, 4vw, 60px);
-        }
-        
-        .title-center {
+        .header {
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+            padding: 60px 40px;
             text-align: left;
+        }
+        
+        .title {
             font-size: clamp(4rem, 10vw, 6.5rem);
             color: #ffffff;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '渂明朝', serif;
-            font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: normal;
             letter-spacing: 0.1em;
-            margin: 40px auto 40px;
-            padding: 0 40px;
+            margin: 0;
         }
         
-        .image-gallery {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto 60px;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        .main-content {
+            padding: 0;
+            margin: 0;
         }
         
-        .gallery-container {
+        .main-image-container {
             position: relative;
             width: 100%;
-            height: 300px;
+            height: 60vh;
+            min-height: 400px;
             overflow: hidden;
         }
         
-        .gallery-slides {
-            display: flex;
-            width: 500%;
-            height: 100%;
-            transition: transform 0.5s ease;
-        }
-        
-        .gallery-slide {
-            width: 20%;
-            height: 100%;
-            flex-shrink: 0;
-        }
-        
-        .gallery-slide img {
+        .main-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
+            transition: opacity 0.5s ease;
         }
         
-        .gallery-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+        .sub-images-container {
+            background: #000;
+            padding: 30px 0;
         }
         
-        .gallery-nav:hover {
-            background: rgba(255, 215, 100, 0.8);
-            color: #000;
-            transform: translateY(-50%) scale(1.1);
-        }
-        
-        .gallery-prev {
-            left: 15px;
-        }
-        
-        .gallery-next {
-            right: 15px;
-        }
-        
-        .gallery-dots {
+        .sub-images-scroll {
             display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 20px;
+            padding: 0 40px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #ffffff #000;
         }
         
-        .gallery-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 215, 100, 0.4);
+        .sub-images-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar-track {
+            background: #000;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar-thumb {
+            background: #ffffff;
+            border-radius: 4px;
+        }
+        
+        .sub-image {
+            flex-shrink: 0;
+            width: 160px;
+            height: 90px;
+            object-fit: cover;
             cursor: pointer;
+            border: 2px solid #333;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
         }
         
-        .gallery-dot.active {
-            background: rgba(255, 215, 100, 1);
-            transform: scale(1.2);
-            border-color: rgba(255, 255, 255, 0.5);
+        .sub-image:hover {
+            border-color: #eab308;
+            transform: scale(1.05);
         }
         
-        .gallery-dot:hover {
-            background: rgba(255, 215, 100, 0.7);
-            transform: scale(1.1);
+        .sub-image.active {
+            border-color: #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.6);
+        }
+        
+        .bottom-content {
+            background: #000;
+            padding: 60px 40px;
         }
         
         .content-section {
             margin-bottom: 50px;
-            padding: clamp(20px, 3vw, 40px);
-            background: rgba(160, 120, 30, 0.8);
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .content-section:hover {
-            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
+        .content-section:last-of-type {
+            margin-bottom: 0;
         }
         
         .section-title {
-            font-size: clamp(22px, 4vw, 28px);
+            font-size: clamp(24px, 4vw, 32px);
             color: #ffffff;
-            font-weight: 600;
-            margin-bottom: clamp(16px, 3vw, 24px);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            letter-spacing: 0.02em;
-            border-bottom: 2px solid rgba(255, 215, 100, 0.5);
-            padding-bottom: 8px;
+            font-weight: normal;
+            margin-bottom: 30px;
+            letter-spacing: 0.05em;
         }
         
         .section-text {
-            font-size: clamp(15px, 2.5vw, 17px);
-            color: #fff5e6;
+            font-size: clamp(16px, 2.5vw, 18px);
+            color: #e0e0e0;
             line-height: 1.8;
-            margin-bottom: 16px;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
         }
         
         .person-list, .shop-list {
             display: grid;
-            gap: 12px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
         }
         
         .person-item, .shop-item {
             display: flex;
             align-items: center;
-            padding: 16px;
-            background: rgba(140, 110, 25, 0.8);
-            border-radius: 12px;
+            padding: 20px;
+            background: #1a1a1a;
             transition: all 0.3s ease;
         }
         
         .person-item:hover, .shop-item:hover {
-            background: rgba(160, 120, 30, 0.95);
-            transform: translateX(4px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            background: #2a2a2a;
+            transform: translateX(5px);
         }
         
         .role-label {
-            font-weight: 600;
-            color: #ffd966;
-            min-width: 100px;
-            margin-right: 12px;
-            font-size: 14px;
+            font-weight: normal;
+            color: #eab308;
+            min-width: 120px;
+            margin-right: 16px;
+            font-size: 15px;
         }
         
         .person-link, .shop-link {
             color: #ffffff;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: normal;
             font-size: 16px;
-            border-bottom: 1px dashed rgba(255, 215, 100, 0.6);
             transition: all 0.3s ease;
-            padding: 2px 4px;
-            border-radius: 4px;
         }
         
         .person-link:hover, .shop-link:hover {
-            color: #ffffff;
-            background: rgba(255, 215, 100, 0.2);
-            border-bottom: 1px solid rgba(255, 215, 100, 0.8);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-        .color-link {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            border-bottom: 1px dashed rgba(255, 215, 100, 0.6);
-            transition: all 0.3s ease;
-            padding: 1px 2px;
-            border-radius: 3px;
-        }
-        
-        .color-link:hover {
-            background: rgba(255, 215, 100, 0.2);
-            border-bottom: 1px solid rgba(255, 215, 100, 0.8);
+            color: #eab308;
         }
         
         .unknown-person {
-            color: #ffcc80;
+            color: #888;
             font-style: italic;
-            border-bottom: none;
             cursor: default;
         }
         
         .unknown-person:hover {
-            background: none;
-            color: #ffcc80;
-            border-bottom: none;
+            color: #888;
+        }
+        
+        .navigation {
+            background: #000;
+            padding: 30px 40px;
         }
         
         .tab-container {
             display: flex;
-            gap: clamp(8px, 2vw, 15px);
-            margin: 60px 0 40px 0;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 30px;
         }
         
         .tab-container button {
-            background: linear-gradient(135deg, #d4a017, #f4c430);
-            color: #333;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 215, 100, 0.3);
-            padding: clamp(8px, 2vw, 12px) clamp(16px, 3vw, 24px);
-            font-size: clamp(13px, 2.5vw, 16px);
-            font-weight: 500;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+            background: #2a2a2a;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: normal;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
         
         .tab-container button:hover {
-            background: linear-gradient(135deg, #f4c430, #ffd700);
-            color: #222;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            background: #eab308;
             transform: translateY(-2px);
-        }
-        
-        @media (max-width: 768px) {
-            .gallery-container {
-                height: 200px;
-            }
-            
-            .gallery-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-            
-            .gallery-prev {
-                left: 10px;
-            }
-            
-            .gallery-next {
-                right: 10px;
-            }
-            
-            .container {
-                padding: 20px;
-            }
-            
-            .content-section {
-                padding: 20px;
-                margin-bottom: 30px;
-            }
-            
-            .tab-container {
-                gap: 8px;
-                margin: 40px 0 20px 0;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .gallery-container {
-                height: 150px;
-            }
-            
-            .container {
-                padding: 15px;
-            }
-            
-            .content-section {
-                padding: 16px;
-            }
         }
         
         .org-tab-container {
             display: flex;
-            gap: 8px;
-            margin: 40px 0 20px 0;
+            gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
         }
         
         .org-tab {
-            padding: 10px 16px;
+            padding: 12px 20px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: normal;
             border: none;
             border-radius: 6px;
             cursor: pointer;
@@ -339,111 +230,134 @@
         
         .org-tab:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
         
         .black-org {
-            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            background: #2a2a2a;
         }
         
         .white-org {
-            background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
+            background: #e0e0e0;
             color: #333 !important;
         }
         
         .red-org {
-            background: linear-gradient(135deg, #c02020, #a01010);
+            background: #cc2936;
         }
         
         .blue-org {
-            background: linear-gradient(135deg, #2060c0, #1050a0);
+            background: #2563eb;
         }
         
         .green-org {
-            background: linear-gradient(135deg, #20a050, #108040);
+            background: #16a34a;
         }
         
         .yellow-org {
-            background: linear-gradient(135deg, #f0a000, #d08000);
+            background: #eab308;
         }
         
         .org-tab.current {
             transform: translateY(-3px);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 0;
+            }
+            
+            .bottom-content {
+                padding: 40px 20px;
+            }
+            
+            .navigation {
+                padding: 20px;
+            }
+            
+            .sub-images-scroll {
+                padding: 0 20px;
+            }
+            
+            .person-list, .shop-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .main-image-container {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .sub-image {
+                width: 120px;
+                height: 68px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="title-center">黄惑街</div>
-        
-        <div class="image-gallery">
-            <div class="gallery-container">
-                <div class="gallery-slides" id="gallerySlides">
-                    <div class="gallery-slide">
-                        <img src="../shop_image/yellow/street/street.png" alt="黄惑街の街並み">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/yellow/street/street2.png" alt="黄惑街の繁華街">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/yellow/street/square.png" alt="黄惑街の広場">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/yellow/street/corridor.png" alt="黄惑街の回廊">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/yellow/street/backstreet.png" alt="黄惑街の裏通り">
-                    </div>
-                </div>
-                <button class="gallery-nav gallery-prev" onclick="changeSlide(-1)">‹</button>
-                <button class="gallery-nav gallery-next" onclick="changeSlide(1)">›</button>
-            </div>
-            <div class="gallery-dots">
-                <div class="gallery-dot active" onclick="currentSlide(1)"></div>
-                <div class="gallery-dot" onclick="currentSlide(2)"></div>
-                <div class="gallery-dot" onclick="currentSlide(3)"></div>
-                <div class="gallery-dot" onclick="currentSlide(4)"></div>
-                <div class="gallery-dot" onclick="currentSlide(5)"></div>
-            </div>
+    <!-- ヘッダー部分（黄色背景） -->
+    <div class="header">
+        <h1 class="title">黄惑街</h1>
+    </div>
+    
+    <!-- メイン画像部分 -->
+    <div class="main-content">
+        <div class="main-image-container">
+            <img id="mainImage" class="main-image" src="../shop_image/yellow/street/street.png" alt="黄惑街のメイン画像">
         </div>
         
+        <!-- サブ画像スライダー -->
+        <div class="sub-images-container">
+            <div class="sub-images-scroll">
+                <img class="sub-image active" src="../shop_image/yellow/street/street.png" alt="黄惑街の街" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/yellow/street/street2.png" alt="黄惑街の街角" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/yellow/street/square.png" alt="黄惑街の広場" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/yellow/street/backstreet.png" alt="黄惑街の裏通り" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/yellow/street/corridor.png" alt="黄惑街の廊下" onclick="changeMainImage(this)">
+            </div>
+        </div>
+    
+    <!-- 下部コンテンツ（黒背景） -->
+    <div class="bottom-content">
         <div class="content-section">
             <h2 class="section-title">組織概要</h2>
-            <p class="section-text">黄惑街のモットーは酷く単純で明確である。稼ぐ。それだけである。黄惑街は金稼ぎに繋がる全ての仕事を担う。ホストクラブの運営にカジノ、遊園地から飲み屋。場合によっては他の色とも積極的に手を組み、自身の利益を増幅させることを目指す。</p>
-            <p class="section-text">そのため黄惑街は非常に豪華絢爛な組織である。所属する人の数は呑紅街に次いで２番目であり、構成員は皆、派手に金を使う煌びやかなやり方を好む。彼らは中央銀行の経営を担っている。通貨の造幣は黄惑街の仕事だ。彼らこそが暗黒中華街の経済を握っているのである。</p>
+            <p class="section-text">黄惑街のモットーは酷く単純で明確である。稼ぐ。それだけである。</p>
+            <p class="section-text">黄惑街は金稼ぎに繋がる全ての仕事を担う。ホストクラブの運営にカジノ、遊園地から飲み屋。場合によっては他の色とも積極的に手を組み、自身の利益を増幅させることを目指す。</p>
+            <p class="section-text">そのため黄惑街は非常に豪華絢爛な組織である。所属する人の数は呑紅街に次いで２番目であり、構成員は皆、派手に金を使う煌びやかなやり方を好む。</p>
+            <p class="section-text">彼らは中央銀行の経営を担っている。通貨の造幣は黄惑街の仕事だ。彼らこそが暗黒中華街の経済を握っているのである。</p>
         </div>
         
         <div class="content-section">
             <h2 class="section-title">区画について</h2>
             <p class="section-text">区画は比較的広く、城にも程近い。構成人数が相当に多く経営施設も多数あるため、広大な面積が必要なのである。</p>
-            <p class="section-text">滲緑街と隣接している部分には工業地帯がある。ここでは様々な薬品や技術の開発を行っているが、工場から垂れ流される危険物質で周辺は酷く汚染されている。慣れている人間がガスマスクをつけても、３時間保てば良い方と言ったところだろう。</p>
+            <p class="section-text">滝緑街と隣接している部分には工業地帯がある。ここでは様々な薬品や技術の開発を行っているが、工場から垂れ流される危険物質で周辺は酷く汚染されている。慣れている人間がガスマスクをつけても、３時間保てば良い方と言ったところだろう。</p>
         </div>
         
         <div class="content-section">
             <h2 class="section-title">主要人物</h2>
             <div class="person-list">
                 <div class="person-item">
-                    <span class="role-label">首長：</span>
-                    <span class="person-link unknown-person">？？？</span>
-                </div>
-                <div class="person-item">
-                    <span class="role-label">幹部：</span>
-                    <span class="person-link unknown-person">？？？</span>
-                </div>
-                <div class="person-item">
-                    <span class="role-label">下級構成員：</span>
+                    <span class="role-label">運び屋：</span>
                     <a href="../characterpage/character_ruka.html" class="person-link">三日月ルカ</a>
                 </div>
             </div>
         </div>
         
         <div class="content-section">
-            <h2 class="section-title">店舗情報</h2>
+            <h2 class="section-title">経営店舗</h2>
             <div class="shop-list">
                 <div class="shop-item">
                     <span class="shop-link unknown-person">ホストクラブ</span>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">カジノ</span>
                 </div>
                 <div class="shop-item">
                     <span class="shop-link unknown-person">両替所</span>
@@ -454,14 +368,17 @@
                 <div class="shop-item">
                     <span class="shop-link unknown-person">銀行</span>
                 </div>
-                <div class="shop-item">
-                    <a href="../shoppage/shop_courier.html" class="shop-link">運び屋</a>
-                </div>
             </div>
         </div>
         
-        
-        
+        <div class="content-section">
+            <h2 class="section-title">神話生物との関係</h2>
+            <p class="section-text">（情報未公開）</p>
+        </div>
+    </div>
+    
+    <!-- ナビゲーション部分 -->
+    <div class="navigation">
         <div class="tab-container">
             <a href="../index.html"><button>ホーム</button></a>
             <a href="../rules.html"><button>特殊ルール</button></a>
@@ -481,132 +398,20 @@
             <button class="org-tab yellow-org current">黄惑街</button>
         </div>
     </div>
-    
+
     <script>
-        let currentSlideIndex = 0;
-        const totalSlides = 5;
-        
-        function changeSlide(direction) {
-            currentSlideIndex += direction;
+        function changeMainImage(clickedImage) {
+            const mainImage = document.getElementById('mainImage');
+            const allSubImages = document.querySelectorAll('.sub-image');
             
-            if (currentSlideIndex >= totalSlides) {
-                currentSlideIndex = 0;
-            } else if (currentSlideIndex < 0) {
-                currentSlideIndex = totalSlides - 1;
-            }
+            // メイン画像を変更
+            mainImage.src = clickedImage.src;
+            mainImage.alt = clickedImage.alt;
             
-            updateSlide();
+            // アクティブクラスを更新
+            allSubImages.forEach(img => img.classList.remove('active'));
+            clickedImage.classList.add('active');
         }
-        
-        function currentSlide(slideIndex) {
-            currentSlideIndex = slideIndex - 1;
-            updateSlide();
-        }
-        
-        function updateSlide() {
-            const slides = document.getElementById('gallerySlides');
-            const dots = document.querySelectorAll('.gallery-dot');
-            
-            slides.style.transform = `translateX(-${currentSlideIndex * 20}%)`;
-            
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlideIndex);
-            });
-        }
-        
-        // タッチ/スワイプ対応
-        let startX = 0;
-        let startY = 0;
-        let isDown = false;
-        
-        const gallery = document.querySelector('.gallery-container');
-        
-        gallery.addEventListener('touchstart', handleTouchStart, { passive: true });
-        gallery.addEventListener('touchmove', handleTouchMove, { passive: true });
-        gallery.addEventListener('touchend', handleTouchEnd, { passive: true });
-        
-        gallery.addEventListener('mousedown', handleMouseDown);
-        gallery.addEventListener('mousemove', handleMouseMove);
-        gallery.addEventListener('mouseup', handleMouseUp);
-        gallery.addEventListener('mouseleave', handleMouseUp);
-        
-        function handleTouchStart(e) {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            isDown = true;
-        }
-        
-        function handleMouseDown(e) {
-            startX = e.clientX;
-            startY = e.clientY;
-            isDown = true;
-            gallery.style.cursor = 'grabbing';
-        }
-        
-        function handleTouchMove(e) {
-            if (!isDown) return;
-        }
-        
-        function handleMouseMove(e) {
-            if (!isDown) return;
-            e.preventDefault();
-        }
-        
-        function handleTouchEnd(e) {
-            if (!isDown) return;
-            
-            const endX = e.changedTouches[0].clientX;
-            const endY = e.changedTouches[0].clientY;
-            const diffX = startX - endX;
-            const diffY = startY - endY;
-            
-            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
-                if (diffX > 0) {
-                    changeSlide(1);
-                } else {
-                    changeSlide(-1);
-                }
-            }
-            
-            isDown = false;
-        }
-        
-        function handleMouseUp(e) {
-            if (!isDown) return;
-            
-            const endX = e.clientX;
-            const diffX = startX - endX;
-            
-            if (Math.abs(diffX) > 50) {
-                if (diffX > 0) {
-                    changeSlide(1);
-                } else {
-                    changeSlide(-1);
-                }
-            }
-            
-            isDown = false;
-            gallery.style.cursor = 'grab';
-        }
-        
-        // 自動スライド（オプション）
-        let autoSlideInterval = setInterval(() => {
-            changeSlide(1);
-        }, 5000);
-        
-        // ユーザー操作時に自動スライドを一時停止
-        gallery.addEventListener('mouseenter', () => {
-            clearInterval(autoSlideInterval);
-        });
-        
-        gallery.addEventListener('mouseleave', () => {
-            autoSlideInterval = setInterval(() => {
-                changeSlide(1);
-            }, 5000);
-        });
-        
-        // 初期カーソル設定
-        gallery.style.cursor = 'grab';
     </script>
 </body>
 </html>
