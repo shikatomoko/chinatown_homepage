@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>カジノ</title>
+    <title>娼館</title>
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
@@ -289,22 +289,32 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
-        .service-card.special {
-            border: 2px solid rgba(255, 51, 51, 0.8);
+        .service-card.ume {
+            border: 2px solid rgba(139, 69, 19, 0.8);
             background: rgba(153, 102, 0, 0.9);
         }
         
-        .service-card.special:hover {
+        .service-card.ume:hover {
             background: rgba(179, 119, 0, 1.0);
-            box-shadow: 0 6px 20px rgba(255, 51, 51, 0.2);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.2);
         }
         
-        .service-card.vip {
+        .service-card.take {
+            border: 2px solid rgba(34, 139, 34, 0.8);
+            background: rgba(153, 102, 0, 0.9);
+        }
+        
+        .service-card.take:hover {
+            background: rgba(179, 119, 0, 1.0);
+            box-shadow: 0 6px 20px rgba(34, 139, 34, 0.2);
+        }
+        
+        .service-card.matsu {
             border: 2px solid rgba(138, 43, 226, 0.8);
             background: rgba(128, 85, 0, 0.9);
         }
         
-        .service-card.vip:hover {
+        .service-card.matsu:hover {
             background: rgba(153, 102, 0, 1.0);
             box-shadow: 0 6px 20px rgba(138, 43, 226, 0.2);
         }
@@ -317,11 +327,15 @@
             text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
         }
         
-        .service-title.special {
-            color: #cc0000;
+        .service-title.ume {
+            color: #8b4513;
         }
         
-        .service-title.vip {
+        .service-title.take {
+            color: #228b22;
+        }
+        
+        .service-title.matsu {
             color: #8a2be2;
         }
         
@@ -352,7 +366,7 @@
             background: rgba(0, 0, 0, 0.2);
             padding: 12px;
             border-radius: 8px;
-            border-left: 3px solid rgba(138, 43, 226, 0.8);
+            border-left: 3px solid rgba(220, 20, 60, 0.8);
         }
         
         .tab-container {
@@ -613,43 +627,35 @@
     </style>
 </head>
 <body>
-    <div class="title-center">カジノ</div>
+    <div class="title-center">娼館</div>
     <div class="top-section">
         <div class="shop-gallery">
             <div class="gallery-container">
-                <div class="gallery-slides" id="casinoGallery">
+                <div class="gallery-slides" id="brothelGallery">
                     <div class="gallery-slide active">
-                        <img src="../shop_image/yellow/casino/casino.png" alt="カジノ内部">
+                        <img src="../shop_image/yellow/brothel/brothel.png" alt="娼館外観">
                     </div>
                     <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/casino_entrance.png" alt="カジノ外観">
+                        <img src="../shop_image/yellow/brothel/brothel_corridor.png" alt="娼館廊下">
                     </div>
                     <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/ganble_2floor.png" alt="カジノ2階">
+                        <img src="../shop_image/yellow/brothel/brothel_office.png" alt="娼館事務所">
                     </div>
                     <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/ganble_roulette.png" alt="ルーレット">
+                        <img src="../shop_image/yellow/brothel/brothel_subroom.png" alt="娼館個室">
                     </div>
                     <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/ganble_table.png" alt="ゲームテーブル">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/slot.png" alt="スロットマシン">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/casino2.png" alt="カジノホール">
+                        <img src="../shop_image/yellow/brothel/brothel_tatami.png" alt="娼館和室">
                     </div>
                 </div>
-                <button class="gallery-nav gallery-prev" onclick="previousSlide('casinoGallery')">❮</button>
-                <button class="gallery-nav gallery-next" onclick="nextSlide('casinoGallery')">❯</button>
+                <button class="gallery-nav gallery-prev" onclick="previousSlide('brothelGallery')">❮</button>
+                <button class="gallery-nav gallery-next" onclick="nextSlide('brothelGallery')">❯</button>
                 <div class="gallery-dots">
-                    <span class="gallery-dot active" onclick="currentSlide('casinoGallery', 1)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 2)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 3)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 4)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 5)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 6)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 7)"></span>
+                    <span class="gallery-dot active" onclick="currentSlide('brothelGallery', 1)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('brothelGallery', 2)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('brothelGallery', 3)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('brothelGallery', 4)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('brothelGallery', 5)"></span>
                 </div>
             </div>
         </div>
@@ -658,47 +664,57 @@
                 所属組織：<a href="../colorpage/yellow.html" class="color-link">黄惑街</a>
             </div>
             <div class="info-row">
-                エリア：周辺エリア
+                エリア：周辺〜郊外エリア
             </div>
             <div class="info-row">
                 営業時間：24時間
             </div>
             <div class="info-row">
-                業種：カジノ・賭博場
+                業種：娼館・遊廓
             </div>
             <div class="info-row">
-                従業員：支配人／ディーラー／用心棒数名
+                従業員：女将／娼妓／娼夫／用心棒
             </div>
         </div>
     </div>
     
     <div class="bottom-section">
         <h2>概要</h2>
-        <p>黄惑街が直営する巨大カジノ。24時間煌びやかな光と音楽が絶えず、昼夜を問わず客が絶えない。ルーレットやブラックジャックなどの定番ゲームから、違法性の高い賭博（闇麻雀、命を賭けたゲーム）まで幅広く提供。外の街からも多くの客が集まり、暗黒中華街における「資金源」としての役割も大きい。</p>
+        <p>黄惑街に網の目のように広がる娼館群。安宿と売春宿が合わさったような低層施設から、絢爛豪華な楼閣まで存在。客の懐具合や欲望に応じ、肉体的快楽・精神的慰め・禁断の儀式まで用意されている。</p>
         
         <h2>利用方法・料金</h2>
         <div class="service-grid">
-            <div class="service-card">
-                <div class="service-title">一般フロア</div>
-                <div class="service-price">入場料：5,000円</div>
-                <div class="service-requirement">条件：最低限のドレスコード</div>
+            <div class="service-card ume">
+                <div class="service-title ume">梅ランク</div>
+                <div class="service-price">料金：10,000円〜</div>
+                <div class="service-requirement">必要信用値：10</div>
                 <div class="service-description">
-                    スロット、ルーレット、カードゲームなどの通常ゲームを楽しめる。誰でも入場可能で、カジノの基本的な楽しみを味わえる。
+                    路地裏にある安宿兼娼館。値段は安いが環境は劣悪。最低限のサービスを提供。
                 </div>
                 <div class="service-mechanics">
-                    <strong>注意：</strong>借金が一定額（10万以上）を超えると、黄組の債務管理リストに載り、以後は用心棒に追われる生活となる。
+                    <strong>判定：</strong>&lt;CON*5&gt;判定。失敗すると病気や疲労を得る。成功すれば安価で休養可能。
                 </div>
             </div>
-            <div class="service-card vip">
-                <div class="service-title vip">VIPフロア</div>
-                <div class="service-price">入場料：100万円</div>
-                <div class="service-requirement">条件：信用値80以上</div>
+            <div class="service-card take">
+                <div class="service-title take">竹ランク</div>
+                <div class="service-price">料金：30,000円〜</div>
+                <div class="service-requirement">必要信用値：30</div>
                 <div class="service-description">
-                    違法賭博や特殊ゲームが行われる特別フロア。ハイリスク・ハイリターンの世界。
+                    装飾が施された一般的な娼館。身なりの整った娼妓が対応する。一室を貸し切り、食事と酒、一定以上の歓待を受けられる。
                 </div>
                 <div class="service-mechanics">
-                    <strong>勝利時：</strong>莫大な金銭・特殊アイテム・権力（黄組幹部のコネ）が得られる。<br>
-                    <strong>失敗時：</strong>臓器の喪失、重傷、あるいは死亡するリスクを負う。
+                    <strong>判定：</strong>&lt;交渉系技能&gt;。成功すれば追加情報（街の噂や秘密）が手に入る。失敗すると通常料金＋裏料金を請求される。
+                </div>
+            </div>
+            <div class="service-card matsu">
+                <div class="service-title matsu">松ランク</div>
+                <div class="service-price">料金：要相談</div>
+                <div class="service-requirement">必要信用値：70</div>
+                <div class="service-description">
+                    郊外の楼閣や隠れ屋敷にある高級娼館。政治家や組織幹部も訪れる最高級のサービスを提供。
+                </div>
+                <div class="service-mechanics">
+                    <strong>判定：</strong>&lt;交渉系技能&gt;。成功すればVIP向けの人脈や裏契約が得られる。失敗すると組織にマークされ、命の保証が危うくなる。
                 </div>
             </div>
         </div>
@@ -710,12 +726,12 @@
     <div class="overlay" id="overlay"></div>
     
    <!-- 黄組詳細ポップアップ -->
-    <div class="group-detail" id="detail-yellow">
+  <div class="group-detail" id="detail-yellow">
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
         <h3 style="color:#fbc02d; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='colorpage/yellow.html'" onmouseover="this.style.textShadow='0 2px 8px rgba(251, 192, 45, 0.8)'" onmouseout="this.style.textShadow='none'">黄惑街</h3>
         <ul class="shop-list">
             <li><img src="../shop_image/yellow/hostclub/hostclub.png" class="shop-icon" alt="ホストクラブ"><a href="../shoppage/shop_hostclub.html">ホストクラブ</a></li>
-            <li><img src="../shop_image/yellow/trade/trade.png" class="shop-icon" alt="両替所"><a href="../shoppage/shop_trade.html">両替所</a></li>
+            <li><img src="../shop_image/yellow/trade/trade.png" class="shop-icon" alt="両替所"><a href="../shoppage/shop_casino.html">両替所</a></li>
             <li><img src="../shop_image/yellow/cosmeticsurgery/cosmetic_surgery.png" class="shop-icon" alt="美容整形外科"><a href="../shoppage/shop_cosmeticsurgery.html">美容整形外科</a></li>
             <li><img src="../shop_image/yellow/casino/casino.png" class="shop-icon" alt="カジノ"><a href="../shoppage/shop_casino.html">カジノ</a></li>
             <li><img src="../shop_image/yellow/courier/courier.png" class="shop-icon" alt="運び屋"><a href="../shoppage/shop_courier.html">運び屋</a></li>
@@ -723,6 +739,7 @@
             <li><img src="../shop_image/yellow/bank/bank_entrance.png" class="shop-icon" alt="銀行"><a href="../shoppage/shop_bank.html">銀行</a></li>
         </ul>
     </div>
+    
     
     <div class="color-group-container">
         <a href="../colorpage/red.html" class="color-group-btn color-red">呑紅街</a>
@@ -783,8 +800,8 @@
         
         // ギャラリー機能
         const galleryConfigs = {
-            'casinoGallery': {
-                totalSlides: 7,
+            'brothelGallery': {
+                totalSlides: 5,
                 currentSlide: 0,
                 autoRotateInterval: null
             }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>カジノ</title>
+    <title>美容整形外科</title>
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
@@ -289,24 +289,34 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
-        .service-card.special {
-            border: 2px solid rgba(255, 51, 51, 0.8);
+        .service-card.partial {
+            border: 2px solid rgba(34, 139, 34, 0.8);
             background: rgba(153, 102, 0, 0.9);
         }
         
-        .service-card.special:hover {
+        .service-card.partial:hover {
             background: rgba(179, 119, 0, 1.0);
-            box-shadow: 0 6px 20px rgba(255, 51, 51, 0.2);
+            box-shadow: 0 6px 20px rgba(34, 139, 34, 0.2);
         }
         
-        .service-card.vip {
+        .service-card.complete {
             border: 2px solid rgba(138, 43, 226, 0.8);
             background: rgba(128, 85, 0, 0.9);
         }
         
-        .service-card.vip:hover {
+        .service-card.complete:hover {
             background: rgba(153, 102, 0, 1.0);
             box-shadow: 0 6px 20px rgba(138, 43, 226, 0.2);
+        }
+        
+        .service-card.repair {
+            border: 2px solid rgba(70, 130, 180, 0.8);
+            background: rgba(153, 102, 0, 0.9);
+        }
+        
+        .service-card.repair:hover {
+            background: rgba(179, 119, 0, 1.0);
+            box-shadow: 0 6px 20px rgba(70, 130, 180, 0.2);
         }
         
         .service-title {
@@ -317,12 +327,16 @@
             text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
         }
         
-        .service-title.special {
-            color: #cc0000;
+        .service-title.partial {
+            color: #228b22;
         }
         
-        .service-title.vip {
+        .service-title.complete {
             color: #8a2be2;
+        }
+        
+        .service-title.repair {
+            color: #4682b4;
         }
         
         .service-price {
@@ -613,43 +627,23 @@
     </style>
 </head>
 <body>
-    <div class="title-center">カジノ</div>
+    <div class="title-center">美容整形外科</div>
     <div class="top-section">
         <div class="shop-gallery">
             <div class="gallery-container">
-                <div class="gallery-slides" id="casinoGallery">
+                <div class="gallery-slides" id="cosmeticsurgeryGallery">
                     <div class="gallery-slide active">
-                        <img src="../shop_image/yellow/casino/casino.png" alt="カジノ内部">
+                        <img src="../shop_image/yellow/cosmeticsurgery/cosmetic_surgery.png" alt="美容整形外科内部">
                     </div>
                     <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/casino_entrance.png" alt="カジノ外観">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/ganble_2floor.png" alt="カジノ2階">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/ganble_roulette.png" alt="ルーレット">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/ganble_table.png" alt="ゲームテーブル">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/slot.png" alt="スロットマシン">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/casino2.png" alt="カジノホール">
+                        <img src="../shop_image/yellow/cosmeticsurgery/cosmeticsurgery_entrance.png" alt="美容整形外科入口">
                     </div>
                 </div>
-                <button class="gallery-nav gallery-prev" onclick="previousSlide('casinoGallery')">❮</button>
-                <button class="gallery-nav gallery-next" onclick="nextSlide('casinoGallery')">❯</button>
+                <button class="gallery-nav gallery-prev" onclick="previousSlide('cosmeticsurgeryGallery')">❮</button>
+                <button class="gallery-nav gallery-next" onclick="nextSlide('cosmeticsurgeryGallery')">❯</button>
                 <div class="gallery-dots">
-                    <span class="gallery-dot active" onclick="currentSlide('casinoGallery', 1)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 2)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 3)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 4)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 5)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 6)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 7)"></span>
+                    <span class="gallery-dot active" onclick="currentSlide('cosmeticsurgeryGallery', 1)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('cosmeticsurgeryGallery', 2)"></span>
                 </div>
             </div>
         </div>
@@ -658,48 +652,71 @@
                 所属組織：<a href="../colorpage/yellow.html" class="color-link">黄惑街</a>
             </div>
             <div class="info-row">
-                エリア：周辺エリア
+                エリア：郊外エリア
             </div>
             <div class="info-row">
-                営業時間：24時間
+                営業時間：完全予約制
             </div>
             <div class="info-row">
-                業種：カジノ・賭博場
+                業種：美容整形外科・身元偽装
             </div>
             <div class="info-row">
-                従業員：支配人／ディーラー／用心棒数名
+                従業員：院長「白蓮」／助手兼看護師／裏ブローカー
             </div>
         </div>
     </div>
     
     <div class="bottom-section">
         <h2>概要</h2>
-        <p>黄惑街が直営する巨大カジノ。24時間煌びやかな光と音楽が絶えず、昼夜を問わず客が絶えない。ルーレットやブラックジャックなどの定番ゲームから、違法性の高い賭博（闇麻雀、命を賭けたゲーム）まで幅広く提供。外の街からも多くの客が集まり、暗黒中華街における「資金源」としての役割も大きい。</p>
+        <p>外見を変えることに特化した診療所。街での生存のため、あるいは追跡から逃れるために利用される。単なる美容整形に留まらず、声帯や骨格、さらにはオーラのような人外的特徴まで操作可能。施術の結果は必ずしも「美」ではなく、「別人になること」に重点が置かれている。</p>
         
         <h2>利用方法・料金</h2>
         <div class="service-grid">
-            <div class="service-card">
-                <div class="service-title">一般フロア</div>
-                <div class="service-price">入場料：5,000円</div>
-                <div class="service-requirement">条件：最低限のドレスコード</div>
+            <div class="service-card partial">
+                <div class="service-title partial">部分整形</div>
+                <div class="service-price">費用：50,000〜150,000円</div>
+                <div class="service-requirement">必要信用値：50</div>
                 <div class="service-description">
-                    スロット、ルーレット、カードゲームなどの通常ゲームを楽しめる。誰でも入場可能で、カジノの基本的な楽しみを味わえる。
+                    目や鼻、口元など、顔や身体の一部だけを修正。比較的安価で手軽に利用できる。
                 </div>
                 <div class="service-mechanics">
-                    <strong>注意：</strong>借金が一定額（10万以上）を超えると、黄組の債務管理リストに載り、以後は用心棒に追われる生活となる。
+                    <strong>効果：</strong>&lt;隠す&gt;判定にボーナス+20。知人や顔見知りに気づかれる可能性は残る。
                 </div>
             </div>
-            <div class="service-card vip">
-                <div class="service-title vip">VIPフロア</div>
-                <div class="service-price">入場料：100万円</div>
-                <div class="service-requirement">条件：信用値80以上</div>
+            <div class="service-card complete">
+                <div class="service-title complete">完全整形</div>
+                <div class="service-price">費用：500,000〜2,000,000円</div>
+                <div class="service-requirement">必要信用値：70</div>
                 <div class="service-description">
-                    違法賭博や特殊ゲームが行われる特別フロア。ハイリスク・ハイリターンの世界。
+                    全身を対象とする大規模な手術。声帯、皮膚、骨格に至るまで変更可能。完全に別人になることができる。
                 </div>
                 <div class="service-mechanics">
-                    <strong>勝利時：</strong>莫大な金銭・特殊アイテム・権力（黄組幹部のコネ）が得られる。<br>
-                    <strong>失敗時：</strong>臓器の喪失、重傷、あるいは死亡するリスクを負う。
+                    <strong>効果：</strong>&lt;隠す&gt;判定自動成功扱い。既知の相手でもまず見破れない。術後合併症を負う場合がある。
                 </div>
+            </div>
+            <div class="service-card repair">
+                <div class="service-title repair">修繕</div>
+                <div class="service-price">費用：100,000円〜</div>
+                <div class="service-requirement">必要信用値：50</div>
+                <div class="service-description">
+                    怪我や戦闘で損傷した顔・身体を元通りに修復。焼け跡や欠損の再生も対応。
+                </div>
+                <div class="service-mechanics">
+                    <strong>効果：</strong>欠損部位を回復、醜状痕を除去。信用値が回復し、社会的活動に支障がなくなる。
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-section">
+        <h2>従業員</h2>
+        <div class="employee-grid">
+            <div class="employee-card">
+                <div class="employee-header">
+                    <div style="width: 48px; height: 48px; border-radius: 50%; margin-right: 16px; border: 2px solid rgba(0, 0, 0, 0.7); background: rgba(255, 255, 255, 0.8); display: flex; align-items: center; justify-content: center; font-weight: bold; color: #000;">白</div>
+                    <span class="employee-name">白蓮</span>
+                </div>
+                <div class="employee-role">院長</div>
             </div>
         </div>
     </div>
@@ -712,15 +729,17 @@
    <!-- 黄組詳細ポップアップ -->
     <div class="group-detail" id="detail-yellow">
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3 style="color:#fbc02d; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='colorpage/yellow.html'" onmouseover="this.style.textShadow='0 2px 8px rgba(251, 192, 45, 0.8)'" onmouseout="this.style.textShadow='none'">黄惑街</h3>
+        <h3 style="color:#ffcc00;">黄惑街</h3>
         <ul class="shop-list">
-            <li><img src="../shop_image/yellow/hostclub/hostclub.png" class="shop-icon" alt="ホストクラブ"><a href="../shoppage/shop_hostclub.html">ホストクラブ</a></li>
-            <li><img src="../shop_image/yellow/trade/trade.png" class="shop-icon" alt="両替所"><a href="../shoppage/shop_trade.html">両替所</a></li>
-            <li><img src="../shop_image/yellow/cosmeticsurgery/cosmetic_surgery.png" class="shop-icon" alt="美容整形外科"><a href="../shoppage/shop_cosmeticsurgery.html">美容整形外科</a></li>
-            <li><img src="../shop_image/yellow/casino/casino.png" class="shop-icon" alt="カジノ"><a href="../shoppage/shop_casino.html">カジノ</a></li>
-            <li><img src="../shop_image/yellow/courier/courier.png" class="shop-icon" alt="運び屋"><a href="../shoppage/shop_courier.html">運び屋</a></li>
-            <li><img src="../shop_image/yellow/park/park.jpg" class="shop-icon" alt="遊園地"><a href="../shoppage/shop_park.html">遊園地</a></li>
-            <li><img src="../shop_image/yellow/bank/bank_entrance.png" class="shop-icon" alt="銀行"><a href="../shoppage/shop_bank.html">銀行</a></li>
+            <li><img src="../shop_image/yellow/casino/casino.png" class="shop-icon" alt="カジノ"><a href="./shop_casino.html">カジノ</a></li>
+            <li><img src="../shop_image/yellow/auction/auction_stage.png" class="shop-icon" alt="オークション"><a href="./shop_auction.html">オークション</a></li>
+            <li><img src="../shop_image/yellow/bank/bank_entrance.png" class="shop-icon" alt="銀行"><a href="./shop_bank.html">銀行</a></li>
+            <li><img src="../shop_image/yellow/brothel/brothel.png" class="shop-icon" alt="娼館"><a href="./shop_brothel.html">娼館</a></li>
+            <li><img src="../shop_image/yellow/courier/courier.png" class="shop-icon" alt="運び屋"><a href="./shop_courier.html">運び屋</a></li>
+            <li><img src="../shop_image/yellow/hostclub/hostclub.png" class="shop-icon" alt="ホストクラブ"><a href="./shop_hostclub.html">ホストクラブ</a></li>
+            <li><img src="../shop_image/yellow/hotel/hotel.png" class="shop-icon" alt="ホテル"><a href="./shop_hotel.html">ホテル</a></li>
+            <li><img src="../shop_image/yellow/trade/trade.png" class="shop-icon" alt="交易所"><a href="./shop_trade.html">交易所</a></li>
+            <li><img src="../shop_image/yellow/cosmeticsurgery/cosmetic_surgery.png" class="shop-icon" alt="美容整形外科"><a href="./shop_cosmeticsurgery.html">美容整形外科</a></li>
         </ul>
     </div>
     
@@ -783,8 +802,8 @@
         
         // ギャラリー機能
         const galleryConfigs = {
-            'casinoGallery': {
-                totalSlides: 7,
+            'cosmeticsurgeryGallery': {
+                totalSlides: 2,
                 currentSlide: 0,
                 autoRotateInterval: null
             }

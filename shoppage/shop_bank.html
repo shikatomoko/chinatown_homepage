@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>カジノ</title>
+    <title>銀行</title>
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
@@ -289,24 +289,24 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
-        .service-card.special {
-            border: 2px solid rgba(255, 51, 51, 0.8);
+        .service-card.deposit {
+            border: 2px solid rgba(34, 139, 34, 0.8);
             background: rgba(153, 102, 0, 0.9);
         }
         
-        .service-card.special:hover {
+        .service-card.deposit:hover {
             background: rgba(179, 119, 0, 1.0);
-            box-shadow: 0 6px 20px rgba(255, 51, 51, 0.2);
+            box-shadow: 0 6px 20px rgba(34, 139, 34, 0.2);
         }
         
-        .service-card.vip {
-            border: 2px solid rgba(138, 43, 226, 0.8);
+        .service-card.loan {
+            border: 2px solid rgba(220, 20, 60, 0.8);
             background: rgba(128, 85, 0, 0.9);
         }
         
-        .service-card.vip:hover {
+        .service-card.loan:hover {
             background: rgba(153, 102, 0, 1.0);
-            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.2);
+            box-shadow: 0 6px 20px rgba(220, 20, 60, 0.2);
         }
         
         .service-title {
@@ -317,12 +317,12 @@
             text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
         }
         
-        .service-title.special {
-            color: #cc0000;
+        .service-title.deposit {
+            color: #228b22;
         }
         
-        .service-title.vip {
-            color: #8a2be2;
+        .service-title.loan {
+            color: #dc143c;
         }
         
         .service-price {
@@ -352,7 +352,7 @@
             background: rgba(0, 0, 0, 0.2);
             padding: 12px;
             border-radius: 8px;
-            border-left: 3px solid rgba(138, 43, 226, 0.8);
+            border-left: 3px solid rgba(220, 20, 60, 0.8);
         }
         
         .tab-container {
@@ -613,43 +613,35 @@
     </style>
 </head>
 <body>
-    <div class="title-center">カジノ</div>
+    <div class="title-center">銀行</div>
     <div class="top-section">
         <div class="shop-gallery">
             <div class="gallery-container">
-                <div class="gallery-slides" id="casinoGallery">
+                <div class="gallery-slides" id="bankGallery">
                     <div class="gallery-slide active">
-                        <img src="../shop_image/yellow/casino/casino.png" alt="カジノ内部">
+                        <img src="../shop_image/yellow/bank/bank_entrance.png" alt="銀行入口">
                     </div>
                     <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/casino_entrance.png" alt="カジノ外観">
+                        <img src="../shop_image/yellow/bank/bank_reception.png" alt="銀行受付">
                     </div>
                     <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/ganble_2floor.png" alt="カジノ2階">
+                        <img src="../shop_image/yellow/bank/bank_safe.png" alt="銀行金庫">
                     </div>
                     <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/ganble_roulette.png" alt="ルーレット">
+                        <img src="../shop_image/yellow/bank/bank_bigsafe.png" alt="銀行大金庫">
                     </div>
                     <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/ganble_table.png" alt="ゲームテーブル">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/slot.png" alt="スロットマシン">
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="../shop_image/yellow/casino/casino2.png" alt="カジノホール">
+                        <img src="../shop_image/yellow/bank/bank_bigsafe_open.png" alt="銀行大金庫（開放）">
                     </div>
                 </div>
-                <button class="gallery-nav gallery-prev" onclick="previousSlide('casinoGallery')">❮</button>
-                <button class="gallery-nav gallery-next" onclick="nextSlide('casinoGallery')">❯</button>
+                <button class="gallery-nav gallery-prev" onclick="previousSlide('bankGallery')">❮</button>
+                <button class="gallery-nav gallery-next" onclick="nextSlide('bankGallery')">❯</button>
                 <div class="gallery-dots">
-                    <span class="gallery-dot active" onclick="currentSlide('casinoGallery', 1)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 2)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 3)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 4)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 5)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 6)"></span>
-                    <span class="gallery-dot" onclick="currentSlide('casinoGallery', 7)"></span>
+                    <span class="gallery-dot active" onclick="currentSlide('bankGallery', 1)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('bankGallery', 2)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('bankGallery', 3)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('bankGallery', 4)"></span>
+                    <span class="gallery-dot" onclick="currentSlide('bankGallery', 5)"></span>
                 </div>
             </div>
         </div>
@@ -658,48 +650,65 @@
                 所属組織：<a href="../colorpage/yellow.html" class="color-link">黄惑街</a>
             </div>
             <div class="info-row">
-                エリア：周辺エリア
+                エリア：中央区
             </div>
             <div class="info-row">
-                営業時間：24時間
+                営業時間：平日営業
             </div>
             <div class="info-row">
-                業種：カジノ・賭博場
+                業種：中央銀行・資産管理
             </div>
             <div class="info-row">
-                従業員：支配人／ディーラー／用心棒数名
+                従業員：支配人「白蓮」／窓口係
             </div>
         </div>
     </div>
     
     <div class="bottom-section">
         <h2>概要</h2>
-        <p>黄惑街が直営する巨大カジノ。24時間煌びやかな光と音楽が絶えず、昼夜を問わず客が絶えない。ルーレットやブラックジャックなどの定番ゲームから、違法性の高い賭博（闇麻雀、命を賭けたゲーム）まで幅広く提供。外の街からも多くの客が集まり、暗黒中華街における「資金源」としての役割も大きい。</p>
+        <p>暗黒中華街における中央銀行。全ての取引の裏を握るとも言われ、街での「信用」を可視化・管理する存在。立ち入るのは容易ではなく、特に地下金庫は迷宮のごとく複雑な構造になっている。金銭だけでなく、情報・人脈・記憶といった無形の資産までも担保として扱う。</p>
         
         <h2>利用方法・料金</h2>
         <div class="service-grid">
-            <div class="service-card">
-                <div class="service-title">一般フロア</div>
-                <div class="service-price">入場料：5,000円</div>
-                <div class="service-requirement">条件：最低限のドレスコード</div>
+            <div class="service-card deposit">
+                <div class="service-title deposit">預け入れ</div>
+                <div class="service-price">最低預入額：10,000円</div>
+                <div class="service-requirement">必要信用値：30</div>
                 <div class="service-description">
-                    スロット、ルーレット、カードゲームなどの通常ゲームを楽しめる。誰でも入場可能で、カジノの基本的な楽しみを味わえる。
-                </div>
-                <div class="service-mechanics">
-                    <strong>注意：</strong>借金が一定額（10万以上）を超えると、黄組の債務管理リストに載り、以後は用心棒に追われる生活となる。
+                    現金、宝石、契約書、記憶の欠片などを預ける。無形の資産も取り扱い対象。
                 </div>
             </div>
-            <div class="service-card vip">
-                <div class="service-title vip">VIPフロア</div>
-                <div class="service-price">入場料：100万円</div>
-                <div class="service-requirement">条件：信用値80以上</div>
+            <div class="service-card">
+                <div class="service-title">引き出し</div>
+                <div class="service-price">手数料：要相談</div>
+                <div class="service-requirement">必要信用値：30</div>
                 <div class="service-description">
-                    違法賭博や特殊ゲームが行われる特別フロア。ハイリスク・ハイリターンの世界。
+                    自分の資産を引き出す。金銭以外に「封印した記憶」「売買用の契約」なども対象。
+                </div>
+            </div>
+            <div class="service-card loan">
+                <div class="service-title loan">借金・融資</div>
+                <div class="service-price">金利：極めて高額</div>
+                <div class="service-requirement">厳格な担保設定</div>
+                <div class="service-description">
+                    資金が必要な者に貸し付けを行う。返済期限と担保が厳格に設定される。
                 </div>
                 <div class="service-mechanics">
-                    <strong>勝利時：</strong>莫大な金銭・特殊アイテム・権力（黄組幹部のコネ）が得られる。<br>
-                    <strong>失敗時：</strong>臓器の喪失、重傷、あるいは死亡するリスクを負う。
+                    <strong>VIP特別融資：</strong>「命を担保にした特別融資」も存在。借入契約の内容は極秘。
                 </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-section">
+        <h2>従業員</h2>
+        <div class="employee-grid">
+            <div class="employee-card">
+                <div class="employee-header">
+                    <div style="width: 48px; height: 48px; border-radius: 50%; margin-right: 16px; border: 2px solid rgba(0, 0, 0, 0.7); background: rgba(255, 255, 255, 0.8); display: flex; align-items: center; justify-content: center; font-weight: bold; color: #000;">白</div>
+                    <span class="employee-name">白蓮</span>
+                </div>
+                <div class="employee-role">支配人</div>
             </div>
         </div>
     </div>
@@ -710,12 +719,12 @@
     <div class="overlay" id="overlay"></div>
     
    <!-- 黄組詳細ポップアップ -->
-    <div class="group-detail" id="detail-yellow">
+   <div class="group-detail" id="detail-yellow">
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
         <h3 style="color:#fbc02d; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='colorpage/yellow.html'" onmouseover="this.style.textShadow='0 2px 8px rgba(251, 192, 45, 0.8)'" onmouseout="this.style.textShadow='none'">黄惑街</h3>
         <ul class="shop-list">
             <li><img src="../shop_image/yellow/hostclub/hostclub.png" class="shop-icon" alt="ホストクラブ"><a href="../shoppage/shop_hostclub.html">ホストクラブ</a></li>
-            <li><img src="../shop_image/yellow/trade/trade.png" class="shop-icon" alt="両替所"><a href="../shoppage/shop_trade.html">両替所</a></li>
+            <li><img src="../shop_image/yellow/trade/trade.png" class="shop-icon" alt="両替所"><a href="../shoppage/shop_casino.html">両替所</a></li>
             <li><img src="../shop_image/yellow/cosmeticsurgery/cosmetic_surgery.png" class="shop-icon" alt="美容整形外科"><a href="../shoppage/shop_cosmeticsurgery.html">美容整形外科</a></li>
             <li><img src="../shop_image/yellow/casino/casino.png" class="shop-icon" alt="カジノ"><a href="../shoppage/shop_casino.html">カジノ</a></li>
             <li><img src="../shop_image/yellow/courier/courier.png" class="shop-icon" alt="運び屋"><a href="../shoppage/shop_courier.html">運び屋</a></li>
@@ -783,8 +792,8 @@
         
         // ギャラリー機能
         const galleryConfigs = {
-            'casinoGallery': {
-                totalSlides: 7,
+            'bankGallery': {
+                totalSlides: 5,
                 currentSlide: 0,
                 autoRotateInterval: null
             }
