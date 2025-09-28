@@ -3,64 +3,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>白組</title>
-    <link rel="stylesheet" href="style.css">
+    <title>白葬街</title>
+    <link rel="stylesheet" href="../style.css">
     <style>
         body {
-            background-color: #f8f8f8;
-            font-family: Arial, sans-serif;
-            padding: 40px;
-            color: #222;
+            background: linear-gradient(135deg, #2a2a2a, #4a4a4a, #3a3a3a);
+            font-family: 'Yu Gothic', '游ゴシック', 'Hiragino Sans', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #f0f0f0;
+            line-height: 1.7;
         }
-        h1 {
-            color: #fff;
-            background: #bbb;
-            padding: 16px 0;
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: clamp(20px, 4vw, 60px);
+        }
+        
+        .title-center {
             text-align: center;
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.1em;
+            margin: 40px auto 60px;
+            padding: 0;
+        }
+        
+        .content-section {
+            margin-bottom: 50px;
+            padding: clamp(20px, 3vw, 40px);
+            background: rgba(240, 240, 240, 0.9);
+            color: #222;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .content-section:hover {
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        .section-title {
+            font-size: clamp(22px, 4vw, 28px);
+            color: #111;
+            font-weight: 600;
+            margin-bottom: clamp(16px, 3vw, 24px);
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.02em;
+            border-bottom: 2px solid rgba(100, 100, 100, 0.3);
+            padding-bottom: 8px;
+        }
+        
+        .section-text {
+            font-size: clamp(15px, 2.5vw, 17px);
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+        }
+        
+        .person-list, .shop-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .person-item, .shop-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: rgba(250, 250, 250, 0.95);
+            color: #222;
+            border-radius: 12px;
+            border: 1px solid rgba(200, 200, 200, 0.5);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .person-item:hover, .shop-item:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateX(4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .role-label {
+            font-weight: 600;
+            color: #666;
+            min-width: 100px;
+            margin-right: 12px;
+            font-size: 14px;
+        }
+        
+        .person-link, .shop-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            border-bottom: 1px dashed rgba(100, 100, 100, 0.6);
+            transition: all 0.3s ease;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        
+        .person-link:hover, .shop-link:hover {
+            color: #000;
+            background: rgba(100, 100, 100, 0.1);
+            border-bottom: 1px solid rgba(100, 100, 100, 0.8);
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+        }
+        
+        .color-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed rgba(100, 100, 100, 0.6);
+            transition: all 0.3s ease;
+            padding: 1px 2px;
+            border-radius: 3px;
+        }
+        
+        .color-link:hover {
+            background: rgba(100, 100, 100, 0.1);
+            border-bottom: 1px solid rgba(100, 100, 100, 0.8);
+        }
+        
+        .unknown-person {
+            color: #888;
+            font-style: italic;
+            border-bottom: none;
+            cursor: default;
+        }
+        
+        .unknown-person:hover {
+            background: none;
+            color: #888;
+            border-bottom: none;
+        }
+        
+        .tab-container {
+            display: flex;
+            gap: clamp(8px, 2vw, 15px);
+            margin: 60px 0 40px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .tab-container button {
+            background: linear-gradient(135deg, #e0e0e0, #f0f0f0);
+            color: #333;
             border-radius: 8px;
-            font-size: 2em;
-            margin-bottom: 32px;
+            border: 1px solid rgba(200, 200, 200, 0.5);
+            padding: clamp(8px, 2vw, 12px) clamp(16px, 3vw, 24px);
+            font-size: clamp(13px, 2.5vw, 16px);
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        section {
-            margin-bottom: 32px;
+        
+        .tab-container button:hover {
+            background: linear-gradient(135deg, #f0f0f0, #ffffff);
+            color: #222;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
         }
-        section h2 {
-            color: #555;
-            font-size: 1.3em;
-            margin-bottom: 12px;
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .content-section {
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+            
+            .tab-container {
+                gap: 8px;
+                margin: 40px 0 20px 0;
+            }
         }
-        section p {
-            margin: 0 0 8px 0;
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .content-section {
+                padding: 16px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>白組</h1>
-    <section>
-        <h2>組織概要</h2>
-        <p>白組の主な仕事は「死体処理」である。この街では一日に生まれる人間の数より死ぬ人間の数の方が当然多い。そうして発生する死体を放置していては様々な害の元である。死体だって「白組」の手にかかればただのゴミではないのである。利用価値のある素材をみすみす逃すような行為を、「白組」は許容しない。</p>
-    </section>
-    <section>
-        <h2>区画について</h2>
-        <p>「白組」の区画は城に程近いところにある。これは「白組」が「黒組」を除く他の４色よりも比較的強い権力を握っていることの証左であるのかもしれない。面積はさほど広くないが、住居エリアに対して商業エリアの割合が大きいことが特徴である。「白組」は死体処理のなかで発生した様々な素材を生かした商店を多く営んでいる。詳しい店舗情報については別途記載する。</p>
-    </section>
-    <section>
-        <h2>主要人物</h2>
-        <p>首長：？？？</p>
-        <p>幹部：シロ</p>
-        <p>構成員：？？？</p>
-        <h2>店舗情報</h2>
-        <p>肉屋</p>
-        <p>皮屋</p>
-        <P>葬儀屋</P>
-    </section>
-    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
-        <a href="../index.html"><button>ホーム</button></a>
-        <a href="../rules.html"><button>特殊ルール</button></a>
-        <a href="../jinngai.html"><button>人外設定</button></a>
-        <a href="../world.html"><button>世界観設定</button></a>
-        <a href="../characters.html"><button>キャラクター一覧</button></a>
-        <a href="../shops.html"><button>店舗一覧</button></a>
+    <div class="container">
+        <div class="title-center">白葬街</div>
+        
+        <div class="content-section">
+            <h2 class="section-title">組織概要</h2>
+            <p class="section-text">白組の主な仕事は「死体処理」である。この街では一日に生まれる人間の数より死ぬ人間の数の方が当然多い。そうして発生する死体を放置していては様々な害の元である。</p>
+            <p class="section-text">死体だって「白組」の手にかかればただのゴミではないのである。利用価値のある素材をみすみす逃すような行為を、「白組」は許容しない。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">区画について</h2>
+            <p class="section-text">「白組」の区画は城に程近いところにある。これは「白組」が「黒組」を除く他の４色よりも比較的強い権力を握っていることの証左であるのかもしれない。</p>
+            <p class="section-text">面積はさほど広くないが、住居エリアに対して商業エリアの割合が大きいことが特徴である。「白組」は死体処理のなかで発生した様々な素材を生かした商店を多く営んでいる。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">主要人物</h2>
+            <div class="person-list">
+                <div class="person-item">
+                    <span class="role-label">首長：</span>
+                    <span class="person-link unknown-person">？？？</span>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">幹部：</span>
+                    <a href="../characterpage/character_shiro.html" class="person-link">シロ</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">構成員：</span>
+                    <span class="person-link unknown-person">？？？</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">店舗情報</h2>
+            <div class="shop-list">
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">肉屋</span>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">皮屋</span>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-link unknown-person">葬儀屋</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">関連組織</h2>
+            <div class="section-text">
+                暗黒中華街は白組の他、五つの色彩組織によって統治されています。
+            </div>
+            <div class="person-list">
+                <div class="person-item">
+                    <span class="role-label">黒組：</span>
+                    <a href="black.html" class="color-link">霧影集団</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">青組：</span>
+                    <a href="blue.html" class="color-link">蒼殉街</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">緑組：</span>
+                    <a href="green.html" class="color-link">滲緑街</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">赤組：</span>
+                    <a href="red.html" class="color-link">呑紅街</a>
+                </div>
+                <div class="person-item">
+                    <span class="role-label">黄組：</span>
+                    <a href="yellow.html" class="color-link">黄金街</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-container">
+            <a href="../index.html"><button>ホーム</button></a>
+            <a href="../rules.html"><button>特殊ルール</button></a>
+            <a href="../jinngai.html"><button>人外設定</button></a>
+            <a href="../world.html"><button>世界観設定</button></a>
+            <a href="../characters.html"><button>キャラクター一覧</button></a>
+            <a href="../shops.html"><button>店舗一覧</button></a>
+            <a href="../tools.html"><button>ツール</button></a>
+        </div>
     </div>
 </body>
 </html>
