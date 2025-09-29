@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PC一覧</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="common/navigation.css">
     <style>
         body {
             display: flex;
@@ -119,131 +120,6 @@
             color: #ffffff;
         }
         
-        /* ホバーメニューシステム */
-        .hover-menu-container {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 2000;
-        }
-        
-        .menu-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            font-size: 20px;
-            color: #333;
-        }
-        
-        .menu-icon:hover {
-            background: rgba(255, 255, 255, 1);
-            transform: scale(1.1);
-        }
-        
-        .hover-menu {
-            position: absolute;
-            top: 60px;
-            left: 0;
-            background: rgba(30, 30, 30, 0.95);
-            border-radius: 12px;
-            padding: 15px 0;
-            min-width: 200px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-        
-        .hover-menu-container:hover .hover-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .menu-item {
-            display: block;
-            padding: 12px 20px;
-            color: #e0e0e0;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            border: none;
-            background: none;
-            width: 100%;
-            text-align: left;
-            cursor: pointer;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-        }
-        
-        .menu-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            transform: translateX(5px);
-        }
-        
-        .menu-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.2);
-            margin: 8px 0;
-        }
-        
-        .submenu {
-            position: relative;
-        }
-        
-        .submenu-content {
-            position: absolute;
-            left: 100%;
-            top: 0;
-            background: rgba(30, 30, 30, 0.95);
-            border-radius: 12px;
-            padding: 10px 0;
-            min-width: 150px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(-10px);
-            transition: all 0.3s ease;
-        }
-        
-        .submenu:hover .submenu-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-        }
-        
-        .submenu-item {
-            display: block;
-            padding: 10px 16px;
-            color: #e0e0e0;
-            text-decoration: none;
-            font-size: 13px;
-            transition: all 0.3s ease;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-        }
-        
-        .submenu-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
-        
-        .color-red { color: #cc2936; }
-        .color-blue { color: #2563eb; }
-        .color-green { color: #16a34a; }
-        .color-yellow { color: #eab308; }
-        .color-white { color: #e0e0e0; }
-        .color-black { color: #666; }
-        
         /* モバイル対応 */
         @media (max-width: 768px) {
             body {
@@ -257,40 +133,12 @@
                 grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
                 gap: 20px;
             }
-            .hover-menu-container {
-                top: 15px;
-                left: 15px;
-            }
-            .menu-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
-            }
-            .hover-menu {
-                min-width: 180px;
-            }
         }
         
         @media (max-width: 480px) {
             .character-list {
                 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
                 gap: 15px;
-            }
-            .hover-menu-container {
-                top: 10px;
-                left: 10px;
-            }
-            .menu-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-            .submenu-content {
-                position: fixed;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                min-width: 200px;
             }
         }
     </style>
@@ -302,13 +150,45 @@
     <div class="player-section">
         <h2 class="player-title">しかこ</h2>
         <div class="character-list">
-            <a href="https://example.com/character1" target="_blank" rel="noopener noreferrer" class="character-item">
-                <img src="./character_icon/character1_icon.png" alt="キャラクター1_アイコン" class="character-icon">
-                <div class="character-name">キャラクター名1</div>
+            <a href="https://iachara.com/view/12458536" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./pc_image/miyuki.png" alt="深雪_アイコン" class="character-icon">
+                <div class="character-name">雨宮深雪</div>
             </a>
-            <a href="https://example.com/character2" target="_blank" rel="noopener noreferrer" class="character-item">
-                <img src="./character_icon/character2_icon.png" alt="キャラクター2_アイコン" class="character-icon">
-                <div class="character-name">キャラクター名2</div>
+            <a href="https://iachara.com/view/12538262" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./pc_image/tsuyu.png" alt="梅雨_アイコン" class="character-icon">
+                <div class="character-name">紫乃寺梅雨</div>
+            </a>
+            <a href="https://iachara.com/view/12343030" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./pc_image/hibari.png" alt="雲雀_アイコン" class="character-icon">
+                <div class="character-name">五十嵐雲雀</div>
+            </a>
+            <a href="https://iachara.com/view/12109206" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./pc_image/hinomiya.png" alt="氷宮_アイコン" class="character-icon">
+                <div class="character-name">氷宮理</div>
+            </a>
+            <a href="https://iachara.com/view/12005838" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./pc_image/kuromine.png" alt="黒峰_アイコン" class="character-icon">
+                <div class="character-name">黒峰未玖</div>
+            </a>
+            <a href="https://iachara.com/view/11942317" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./pc_image/kakemizu.png" alt="掛水_アイコン" class="character-icon">
+                <div class="character-name">掛水奏</div>
+            </a>
+            <a href="https://iachara.com/view/11866948" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./pc_image/haruka.png" alt="遥_アイコン" class="character-icon">
+                <div class="character-name">白川遥</div>
+            </a>
+             <a href="https://iachara.com/view/11754472" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./pc_image/akiha.png" alt="秋葉_アイコン" class="character-icon">
+                <div class="character-name">鴉野秋葉</div>
+            </a>
+            <a href="https://iachara.com/view/11654938" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./pc_image/inami.png" alt="伊波_アイコン" class="character-icon">
+                <div class="character-name">伊波晴</div>
+            </a>
+             <a href="https://iachara.com/view/10403150" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./pc_image/rika.png" alt="理香_アイコン" class="character-icon">
+                <div class="character-name">夢野理香</div>
             </a>
             <!-- 追加のキャラクターがあればここに追加 -->
         </div>
@@ -318,80 +198,22 @@
     <div class="player-section">
         <h2 class="player-title">かなう</h2>
         <div class="character-list">
-            <a href="https://example.com/character3" target="_blank" rel="noopener noreferrer" class="character-item">
-                <img src="./character_icon/character3_icon.png" alt="キャラクター3_アイコン" class="character-icon">
-                <div class="character-name">キャラクター名3</div>
+            <a href="https://iachara.com/view/12463111" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./pc_image/natsuki.png" alt="夏希_アイコン" class="character-icon">
+                <div class="character-name">万城夏希</div>
             </a>
-            <a href="https://example.com/character4" target="_blank" rel="noopener noreferrer" class="character-item">
-                <img src="./character_icon/character4_icon.png" alt="キャラクター4_アイコン" class="character-icon">
-                <div class="character-name">キャラクター名4</div>
+            <a href="https://iachara.com/view/12397412" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./pc_image/hiena.png" alt="縞狼_アイコン" class="character-icon">
+                <div class="character-name">朝倉縞狼</div>
             </a>
             <!-- 追加のキャラクターがあればここに追加 -->
         </div>
     </div>
 
-    <!-- ホバーメニュー -->
-    <div class="hover-menu-container">
-        <div class="menu-icon">☰</div>
-        <div class="hover-menu">
-            <a href="index.html" class="menu-item">ホーム</a>
-            <a href="rules.html" class="menu-item">特殊ルール</a>
-            <a href="jinngai.html" class="menu-item">人外設定</a>
-            <a href="world.html" class="menu-item">世界観設定</a>
-            <a href="characters.html" class="menu-item">キャラクター一覧</a>
-            <a href="shops.html" class="menu-item">店舗一覧</a>
-            <a href="tools.html" class="menu-item">ツール</a>
-            
-            <div class="menu-divider"></div>
-            
-            <div class="submenu">
-                <span class="menu-item">各街ホーム ▶</span>
-                <div class="submenu-content">
-                    <a href="colorpage/black.html" class="submenu-item color-black">黒</a>
-                    <a href="colorpage/white.html" class="submenu-item color-white">白葬街</a>
-                    <a href="colorpage/red.html" class="submenu-item color-red">呑紅街</a>
-                    <a href="colorpage/blue.html" class="submenu-item color-blue">蒼殉街</a>
-                    <a href="colorpage/green.html" class="submenu-item color-green">滲緑街</a>
-                    <a href="colorpage/yellow.html" class="submenu-item color-yellow">黄惑街</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+    <script src="common/navigation.js"></script>
     <script>
-        // モバイル対応のメニュー制御
-        function initMobileMenu() {
-            const menuIcon = document.querySelector('.menu-icon');
-            const hoverMenu = document.querySelector('.hover-menu');
-            const submenu = document.querySelector('.submenu > .menu-item');
-            const submenuContent = document.querySelector('.submenu-content');
-            
-            if (menuIcon) {
-                menuIcon.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    hoverMenu.classList.toggle('show');
-                    if (submenuContent) submenuContent.classList.remove('show');
-                });
-            }
-            
-            if (submenu) {
-                submenu.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    submenuContent.classList.toggle('show');
-                });
-            }
-            
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.hover-menu-container')) {
-                    if (hoverMenu) hoverMenu.classList.remove('show');
-                    if (submenuContent) submenuContent.classList.remove('show');
-                }
-            });
-        }
-        
-        document.addEventListener('DOMContentLoaded', initMobileMenu);
+        // ナビゲーションを初期化
+        initNavigation();
     </script>
 </body>
 </html>
