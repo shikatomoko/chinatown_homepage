@@ -30,16 +30,41 @@
             width: 100%;
             font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
+        
+        .organization-section {
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 40px;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        
+        .organization-title {
+            font-size: clamp(1.5em, 4vw, 2em);
+            font-weight: normal;
+            margin-bottom: 20px;
+            padding: 15px 0;
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            letter-spacing: 0.1em;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .org-title-black { color: #888; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8); }
+        .org-title-white { color: #ddd; text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3); }
+        .org-title-red { color: #ff6b6b; text-shadow: 0 2px 8px rgba(211, 47, 47, 0.6); }
+        .org-title-blue { color: #4fc3f7; text-shadow: 0 2px 8px rgba(25, 118, 210, 0.6); }
+        .org-title-green { color: #6bcf7f; text-shadow: 0 2px 8px rgba(56, 142, 60, 0.6); }
+        .org-title-yellow { color: #ffd93d; text-shadow: 0 2px 8px rgba(251, 192, 45, 0.6); }
+        
         .character-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: clamp(25px, 5vw, 40px);
-            margin-bottom: 30px;
             width: 100%;
-            max-width: 1000px;
-            padding: 0 20px;
             box-sizing: border-box;
         }
+        
         .character-item {
             display: flex;
             flex-direction: column;
@@ -55,12 +80,14 @@
             width: 100%;
             min-width: 120px;
         }
+        
         .character-item:hover {
             background: rgba(50, 50, 50, 0.95);
             transform: translateY(-5px);
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
             border-color: rgba(255, 255, 255, 0.2);
         }
+        
         .character-icon {
             width: clamp(50px, 10vw, 64px);
             height: clamp(50px, 10vw, 64px);
@@ -72,11 +99,13 @@
             transition: all 0.3s ease;
             box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
         }
+        
         .character-icon:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
             border-color: rgba(255, 255, 255, 0.5);
         }
+        
         .character-name {
             font-size: clamp(13px, 2.5vw, 15px);
             font-weight: normal;
@@ -88,6 +117,7 @@
             hyphens: auto;
             font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
+        
         .character-name.white { color: #ddd; text-shadow: 0 1px 8px rgba(255, 255, 255, 0.4); }
         .character-name.black { color: #888; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6); }
         .character-name.red { color: #ff6b6b; text-shadow: 0 1px 8px rgba(211, 47, 47, 0.6); }
@@ -230,8 +260,17 @@
                 margin-bottom: 20px;
                 font-size: 2.2em;
             }
-            .character-list {
+            .organization-section {
                 padding: 0 10px;
+                margin-bottom: 30px;
+            }
+            .organization-title {
+                font-size: 1.4em;
+                margin-bottom: 15px;
+                padding: 12px 0;
+            }
+            .character-list {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
                 gap: 20px;
             }
             .character-item {
@@ -252,6 +291,23 @@
         }
         
         @media (max-width: 480px) {
+            .organization-title {
+                font-size: 1.2em;
+            }
+            .character-list {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 15px;
+            }
+            .character-item {
+                padding: 12px 14px 8px;
+            }
+            .character-icon {
+                width: 40px;
+                height: 40px;
+            }
+            .character-name {
+                font-size: 11px;
+            }
             .hover-menu-container {
                 top: 10px;
                 left: 10px;
@@ -272,204 +328,109 @@
                 min-width: 200px;
             }
         }
-        .tab-container button {
-            background: rgba(40, 40, 40, 0.9);
-            color: #e8e8e8;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
-            font-size: 14px;
-            font-weight: normal;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            cursor: pointer;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-        }
-        .tab-container button:hover {
-            background: rgba(60, 60, 60, 0.95);
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-        }
-        
-        /* モバイル対応 */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            h1 {
-                margin-top: 15px;
-                margin-bottom: 20px;
-                font-size: 2.2em;
-            }
-            .character-list {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-                gap: 20px;
-                padding: 0 10px;
-            }
-            .character-item {
-                padding: 14px 16px 8px;
-            }
-            .character-icon {
-                width: 45px;
-                height: 45px;
-                margin-bottom: 8px;
-            }
-            .character-name {
-                font-size: 13px;
-            }
-            .tab-container {
-                gap: 6px;
-                padding: 0 10px;
-            }
-            .tab-container button {
-                padding: 6px 10px;
-                font-size: 11px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .character-list {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-                gap: 15px;
-            }
-            .character-item {
-                padding: 12px 14px 6px;
-            }
-            .character-icon {
-                width: 40px;
-                height: 40px;
-            }
-            .character-name {
-                font-size: 11px;
-            }
-            .tab-container button {
-                padding: 5px 8px;
-                font-size: 10px;
-                margin-bottom: 3px;
-            }
-        }
-        
-        .org-tab {
-            padding: 10px 16px;
-            font-size: 14px;
-            font-weight: normal;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: white;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-        }
-        
-        .org-tab:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-        
-        .black-org {
-            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-        }
-        
-        .white-org {
-            background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
-            color: #333 !important;
-        }
-        
-        .red-org {
-            background: linear-gradient(135deg, #c02020, #a01010);
-        }
-        
-        .blue-org {
-            background: linear-gradient(135deg, #2060c0, #1050a0);
-        }
-        
-        .green-org {
-            background: linear-gradient(135deg, #20a050, #108040);
-        }
-        
-        .yellow-org {
-            background: linear-gradient(135deg, #f0a000, #d08000);
-        }
     </style>
 </head>
 <body>
     <h1>キャラクター一覧</h1>
-    <div class="character-list">
-        <a href="./characterpage/white/character_shiro.html" style="text-decoration:none;">
-            <div class="character-item">
-                <img src="./character_icon/shiro_icon.png" alt="シロ_アイコン" class="character-icon">
-                <div class="character-name white">シロ</div>
-            </div>
-        </a>
-        <a href="./characterpage/black/character_sagiri.html" style="text-decoration:none;">
-            <div class="character-item">
-                <img src="./character_icon/sagiri_icon.png" alt="サギリ_アイコン" class="character-icon">
-                <div class="character-name black">サギリ</div>
-            </div>
-        </a>
-        <a href="./characterpage/red/character_riko.html" style="text-decoration:none;">
-            <div class="character-item">
-                <img src="./character_icon/riko_icon.png" alt="リコ_アイコン" class="character-icon">
-                <div class="character-name red">リコ</div>
-            </div>
-        </a>
-        <a href="./characterpage/red/character_risu.html" style="text-decoration:none;">
-            <div class="character-item">
-                <img src="./character_icon/risu_icon.png" alt="リス_アイコン" class="character-icon">
-                <div class="character-name red">リス</div>
-            </div>
-        </a>
-        <a href="./characterpage/red/character_mimiko.html" style="text-decoration:none;">
-            <div class="character-item">
-                <img src="./character_icon/mimiko_icon.png" alt="ミミコ_アイコン" class="character-icon">
-                <div class="character-name red">ミミコ</div>
-            </div>
-        </a>
-        <a href="./characterpage/red/character_huuka.html" style="text-decoration:none;">
-            <div class="character-item">
-                <img src="./character_icon/huuka_icon.png" alt="風花_アイコン" class="character-icon">
-                <div class="character-name red">風花</div>
-            </div>
-        </a>
-        <a href="./characterpage/red/character_kagerou.html" style="text-decoration:none;">
-            <div class="character-item">
-                <img src="./character_icon/kagerou_icon.png" alt="陽炎_アイコン" class="character-icon">
-                <div class="character-name red">陽炎</div>
-            </div>
-        </a>
-        <a href="./characterpage/red/character_aren.html" style="text-decoration:none;">
-            <div class="character-item">
-                <img src="./character_icon/aren_icon.png" alt="阿蓮_アイコン" class="character-icon">
-                <div class="character-name red">阿蓮</div>
-            </div>
-        </a>
-        <a href="./characterpage/red/character_aru.html" style="text-decoration:none;">
-            <div class="character-item">
-                <img src="./character_icon/aru_icon.png" alt="阿瑠_アイコン" class="character-icon">
-                <div class="character-name red">阿瑠</div>
-            </div>
-        </a>
-         <a href="./characterpage/red/character_aya.html" style="text-decoration:none;">
-            <div class="character-item">
-                <img src="./character_icon/aya_icon.png" alt="綾_アイコン" class="character-icon">
-                <div class="character-name red">綾</div>
-            </div>
-        </a>
-         <a href="./characterpage/red/character_you.html" style="text-decoration:none;">
-            <div class="character-item">
-                <img src="./character_icon/you_icon.png" alt="陽_アイコン" class="character-icon">
-                <div class="character-name red">燿</div>
-            </div>
-        </a>
-        <a href="./characterpage/yellow/character_ruka.html" style="text-decoration:none;">
-            <div class="character-item">
-                <img src="./character_icon/ruka_icon.png" alt="ルカ_アイコン" class="character-icon">
-                <div class="character-name yellow">三日月ルカ</div>
-            </div>
-        </a>
+    
+    <!-- 黒組 -->
+    <div class="organization-section">
+        <h2 class="organization-title org-title-black">黒</h2>
+        <div class="character-list">
+            <a href="./characterpage/black/character_sagiri.html" style="text-decoration:none;">
+                <div class="character-item">
+                    <img src="./character_icon/sagiri_icon.png" alt="サギリ_アイコン" class="character-icon">
+                    <div class="character-name black">サギリ</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <!-- 白葬街 -->
+    <div class="organization-section">
+        <h2 class="organization-title org-title-white">白葬街</h2>
+        <div class="character-list">
+            <a href="./characterpage/white/character_shiro.html" style="text-decoration:none;">
+                <div class="character-item">
+                    <img src="./character_icon/shiro_icon.png" alt="シロ_アイコン" class="character-icon">
+                    <div class="character-name white">シロ</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <!-- 呑紅街 -->
+    <div class="organization-section">
+        <h2 class="organization-title org-title-red">呑紅街</h2>
+        <div class="character-list">
+            <a href="./characterpage/red/character_riko.html" style="text-decoration:none;">
+                <div class="character-item">
+                    <img src="./character_icon/riko_icon.png" alt="リコ_アイコン" class="character-icon">
+                    <div class="character-name red">リコ</div>
+                </div>
+            </a>
+            <a href="./characterpage/red/character_risu.html" style="text-decoration:none;">
+                <div class="character-item">
+                    <img src="./character_icon/risu_icon.png" alt="リス_アイコン" class="character-icon">
+                    <div class="character-name red">リス</div>
+                </div>
+            </a>
+            <a href="./characterpage/red/character_mimiko.html" style="text-decoration:none;">
+                <div class="character-item">
+                    <img src="./character_icon/mimiko_icon.png" alt="ミミコ_アイコン" class="character-icon">
+                    <div class="character-name red">ミミコ</div>
+                </div>
+            </a>
+            <a href="./characterpage/red/character_huuka.html" style="text-decoration:none;">
+                <div class="character-item">
+                    <img src="./character_icon/huuka_icon.png" alt="風花_アイコン" class="character-icon">
+                    <div class="character-name red">風花</div>
+                </div>
+            </a>
+            <a href="./characterpage/red/character_kagerou.html" style="text-decoration:none;">
+                <div class="character-item">
+                    <img src="./character_icon/kagerou_icon.png" alt="陽炎_アイコン" class="character-icon">
+                    <div class="character-name red">陽炎</div>
+                </div>
+            </a>
+            <a href="./characterpage/red/character_aren.html" style="text-decoration:none;">
+                <div class="character-item">
+                    <img src="./character_icon/aren_icon.png" alt="阿蓮_アイコン" class="character-icon">
+                    <div class="character-name red">阿蓮</div>
+                </div>
+            </a>
+            <a href="./characterpage/red/character_aru.html" style="text-decoration:none;">
+                <div class="character-item">
+                    <img src="./character_icon/aru_icon.png" alt="阿瑠_アイコン" class="character-icon">
+                    <div class="character-name red">阿瑠</div>
+                </div>
+            </a>
+            <a href="./characterpage/red/character_aya.html" style="text-decoration:none;">
+                <div class="character-item">
+                    <img src="./character_icon/aya_icon.png" alt="綾_アイコン" class="character-icon">
+                    <div class="character-name red">綾</div>
+                </div>
+            </a>
+            <a href="./characterpage/red/character_you.html" style="text-decoration:none;">
+                <div class="character-item">
+                    <img src="./character_icon/you_icon.png" alt="燿_アイコン" class="character-icon">
+                    <div class="character-name red">燿</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <!-- 黄惑街 -->
+    <div class="organization-section">
+        <h2 class="organization-title org-title-yellow">黄惑街</h2>
+        <div class="character-list">
+            <a href="./characterpage/yellow/character_ruka.html" style="text-decoration:none;">
+                <div class="character-item">
+                    <img src="./character_icon/ruka_icon.png" alt="ルカ_アイコン" class="character-icon">
+                    <div class="character-name yellow">三日月ルカ</div>
+                </div>
+            </a>
+        </div>
     </div>
 
     <!-- ホバーメニュー -->
