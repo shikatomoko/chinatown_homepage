@@ -698,6 +698,40 @@
             }
         }
         
+        // モバイル対応のメニュー制御
+        function initMobileMenu() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const hoverMenu = document.querySelector('.hover-menu');
+            const submenu = document.querySelector('.submenu > .menu-item');
+            const submenuContent = document.querySelector('.submenu-content');
+            
+            if (menuIcon) {
+                menuIcon.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    hoverMenu.classList.toggle('show');
+                    if (submenuContent) submenuContent.classList.remove('show');
+                });
+            }
+            
+            if (submenu) {
+                submenu.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    submenuContent.classList.toggle('show');
+                });
+            }
+            
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.hover-menu-container')) {
+                    if (hoverMenu) hoverMenu.classList.remove('show');
+                    if (submenuContent) submenuContent.classList.remove('show');
+                }
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', initMobileMenu);
+        
         // オーバーレイクリックで閉じる
         document.getElementById('overlay').addEventListener('click', hideGroupDetail);
     </script>
