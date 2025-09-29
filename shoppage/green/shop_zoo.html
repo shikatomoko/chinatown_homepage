@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>病院</title>
+    <title>動物園</title>
     <link rel="stylesheet" href="../../style.css">
     <style>
         body {
@@ -210,26 +210,6 @@
             margin-top: 12px;
             padding-left: 16px;
             border-left: 3px solid #4caf50;
-        }
-        
-        .service-warning {
-            font-size: 14px;
-            color: #ffddaa;
-            background: rgba(244, 67, 54, 0.1);
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid rgba(244, 67, 54, 0.3);
-            margin-top: 12px;
-        }
-        
-        .service-bonus {
-            font-size: 14px;
-            color: #ffffff;
-            background: transparent;
-            padding: 10px;
-            margin-top: 12px;
-            border-left: 4px solid #4caf50;
-            padding-left: 16px;
         }
         
         .person-list {
@@ -597,7 +577,7 @@
 <body>
     <!-- ヘッダー部分（緑色背景） -->
     <div class="header">
-        <h1 class="title">病院</h1>
+        <h1 class="title">動物園</h1>
     </div>
     
     <!-- メインコンテンツ -->
@@ -605,21 +585,18 @@
         <!-- 店舗情報 -->
         <div class="shop-info">
             <p>所属組織：<a href="../../colorpage/green.html" class="color-link">滲緑街</a></p>
-            <p>エリア：中央区 　営業時間：24時間 　業種：医療機関・人体実験施設 　従業員：医師／看護師／警備員</p>
+            <p>場所：郊外 　従業員：飼育員／調教師／裏商人</p>
         </div>
         
         <!-- メイン画像部分 -->
         <div class="main-image-container">
-            <img id="mainImage" class="main-image" src="../../shop_image/green/hospital/Hospital (Exterior).png" alt="病院のメイン画像">
+            <img id="mainImage" class="main-image" src="../../shop_image/green/zoo/zoo.png" alt="動物園のメイン画像">
         </div>
         
         <!-- サブ画像スライダー -->
         <div class="sub-images-container">
             <div class="sub-images-scroll">
-                <img class="sub-image active" src="../../shop_image/green/hospital/Hospital (Exterior).png" alt="病院外観" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/green/hospital/Hospital (Reception).png" alt="病院受付" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/green/hospital/Hospital (Corridor).png" alt="病院廊下" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/green/hospital/Hospital (bed).png" alt="病院病室" onclick="changeMainImage(this)">
+                <img class="sub-image active" src="../../shop_image/green/zoo/zoo.png" alt="動物園外観" onclick="changeMainImage(this)">
             </div>
         </div>
     </div>
@@ -628,46 +605,34 @@
     <div class="bottom-content">
         <div class="content-section">
             <h2 class="section-title">概要</h2>
-            <p class="section-text">暗黒中華街で唯一の専門的な医療が受けられる大病院。しかし「適切な医療」が施されるかどうかは医者の腕ではなく、その日の機嫌や裏取引の有無に左右される。治療と称して実験台にされることも日常茶飯事であり、「治る」ことを目的とせず、むしろ病を利用する方が儲かると考えている医師も多い。</p>
+            <p class="section-text">古今東西の動物から、この世には存在するはずのない幻獣やキメラまでが展示されている。表向きは家族連れでも楽しめる娯楽施設だが、裏では動物を使った実験や闇取引の場にもなっている。</p>
         </div>
         
         <div class="content-section">
             <h2 class="section-title">利用方法</h2>
             <div class="service-list">
                 <div class="service-item">
-                    <div class="service-title">一般診療</div>
-                    <div class="service-price">費用：10,000円〜</div>
-                    <div class="service-requirement">必要信用値：30</div>
+                    <div class="service-title">観覧</div>
+                    <div class="service-price">料金：大人 5,000円〜／子供 2,000円〜</div>
+                    <div class="service-requirement">必要信用値：30以上</div>
                     <div class="service-description">
-                        外傷や病気の治療を受けられるが、診察料は高額で、医者の気分によって治療の質が変動する。
-                    </div>
-                    <div class="service-mechanics">
-                        <strong>判定：</strong>&lt;CON×5&gt;に成功すれば通常の治療（HP回復、後遺症回避）が行われる。失敗すると誤診・過剰投薬・切開ミスなどで悪化する可能性がある。賄賂やコネを用いれば判定に補正がかかる。
+                        園内を自由に見て回ることができる。通常の動物から珍獣、幻獣まで様々な生き物を観察できる。
                     </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-title">特殊診療</div>
-                    <div class="service-price">費用：30,000円〜</div>
-                    <div class="service-requirement">必要信用値：60</div>
+                    <div class="service-title">預け入れ</div>
+                    <div class="service-price">料金：動物1体につき 20,000円〜（人間も可能）</div>
+                    <div class="service-requirement">必要信用値：50以上（裏で幻獣や希少種を預ける場合は70以上必須）</div>
                     <div class="service-description">
-                        通常では扱えない異常な症状（呪い、奇病、異形化など）にも「対応」している。
-                    </div>
-                    <div class="service-mechanics">
-                        <strong>判定：</strong>&lt;CON×3&gt;に成功すれば部分的な治療や安定化が可能だが、代償として別の身体への影響が生じる可能性がある。
+                        動物園に生き物を預けることができる。通常の動物から人間まで、様々な生き物の管理を請け負う。
                     </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-title">治験</div>
-                    <div class="service-price">費用：無料（報酬あり）</div>
-                    <div class="service-requirement">必要信用値：なし</div>
+                    <div class="service-title">サーカス</div>
+                    <div class="service-price">料金：特別席 30,000円〜／一般席 10,000円〜</div>
+                    <div class="service-requirement">必要信用値：60以上</div>
                     <div class="service-description">
-                        無料で「最新医療」を体験できるが、その実態は人体実験。
-                    </div>
-                    <div class="service-bonus">
-                        <strong>報酬：</strong>金銭・薬品・特殊アイテムが得られる一方で、重度の後遺症や未知の変化を負う可能性が高い。
-                    </div>
-                    <div class="service-mechanics">
-                        <strong>判定：</strong>&lt;CON×2&gt;に成功すると強化（身体能力上昇・異常耐性付与）が得られる場合もある。
+                        定期的に開催される出し物。訓練された動物たちによる迫力ある演技を楽しめる。
                     </div>
                 </div>
             </div>
@@ -677,24 +642,24 @@
             <h2 class="section-title">従業員</h2>
             <div class="person-list">
                 <div class="person-item">
-                    <div class="employee-icon">医</div>
+                    <div class="employee-icon">飼</div>
                     <div class="employee-info">
-                        <div class="employee-name">医師</div>
-                        <div class="employee-role">診療・手術・実験統括</div>
+                        <div class="employee-name">飼育員</div>
+                        <div class="employee-role">動物の世話・管理</div>
                     </div>
                 </div>
                 <div class="person-item">
-                    <div class="employee-icon">看</div>
+                    <div class="employee-icon">調</div>
                     <div class="employee-info">
-                        <div class="employee-name">看護師</div>
-                        <div class="employee-role">患者ケア・実験補助</div>
+                        <div class="employee-name">調教師</div>
+                        <div class="employee-role">動物の訓練・サーカス演出</div>
                     </div>
                 </div>
                 <div class="person-item">
-                    <div class="employee-icon">警</div>
+                    <div class="employee-icon">商</div>
                     <div class="employee-info">
-                        <div class="employee-name">警備員</div>
-                        <div class="employee-role">施設警備・患者制圧</div>
+                        <div class="employee-name">裏商人</div>
+                        <div class="employee-role">闇取引・特殊な生き物の売買</div>
                     </div>
                 </div>
             </div>
@@ -707,13 +672,13 @@
     <div class="overlay" id="overlay"></div>
     
     <!-- 緑組詳細ポップアップ -->
-   <div class="group-detail" id="detail-green">
+    <div class="group-detail" id="detail-green">
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
         <h3>滲緑街の店舗</h3>
         <ul class="shop-list">
             <li><img src="../../shop_image/green/hospital/Hospital (Exterior).png" class="shop-icon" alt="病院"><a href="./shop_hospital.html">病院</a></li>
             <li><img src="../../shop_image/green/cakeshop/cakeshop.png" class="shop-icon" alt="ケーキ屋"><a href="./shop_cakeshop.html">ケーキ屋</a></li>
-            <li><img src="../../shop_image/green/lab/lab_warehouse.jpg" class="shop-icon" alt="研究所"><a href="./shop_lab.html">研究所</a></li>
+            <li><img src="../../shop_image/green/lab/lab_warehouse.jpg" class="shop-icon" alt="研究所"><a href="./shop_laboratory.html">研究所</a></li>
             <li><img src="../../shop_image/green/incense/Incense Shop (Exterior).png" class="shop-icon" alt="お香屋"><a href="./shop_incense.html">お香屋</a></li>
             <li><img src="../../shop_image/green/zoo/zoo.png" class="shop-icon" alt="動物園"><a href="./shop_zoo.html">動物園</a></li>
         </ul>
@@ -796,10 +761,7 @@
             }
         }
         
-        // オーバーレイクリックで閉じる
-        document.getElementById('overlay').addEventListener('click', hideGroupDetail);
-    </script>
-    <script>
+        // モバイル対応のメニュー制御
         function initMobileMenu() {
             const menuIcon = document.querySelector('.menu-icon');
             const hoverMenu = document.querySelector('.hover-menu');
@@ -832,6 +794,9 @@
         }
         
         document.addEventListener('DOMContentLoaded', initMobileMenu);
+        
+        // オーバーレイクリックで閉じる
+        document.getElementById('overlay').addEventListener('click', hideGroupDetail);
     </script>
 </body>
 </html>
