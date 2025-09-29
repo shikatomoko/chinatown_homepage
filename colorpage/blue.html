@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         body {
-            font-family: 'Yu Mincho Demibold', '游明朝 Demibold', 'Yu Mincho', '游明朝', serif;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
             margin: 0;
             padding: 0;
             background-color: #000;
@@ -25,7 +25,7 @@
             font-size: clamp(4rem, 10vw, 6.5rem);
             color: #ffffff;
             font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-            font-weight: 700;
+            font-weight: normal;
             letter-spacing: 0.1em;
             margin: 0;
         }
@@ -101,6 +101,7 @@
         .bottom-content {
             background: #000;
             padding: 60px 40px;
+            margin-bottom: 40px;
         }
         
         .content-section {
@@ -117,9 +118,10 @@
         .section-title {
             font-size: clamp(24px, 4vw, 32px);
             color: #ffffff;
-            font-weight: 600;
+            font-weight: normal;
             margin-bottom: 30px;
             letter-spacing: 0.05em;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         
         .section-text {
@@ -127,6 +129,7 @@
             color: #e0e0e0;
             line-height: 1.8;
             margin-bottom: 20px;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         
         .person-list, .shop-list {
@@ -150,19 +153,21 @@
         }
         
         .role-label {
-            font-weight: 600;
+            font-weight: normal;
             color: #3b82f6;
             min-width: 120px;
             margin-right: 16px;
             font-size: 15px;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         
         .person-link, .shop-link {
             color: #ffffff;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: normal;
             font-size: 16px;
             transition: all 0.3s ease;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         
         .person-link:hover, .shop-link:hover {
@@ -179,100 +184,138 @@
             color: #888;
         }
         
-        .navigation {
-            background: #000;
-            padding: 30px 40px;
+        /* ホバーメニューシステム */
+        .hover-menu-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
         }
         
-        .tab-container {
+        .menu-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
             display: flex;
-            gap: 15px;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-size: 20px;
+            color: #333;
         }
         
-        .tab-container button {
-            background: #2a2a2a;
-            color: #ffffff;
-            border: none;
-            border-radius: 6px;
-            padding: 12px 20px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
+        .menu-icon:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+        
+        .hover-menu {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 12px;
+            padding: 15px 0;
+            min-width: 180px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
             transition: all 0.3s ease;
         }
         
-        .tab-container button:hover {
-            background: #3b82f6;
-            transform: translateY(-2px);
+        .hover-menu-container:hover .hover-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
         
-        .org-tab-container {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .org-tab {
-            padding: 12px 20px;
-            font-size: 14px;
-            font-weight: 500;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .menu-item {
+            display: block;
+            padding: 12px 18px;
+            color: #e0e0e0;
             text-decoration: none;
-            color: white;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         
-        .org-tab:hover {
-            transform: translateY(-2px);
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transform: translateX(5px);
         }
         
-        .black-org {
-            background: #2a2a2a;
+        .menu-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 8px 0;
         }
         
-        .white-org {
-            background: #e0e0e0;
-            color: #333 !important;
+        .submenu {
+            position: relative;
         }
         
-        .red-org {
-            background: #cc2936;
+        .submenu-content {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 12px;
+            padding: 10px 0;
+            min-width: 130px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
         }
         
-        .blue-org {
-            background: #2563eb;
+        .submenu:hover .submenu-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
         }
         
-        .green-org {
-            background: #16a34a;
+        .submenu-item {
+            display: block;
+            padding: 10px 14px;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         
-        .yellow-org {
-            background: #eab308;
+        .submenu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
         }
         
-        .org-tab.current {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-        }
+        .color-red { color: #cc2936; }
+        .color-blue { color: #2563eb; }
+        .color-green { color: #16a34a; }
+        .color-yellow { color: #eab308; }
+        .color-white { color: #e0e0e0; }
+        .color-black { color: #666; }
         
         @media (max-width: 768px) {
             .header {
-                padding: 40px 0;
+                padding: 40px 20px;
             }
             
             .bottom-content {
                 padding: 40px 20px;
-            }
-            
-            .navigation {
-                padding: 20px;
             }
             
             .sub-images-scroll {
@@ -281,6 +324,21 @@
             
             .person-list, .shop-list {
                 grid-template-columns: 1fr;
+            }
+            
+            .hover-menu-container {
+                top: 15px;
+                left: 15px;
+            }
+            
+            .menu-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            
+            .hover-menu {
+                min-width: 160px;
             }
         }
         
@@ -298,6 +356,29 @@
                 width: 120px;
                 height: 68px;
             }
+            
+            .hover-menu-container {
+                top: 10px;
+                left: 10px;
+            }
+            
+            .menu-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            
+            .hover-menu {
+                min-width: 140px;
+            }
+            
+            .submenu-content {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                min-width: 180px;
+            }
         }
     </style>
 </head>
@@ -310,7 +391,7 @@
     <!-- メイン画像部分 -->
     <div class="main-content">
         <div class="main-image-container">
-            <img id="mainImage" class="main-image" src="../shop_image/blue/street/entrance_chinese.png" alt="蒼殉街のメイン画像">
+            <img id="mainImage" class="main-image" src="../shop_image/blue/street/Street.png" alt="蒼殉街のメイン画像">
         </div>
         
         <!-- サブ画像スライダー -->
@@ -318,9 +399,7 @@
             <div class="sub-images-scroll">
                 <img class="sub-image active" src="../shop_image/blue/street/entrance_chinese.png" alt="蒼殉街の中華街入口" onclick="changeMainImage(this)">
                 <img class="sub-image" src="../shop_image/blue/street/entrance_smallshop.png" alt="蒼殉街の小店舗入口" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../shop_image/blue/museum/museumpng.png" alt="蒼殉街の博物館" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../shop_image/blue/other/bedroom_blue.jpg" alt="蒼殉街の寝室" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../shop_image/blue/other/warehouse.png" alt="蒼殉街の倉庫" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../shop_image/blue/street/Street (2).png" alt="蒼殉街の博物館" onclick="changeMainImage(this)">
             </div>
         </div>
     
@@ -333,8 +412,7 @@
         
         <div class="content-section">
             <h2 class="section-title">区画について</h2>
-            <p class="section-text">　白葬街と呑紅街に挟まれた非常に狭い区画を所有している。面積の大半は宗教施設や学校などで埋め尽くされており、商店の類はほとんどない。特徴的なのは街外れにある鉱山と畑である。信者たちは心の底から楽しく農園や鉱山で労働に勤しんでいる。畑で取れるハーブは、滲緑街との取引などに用いられることもある。鉱石については街中に使用されている灯りや、鉄道の動力源など様々に利用されているため、蒼殉街からの資源供給が絶たれれば街全体が滅びの一途を辿ることだろう。
-</p>
+            <p class="section-text">　<a href="./white.html" style="color: #ffffff; text-decoration: underline; transition: all 0.3s ease;" onmouseover="this.style.color='#e5e5e5'" onmouseout="this.style.color='#ffffff'">白葬街</a>と<a href="./red.html" style="color: #ffffff; text-decoration: underline; transition: all 0.3s ease;" onmouseover="this.style.color='#e5e5e5'" onmouseout="this.style.color='#ffffff'">呑紅街</a>に挟まれた非常に狭い区画を所有している。面積の大半は宗教施設や学校などで埋め尽くされており、商店の類はほとんどない。特徴的なのは街外れにある鉱山と畑である。信者たちは心の底から楽しく農園や鉱山で労働に勤しんでいる。畑で取れるハーブは、<a href="./green.html" style="color: #ffffff; text-decoration: underline; transition: all 0.3s ease;" onmouseover="this.style.color='#e5e5e5'" onmouseout="this.style.color='#ffffff'">滲緑街</a>との取引などに用いられることもある。鉱石については街中に使用されている灯りや、鉄道の動力源など様々に利用されているため、蒼殉街からの資源供給が絶たれれば街全体が滅びの一途を辿ることだろう。</p>
         </div>
         
         <div class="content-section">
@@ -362,41 +440,53 @@
         <div class="content-section">
             <h2 class="section-title">店舗情報</h2>
             <div class="shop-list">
-                <div class="shop-item">
-                    <span class="shop-link unknown-person">教団</span>
+                 <div class="shop-item">
+                    <a href="../shoppage/shop_cult.html" class="shop-link">教団</a>
+                 </div>
+                 <div class="shop-item">
+                    <a href="../shoppage/shop_school.html" class="shop-link">学校</a>
                 </div>
-                <div class="shop-item">
-                    <span class="shop-link unknown-person">学校</span>
-                </div>
-                <div class="shop-item">
-                    <span class="shop-link unknown-person">水族館</span>
-                </div>
-                <div class="shop-item">
-                    <span class="shop-link unknown-person">動物園</span>
-                </div>
+                 <div class="shop-item">
+                    <a href="../shoppage/shop_aquarium.html" class="shop-link">水族館</a>
+                 </div>
+                 <div class="shop-item">
+                    <a href="../shoppage/shop_museum.html" class="shop-link">博物館</a>
+                 </div>
+                  <div class="shop-item">
+                    <a href="../shoppage/shop_farm.html" class="shop-link">畑</a>
+                 </div>
+                 <div class="shop-item">
+                    <a href="../shoppage/shop_mine.html" class="shop-link">鉱山</a>
+                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- ナビゲーション部分 -->
-    <div class="navigation">
-        <div class="tab-container">
-            <a href="../index.html"><button>ホーム</button></a>
-            <a href="../rules.html"><button>特殊ルール</button></a>
-            <a href="../jinngai.html"><button>人外設定</button></a>
-            <a href="../world.html"><button>世界観設定</button></a>
-            <a href="../characters.html"><button>キャラクター一覧</button></a>
-            <a href="../shops.html"><button>店舗一覧</button></a>
-            <a href="../tools.html"><button>ツール</button></a>
-        </div>
-        
-        <div class="org-tab-container">
-            <a href="black.html"><button class="org-tab black-org">黒</button></a>
-            <a href="white.html"><button class="org-tab white-org">白葬街</button></a>
-            <a href="red.html"><button class="org-tab red-org">呑紅街</button></a>
-            <button class="org-tab blue-org current">蒼殉街</button>
-            <a href="green.html"><button class="org-tab green-org">滲緑街</button></a>
-            <a href="yellow.html"><button class="org-tab yellow-org">黄惑街</button></a>
+
+    <!-- ホバーメニュー -->
+    <div class="hover-menu-container">
+        <div class="menu-icon">☰</div>
+        <div class="hover-menu">
+            <a href="../index.html" class="menu-item">ホーム</a>
+            <a href="../rules.html" class="menu-item">特殊ルール</a>
+            <a href="../jinngai.html" class="menu-item">人外設定</a>
+            <a href="../world.html" class="menu-item">世界観設定</a>
+            <a href="../characters.html" class="menu-item">キャラクター一覧</a>
+            <a href="../shops.html" class="menu-item">店舗一覧</a>
+            <a href="../tools.html" class="menu-item">ツール</a>
+            
+            <div class="menu-divider"></div>
+            
+            <div class="submenu">
+                <span class="menu-item">各街ホーム ▶</span>
+                <div class="submenu-content">
+                    <a href="black.html" class="submenu-item color-black">黒</a>
+                    <a href="white.html" class="submenu-item color-white">白葬街</a>
+                    <a href="red.html" class="submenu-item color-red">呑紅街</a>
+                    <a href="blue.html" class="submenu-item color-blue">蒼殉街</a>
+                    <a href="green.html" class="submenu-item color-green">滲緑街</a>
+                    <a href="yellow.html" class="submenu-item color-yellow">黄惑街</a>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -14,7 +14,7 @@
             margin: 0;
             padding: 15px;
             background: linear-gradient(145deg, #0f0f0f 0%, #1a1a1a 50%, #2a2a2a 100%);
-            font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
             color: #e8e8e8;
             box-sizing: border-box;
         }
@@ -28,6 +28,7 @@
             letter-spacing: 0.15em;
             text-align: center;
             width: 100%;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         .map-area {
             position: relative;
@@ -171,7 +172,7 @@
             color: #e8e8e8;
             text-decoration: none;
             font-size: clamp(13px, 3vw, 16px);
-            font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
             transition: all 0.3s ease;
             margin-left: 8px;
             font-weight: 500;
@@ -198,32 +199,117 @@
             border-color: rgba(255, 255, 255, 0.5);
         }
 
-        .tab-container {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            justify-content: center;
+        /* ホバーメニュー */
+        .hover-menu-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
         }
-        .tab-container button {
+
+        .menu-icon {
+            width: 50px;
+            height: 50px;
             background: rgba(40, 40, 40, 0.9);
-            color: #e8e8e8;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 20px;
-            font-size: 14px;
-            font-weight: 500;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
-            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
-        .tab-container button:hover {
+
+        .menu-icon:hover {
             background: rgba(60, 60, 60, 0.95);
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
         }
+
+        .hover-menu {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            min-width: 200px;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 10px;
+            padding: 15px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .hover-menu-container:hover .hover-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-item, .submenu-item {
+            display: block;
+            padding: 10px 20px;
+            color: #e8e8e8;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover, .submenu-item:hover {
+            background: rgba(60, 60, 60, 0.8);
+            color: #ffffff;
+            transform: translateX(5px);
+        }
+
+        .menu-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 10px 0;
+        }
+
+        .submenu {
+            position: relative;
+        }
+
+        .submenu-content {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            min-width: 150px;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 8px;
+            padding: 10px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .submenu:hover .submenu-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .color-black { color: #f5f5f5; }
+        .color-white { color: #ffffff; }
+        .color-red { color: #ff6b6b; }
+        .color-blue { color: #4fc3f7; }
+        .color-green { color: #43ff43; }
+        .color-yellow { color: #fbc02d; }
         
         /* モバイル対応 */
         @media (max-width: 768px) {
@@ -236,108 +322,59 @@
                 font-size: 2.2em;
             }
             .map-area {
-                width: 95vw;
-                height: 70vw;
-                margin-bottom: 25px;
+                height: 60vh;
+                min-height: 400px;
             }
-            .map-img {
-                width: 60vw;
+            .group-label {
+                font-size: 16px;
+                padding: 6px 12px;
             }
-            .group-box {
-                padding: 10px 14px;
-                min-width: 100px;
+            .group-detail {
+                max-width: 350px;
+                padding: 20px;
             }
-            .group-title {
-                font-size: 14px;
-                margin-bottom: 8px;
+            .hover-menu-container {
+                top: 15px;
+                left: 15px;
             }
-            .shop-list a {
-                font-size: 13px;
-                margin-left: 6px;
+            .menu-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
             }
-            .shop-icon {
-                width: 18px;
-                height: 18px;
-            }
-            .tab-container {
-                gap: 6px;
-                padding: 0 10px;
-            }
-            .tab-container button {
-                padding: 6px 10px;
-                font-size: 11px;
+            .hover-menu {
+                min-width: 180px;
             }
         }
         
         @media (max-width: 480px) {
-            .map-area {
-                width: 98vw;
-                height: 75vw;
+            .group-label {
+                font-size: 14px;
+                padding: 5px 10px;
             }
-            .map-img {
-                width: 70vw;
+            .group-detail {
+                max-width: 300px;
+                padding: 15px;
             }
-            .group-box {
-                padding: 8px 12px;
-                min-width: 90px;
+            .hover-menu-container {
+                top: 10px;
+                left: 10px;
             }
-            .group-title {
-                font-size: 12px;
+            .menu-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
             }
-            .shop-list a {
-                font-size: 11px;
+            .hover-menu {
+                min-width: 160px;
             }
-            .shop-icon {
-                width: 16px;
-                height: 16px;
+            .submenu-content {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                min-width: 200px;
             }
-            .tab-container button {
-                padding: 5px 8px;
-                font-size: 10px;
-                margin-bottom: 3px;
-            }
-        }
-        
-        .org-tab {
-            padding: 10px 16px;
-            font-size: 14px;
-            font-weight: 500;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: white;
-        }
-        
-        .org-tab:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-        
-        .black-org {
-            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-        }
-        
-        .white-org {
-            background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
-            color: #333 !important;
-        }
-        
-        .red-org {
-            background: linear-gradient(135deg, #c02020, #a01010);
-        }
-        
-        .blue-org {
-            background: linear-gradient(135deg, #2060c0, #1050a0);
-        }
-        
-        .green-org {
-            background: linear-gradient(135deg, #20a050, #108040);
-        }
-        
-        .yellow-org {
-            background: linear-gradient(135deg, #f0a000, #d08000);
         }
     </style>
 </head>
@@ -365,17 +402,16 @@
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
         <h3 style="color:#b99e01; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='colorpage/yellow.html'" onmouseover="this.style.textShadow='0 2px 8px rgba(252, 251, 251, 0.8)'" onmouseout="this.style.textShadow='none'">黄惑街</h3>
         <ul class="shop-list">
-        <ul class="shop-list">
-            <li><img src="./shop_image/yellow/casino/casino.png" class="shop-icon" alt="カジノ"><a href="./shoppage/shop_casino.html">カジノ</a></li>
-            <li><img src="./shop_image/yellow/auction/auction_stage.png" class="shop-icon" alt="オークション"><a href="./shoppage/shop_auction.html">オークション</a></li>
-            <li><img src="./shop_image/yellow/bank/bank_entrance.png" class="shop-icon" alt="銀行"><a href="./shoppage/shop_bank.html">銀行</a></li>
-            <li><img src="./shop_image/yellow/brothel/brothel.png" class="shop-icon" alt="娼館"><a href="./shoppage/shop_brothel.html">娼館</a></li>
-            <li><img src="./shop_image/yellow/courier/courier.png" class="shop-icon" alt="運び屋"><a href="./shoppage/shop_courier.html">運び屋</a></li>
-            <li><img src="./shop_image/yellow/hostclub/hostclub.png" class="shop-icon" alt="ホストクラブ"><a href="./shoppage/shop_hostclub.html">ホストクラブ</a></li>
-            <li><img src="./shop_image/yellow/hotel/hotel.png" class="shop-icon" alt="ホテル"><a href="./shoppage/shop_hotel.html">ホテル</a></li>
-            <li><img src="./shop_image/yellow/park/park.jpg" class="shop-icon" alt="遊園地"><a href="./shoppage/shop_park.html">遊園地</a></li>
-            <li><img src="./shop_image/yellow/trade/trade.png" class="shop-icon" alt="交易所"><a href="./shoppage/shop_trade.html">両替屋</a></li>
-            <li><img src="./shop_image/yellow/cosmeticsurgery/cosmetic_surgery.png" class="shop-icon" alt="美容整形外科"><a href="./shoppage/shop_cosmeticsurgery.html">美容整形外科</a></li>
+            <li><img src="./shop_image/yellow/casino/casino.png" class="shop-icon" alt="カジノ"><a href="./shoppage/yellow/shop_casino.html">カジノ</a></li>
+            <li><img src="./shop_image/yellow/auction/auction_stage.png" class="shop-icon" alt="オークション"><a href="./shoppage/yellow/shop_auction.html">オークション</a></li>
+            <li><img src="./shop_image/yellow/bank/bank_entrance.png" class="shop-icon" alt="銀行"><a href="./shoppage/yellow/shop_bank.html">銀行</a></li>
+            <li><img src="./shop_image/yellow/brothel/brothel.png" class="shop-icon" alt="娼館"><a href="./shoppage/yellow/shop_brothel.html">娼館</a></li>
+            <li><img src="./shop_image/yellow/courier/courier.png" class="shop-icon" alt="運び屋"><a href="./shoppage/yellow/shop_courier.html">運び屋</a></li>
+            <li><img src="./shop_image/yellow/hostclub/hostclub.png" class="shop-icon" alt="ホストクラブ"><a href="./shoppage/yellow/shop_hostclub.html">ホストクラブ</a></li>
+            <li><img src="./shop_image/yellow/hotel/hotel.png" class="shop-icon" alt="ホテル"><a href="./shoppage/yellow/shop_hotel.html">ホテル</a></li>
+            <li><img src="./shop_image/yellow/park/park.jpg" class="shop-icon" alt="遊園地"><a href="./shoppage/yellow/shop_park.html">遊園地</a></li>
+            <li><img src="./shop_image/yellow/trade/trade.png" class="shop-icon" alt="交易所"><a href="./shoppage/yellow/shop_trade.html">両替屋</a></li>
+            <li><img src="./shop_image/yellow/cosmeticsurgery/cosmetic_surgery.png" class="shop-icon" alt="美容整形外科"><a href="./shoppage/yellow/shop_cosmeticsurgery.html">美容整形外科</a></li>
         </ul>
     </div>
     
@@ -383,10 +419,10 @@
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
         <h3 style="color:#fcfbfb; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='colorpage/black.html'" onmouseover="this.style.textShadow='0 2px 8px rgba(252, 251, 251, 0.8)'" onmouseout="this.style.textShadow='none'">黒</h3>
         <ul class="shop-list">
-            <li><img src="./shop_image/black/castle.jpg" class="shop-icon" alt="城"><a href="./shoppage/shop_castle.html">城</a></li>
-                        <li><img src="./shop_image/other/govermentoffice.png" class="shop-icon" alt="掃除屋"><a href="./shoppage/shop_cleaner.html">掃除屋</a></li>
-                        <li><img src="./shop_image/other/entrance.png" class="shop-icon" alt="郵便局"><a href="./shoppage/shop_postoffice.html">郵便局</a></li>
-            <li><img src="./shop_image/other/bar.jpg" class="shop-icon" alt="カフェ"><a href="./shoppage/shop_blackcafe.html">カフェ</a></li>
+            <li><img src="./shop_image/black/castle/castle.jpg" class="shop-icon" alt="城"><a href="./shoppage/black/shop_castle.html">城</a></li>
+            <li><img src="./shop_image/black/clean/clean.jpg" class="shop-icon" alt="掃除屋"><a href="./shoppage/black/shop_cleaner.html">掃除屋</a></li>
+            <li><img src="./shop_image/black/postoffice/postoffice.jpg" class="shop-icon" alt="郵便局"><a href="./shoppage/black/shop_postoffice.html">郵便局</a></li>
+            <li><img src="./shop_image/black/blackcafe/blackcafe.jpg" class="shop-icon" alt="カフェ"><a href="./shoppage/black/shop_blackcafe.html">カフェ</a></li>
         </ul>
     </div>
     
@@ -394,9 +430,11 @@
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
         <h3 style="color:#43ff43; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='colorpage/green.html'" onmouseover="this.style.textShadow='0 2px 8px rgba(67, 255, 67, 0.8)'" onmouseout="this.style.textShadow='none'">滲緑街</h3>
         <ul class="shop-list">
-            <li><img src="./shop_image/green/medicine.png" class="shop-icon" alt="病院"><a href="./shoppage/shop_hospital.html">病院</a></li>
-            <li><img src="./shop_image/green/cakeshop.png" class="shop-icon" alt="ケーキ屋"><a href="./shoppage/shop_cakeshop.html">ケーキ屋</a></li>
-            <li><img src="./shop_image/green/sweets.jpg" class="shop-icon" alt="お香屋"><a href="./shoppage/shop_incense.html">お香屋</a></li>
+            <li><img src="./shop_image/green/hospital/Hospital (Reception).png" class="shop-icon" alt="病院"><a href="./shoppage/green/shop_hospital.html">病院</a></li>
+            <li><img src="./shop_image/green/cakeshop/cakeshop.png" class="shop-icon" alt="ケーキ屋"><a href="./shoppage/green/shop_cakeshop.html">ケーキ屋</a></li>
+            <li><img src="./shop_image/green/incense/Incense Shop (Exterior).png" class="shop-icon" alt="お香屋"><a href="./shoppage/green/shop_incense.html">お香屋</a></li>
+            <li><img src="./shop_image/green/zoo/zoo.png" class="shop-icon" alt="動物園"><a href="./shoppage/green/shop_zoo.html">動物園</a></li>
+            <li><img src="./shop_image/green/lab/lab_coldroom.png" class="shop-icon" alt="研究所"><a href="./shoppage/green/shop_laboratory.html">研究所</a></li>
         </ul>
     </div>
     
@@ -404,9 +442,9 @@
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
         <h3 style="color:#ffffff; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='colorpage/white.html'" onmouseover="this.style.textShadow='0 2px 8px rgba(255, 255, 255, 0.8)'" onmouseout="this.style.textShadow='none'">白葬街</h3>
         <ul class="shop-list">
-            <li><img src="./shop_image/white/butcher/butcher.jpg" class="shop-icon" alt="肉屋"><a href="./shoppage/shop_butcher.html">肉屋</a></li>
-            <li><img src="./shop_image/other/clothes.png" class="shop-icon" alt="皮屋"><a href="./shoppage/shop_leather.html">皮屋</a></li>
-            <li><img src="./shop_image/other/basement_ruins03.png" class="shop-icon" alt="葬儀屋"><a href="./shoppage/shop_undertaker.html">葬儀屋</a></li>
+            <li><img src="./shop_image/white/butcher/butcher.jpg" class="shop-icon" alt="肉屋"><a href="./shoppage/white/shop_butcher.html">肉屋</a></li>
+            <li><img src="./shop_image/white/leather/Leather Shop (Workshop).png" class="shop-icon" alt="皮屋"><a href="./shoppage/white/shop_leather.html">皮屋</a></li>
+            <li><img src="./shop_image/white/undertaker/undertaker.png" class="shop-icon" alt="葬儀屋"><a href="./shoppage/white/shop_undertaker.html">葬儀屋</a></li>
         </ul>
     </div>
     
@@ -414,15 +452,15 @@
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
         <h3 style="color:#ff6b6b; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='colorpage/red.html'" onmouseover="this.style.textShadow='0 2px 8px rgba(255, 107, 107, 0.8)'" onmouseout="this.style.textShadow='none'">呑紅街</h3>
         <ul class="shop-list">
-            <li><img src="./shop_image/red/nailsalon/nailsalon.png" class="shop-icon" alt="ネイルサロン"><a href="./shoppage/shop_nailsalon.html">ネイルサロン</a></li>
-            <li><img src="./shop_image/red/tailor/tailor.png" class="shop-icon" alt="テーラー"><a href="./shoppage/shop_tailor.html">テーラー</a></li>
-            <li><img src="./shop_image/red/antique/antique.png" class="shop-icon" alt="骨董楼"><a href="./shoppage/shop_antique.html">骨董楼</a></li>
-            <li><img src="./shop_image/red/spa/spa.png" class="shop-icon" alt="湯治屋"><a href="./shoppage/shop_spa.html">湯治屋</a></li>
-            <li><img src="./shop_image/red/informer/informer.png" class="shop-icon" alt="情報屋"><a href="./shoppage/shop_informer.html">情報屋</a></li>
-            <li><img src="./shop_image/red/torture/torture.png" class="shop-icon" alt="拷問屋"><a href="./shoppage/shop_torture.html">拷問屋</a></li>
-            <li><img src="./shop_image/red/tattoo/tattoo.png" class="shop-icon" alt="刺青屋"><a href="./shoppage/shop_tattoo.html">刺青屋</a></li>
-            <li><img src="./shop_image/red/printing/printing.png" class="shop-icon" alt="印紙屋"><a href="./shoppage/shop_stamp.html">印紙屋</a></li>
-            <li><img src="./shop_image/red/restaurant/restaurant.png" class="shop-icon" alt="レストラン"><a href="./shoppage/shop_redrestaurant.html">レストラン</a></li>
+            <li><img src="./shop_image/red/nailsalon/nailsalon.png" class="shop-icon" alt="ネイルサロン"><a href="./shoppage/red/shop_nailsalon.html">ネイルサロン</a></li>
+            <li><img src="./shop_image/red/tailor/tailor.png" class="shop-icon" alt="テーラー"><a href="./shoppage/red/shop_tailor.html">テーラー</a></li>
+            <li><img src="./shop_image/red/antique/antique.png" class="shop-icon" alt="骨董楼"><a href="./shoppage/red/shop_antique.html">骨董楼</a></li>
+            <li><img src="./shop_image/red/spa/spa.png" class="shop-icon" alt="湯治屋"><a href="./shoppage/red/shop_spa.html">湯治屋</a></li>
+            <li><img src="./shop_image/red/informer/informer.png" class="shop-icon" alt="情報屋"><a href="./shoppage/red/shop_informer.html">情報屋</a></li>
+            <li><img src="./shop_image/red/torture/torture.png" class="shop-icon" alt="拷問屋"><a href="./shoppage/red/shop_torture.html">拷問屋</a></li>
+            <li><img src="./shop_image/red/tattoo/tattoo.png" class="shop-icon" alt="刺青屋"><a href="./shoppage/red/shop_tattoo.html">刺青屋</a></li>
+            <li><img src="./shop_image/red/printing/printing.png" class="shop-icon" alt="印紙屋"><a href="./shoppage/red/shop_stamp.html">印紙屋</a></li>
+            <li><img src="./shop_image/red/restaurant/restaurant.png" class="shop-icon" alt="レストラン"><a href="./shoppage/red/shop_redrestaurant.html">レストラン</a></li>
         </ul>
     </div>
     
@@ -430,30 +468,39 @@
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
         <h3 style="color:#4fc3f7; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='colorpage/blue.html'" onmouseover="this.style.textShadow='0 2px 8px rgba(79, 195, 247, 0.8)'" onmouseout="this.style.textShadow='none'">蒼殉街</h3>
         <ul class="shop-list">
-            <li><img src="./shop_image/blue/warehouse.png" class="shop-icon" alt="教団"><a href="./shoppage/shop_cult.html">教団</a></li>
-            <li><img src="./shop_image/blue/museumpng.png" class="shop-icon" alt="学校"><a href="./shoppage/shop_school.html">学校</a></li>
-            <li><img src="./shop_image/other/backstreet.jpg" class="shop-icon" alt="動物園"><a href="./shoppage/shop_zoo.html">動物園</a></li>
-            <li><img src="./shop_image/blue/bedroom_blue.jpg" class="shop-icon" alt="水族館"><a href="./shoppage/shop_aquarium.html">水族館</a></li>
+            <li><img src="./shop_image/blue/cult/Religious facility (huge chapel).png" class="shop-icon" alt="教団"><a href="./shoppage/blue/shop_cult.html">教団</a></li>
+            <li><img src="./shop_image/blue/school/School (Exterior).png" class="shop-icon" alt="学校"><a href="./shoppage/blue/shop_school.html">学校</a></li>
+            <li><img src="./shop_image/blue/museum/museum.png" class="shop-icon" alt="博物館"><a href="./shoppage/blue/shop_museum.html">博物館</a></li>
+            <li><img src="./shop_image/blue/aquarium/Aquarium (huge tank).png" class="shop-icon" alt="水族館"><a href="./shoppage/blue/shop_aquarium.html">水族館</a></li>
         </ul>
     </div>
     
-    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
-        <a href="index.html"><button>ホーム</button></a>
-        <a href="rules.html"><button>特殊ルール</button></a>
-        <a href="jinngai.html"><button>人外設定</button></a>
-        <a href="world.html"><button>世界観設定</button></a>
-        <a href="characters.html"><button>キャラクター一覧</button></a>
-        <a href="shops.html"><button>店舗一覧</button></a>
-        <a href="tools.html"><button>ツール</button></a>
-    </div>
-    
-    <div class="org-tab-container" style="display: flex; gap: 8px; margin: 20px 0; justify-content: center; flex-wrap: wrap;">
-        <a href="colorpage/black.html"><button class="org-tab black-org">黒</button></a>
-        <a href="colorpage/white.html"><button class="org-tab white-org">白葬街</button></a>
-        <a href="colorpage/red.html"><button class="org-tab red-org">呑紅街</button></a>
-        <a href="colorpage/blue.html"><button class="org-tab blue-org">蒼殉街</button></a>
-        <a href="colorpage/green.html"><button class="org-tab green-org">滲緑街</button></a>
-        <a href="colorpage/yellow.html"><button class="org-tab yellow-org">黄惑街</button></a>
+    <!-- ホバーメニュー -->
+    <div class="hover-menu-container">
+        <div class="menu-icon">☰</div>
+        <div class="hover-menu">
+            <a href="index.html" class="menu-item">ホーム</a>
+            <a href="rules.html" class="menu-item">特殊ルール</a>
+            <a href="jinngai.html" class="menu-item">人外設定</a>
+            <a href="world.html" class="menu-item">世界観設定</a>
+            <a href="characters.html" class="menu-item">キャラクター一覧</a>
+            <a href="shops.html" class="menu-item">店舗一覧</a>
+            <a href="tools.html" class="menu-item">ツール</a>
+            
+            <div class="menu-divider"></div>
+            
+            <div class="submenu">
+                <span class="menu-item">各街ホーム ▶</span>
+                <div class="submenu-content">
+                    <a href="colorpage/black.html" class="submenu-item color-black">黒</a>
+                    <a href="colorpage/white.html" class="submenu-item color-white">白葬街</a>
+                    <a href="colorpage/red.html" class="submenu-item color-red">呑紅街</a>
+                    <a href="colorpage/blue.html" class="submenu-item color-blue">蒼殉街</a>
+                    <a href="colorpage/green.html" class="submenu-item color-green">滲緑街</a>
+                    <a href="colorpage/yellow.html" class="submenu-item color-yellow">黄惑街</a>
+                </div>
+            </div>
+        </div>
     </div>
     
     <script>

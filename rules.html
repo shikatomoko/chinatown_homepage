@@ -14,7 +14,7 @@
             margin: 0;
             padding: 15px;
             background: linear-gradient(145deg, #0f0f0f 0%, #1a1a1a 50%, #2a2a2a 100%);
-            font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
             color: #e8e8e8;
             box-sizing: border-box;
         }
@@ -28,43 +28,43 @@
             letter-spacing: 0.15em;
             text-align: center;
             width: 100%;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         .rule-list {
             width: 100%;
-            max-width: 900px;
+            max-width: 800px;
             margin-bottom: 40px;
             padding: 0 20px;
             box-sizing: border-box;
         }
         .rule-item {
-            background: rgba(40, 40, 40, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 18px;
-            border-radius: 12px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            margin-bottom: 15px;
+            border-radius: 8px;
             cursor: pointer;
             padding: 16px 20px;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
             font-size: clamp(1em, 2.5vw, 1.1em);
-            font-weight: 500;
-            backdrop-filter: blur(10px);
+            font-weight: normal;
+            color: #ffffff;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         .rule-item:hover {
-            background: rgba(50, 50, 50, 0.95);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
-            border-color: rgba(255, 255, 255, 0.2);
+            background: #2a2a2a;
+            border-color: #555;
+            transform: translateY(-2px);
         }
         .rule-detail {
             display: none;
             padding: 16px 20px;
-            background: rgba(30, 30, 30, 0.95);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: #111;
+            border-top: 1px solid #333;
             font-size: clamp(0.9em, 2vw, 1em);
-            color: #d0d0d0;
+            color: #e0e0e0;
             margin-top: 12px;
-            border-radius: 0 0 10px 10px;
-            backdrop-filter: blur(10px);
+            border-radius: 0 0 8px 8px;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         .active .rule-detail {
             display: block;
@@ -76,56 +76,149 @@
             width: 100%;
             margin: 12px auto;
             border-collapse: collapse;
-            background: rgba(25, 25, 25, 0.9);
+            background: #000;
             color: #e0e0e0;
             font-size: clamp(0.8em, 1.8vw, 0.95em);
-            border-radius: 6px;
+            border-radius: 4px;
             overflow: hidden;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         th, td {
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid #333;
             padding: 8px 10px;
             text-align: left;
             word-wrap: break-word;
         }
         th {
-            background: rgba(20, 20, 20, 0.95);
+            background: #1a1a1a;
             color: #ffffff;
-            font-weight: 600;
+            font-weight: normal;
         }
-        .tab-container {
+        
+        /* ホバーメニューシステム */
+        .hover-menu-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
+        }
+        
+        .menu-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
             display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+            align-items: center;
             justify-content: center;
-            width: 100%;
-            max-width: 900px;
-            padding: 0 15px;
-            box-sizing: border-box;
-        }
-        .tab-container button {
-            background: rgba(40, 40, 40, 0.9);
-            color: #e8e8e8;
-            border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 8px 14px;
-            font-size: clamp(12px, 3vw, 13px);
-            font-weight: 500;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
             cursor: pointer;
-            flex: 0 1 auto;
-            min-width: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-size: 20px;
+            color: #333;
         }
-        .tab-container button:hover {
-            background: rgba(60, 60, 60, 0.95);
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        
+        .menu-icon:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
         }
+        
+        .hover-menu {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 12px;
+            padding: 15px 0;
+            min-width: 180px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .hover-menu-container:hover .hover-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .menu-item {
+            display: block;
+            padding: 12px 18px;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transform: translateX(5px);
+        }
+        
+        .menu-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 8px 0;
+        }
+        
+        .submenu {
+            position: relative;
+        }
+        
+        .submenu-content {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 12px;
+            padding: 10px 0;
+            min-width: 130px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .submenu:hover .submenu-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        
+        .submenu-item {
+            display: block;
+            padding: 10px 14px;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .submenu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        
+        .color-red { color: #cc2936; }
+        .color-blue { color: #2563eb; }
+        .color-green { color: #16a34a; }
+        .color-yellow { color: #eab308; }
+        .color-white { color: #e0e0e0; }
+        .color-black { color: #666; }
         
         /* モバイル対応 */
         @media (max-width: 768px) {
@@ -139,21 +232,14 @@
             }
             .rule-list {
                 padding: 0 10px;
+                max-width: 100%;
             }
             .rule-item {
                 padding: 14px 16px;
-                margin-bottom: 15px;
+                margin-bottom: 12px;
             }
             .rule-detail {
                 padding: 14px 16px;
-            }
-            .tab-container {
-                gap: 6px;
-                padding: 0 10px;
-            }
-            .tab-container button {
-                padding: 6px 10px;
-                font-size: 11px;
             }
             table {
                 font-size: 12px;
@@ -161,39 +247,44 @@
             th, td {
                 padding: 6px 8px;
             }
-        }
-        
-        @media (max-width: 480px) {
-            .tab-container button {
-                padding: 5px 8px;
-                font-size: 10px;
-                margin-bottom: 3px;
+            .hover-menu-container {
+                top: 15px;
+                left: 15px;
+            }
+            .menu-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            .hover-menu {
+                min-width: 160px;
             }
         }
         
-        .org-tab {
-            padding: 10px 16px;
-            font-size: 14px;
-            font-weight: 500;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: white;
+        @media (max-width: 480px) {
+            .hover-menu-container {
+                top: 10px;
+                left: 10px;
+            }
+            .menu-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            .hover-menu {
+                min-width: 140px;
+            }
+            .submenu-content {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                min-width: 180px;
+            }
+            .rule-list {
+                max-width: 100%;
+            }
         }
-        
-        .org-tab:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-        
-        .black-org { background: linear-gradient(135deg, #2a2a2a, #1a1a1a); }
-        .white-org { background: linear-gradient(135deg, #f0f0f0, #d0d0d0); color: #333 !important; }
-        .red-org { background: linear-gradient(135deg, #c02020, #a01010); }
-        .blue-org { background: linear-gradient(135deg, #2060c0, #1050a0); }
-        .green-org { background: linear-gradient(135deg, #20a050, #108040); }
-        .yellow-org { background: linear-gradient(135deg, #f0a000, #d08000); }
     </style>
 </head>
 <body>
@@ -404,23 +495,32 @@
             element.classList.toggle('active');
         }
     </script>
-    <div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
-        <a href="index.html"><button>ホーム</button></a>
-        <a href="rules.html"><button>特殊ルール</button></a>
-        <a href="jinngai.html"><button>人外設定</button></a>
-        <a href="world.html"><button>世界観設定</button></a>
-        <a href="characters.html"><button>キャラクター一覧</button></a>
-        <a href="shops.html"><button>店舗一覧</button></a>
-        <a href="tools.html"><button>ツール</button></a>
-    </div>
-    
-    <div class="org-tab-container" style="display: flex; gap: 8px; margin: 20px 0; justify-content: center; flex-wrap: wrap;">
-        <a href="colorpage/black.html"><button class="org-tab black-org">黒</button></a>
-        <a href="colorpage/white.html"><button class="org-tab white-org">白葬街</button></a>
-        <a href="colorpage/red.html"><button class="org-tab red-org">呑紅街</button></a>
-        <a href="colorpage/blue.html"><button class="org-tab blue-org">蒼殉街</button></a>
-        <a href="colorpage/green.html"><button class="org-tab green-org">滲緑街</button></a>
-        <a href="colorpage/yellow.html"><button class="org-tab yellow-org">黄惑街</button></a>
+    <!-- ホバーメニュー -->
+    <div class="hover-menu-container">
+        <div class="menu-icon">☰</div>
+        <div class="hover-menu">
+            <a href="index.html" class="menu-item">ホーム</a>
+            <a href="rules.html" class="menu-item">特殊ルール</a>
+            <a href="jinngai.html" class="menu-item">人外設定</a>
+            <a href="world.html" class="menu-item">世界観設定</a>
+            <a href="characters.html" class="menu-item">キャラクター一覧</a>
+            <a href="shops.html" class="menu-item">店舗一覧</a>
+            <a href="tools.html" class="menu-item">ツール</a>
+            
+            <div class="menu-divider"></div>
+            
+            <div class="submenu">
+                <span class="menu-item">各街ホーム ▶</span>
+                <div class="submenu-content">
+                    <a href="colorpage/black.html" class="submenu-item color-black">黒</a>
+                    <a href="colorpage/white.html" class="submenu-item color-white">白葬街</a>
+                    <a href="colorpage/red.html" class="submenu-item color-red">呑紅街</a>
+                    <a href="colorpage/blue.html" class="submenu-item color-blue">蒼殉街</a>
+                    <a href="colorpage/green.html" class="submenu-item color-green">滲緑街</a>
+                    <a href="colorpage/yellow.html" class="submenu-item color-yellow">黄惑街</a>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

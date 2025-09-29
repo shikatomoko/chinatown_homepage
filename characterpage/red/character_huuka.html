@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>風花</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background-image: url("../../picture/red_header.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .title {
+            font-size: clamp(4rem, 10vw, 6.5rem);
+            color: #ffffff;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: normal;
+            letter-spacing: 0.1em;
+            margin: 0;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+        
+        .main-content {
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 60px;
+            margin-bottom: 60px;
+            padding-bottom: 60px;
+            border-bottom: 2px solid #cc2936;
+        }
+        
+        .character-img {
+            width: 300px;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .character-img:hover {
+            box-shadow: 0 12px 40px rgba(204, 41, 54, 0.4);
+        }
+        
+        .info-box {
+            flex: 1;
+            min-width: 320px;
+        }
+        
+        .info-row {
+            font-size: 18px;
+            color: #f5f5f5;
+            margin-bottom: 16px;
+            line-height: 1.6;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: normal;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #cc2936;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-size: clamp(24px, 4vw, 32px);
+            color: #ffffff;
+            font-weight: normal;
+            margin-bottom: 30px;
+            letter-spacing: 0.05em;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .section-text {
+            font-size: clamp(16px, 2.5vw, 18px);
+            color: #e0e0e0;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: normal;
+        }
+        
+        .color-link {
+            color: #ffffff;
+            text-decoration: underline;
+            transition: all 0.3s ease;
+        }
+        
+        .color-link:hover {
+            color: #e5e5e5;
+        }
+        
+        .shop-link {
+            color: #ffffff;
+            text-decoration: underline;
+            transition: all 0.3s ease;
+        }
+        
+        .shop-link:hover {
+            color: #e5e5e5;
+        }
+        
+        .character-link {
+            color: #ffffff;
+            text-decoration: underline;
+            transition: all 0.3s ease;
+        }
+        
+        .character-link:hover {
+            color: #e5e5e5;
+        }
+        
+        .character-relationships {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+        
+        .character-card {
+            background: #1a1a1a;
+            border-radius: 8px;
+            border: 1px solid #cc2936;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .character-card:hover {
+            background: #2a2a2a;
+            border-color: #dc2626;
+            transform: translateY(-2px);
+        }
+        
+        .character-link-card {
+            text-decoration: none;
+            color: inherit;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .character-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .character-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            margin-right: 12px;
+            object-fit: cover;
+        }
+        
+        .character-name {
+            font-size: 18px;
+            font-weight: normal;
+            color: #ffffff;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .character-description {
+            font-size: 15px;
+            color: #e8e8e8;
+            line-height: 1.6;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: normal;
+        }
+        
+        /* ホバーメニューシステム */
+        .hover-menu-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
+        }
+        
+        .menu-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-size: 20px;
+            color: #333;
+        }
+        
+        .menu-icon:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+        
+        .hover-menu {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 12px;
+            padding: 15px 0;
+            min-width: 180px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .hover-menu-container:hover .hover-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .menu-item {
+            display: block;
+            padding: 12px 18px;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transform: translateX(5px);
+        }
+        
+        .menu-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 8px 0;
+        }
+        
+        .submenu {
+            position: relative;
+        }
+        
+        .submenu-content {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 12px;
+            padding: 10px 0;
+            min-width: 130px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .submenu:hover .submenu-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        
+        .submenu-item {
+            display: block;
+            padding: 10px 14px;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .submenu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        
+        .color-red { color: #cc2936; }
+        .color-blue { color: #2563eb; }
+        .color-green { color: #16a34a; }
+        .color-yellow { color: #eab308; }
+        .color-white { color: #e0e0e0; }
+        .color-black { color: #666; }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 40px 20px;
+            }
+            
+            .top-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 40px;
+                margin-bottom: 40px;
+                padding-bottom: 40px;
+            }
+            
+            .character-img {
+                width: 250px;
+                max-height: 400px;
+            }
+            
+            .info-box {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .character-relationships {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .hover-menu-container {
+                top: 15px;
+                left: 15px;
+            }
+            
+            .menu-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            
+            .hover-menu {
+                min-width: 160px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .character-img {
+                width: 200px;
+                max-height: 320px;
+            }
+            
+            .hover-menu-container {
+                top: 10px;
+                left: 10px;
+            }
+            
+            .menu-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            
+            .hover-menu {
+                min-width: 140px;
+            }
+            
+            .submenu-content {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                min-width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー部分（赤色背景） -->
+    <div class="header">
+        <h1 class="title">風花</h1>
+    </div>
+    
+    <div class="main-content">
+        <div class="top-section">
+            <img src="../../character_fullbody/huuka.png" alt="風花" class="character-img">
+            <div class="info-box">
+                <div class="info-row">
+                    所属色：<a href="../../colorpage/red.html" class="color-link">呑紅街</a>
+                </div>
+                <div class="info-row">
+                    階級：下級構成員
+                </div>
+                <div class="info-row">
+                    年齢：18歳
+                </div>
+                <div class="info-row">
+                    種族：人間
+                </div>
+                <div class="info-row">
+                    一人称：私
+                </div>
+                <div class="info-row">
+                    二人称：適当なあだ名（み〜ちゃん、る〜くんなど）
+                </div>
+                <div class="info-row">
+                    外見特徴：若い女性。風狸族であるが、耳と尻尾は服で常に隠している。見た目は洗練された都会風の女性で、流行の服装を好み、髪を丁寧に整えている。中性的な顔立ちと透明感ある雰囲気のため、男女を問わず人の気を惹く。
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">性格</h2>
+            <p class="section-text">軽妙で人当たりが良い。初対面の相手にもすぐ馴染める柔軟さを持つ一方、内心では誰に対しても一定の距離を置いている。信頼という言葉を信じず、情報と利益でしか人間関係を測らない冷徹さがある。とはいえ、心の底では孤独を抱えており、たまに不用意に誰かへ甘えたくなる衝動を隠している。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">仕事について</h2>
+            <p class="section-text">表向きは街角の小さな喫茶店を営んでおり、客の会話を拾っては情報に変えるのが日常業務。裏では密偵や盗聴、買収など手段を選ばずに情報を集め、赤組へと還元する役割を担う。風狸族特有の嗅覚と耳の良さを活かし、音や匂いから人間関係や心理を察知することができる。</p>
+            <p class="section-text">そのため、彼女の周囲では「秘密を隠せる人間はいない」と恐れられている。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">過去</h2>
+            <p class="section-text">風狸族として生まれたが、人間社会で暮らすために幼少期から耳と尻尾を隠して生きてきた。差別や偏見を受けることを避けるため、種族のことを誰にも明かさず、むしろ「普通の人間」として周囲に溶け込むことを徹底した。その過程で、他者の心を読む術や、隠し事を見抜く嗅覚を培っていった。暗黒中華街に流れ着いたのち、自分の技能が「武器」として通用することを知り、赤組の一員となる。
+</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">能力</h2>
+            <p class="section-text">風狸族特有の鋭敏な聴覚と嗅覚を持ち、わずかな感情の変化や体臭から相手の心理を察知できる。また、人間観察に優れており、相手の仕草や言葉から虚偽を見抜くことに長けている。直接的な戦闘力は低いが、逃走と隠密行動には優れており、危険を察知して素早く身をかわす。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">人間関係</h2>
+            <div class="character-relationships">
+                <!-- 陽炎（赤組） -->
+                <div class="character-card">
+                    <a href="character_kagerou.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/kagerou_icon.png" alt="陽炎" class="character-avatar">
+                            <span class="character-name">陽炎</span>
+                        </div>
+                        <div class="character-description">憧れの先輩として慕っている。陽炎の大人っぽさと美しさに憧れ、いつか自分もそうなりたいと思っている。</div>
+                    </a>
+                </div>
+                <!-- ミミコ（赤組） -->
+                <div class="character-card">
+                    <a href="character_mimiko.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/mimiko_icon.png" alt="ミミコ" class="character-avatar">
+                            <span class="character-name">ミミコ</span>
+                        </div>
+                        <div class="character-description">同世代ということもあり親近感を抱いている。ミミコの頭の良さを尊敬しつつも、もう少し素直になればいいのにと思っている。</div>
+                    </a>
+                </div>
+                <!-- リス（赤組） -->
+                <div class="character-card">
+                    <a href="character_risu.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/risu_icon.png" alt="リス" class="character-avatar">
+                            <span class="character-name">リス</span>
+                        </div>
+                        <div class="character-description">優しい兄貴分として慕っている。困ったことがあるとよくリスに相談しに行く。</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ホバーメニュー -->
+    <div class="hover-menu-container">
+        <div class="menu-icon">☰</div>
+        <div class="hover-menu">
+            <a href="../../index.html" class="menu-item">ホーム</a>
+            <a href="../../rules.html" class="menu-item">特殊ルール</a>
+            <a href="../../jinngai.html" class="menu-item">人外設定</a>
+            <a href="../../world.html" class="menu-item">世界観設定</a>
+            <a href="../../characters.html" class="menu-item">キャラクター一覧</a>
+            <a href="../../shops.html" class="menu-item">店舗一覧</a>
+            <a href="../../tools.html" class="menu-item">ツール</a>
+            
+            <div class="menu-divider"></div>
+            
+            <div class="submenu">
+                <span class="menu-item">各街ホーム ▶</span>
+                <div class="submenu-content">
+                    <a href="../../colorpage/black.html" class="submenu-item color-black">黒</a>
+                    <a href="../../colorpage/white.html" class="submenu-item color-white">白葬街</a>
+                    <a href="../../colorpage/red.html" class="submenu-item color-red">呑紅街</a>
+                    <a href="../../colorpage/blue.html" class="submenu-item color-blue">蒼殉街</a>
+                    <a href="../../colorpage/green.html" class="submenu-item color-green">滲緑街</a>
+                    <a href="../../colorpage/yellow.html" class="submenu-item color-yellow">黄惑街</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

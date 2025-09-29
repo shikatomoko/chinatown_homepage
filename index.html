@@ -15,11 +15,127 @@
             margin: 0;
             padding: 15px;
             background: linear-gradient(145deg, #0f0f0f 0%, #1a1a1a 50%, #2a2a2a 100%);
-            font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
             color: #e8e8e8;
             overflow-x: auto;
             box-sizing: border-box;
         }
+
+        /* オープニングアニメーション */
+        .opening-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            overflow: hidden;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .text-container {
+            max-width: 95%;
+            width: 100%;
+            text-align: center;
+            line-height: 1.6;
+            font-size: clamp(12px, 2vw, 18px);
+        }
+
+        .opening-text {
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            color: #e8e8e8;
+            opacity: 0;
+            transform: translateY(20px);
+            display: block;
+            margin-bottom: 0.8em;
+            letter-spacing: 0.02em;
+            transition: all 0.8s ease;
+        }
+
+        .opening-text.final {
+            font-size: clamp(16px, 2.8vw, 24px);
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            margin-top: 1.5em;
+            opacity: 0;
+            display: none;
+        }
+
+        .opening-text.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .opening-text.hide {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.5s ease;
+        }
+
+        /* 一文字ずつ表示するアニメーション */
+        .final-text-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #000;
+            z-index: 3001;
+            opacity: 0;
+        }
+
+        .final-text-container.show {
+            opacity: 1;
+        }
+
+        .final-char {
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-size: clamp(20px, 3.5vw, 32px);
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+            opacity: 0;
+            transform: translateY(30px);
+            display: inline-block;
+            margin: 0 0.05em;
+        }
+
+        .final-char.appear {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.4s ease;
+        }
+
+        .opening-container.fade-out {
+            animation: fadeOut 1.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+
+        /* メインコンテンツ */
+        .main-content {
+            opacity: 0;
+            animation: mainContentFadeIn 2s ease-in-out forwards;
+            text-align: center;
+        }
+
+        @keyframes mainContentFadeIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
         h1 {
             margin-bottom: 25px;
             font-size: clamp(2.2em, 6vw, 3.2em);
@@ -29,80 +145,9 @@
             letter-spacing: 0.15em;
             text-align: center;
             width: 100%;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
-        .button-container {
-            display: flex;
-            gap: clamp(8px, 2vw, 12px);
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 100%;
-            max-width: 600px;
-        }
-        button {
-            padding: clamp(8px, 2vw, 12px) clamp(16px, 4vw, 28px);
-            font-size: clamp(14px, 3vw, 16px);
-            font-weight: 500;
-            cursor: pointer;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(30, 30, 30, 0.9);
-            color: #f0f0f0;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(10px);
-            flex: 0 1 auto;
-            min-width: 60px;
-        }
-        button:hover {
-            background: rgba(50, 50, 50, 0.95);
-            color: #ffffff;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-        .btn-white { background: linear-gradient(145deg, #f8f8f8, #e0e0e0); color: #2a2a2a; border-color: rgba(200, 200, 200, 0.3); }
-        .btn-black { background: linear-gradient(145deg, #2a2a2a, #1a1a1a); color: #f0f0f0; border-color: rgba(100, 100, 100, 0.3); }
-        .btn-red { background: linear-gradient(145deg, #c62828, #b71c1c); color: #ffffff; border-color: rgba(255, 100, 100, 0.3); }
-        .btn-yellow { background: linear-gradient(145deg, #f9a825, #f57f17); color: #2a2a2a; border-color: rgba(255, 200, 100, 0.3); }
-        .btn-green { background: linear-gradient(145deg, #2e7d32, #1b5e20); color: #ffffff; border-color: rgba(100, 200, 100, 0.3); }
-        .btn-blue { background: linear-gradient(145deg, #1565c0, #0d47a1); color: #ffffff; border-color: rgba(100, 150, 255, 0.3); }
-        .btn-white:hover { background: linear-gradient(145deg, #ffffff, #f0f0f0); transform: translateY(-3px); }
-        .btn-black:hover { background: linear-gradient(145deg, #404040, #2a2a2a); transform: translateY(-3px); }
-        .btn-red:hover { background: linear-gradient(145deg, #d32f2f, #c62828); transform: translateY(-3px); }
-        .btn-yellow:hover { background: linear-gradient(145deg, #fbc02d, #f9a825); transform: translateY(-3px); }
-        .btn-green:hover { background: linear-gradient(145deg, #388e3c, #2e7d32); transform: translateY(-3px); }
-        .btn-blue:hover { background: linear-gradient(145deg, #1976d2, #1565c0); transform: translateY(-3px); }
-        .tab-container {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 100%;
-            max-width: 900px;
-            padding: 0 15px;
-            box-sizing: border-box;
-        }
-        .tab-container button {
-            background: rgba(40, 40, 40, 0.9);
-            color: #e8e8e8;
-            border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 8px 14px;
-            font-size: clamp(12px, 3vw, 13px);
-            font-weight: 500;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            flex: 0 1 auto;
-            min-width: 0;
-        }
-        .tab-container button:hover {
-            background: rgba(60, 60, 60, 0.95);
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-        }
+        
         img[alt="Map"] {
             max-width: clamp(80%, 50vw, 45%);
             height: auto;
@@ -116,6 +161,158 @@
             transform: scale(1.02);
         }
         
+        /* ホバーメニューシステム */
+        .hover-menu-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
+            opacity: 0;
+            animation: menuFadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes menuFadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        .menu-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-size: 20px;
+            color: #333;
+        }
+        
+        .menu-icon:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+        
+        .hover-menu {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 12px;
+            padding: 15px 0;
+            min-width: 200px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .hover-menu-container:hover .hover-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .menu-item {
+            display: block;
+            padding: 12px 20px;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
+        
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transform: translateX(5px);
+        }
+        
+        .menu-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 8px 0;
+        }
+        
+        .submenu {
+            position: relative;
+        }
+        
+        .submenu-content {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 12px;
+            padding: 10px 0;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .submenu:hover .submenu-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        
+        .submenu-item {
+            display: block;
+            padding: 10px 16px;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+        
+        .submenu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        
+        .color-red { color: #cc2936; }
+        .color-blue { color: #2563eb; }
+        .color-green { color: #16a34a; }
+        .color-yellow { color: #eab308; }
+        .color-white { color: #e0e0e0; }
+        .color-black { color: #666; }
+
+        /* スキップボタン */
+        .skip-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            z-index: 3002;
+            backdrop-filter: blur(5px);
+        }
+
+        .skip-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
         /* モバイル対応 */
         @media (max-width: 768px) {
             body {
@@ -125,112 +322,226 @@
                 margin-bottom: 20px;
                 font-size: 2.5em;
             }
-            .button-container {
-                gap: 8px;
-                margin-bottom: 20px;
-            }
-            button {
-                padding: 8px 18px;
-                font-size: 14px;
-            }
-            .tab-container {
-                gap: 6px;
-                padding: 0 10px;
-            }
-            .tab-container button {
-                padding: 6px 10px;
-                font-size: 11px;
-            }
             img[alt="Map"] {
                 max-width: 90%;
                 margin: 15px 0;
             }
+            .hover-menu-container {
+                top: 15px;
+                left: 15px;
+            }
+            .menu-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            .hover-menu {
+                min-width: 180px;
+            }
+            .opening-container {
+                padding: 15px;
+            }
+            .text-container {
+                max-width: 98%;
+                font-size: clamp(10px, 2.8vw, 16px);
+                line-height: 1.4;
+            }
+            .final-char {
+                font-size: clamp(16px, 4vw, 24px);
+                margin: 0 0.02em;
+            }
+            .skip-button {
+                bottom: 20px;
+                right: 20px;
+                padding: 8px 16px;
+                font-size: 12px;
+            }
         }
         
         @media (max-width: 480px) {
-            h1 {
-                font-size: 2em;
+            .hover-menu-container {
+                top: 10px;
+                left: 10px;
             }
-            .button-container {
-                gap: 6px;
+            .menu-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
             }
-            button {
-                padding: 6px 12px;
-                font-size: 12px;
+            .hover-menu {
+                min-width: 160px;
             }
-            .tab-container button {
-                padding: 5px 8px;
-                font-size: 10px;
-                margin-bottom: 3px;
+            .submenu-content {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                min-width: 200px;
             }
-            img[alt="Map"] {
-                max-width: 95%;
+            .opening-container {
+                padding: 10px;
             }
-        }
-        
-        .org-tab {
-            padding: 10px 16px;
-            font-size: 14px;
-            font-weight: 500;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: white;
-        }
-        
-        .org-tab:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-        
-        .black-org {
-            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-        }
-        
-        .white-org {
-            background: linear-gradient(135deg, #f0f0f0, #d0d0d0);
-            color: #333 !important;
-        }
-        
-        .red-org {
-            background: linear-gradient(135deg, #c02020, #a01010);
-        }
-        
-        .blue-org {
-            background: linear-gradient(135deg, #2060c0, #1050a0);
-        }
-        
-        .green-org {
-            background: linear-gradient(135deg, #20a050, #108040);
-        }
-        
-        .yellow-org {
-            background: linear-gradient(135deg, #f0a000, #d08000);
+            .text-container {
+                font-size: clamp(8px, 3.2vw, 14px);
+                line-height: 1.3;
+            }
+            .final-char {
+                font-size: clamp(14px, 4.5vw, 20px);
+            }
         }
     </style>
 </head>
 <body>
-    <h1>暗黒中華街 </h1>
-<img src="./picture/map.png" alt ="Map" style="max-width: 40%; height: auto; margin-top: 20px; margin-bottom: 20px;">
-<div class="tab-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
-    <a href="index.html"><button>ホーム</button></a>
-    <a href="rules.html"><button>特殊ルール</button></a>
-    <a href="jinngai.html"><button>人外設定</button></a>
-    <a href="world.html"><button>世界観設定</button></a>
-    <a href="characters.html"><button>キャラクター一覧</button></a>
-    <a href="shops.html"><button>店舗一覧</button></a>
-    <a href="tools.html"><button>ツール</button></a>
-</div>
+    <!-- オープニングアニメーション -->
+    <div class="opening-container" id="opening-container">
+        <div class="text-container">
+            <div class="opening-text">通常の世界から隔離された、常夜の犯罪都市。</div>
+            <div class="opening-text">本都市の中では一般的な法規・倫理は一切の制約とならず、個々を縛るのは己自身のみである。</div>
+            <div class="opening-text">表の世界では実行することが不可能な行為でも、この街では咎められることがない。</div>
+            <div class="opening-text">社会が成熟し、悪が廃絶されても尚残る暗部。</div>
+            <div class="opening-text">それを集約させた街がここ、暗黒中華街であった。</div>
+            <div class="opening-text">この街に集う人間は当然表の世界に居場所のない者である。</div>
+            <div class="opening-text">もしくは自ら望んで、泥水に身を浸そうと選択した者であるのかもしれない。</div>
+            <div class="opening-text">更に言えば、そこに棲まう者たちは厳密に言えば「人間」とすら呼べないのかもしれない。</div>
+            <div class="opening-text">何にせよ、この街の者に共通するものがたった一つだけある。</div>
+        </div>
+        
+        <!-- 最終文の一文字ずつ表示 -->
+        <div class="final-text-container" id="final-text-container">
+            <div id="final-text">
+                <span class="final-char">彼</span>
+                <span class="final-char">ら</span>
+                <span class="final-char">は</span>
+                <span class="final-char">紛</span>
+                <span class="final-char">れ</span>
+                <span class="final-char">も</span>
+                <span class="final-char">な</span>
+                <span class="final-char">い</span>
+                <span class="final-char">、</span>
+                <span class="final-char">悪</span>
+                <span class="final-char">で</span>
+                <span class="final-char">あ</span>
+                <span class="final-char">る</span>
+                <span class="final-char">。</span>
+            </div>
+        </div>
+        
+        <button class="skip-button" onclick="skipOpening()">Skip</button>
+    </div>
 
-<div class="org-tab-container" style="display: flex; gap: 8px; margin: 20px 0; justify-content: center; flex-wrap: wrap;">
-    <a href="colorpage/black.html"><button class="org-tab black-org">黒</button></a>
-    <a href="colorpage/white.html"><button class="org-tab white-org">白葬街</button></a>
-    <a href="colorpage/red.html"><button class="org-tab red-org">呑紅街</button></a>
-    <a href="colorpage/blue.html"><button class="org-tab blue-org">蒼殉街</button></a>
-    <a href="colorpage/green.html"><button class="org-tab green-org">滲緑街</button></a>
-    <a href="colorpage/yellow.html"><button class="org-tab yellow-org">黄惑街</button></a>
-</div>
+    <!-- メインコンテンツ -->
+    <div class="main-content" id="main-content">
+        <h1>暗黒中華街</h1>
+        <img src="./picture/map.png" alt="Map" style="max-width: 40%; height: auto; margin-top: 20px; margin-bottom: 20px;">
+    </div>
+
+    <!-- ホバーメニュー -->
+    <div class="hover-menu-container">
+        <div class="menu-icon">☰</div>
+        <div class="hover-menu">
+            <a href="index.html" class="menu-item">ホーム</a>
+            <a href="rules.html" class="menu-item">特殊ルール</a>
+            <a href="jinngai.html" class="menu-item">人外設定</a>
+            <a href="world.html" class="menu-item">世界観設定</a>
+            <a href="characters.html" class="menu-item">キャラクター一覧</a>
+            <a href="shops.html" class="menu-item">店舗一覧</a>
+            <a href="tools.html" class="menu-item">ツール</a>
+            
+            <div class="menu-divider"></div>
+            
+            <div class="submenu">
+                <span class="menu-item">各街ホーム ▶</span>
+                <div class="submenu-content">
+                    <a href="colorpage/black.html" class="submenu-item color-black">黒</a>
+                    <a href="colorpage/white.html" class="submenu-item color-white">白葬街</a>
+                    <a href="colorpage/red.html" class="submenu-item color-red">呑紅街</a>
+                    <a href="colorpage/blue.html" class="submenu-item color-blue">蒼殉街</a>
+                    <a href="colorpage/green.html" class="submenu-item color-green">滲緑街</a>
+                    <a href="colorpage/yellow.html" class="submenu-item color-yellow">黄惑街</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentText = 0;
+        const texts = document.querySelectorAll('.opening-text');
+        const totalTexts = texts.length;
+        let animationTimeout;
+
+        // アニメーション開始
+        function startAnimation() {
+            if (currentText < totalTexts) {
+                texts[currentText].classList.add('show');
+                currentText++;
+                // 間隔を0.8秒に短縮（以前は1.2秒）
+                animationTimeout = setTimeout(startAnimation, 800);
+            } else {
+                // 全ての文が表示された後、1秒待機してからブラックアウト
+                setTimeout(() => {
+                    startBlackoutAndFinalText();
+                }, 3000);
+            }
+        }
+
+        // ブラックアウトと最終文の一文字ずつ表示
+        function startBlackoutAndFinalText() {
+            // 既存の文字を全て消去
+            texts.forEach(text => {
+                text.classList.add('hide');
+            });
+
+            // 0.5秒後に最終文の表示開始
+            setTimeout(() => {
+                const finalContainer = document.getElementById('final-text-container');
+                const finalChars = document.querySelectorAll('.final-char');
+                
+                finalContainer.classList.add('show');
+                
+                // 一文字ずつ表示（0.2秒間隔）
+                finalChars.forEach((char, index) => {
+                    setTimeout(() => {
+                        char.classList.add('appear');
+                    }, index * 200);
+                });
+
+                // 全ての文字が表示された後、2秒待機してメインコンテンツへ
+                setTimeout(() => {
+                    showMainContent();
+                }, finalChars.length * 200 + 2000);
+            }, 500);
+        }
+
+        function showMainContent() {
+            const openingContainer = document.getElementById('opening-container');
+            const mainContent = document.getElementById('main-content');
+            const menuContainer = document.querySelector('.hover-menu-container');
+            
+            openingContainer.classList.add('fade-out');
+            mainContent.style.opacity = '1';
+            mainContent.style.animationDelay = '1s';
+            menuContainer.style.animationDelay = '2s';
+        }
+
+        // スキップ機能
+        function skipOpening() {
+            clearTimeout(animationTimeout);
+            const openingContainer = document.getElementById('opening-container');
+            const mainContent = document.getElementById('main-content');
+            const menuContainer = document.querySelector('.hover-menu-container');
+            
+            openingContainer.style.display = 'none';
+            mainContent.style.opacity = '1';
+            mainContent.style.animation = 'none';
+            menuContainer.style.opacity = '1';
+            menuContainer.style.animation = 'none';
+        }
+
+        // どのページから来てもアニメーションを再生（sessionStorageを削除）
+        // sessionStorage.removeItem('visited'); // セッション記録を削除
+        
+        // アニメーション開始（0.5秒後開始）
+        setTimeout(startAnimation, 500);
+    </script>
 </body>
 </html>

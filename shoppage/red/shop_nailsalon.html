@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ネイルサロン</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background-image: url("../../picture/red_header.png");
+            background-size: cover;
+            padding: 40px 60px;
+            background-repeat: no-repeat;
+        }
+        
+        .title {
+            font-size: clamp(4rem, 12vw, 5.5rem);
+            color: #ffffff;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: normal;
+            letter-spacing: 0.1em;
+            margin: 0;
+        }
+        
+        .top-section {
+            padding: 0 40px 40px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        
+        .main-image-container {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            min-height: 400px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+        
+        .sub-images-container {
+            background: #000;
+            padding: 30px 0;
+        }
+        
+        .sub-images-scroll {
+            display: flex;
+            gap: 20px;
+            padding: 0 40px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #cc2936 #000;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar-track {
+            background: #000;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar-thumb {
+            background: #cc2936;
+            border-radius: 4px;
+        }
+        
+        .sub-image {
+            flex-shrink: 0;
+            width: 160px;
+            height: 90px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        .sub-image:hover {
+            border-color: #cc2936;
+            transform: scale(1.05);
+        }
+        
+        .sub-image.active {
+            border-color: #cc2936;
+            box-shadow: 0 0 15px rgba(204, 41, 54, 0.6);
+        }
+        
+        .shop-info {
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .shop-info p {
+            font-size: 18px;
+            color: #e0e0e0;
+            margin: 8px 0;
+            font-weight: normal;
+        }
+        
+        .color-link {
+            color: #cc2936;
+            text-decoration: none;
+            font-weight: normal;
+            transition: color 0.3s ease;
+        }
+        
+        .color-link:hover {
+            color: #ff4444;
+        }
+        
+        .bottom-content {
+            background: #000;
+            padding: 60px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            margin-bottom: 80px;
+        }
+        
+        .content-section:last-of-type {
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-size: clamp(24px, 4vw, 32px);
+            color: #ffffff;
+            font-weight: normal;
+            margin-bottom: 30px;
+            letter-spacing: 0.05em;
+        }
+        
+        .section-text {
+            font-size: clamp(16px, 2.5vw, 18px);
+            color: #e0e0e0;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .service-item {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .service-item:hover {
+            background: #2a2a2a;
+            transform: translateY(-3px);
+        }
+        
+        .service-title {
+            font-size: 22px;
+            color: #cc2936;
+            font-weight: normal;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #cc2936;
+            padding-bottom: 8px;
+        }
+        
+        .service-price {
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: normal;
+            margin-bottom: 8px;
+        }
+        
+        .service-requirement {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+        
+        .service-description {
+            font-size: 16px;
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .service-mechanics {
+            font-size: 14px;
+            color: #ccc;
+            margin-top: 12px;
+            padding-left: 16px;
+            border-left: 3px solid #cc2936;
+        }
+        
+        .person-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .person-item {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+        }
+        
+        .person-item:hover {
+            background: #2a2a2a;
+            transform: translateY(-3px);
+        }
+        
+        .employee-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 20px;
+            border: 3px solid #cc2936;
+        }
+        
+        .employee-info {
+            flex: 1;
+        }
+        
+        .employee-name {
+            font-size: 20px;
+            color: #cc2936;
+            font-weight: normal;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #cc2936;
+            padding-bottom: 5px;
+        }
+        
+        .employee-role {
+            font-size: 16px;
+            color: #e0e0e0;
+        }
+        
+        .red-group-btn {
+            background: #2a2a2a;
+            color: #fff;
+            border-radius: 8px;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .red-group-btn:hover {
+            background: #444;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* ホバーメニュー */
+        .hover-menu-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
+        }
+
+        .menu-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            border: 2px solid rgba(204, 41, 54, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-icon:hover {
+            background: rgba(60, 60, 60, 0.95);
+            border-color: rgba(204, 41, 54, 0.6);
+            transform: scale(1.05);
+        }
+
+        .hover-menu {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            min-width: 200px;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 10px;
+            padding: 15px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(204, 41, 54, 0.2);
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .hover-menu-container:hover .hover-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-item, .submenu-item {
+            display: block;
+            padding: 10px 20px;
+            color: #e8e8e8;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover, .submenu-item:hover {
+            background: rgba(60, 60, 60, 0.8);
+            color: #cc2936;
+            transform: translateX(5px);
+        }
+
+        .menu-divider {
+            height: 1px;
+            background: rgba(204, 41, 54, 0.3);
+            margin: 10px 0;
+        }
+
+        .submenu {
+            position: relative;
+        }
+
+        .submenu-content {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            min-width: 150px;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 8px;
+            padding: 10px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(204, 41, 54, 0.2);
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .submenu:hover .submenu-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .color-black { color: #f5f5f5; }
+        .color-white { color: #ffffff; }
+        .color-red { color: #ff6b6b; }
+        .color-blue { color: #4fc3f7; }
+        .color-green { color: #43ff43; }
+        .color-yellow { color: #ffc107; }
+        
+        .group-detail {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(30, 30, 30, 0.95);
+            border: 2px solid rgba(204, 41, 54, 0.5);
+            border-radius: 15px;
+            padding: 25px;
+            max-width: 400px;
+            max-height: 70vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: none;
+        }
+        
+        .group-detail.active {
+            display: block;
+        }
+        
+        .group-detail h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #cc2936;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            color: #cc2936;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        .shop-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .shop-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .shop-list a {
+            color: #e8e8e8;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-left: 12px;
+            font-weight: 500;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .shop-list a:hover {
+            color: #cc2936;
+            text-decoration: none;
+            transform: translateX(3px);
+        }
+        
+        .shop-icon {
+            width: 28px;
+            height: 28px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid rgba(204, 41, 54, 0.5);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .shop-icon:hover {
+            transform: scale(1.1);
+            border-color: #cc2936;
+        }
+        
+        @media (max-width: 768px) {
+            .bottom-content {
+                padding: 40px 20px;
+            }
+            
+            .sub-images-scroll {
+                padding: 0 20px;
+            }
+            
+            .person-list, .service-list {
+                grid-template-columns: 1fr;
+            }
+
+            .hover-menu-container {
+                top: 15px;
+                left: 15px;
+            }
+
+            .menu-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            .hover-menu {
+                min-width: 180px;
+            }
+
+            .submenu-content {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                min-width: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .main-image-container {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .sub-image {
+                width: 120px;
+                height: 68px;
+            }
+
+            .hover-menu-container {
+                top: 10px;
+                left: 10px;
+            }
+
+            .menu-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .hover-menu {
+                min-width: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー部分（赤色背景） -->
+    <div class="header">
+        <h1 class="title">ネイルサロン</h1>
+    </div>
+    
+    <!-- メインコンテンツ -->
+    <div class="top-section">
+        <!-- 店舗情報 -->
+        <div class="shop-info">
+            <p>所属組織：<a href="../../colorpage/red.html" class="color-link">呑紅街</a></p>
+            <p>エリア：中央区 　営業時間：昼営業・夜営業 　業種：美容サロン / 特殊資材調達</p>
+        </div>
+        
+        <!-- メイン画像部分 -->
+        <div class="main-image-container">
+            <img id="mainImage" class="main-image" src="../../shop_image/red/nailsalon/nailsalon.png" alt="ネイルサロンのメイン画像">
+        </div>
+        
+        <!-- サブ画像スライダー -->
+        <div class="sub-images-container">
+            <div class="sub-images-scroll">
+                <img class="sub-image active" src="../../shop_image/red/nailsalon/nailsalon.png" alt="ネイルサロン内部" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/red/nailsalon/nailsalon_front.png" alt="ネイルサロン外観" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/red/nailsalon/Nail Salon (Interior - Night).png" alt="ネイルサロン内部（夜）" onclick="changeMainImage(this)">
+            </div>
+        </div>
+    </div>
+    
+    <!-- 下部コンテンツ（黒背景） -->
+    <div class="bottom-content">
+        <div class="content-section">
+            <h2 class="section-title">概要</h2>
+            <p class="section-text">開けた街の通りにあるネイルサロン。昼の間は通常の美容サロンとしてジェルネイルの施術を行っている。爪さえ生えていれば、人間だろうがそれ以外のものであろうが、可愛く彩ってくれる。</p>
+            <p class="section-text">しかし、夜間営業は少々趣が異なる。夜間においては昼間のための「資材の調達」を行っている。ネイルチップに利用するための人間の生爪の入手は、店主自ら行っているのである。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">利用方法・料金</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-title">通常ネイル</div>
+                    <div class="service-price">20,000～30,000円</div>
+                    <div class="service-requirement">信用条件：なし</div>
+                    <div class="service-description">
+                        依頼人のオーダー通り、素敵に爪を彩ってくれる。デザインや素材により追加料金が発生する場合がある。
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-title">護符・隠し文様オプション</div>
+                    <div class="service-price">追加10,000円～</div>
+                    <div class="service-requirement">信用条件：なし</div>
+                    <div class="service-description">
+                        「護符」や「隠し文様」を刻むオプション。符牒として扱われ、特定の相手にのみ意味を持つ特殊な装飾。
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-title">夜営業：爪の買い取り</div>
+                    <div class="service-price">1枚あたり5,000円前後（10枚セットで最大100,000円）</div>
+                    <div class="service-requirement">信用条件：60以上</div>
+                    <div class="service-description">
+                        健康状態・形の美しさ・希少性によって値段が大きく変動する。人間の若者の生爪は高値で取引される。
+                    </div>
+                    <div class="service-mechanics">
+                        <strong>代わりの義爪オプション：</strong>買い取り後、希望者は「代わりの義爪」を付けてもらうことも可能。ただしこの義爪は呪的な作用を持ち、一定時間で剥がれると強烈な幻覚や幻聴を誘発する。
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">特色</h2>
+            <p class="section-text">表の顔としては、暗黒中華街でも屈指の技術力を誇るネイルサロン。裏の顔としては、人間の生爪という特殊な資材を扱う闇商人的な側面を持つ。二面性を持つ店舗として、赤組の資金源の一翼を担っている。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">従業員</h2>
+            <div class="person-list">
+                <a href="../../characterpage/red/character_mimiko.html" class="person-item">
+                    <img src="../../character_icon/mimiko_icon.png" alt="ミミコ" class="employee-icon">
+                    <div class="employee-info">
+                        <div class="employee-name">ミミコ</div>
+                        <div class="employee-role">店長・オーナー</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <button class="red-group-btn" onclick="showRedGroupDetail()">赤組のその他の店舗</button>
+    
+    <!-- オーバーレイ -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- 赤組詳細ポップアップ -->
+    <div class="group-detail" id="detail-red">
+        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
+        <h3>呑紅街の店舗</h3>
+        <ul class="shop-list">
+            <li><img src="../../shop_image/red/antique/antique.png" class="shop-icon" alt="骨董楼"><a href="./shop_antique.html">骨董楼</a></li>
+            <li><img src="../../shop_image/red/nailsalon/nailsalon.png" class="shop-icon" alt="ネイルサロン"><a href="./shop_nailsalon.html">ネイルサロン</a></li>
+            <li><img src="../../shop_image/red/tailor/tailor.png" class="shop-icon" alt="テーラー"><a href="./shop_tailor.html">テーラー</a></li>
+            <li><img src="../../shop_image/red/spa/spa.png" class="shop-icon" alt="湯治屋"><a href="./shop_spa.html">湯治屋</a></li>
+            <li><img src="../../shop_image/red/informer/informer.png" class="shop-icon" alt="情報屋"><a href="./shop_informer.html">情報屋</a></li>
+            <li><img src="../../shop_image/red/torture/torture.png" class="shop-icon" alt="拷問屋"><a href="./shop_torture.html">拷問屋</a></li>
+            <li><img src="../../shop_image/red/tattoo/tattoo.png" class="shop-icon" alt="刺青屋"><a href="./shop_tattoo.html">刺青屋</a></li>
+            <li><img src="../../shop_image/red/printing/printing.png" class="shop-icon" alt="印紙屋"><a href="./shop_stamp.html">印紙屋</a></li>
+        </ul>
+    </div>
+    
+    <!-- ホバーメニュー -->
+    <div class="hover-menu-container">
+        <div class="menu-icon">☰</div>
+        <div class="hover-menu">
+            <a href="../../index.html" class="menu-item">ホーム</a>
+            <a href="../../rules.html" class="menu-item">特殊ルール</a>
+            <a href="../../jinngai.html" class="menu-item">人外設定</a>
+            <a href="../../world.html" class="menu-item">世界観設定</a>
+            <a href="../../characters.html" class="menu-item">キャラクター一覧</a>
+            <a href="../../shops.html" class="menu-item">店舗一覧</a>
+            <a href="../../tools.html" class="menu-item">ツール</a>
+
+            <div class="menu-divider"></div>
+            
+            <div class="submenu">
+                <span class="menu-item">各街ホーム ▶</span>
+                <div class="submenu-content">
+                    <a href="../../colorpage/black.html" class="submenu-item color-black">黒</a>
+                    <a href="../../colorpage/white.html" class="submenu-item color-white">白葬街</a>
+                    <a href="../../colorpage/red.html" class="submenu-item color-red">呑紅街</a>
+                    <a href="../../colorpage/blue.html" class="submenu-item color-blue">蒼殉街</a>
+                    <a href="../../colorpage/green.html" class="submenu-item color-green">滲緑街</a>
+                    <a href="../../colorpage/yellow.html" class="submenu-item color-yellow">黄惑街</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function changeMainImage(clickedImage) {
+            const mainImage = document.getElementById('mainImage');
+            const allSubImages = document.querySelectorAll('.sub-image');
+            
+            // メイン画像を変更
+            mainImage.src = clickedImage.src;
+            mainImage.alt = clickedImage.alt;
+            
+            // アクティブクラスを更新
+            allSubImages.forEach(img => img.classList.remove('active'));
+            clickedImage.classList.add('active');
+        }
+        
+        function showRedGroupDetail() {
+            hideGroupDetail();
+            
+            const detail = document.getElementById('detail-red');
+            const overlay = document.getElementById('overlay');
+            
+            if (detail && overlay) {
+                detail.classList.add('active');
+                overlay.classList.add('active');
+                
+                document.addEventListener('keydown', handleEscKey);
+            }
+        }
+        
+        function hideGroupDetail() {
+            const details = document.querySelectorAll('.group-detail');
+            const overlay = document.getElementById('overlay');
+            
+            details.forEach(detail => {
+                detail.classList.remove('active');
+            });
+            
+            if (overlay) {
+                overlay.classList.remove('active');
+            }
+            
+            document.removeEventListener('keydown', handleEscKey);
+        }
+        
+        function handleEscKey(event) {
+            if (event.key === 'Escape') {
+                hideGroupDetail();
+            }
+        }
+        
+        // オーバーレイクリックで閉じる
+        document.getElementById('overlay').addEventListener('click', hideGroupDetail);
+    </script>
+</body>
+</html>
