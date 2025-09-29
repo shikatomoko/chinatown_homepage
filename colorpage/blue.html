@@ -139,12 +139,21 @@
             margin-top: 30px;
         }
         
-        .person-item, .shop-item {
+        .person-item {
             display: flex;
             align-items: center;
             padding: 20px;
             background: #1a1a1a;
             transition: all 0.3s ease;
+        }
+        
+        .shop-item {
+            display: block;
+            padding: 20px;
+            background: #1a1a1a;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
         }
         
         .person-item:hover, .shop-item:hover {
@@ -440,24 +449,24 @@
         <div class="content-section">
             <h2 class="section-title">店舗情報</h2>
             <div class="shop-list">
-                 <div class="shop-item">
-                    <a href="../shoppage/shop_cult.html" class="shop-link">教団</a>
-                 </div>
-                 <div class="shop-item">
-                    <a href="../shoppage/shop_school.html" class="shop-link">学校</a>
-                </div>
-                 <div class="shop-item">
-                    <a href="../shoppage/shop_aquarium.html" class="shop-link">水族館</a>
-                 </div>
-                 <div class="shop-item">
-                    <a href="../shoppage/shop_museum.html" class="shop-link">博物館</a>
-                 </div>
-                  <div class="shop-item">
-                    <a href="../shoppage/shop_farm.html" class="shop-link">畑</a>
-                 </div>
-                 <div class="shop-item">
-                    <a href="../shoppage/shop_mine.html" class="shop-link">鉱山</a>
-                 </div>
+                 <a href="../shoppage/blue/shop_cult.html" class="shop-item">
+                    <span class="shop-link">教団</span>
+                 </a>
+                 <a href="../shoppage/blue/shop_school.html" class="shop-item">
+                    <span class="shop-link">学校</span>
+                </a>
+                 <a href="../shoppage/blue/shop_aquarium.html" class="shop-item">
+                    <span class="shop-link">水族館</span>
+                 </a>
+                 <a href="../shoppage/blue/shop_museum.html" class="shop-item">
+                    <span class="shop-link">博物館</span>
+                 </a>
+                  <a href="../shoppage/blue/shop_farm.html" class="shop-item">
+                    <span class="shop-link">畑</span>
+                 </a>
+                 <a href="../shoppage/blue/shop_mine.html" class="shop-item">
+                    <span class="shop-link">鉱山</span>
+                 </a>
             </div>
         </div>
     </div>

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>皮屋</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body {
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background-image: url("../../picture/white_header.png");
+            background-size: cover;
+            padding: 40px 60px;
+            background-repeat: no-repeat;
+        }
+        
+        .title {
+            font-size: clamp(4rem, 12vw, 5.5rem);
+            color: #ffffff;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: normal;
+            letter-spacing: 0.1em;
+            margin: 0;
+        }
+        
+        .top-section {
+            padding: 0 40px 40px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        
+        .main-image-container {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            min-height: 400px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+        
+        .sub-images-container {
+            background: #000;
+            padding: 30px 0;
+        }
+        
+        .sub-images-scroll {
+            display: flex;
+            gap: 20px;
+            padding: 0 40px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #ffffff #000;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar-track {
+            background: #000;
+        }
+        
+        .sub-images-scroll::-webkit-scrollbar-thumb {
+            background: #ffffff;
+            border-radius: 4px;
+        }
+        
+        .sub-image {
+            flex-shrink: 0;
+            width: 160px;
+            height: 90px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        .sub-image:hover {
+            border-color: #ffffff;
+            transform: scale(1.05);
+        }
+        
+        .sub-image.active {
+            border-color: #ffffff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        }
+        
+        .shop-info {
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .shop-info p {
+            font-size: 18px;
+            color: #e0e0e0;
+            margin: 8px 0;
+            font-weight: normal;
+        }
+        
+        .color-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: normal;
+            transition: color 0.3s ease;
+        }
+        
+        .color-link:hover {
+            color: #cccccc;
+        }
+        
+        .bottom-content {
+            background: #000;
+            padding: 60px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .content-section {
+            margin-bottom: 80px;
+        }
+        
+        .content-section:last-of-type {
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-size: clamp(24px, 4vw, 32px);
+            color: #ffffff;
+            font-weight: normal;
+            margin-bottom: 30px;
+            letter-spacing: 0.05em;
+        }
+        
+        .section-text {
+            font-size: clamp(16px, 2.5vw, 18px);
+            color: #e0e0e0;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .service-item {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .service-item:hover {
+            background: #2a2a2a;
+            transform: translateY(-3px);
+        }
+        
+        .service-title {
+            font-size: 22px;
+            color: #ffffff;
+            font-weight: normal;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 8px;
+        }
+        
+        .service-price {
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: normal;
+            margin-bottom: 8px;
+        }
+        
+        .service-requirement {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+        
+        .service-description {
+            font-size: 16px;
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .service-mechanics {
+            font-size: 14px;
+            color: #ccc;
+            margin-top: 12px;
+            padding-left: 16px;
+            border-left: 3px solid #ffffff;
+        }
+        
+        .service-warning {
+            font-size: 14px;
+            color: #ffffff;
+            background: transparent;
+            padding: 10px;
+            margin-top: 12px;
+            border-left: 4px solid #ffffff;
+            padding-left: 16px;
+        }
+        
+        .person-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .person-item {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+        }
+        
+        .person-item:hover {
+            background: #2a2a2a;
+            transform: translateY(-3px);
+        }
+        
+        .employee-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 20px;
+            border: 3px solid #ffffff;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .employee-info {
+            flex: 1;
+        }
+        
+        .employee-name {
+            font-size: 20px;
+            color: #ffffff;
+            font-weight: normal;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #ffffff;
+            padding-bottom: 5px;
+        }
+        
+        .employee-role {
+            font-size: 16px;
+            color: #e0e0e0;
+        }
+        
+        .white-group-btn {
+            background: #2a2a2a;
+            color: #fff;
+            border-radius: 8px;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .white-group-btn:hover {
+            background: #444;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* ホバーメニュー */
+        .hover-menu-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
+        }
+
+        .menu-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-icon:hover {
+            background: rgba(60, 60, 60, 0.95);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        .hover-menu {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            min-width: 200px;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 10px;
+            padding: 15px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .hover-menu-container:hover .hover-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .menu-item, .submenu-item {
+            display: block;
+            padding: 10px 20px;
+            color: #e8e8e8;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover, .submenu-item:hover {
+            background: rgba(60, 60, 60, 0.8);
+            color: #ffffff;
+            transform: translateX(5px);
+        }
+
+        .menu-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 10px 0;
+        }
+
+        .submenu {
+            position: relative;
+        }
+
+        .submenu-content {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            min-width: 150px;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 8px;
+            padding: 10px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .submenu:hover .submenu-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .color-black { color: #f5f5f5; }
+        .color-white { color: #ffffff; }
+        .color-red { color: #ff6b6b; }
+        .color-blue { color: #4fc3f7; }
+        .color-green { color: #43ff43; }
+        .color-yellow { color: #ffc107; }
+        
+        .group-detail {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(30, 30, 30, 0.95);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            padding: 25px;
+            max-width: 400px;
+            max-height: 70vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: none;
+        }
+        
+        .group-detail.active {
+            display: block;
+        }
+        
+        .group-detail h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ffffff;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            color: #cccccc;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        .shop-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .shop-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .shop-list a {
+            color: #e8e8e8;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-left: 12px;
+            font-weight: 500;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .shop-list a:hover {
+            color: #ffffff;
+            text-decoration: none;
+            transform: translateX(3px);
+        }
+        
+        .shop-icon {
+            width: 28px;
+            height: 28px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .shop-icon:hover {
+            transform: scale(1.1);
+            border-color: #ffffff;
+        }
+        
+        @media (max-width: 768px) {
+            .bottom-content {
+                padding: 40px 20px;
+            }
+            
+            .sub-images-scroll {
+                padding: 0 20px;
+            }
+            
+            .person-list, .service-list {
+                grid-template-columns: 1fr;
+            }
+
+            .hover-menu-container {
+                top: 15px;
+                left: 15px;
+            }
+
+            .menu-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            .hover-menu {
+                min-width: 180px;
+            }
+
+            .submenu-content {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                min-width: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .main-image-container {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .sub-image {
+                width: 120px;
+                height: 68px;
+            }
+
+            .hover-menu-container {
+                top: 10px;
+                left: 10px;
+            }
+
+            .menu-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .hover-menu {
+                min-width: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー部分（白色背景） -->
+    <div class="header">
+        <h1 class="title">皮屋</h1>
+    </div>
+    
+    <!-- メインコンテンツ -->
+    <div class="top-section">
+        <!-- 店舗情報 -->
+        <div class="shop-info">
+            <p>所属組織：<a href="../../colorpage/white.html" class="color-link">白葬街</a></p>
+            <p>場所：周辺エリア 　従業員：雨宮深雪</p>
+        </div>
+        
+        <!-- メイン画像部分 -->
+        <div class="main-image-container">
+            <img id="mainImage" class="main-image" src="../../shop_image/white/leather/Leather Shop (Workshop).png" alt="皮屋のメイン画像">
+        </div>
+        
+        <!-- サブ画像スライダー -->
+        <div class="sub-images-container">
+            <div class="sub-images-scroll">
+                <img class="sub-image active" src="../../shop_image/white/leather/Leather Shop (Room).png" alt="皮屋外観" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/white/leather/Leather Shop (Workshop).png" alt="皮屋内部" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/white/leather/Leather Shop (Interior).png" alt="皮屋商品" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/white/leather/Leather Shop (Exterior).png" alt="皮屋作業風景" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/white/leather/Leather Shop (Backyard).png" alt="皮屋商品ディスプレイ" onclick="changeMainImage(this)">
+            </div>
+        </div>
+    </div>
+    
+    <!-- 下部コンテンツ（黒背景） -->
+    <div class="bottom-content">
+        <div class="content-section">
+            <h2 class="section-title">概要</h2>
+            <p class="section-text">肉屋で処理された皮を利用し、日用品から装飾品まで多種多様な革製品を製作・販売している。工房兼店舗のような造りで、独特の匂いと生温かい雰囲気が漂っている。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">利用方法</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-title">皮の買い取り</div>
+                    <div class="service-price">料金：品質次第</div>
+                    <div class="service-requirement">必要信用値：20</div>
+                    <div class="service-description">
+                        持ち込んだ皮を買い取ってくれる。状態や希少性によって価格が変動する。
+                    </div>
+                    <div class="service-mechanics">
+                        特殊な皮（異形や特異体質者のもの）は高値で取引される場合もある。品質と希少性が価格決定の要因。
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-title">商品の購入</div>
+                    <div class="service-price">料金：10,000円〜</div>
+                    <div class="service-requirement">必要信用値：30</div>
+                    <div class="service-description">
+                        革靴、手袋、鞄、装飾品などが販売されている。実用性重視のものから、やや猟奇的な嗜好品まで幅広い。
+                    </div>
+                    <div class="service-mechanics">
+                        日用品から特殊な装飾品まで多様な革製品を取り扱い。品質と用途により価格が変動。
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-title">特注品</div>
+                    <div class="service-price">料金：要相談</div>
+                    <div class="service-requirement">必要信用値：60</div>
+                    <div class="service-description">
+                        依頼すれば特注品を製作してもらえる。依頼内容が猟奇的であるほど完成に時間や代価を要する。
+                    </div>
+                    <div class="service-warning">
+                        <strong>注意：</strong>特注品の内容によっては製作に長期間を要し、追加料金が発生する場合がある。猟奇的な依頼ほど高額になる傾向。
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">従業員</h2>
+            <div class="person-list">
+                <div class="person-item">
+                    <div class="employee-icon">雨</div>
+                    <div class="employee-info">
+                        <div class="employee-name">雨宮深雪</div>
+                        <div class="employee-role">店主・革職人</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <button class="white-group-btn" onclick="showWhiteGroupDetail()">白葬街のその他の店舗</button>
+    
+    <!-- オーバーレイ -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- 白組詳細ポップアップ -->
+   <div class="group-detail" id="detail-white">
+        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
+        <h3>白葬街の店舗</h3>
+        <ul class="shop-list">
+            <li><img src="../../shop_image/white/butcher/butcher.jpg" class="shop-icon" alt="肉屋"><a href="./shop_butcher.html">肉屋</a></li>
+            <li><img src="../../shop_image/white/leather/Leather Shop (Exterior).png" class="shop-icon" alt="皮屋"><a href="./shop_leather.html">皮屋</a></li>
+            <li><img src="../../shop_image/white/undertaker/Undertaker Shop (Exterior).png" class="shop-icon" alt="葬儀屋"><a href="./shop_undertaker.html">葬儀屋</a></li>
+    </div>
+    
+    <!-- ホバーメニュー -->
+    <div class="hover-menu-container">
+        <div class="menu-icon">☰</div>
+        <div class="hover-menu">
+            <a href="../../index.html" class="menu-item">ホーム</a>
+            <a href="../../rules.html" class="menu-item">特殊ルール</a>
+            <a href="../../jinngai.html" class="menu-item">人外設定</a>
+            <a href="../../world.html" class="menu-item">世界観設定</a>
+            <a href="../../characters.html" class="menu-item">キャラクター一覧</a>
+            <a href="../../shops.html" class="menu-item">店舗一覧</a>
+            <a href="../../tools.html" class="menu-item">ツール</a>
+
+            <div class="menu-divider"></div>
+            
+            <div class="submenu">
+                <span class="menu-item">各街ホーム ▶</span>
+                <div class="submenu-content">
+                    <a href="../../colorpage/black.html" class="submenu-item color-black">黒</a>
+                    <a href="../../colorpage/white.html" class="submenu-item color-white">白葬街</a>
+                    <a href="../../colorpage/red.html" class="submenu-item color-red">呑紅街</a>
+                    <a href="../../colorpage/blue.html" class="submenu-item color-blue">蒼殉街</a>
+                    <a href="../../colorpage/green.html" class="submenu-item color-green">滲緑街</a>
+                    <a href="../../colorpage/yellow.html" class="submenu-item color-yellow">黄惑街</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function changeMainImage(clickedImage) {
+            const mainImage = document.getElementById('mainImage');
+            const allSubImages = document.querySelectorAll('.sub-image');
+            
+            // メイン画像を変更
+            mainImage.src = clickedImage.src;
+            mainImage.alt = clickedImage.alt;
+            
+            // アクティブクラスを更新
+            allSubImages.forEach(img => img.classList.remove('active'));
+            clickedImage.classList.add('active');
+        }
+        
+        function showWhiteGroupDetail() {
+            hideGroupDetail();
+            
+            const detail = document.getElementById('detail-white');
+            const overlay = document.getElementById('overlay');
+            
+            if (detail && overlay) {
+                detail.classList.add('active');
+                overlay.classList.add('active');
+                
+                document.addEventListener('keydown', handleEscKey);
+            }
+        }
+        
+        function hideGroupDetail() {
+            const details = document.querySelectorAll('.group-detail');
+            const overlay = document.getElementById('overlay');
+            
+            details.forEach(detail => {
+                detail.classList.remove('active');
+            });
+            
+            if (overlay) {
+                overlay.classList.remove('active');
+            }
+            
+            document.removeEventListener('keydown', handleEscKey);
+        }
+        
+        function handleEscKey(event) {
+            if (event.key === 'Escape') {
+                hideGroupDetail();
+            }
+        }
+        
+        // モバイル対応のメニュー制御
+        function initMobileMenu() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const hoverMenu = document.querySelector('.hover-menu');
+            const submenu = document.querySelector('.submenu > .menu-item');
+            const submenuContent = document.querySelector('.submenu-content');
+            
+            if (menuIcon) {
+                menuIcon.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    hoverMenu.classList.toggle('show');
+                    if (submenuContent) submenuContent.classList.remove('show');
+                });
+            }
+            
+            if (submenu) {
+                submenu.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    submenuContent.classList.toggle('show');
+                });
+            }
+            
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.hover-menu-container')) {
+                    if (hoverMenu) hoverMenu.classList.remove('show');
+                    if (submenuContent) submenuContent.classList.remove('show');
+                }
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', initMobileMenu);
+        
+        // オーバーレイクリックで閉じる
+        document.getElementById('overlay').addEventListener('click', hideGroupDetail);
+    </script>
+</body>
+</html>
