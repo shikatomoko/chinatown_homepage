@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC一覧</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 15px;
+            background: linear-gradient(145deg, #0f0f0f 0%, #1a1a1a 50%, #2a2a2a 100%);
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            color: #e8e8e8;
+            box-sizing: border-box;
+        }
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            font-size: clamp(2em, 5vw, 3em);
+            font-weight: normal;
+            color: #ffffff;
+            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.8);
+            letter-spacing: 0.15em;
+            text-align: center;
+            width: 100%;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .player-section {
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 40px;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        
+        .player-title {
+            font-size: clamp(1.5em, 4vw, 2em);
+            font-weight: normal;
+            margin-bottom: 20px;
+            padding: 15px 0;
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            letter-spacing: 0.1em;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            color: #ffffff;
+            text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+        }
+        
+        .character-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: clamp(25px, 5vw, 40px);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .character-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(40, 40, 40, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: clamp(16px, 3vw, 20px) clamp(18px, 3vw, 22px) clamp(10px, 2vw, 12px);
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            min-width: 120px;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .character-item:hover {
+            background: rgba(50, 50, 50, 0.95);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .character-icon {
+            width: clamp(50px, 10vw, 64px);
+            height: clamp(50px, 10vw, 64px);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(30, 30, 30, 0.9);
+            margin-bottom: clamp(8px, 2vw, 12px);
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+        }
+        
+        .character-icon:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .character-name {
+            font-size: clamp(13px, 2.5vw, 15px);
+            font-weight: normal;
+            text-align: center;
+            margin-top: 3px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+            transition: all 0.3s ease;
+            word-wrap: break-word;
+            hyphens: auto;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            color: #ffffff;
+        }
+        
+        /* ホバーメニューシステム */
+        .hover-menu-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
+        }
+        
+        .menu-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-size: 20px;
+            color: #333;
+        }
+        
+        .menu-icon:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+        
+        .hover-menu {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 12px;
+            padding: 15px 0;
+            min-width: 200px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .hover-menu-container:hover .hover-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .menu-item {
+            display: block;
+            padding: 12px 20px;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transform: translateX(5px);
+        }
+        
+        .menu-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 8px 0;
+        }
+        
+        .submenu {
+            position: relative;
+        }
+        
+        .submenu-content {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 12px;
+            padding: 10px 0;
+            min-width: 150px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .submenu:hover .submenu-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        
+        .submenu-item {
+            display: block;
+            padding: 10px 16px;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .submenu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        
+        .color-red { color: #cc2936; }
+        .color-blue { color: #2563eb; }
+        .color-green { color: #16a34a; }
+        .color-yellow { color: #eab308; }
+        .color-white { color: #e0e0e0; }
+        .color-black { color: #666; }
+        
+        /* モバイル対応 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .player-section {
+                padding: 0 10px;
+                margin-bottom: 30px;
+            }
+            .character-list {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 20px;
+            }
+            .hover-menu-container {
+                top: 15px;
+                left: 15px;
+            }
+            .menu-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            .hover-menu {
+                min-width: 180px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .character-list {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 15px;
+            }
+            .hover-menu-container {
+                top: 10px;
+                left: 10px;
+            }
+            .menu-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            .submenu-content {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                min-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>PC一覧</h1>
+    
+    <!-- しかこ -->
+    <div class="player-section">
+        <h2 class="player-title">しかこ</h2>
+        <div class="character-list">
+            <a href="https://example.com/character1" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./character_icon/character1_icon.png" alt="キャラクター1_アイコン" class="character-icon">
+                <div class="character-name">キャラクター名1</div>
+            </a>
+            <a href="https://example.com/character2" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./character_icon/character2_icon.png" alt="キャラクター2_アイコン" class="character-icon">
+                <div class="character-name">キャラクター名2</div>
+            </a>
+            <!-- 追加のキャラクターがあればここに追加 -->
+        </div>
+    </div>
+    
+    <!-- かなう -->
+    <div class="player-section">
+        <h2 class="player-title">かなう</h2>
+        <div class="character-list">
+            <a href="https://example.com/character3" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./character_icon/character3_icon.png" alt="キャラクター3_アイコン" class="character-icon">
+                <div class="character-name">キャラクター名3</div>
+            </a>
+            <a href="https://example.com/character4" target="_blank" rel="noopener noreferrer" class="character-item">
+                <img src="./character_icon/character4_icon.png" alt="キャラクター4_アイコン" class="character-icon">
+                <div class="character-name">キャラクター名4</div>
+            </a>
+            <!-- 追加のキャラクターがあればここに追加 -->
+        </div>
+    </div>
+
+    <!-- ホバーメニュー -->
+    <div class="hover-menu-container">
+        <div class="menu-icon">☰</div>
+        <div class="hover-menu">
+            <a href="index.html" class="menu-item">ホーム</a>
+            <a href="rules.html" class="menu-item">特殊ルール</a>
+            <a href="jinngai.html" class="menu-item">人外設定</a>
+            <a href="world.html" class="menu-item">世界観設定</a>
+            <a href="characters.html" class="menu-item">キャラクター一覧</a>
+            <a href="shops.html" class="menu-item">店舗一覧</a>
+            <a href="tools.html" class="menu-item">ツール</a>
+            
+            <div class="menu-divider"></div>
+            
+            <div class="submenu">
+                <span class="menu-item">各街ホーム ▶</span>
+                <div class="submenu-content">
+                    <a href="colorpage/black.html" class="submenu-item color-black">黒</a>
+                    <a href="colorpage/white.html" class="submenu-item color-white">白葬街</a>
+                    <a href="colorpage/red.html" class="submenu-item color-red">呑紅街</a>
+                    <a href="colorpage/blue.html" class="submenu-item color-blue">蒼殉街</a>
+                    <a href="colorpage/green.html" class="submenu-item color-green">滲緑街</a>
+                    <a href="colorpage/yellow.html" class="submenu-item color-yellow">黄惑街</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // モバイル対応のメニュー制御
+        function initMobileMenu() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const hoverMenu = document.querySelector('.hover-menu');
+            const submenu = document.querySelector('.submenu > .menu-item');
+            const submenuContent = document.querySelector('.submenu-content');
+            
+            if (menuIcon) {
+                menuIcon.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    hoverMenu.classList.toggle('show');
+                    if (submenuContent) submenuContent.classList.remove('show');
+                });
+            }
+            
+            if (submenu) {
+                submenu.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    submenuContent.classList.toggle('show');
+                });
+            }
+            
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.hover-menu-container')) {
+                    if (hoverMenu) hoverMenu.classList.remove('show');
+                    if (submenuContent) submenuContent.classList.remove('show');
+                }
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', initMobileMenu);
+    </script>
+</body>
+</html>

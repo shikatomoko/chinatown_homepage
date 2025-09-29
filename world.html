@@ -1,14 +1,5 @@
-<!DOCTYP        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(145deg, #0f0f0f 0%, #1a1a1a 50%, #2a2a2a 100%);
-            font-family: 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
-            color: #e8e8e8;
-        }html lang="ja">
+<!DOCTYPE html>
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +11,7 @@
             flex-direction: column;
             align-items: center;
             background: linear-gradient(135deg, #181818 60%, #2d1a1a 100%);
-            font-family: 'Cinzel', 'Yu Gothic', '游ゴシック', serif;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
             min-height: 100vh;
             color: #e0e0e0;
         }
@@ -28,19 +19,21 @@
             margin-top: 40px;
             margin-bottom: 40px;
             font-size: 3em;
-            font-weight: 300;
+            font-weight: normal;
             color: #ffffff;
             text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.8);
             letter-spacing: 0.15em;
             text-align: center;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         h2 {
             color: #ffffff;
             font-size: 1.8em;
-            font-weight: 500;
+            font-weight: normal;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
             margin-bottom: 25px;
             text-align: center;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         p {
             color: #d0d0d0;
@@ -52,11 +45,13 @@
             font-size: clamp(14px, 2.5vw, 16px);
             padding: 0 20px;
             box-sizing: border-box;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: normal;
         }
         h3 {
             color: #e8e8e8;
             line-height: 1.7;
-            font-weight: 400;
+            font-weight: normal;
             font-size: clamp(16px, 3vw, 18px);
             max-width: 800px;
             width: 100%;
@@ -64,6 +59,7 @@
             margin-bottom: 18px;
             padding: 0 20px;
             box-sizing: border-box;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         .species-list {
             width: 100%;
@@ -82,8 +78,9 @@
             transition: all 0.3s ease;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
             font-size: clamp(1em, 2.5vw, 1.1em);
-            font-weight: 500;
+            font-weight: normal;
             backdrop-filter: blur(10px);
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         .species-item:hover {
             background: rgba(50, 50, 50, 0.95);
@@ -101,163 +98,24 @@
             margin-top: 12px;
             border-radius: 0 0 10px 10px;
             backdrop-filter: blur(10px);
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: normal;
         }
         .active .species-detail {
             display: block;
         }
         
-        /* モバイル対応 */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            h1 {
-                margin-top: 15px;
-                margin-bottom: 20px;
-                font-size: 2.2em;
-            }
-            h2 {
-                font-size: 1.5em;
-            }
-            p, h3 {
-                padding: 0 10px;
-            }
-            .species-list {
-                padding: 0 10px;
-            }
-            .species-item {
-                padding: 14px 16px;
-                margin-bottom: 15px;
-            }
-            .species-detail {
-                padding: 14px 16px;
-            }
-            .hover-menu-container {
-                top: 15px;
-                left: 15px;
-            }
-            .menu-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
-            }
-            .hover-menu {
-                min-width: 180px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2em;
-            }
-            h2 {
-                font-size: 1.3em;
-            }
-            p, h3 {
-                font-size: 14px;
-                padding: 0 8px;
-            }
-            .species-item {
-                padding: 12px 14px;
-                margin-bottom: 12px;
-            }
-            .species-detail {
-                padding: 12px 14px;
-                font-size: 13px;
-            }
-            .hover-menu-container {
-                top: 10px;
-                left: 10px;
-            }
-            .menu-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-            .hover-menu {
-                min-width: 160px;
-            }
-            .submenu-content {
-                position: fixed;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                min-width: 200px;
-            }
-        }        /* モバイル対応 */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            h1 {
-                margin-top: 15px;
-                margin-bottom: 20px;
-                font-size: 2.2em;
-            }
-            h2 {
-                font-size: 1.5em;
-                margin-bottom: 15px;
-            }
-            p, h3 {
-                padding: 0 10px;
-                text-align: left;
-            }
-            .species-list {
-                padding: 0 10px;
-            }
-            .species-item {
-                padding: 14px 16px;
-                margin-bottom: 15px;
-            }
-            .species-detail {
-                padding: 14px 16px;
-            }
-            .tab-container {
-                gap: 6px;
-                padding: 0 10px;
-            }
-            .tab-container button {
-                padding: 6px 10px;
-                font-size: 11px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8em;
-            }
-            h2 {
-                font-size: 1.3em;
-            }
-            p, h3 {
-                padding: 0 8px;
-                font-size: 14px;
-            }
-            .species-item {
-                padding: 12px 14px;
-                font-size: 1em;
-            }
-            .species-detail {
-                padding: 12px 14px;
-                font-size: 14px;
-            }
-            .tab-container button {
-                padding: 5px 8px;
-                font-size: 10px;
-                margin-bottom: 3px;
-            }
-        }
-        
         .org-tab {
             padding: 10px 16px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: normal;
             border: none;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             color: white;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         
         .org-tab:hover {
@@ -334,6 +192,7 @@
             width: 100%;
             text-align: left;
             cursor: pointer;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         
         .menu-item:hover {
@@ -381,6 +240,7 @@
             text-decoration: none;
             font-size: 13px;
             transition: all 0.3s ease;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
         }
         
         .submenu-item:hover {
@@ -394,16 +254,99 @@
         .color-yellow { color: #eab308; }
         .color-white { color: #e0e0e0; }
         .color-black { color: #666; }
+        
+        /* モバイル対応 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                margin-top: 15px;
+                margin-bottom: 20px;
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.5em;
+                margin-bottom: 15px;
+            }
+            p, h3 {
+                padding: 0 10px;
+                text-align: left;
+            }
+            .species-list {
+                padding: 0 10px;
+            }
+            .species-item {
+                padding: 14px 16px;
+                margin-bottom: 15px;
+            }
+            .species-detail {
+                padding: 14px 16px;
+            }
+            .hover-menu-container {
+                top: 15px;
+                left: 15px;
+            }
+            .menu-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+            .hover-menu {
+                min-width: 180px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            p, h3 {
+                padding: 0 8px;
+                font-size: 14px;
+            }
+            .species-item {
+                padding: 12px 14px;
+                font-size: 1em;
+            }
+            .species-detail {
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+            .hover-menu-container {
+                top: 10px;
+                left: 10px;
+            }
+            .menu-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            .hover-menu {
+                min-width: 160px;
+            }
+            .submenu-content {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                min-width: 200px;
+            }
+        }
     </style>
 </head>
 <body>
     <h1>世界観設定</h1>
-    <h2 text-align:center>概要</h2>
-        <h3 text-align:center>通常の世界から隔離された、常夜の犯罪都市。本都市の中では一般的な法規・倫理は一切の制約とならず、個々を縛るのは己自身のみである。
-        <br>表の世界では実行することが不可能な行為でも、この街では咎められることがない。社会が成熟し、悪が廃絶されても尚残る暗部。それを集約させた街がここ、暗黒中華街であった。
-　      <br>この街に集う人間は当然表の世界に居場所のない者である。もしくは自ら望んで、泥水に身を浸そうと選択した者であるのかもしれない。更に言えば、そこに棲まう者たちは厳密に言えば「人間」とすら呼べないのかもしれない。
-　      <br>何にせよ、この街の者に共通するものがたった一つだけある。</h3>
-　      <h2>彼らは紛れもない、悪である。</h2>
+    <h2>概要</h2>
+    <h3>通常の世界から隔離された、常夜の犯罪都市。本都市の中では一般的な法規・倫理は一切の制約とならず、個々を縛るのは己自身のみである。
+    <br>表の世界では実行することが不可能な行為でも、この街では咎められることがない。社会が成熟し、悪が廃絶されても尚残る暗部。それを集約させた街がここ、暗黒中華街であった。
+    <br>この街に集う人間は当然表の世界に居場所のない者である。もしくは自ら望んで、泥水に身を浸そうと選択した者であるのかもしれない。更に言えば、そこに棲まう者たちは厳密に言えば「人間」とすら呼べないのかもしれない。
+    <br>何にせよ、この街の者に共通するものがたった一つだけある。</h3>
+    <h2>彼らは紛れもない、悪である。</h2>
+    
     <div class="species-list">
         <div class="species-item" onclick="toggleDetail(this)">
             通貨
@@ -415,44 +358,24 @@
             交通機関
             <div class="species-detail">
                 <p>本都市の交通機関は「船」と「鉄道」の二つに分類される。</p>
-
-                <p>・船
-　              <br>街中に放射状に張り巡らされた水路を船で移動することができる。金のない庶民でも利用可能な、一般的なものである。
-　              <br>河川は中央の「砂時計広場(仮名)」を上流とし、街の端へと流れていく。水質も上流の方では比較的淀みが少ないが、端に至るにつれて様々な悪臭を放ち、有害物質も溶け込んだものへと変わる。下流の方で万が一河川へと転落すれば、生きて陸へと上がることは難しいだろう。
-　              <br>あくまでも船はこの河川を水の流れに従って動くものである。そのため上から下への移動は可能だが、下から上への移動は物理的に不可能である。
-　              <br>加えて河川の形状のため、船を使って別の組のテリトリーに移動することは不可能である。あくまでも船は、同一の組のテリトリー内を上から下へと移動するための交通機関でしかない。
-　              <br>船しか利用できないような貧民は、この街ではいつまで経っても上になど這い上がれないのだ。
-　              <br>船便の運営はそれぞれの区画の組に委ねられている。比較的新規参入もしやすいビジネスである。</p>
-                <p>・鉄道
-　              <br>街全体を環状に走る鉄道である。駅は各区画に1-2個程度存在する。
-　              <br>鉄道の最大の特徴は、船では不可能な区画間の移動が可能であることである。「黄組」から「緑組」、「緑組」から「赤組」と、乗客は自由にテリトリーを横断できる。更に船とは異なり、乗車することによる死のリスクも格段に低い。
-　              <br>その代わりに、鉄道を利用することができるのは本当に限られた一部の人間だけである。
-                <br>鉄道を利用するためには法外な金だけでなく、「信用」が必要である。その顔と名前が街中に轟くような存在でなければ、乗車することは不可能なのだ。
-　              <br>鉄道の運営は「黒組」の管轄である。万が一許諾なく鉄道に乗ろうとしたり、その架線に危害を加えるようなものがいれば、「黒組」は制裁を行うことを躊躇わないだろう。</p>
+                <p>・船<br>街中に放射状に張り巡らされた水路を船で移動することができる。金のない庶民でも利用可能な、一般的なものである。<br>河川は中央の「砂時計広場(仮名)」を上流とし、街の端へと流れていく。水質も上流の方では比較的淀みが少ないが、端に至るにつれて様々な悪臭を放ち、有害物質も溶け込んだものへと変わる。下流の方で万が一河川へと転落すれば、生きて陸へと上がることは難しいだろう。<br>あくまでも船はこの河川を水の流れに従って動くものである。そのため上から下への移動は可能だが、下から上への移動は物理的に不可能である。<br>加えて河川の形状のため、船を使って別の組のテリトリーに移動することは不可能である。あくまでも船は、同一の組のテリトリー内を上から下へと移動するための交通機関でしかない。<br>船しか利用できないような貧民は、この街ではいつまで経っても上になど這い上がれないのだ。<br>船便の運営はそれぞれの区画の組に委ねられている。比較的新規参入もしやすいビジネスである。</p>
+                <p>・鉄道<br>街全体を環状に走る鉄道である。駅は各区画に1-2個程度存在する。<br>鉄道の最大の特徴は、船では不可能な区画間の移動が可能であることである。「黄組」から「緑組」、「緑組」から「赤組」と、乗客は自由にテリトリーを横断できる。更に船とは異なり、乗車することによる死のリスクも格段に低い。<br>その代わりに、鉄道を利用することができるのは本当に限られた一部の人間だけである。<br>鉄道を利用するためには法外な金だけでなく、「信用」が必要である。その顔と名前が街中に轟くような存在でなければ、乗車することは不可能なのだ。<br>鉄道の運営は「黒組」の管轄である。万が一許諾なく鉄道に乗ろうとしたり、その架線に危害を加えるようなものがいれば、「黒組」は制裁を行うことを躊躇わないだろう。</p>
             </div>
         </div>
         <div class="species-item" onclick="toggleDetail(this)">
             時間/明かり
             <div class="species-detail">
-                <p>本都市においては「朝」「夜」という定義は厳密には意味を為さない。何故ならば常夜の地下都市に太陽など昇るはずもないからである。
-　              <br>この街で時間を司るのは太陽でなく、砂である。
-　              <br>街の中央には高さ１０ｍ以上はあろうという砂時計が設置されている。砂時計は１２時間で落ち切り、またくるりと回転する。街の人々はこの１２時間を半日と定義し、活動している。砂時計の回転を日の出と日没に重ね合わせているのである。
-　              <br>時計が回転し「朝」が訪れると、街中の明かりが灯る。提灯や灯籠がゆらゆらとざわめくその様は、まるで百鬼夜行のようであろう。人々は明るくなった街で思い思いに日中の時間を過ごす。
-　              <br>そうして１２時間が経ち時計が回ると、ぱたりと街の明かりが消える。この現象を街の人々は「夜」と呼んでいる。
-　              <br>現代では砂時計による時間指標以外にも、表の街から奪ったスマートフォンや時計などを用いて時間を把握している人々もいる。</p>
+                <p>本都市においては「朝」「夜」という定義は厳密には意味を為さない。何故ならば常夜の地下都市に太陽など昇るはずもないからである。<br>この街で時間を司るのは太陽でなく、砂である。<br>街の中央には高さ１０ｍ以上はあろうという砂時計が設置されている。砂時計は１２時間で落ち切り、またくるりと回転する。街の人々はこの１２時間を半日と定義し、活動している。砂時計の回転を日の出と日没に重ね合わせているのである。<br>時計が回転し「朝」が訪れると、街中の明かりが灯る。提灯や灯籠がゆらゆらとざわめくその様は、まるで百鬼夜行のようであろう。人々は明るくなった街で思い思いに日中の時間を過ごす。<br>そうして１２時間が経ち時計が回ると、ぱたりと街の明かりが消える。この現象を街の人々は「夜」と呼んでいる。<br>現代では砂時計による時間指標以外にも、表の街から奪ったスマートフォンや時計などを用いて時間を把握している人々もいる。</p>
             </div>
         </div>
         <div class="species-item" onclick="toggleDetail(this)">
             人種
             <div class="species-detail">
-                <p>本都市において人種という概念は希薄である。しかし「人間」か「それ以外」か、という区分は存在する。
-　              <br>人間でない存在は、街の中の特定の区画に集中して棲んでいる。彼らは特に人間と変わらないコミュニケーションを取ることが可能であり、人間と変わらずに日々を暮らしている。基本的には人間に危害を加えることもなく、非常に友好的である。街の人々も、その受容の程度には個人差があるが、それなりに普通に彼らに接している。
-　              <br>例外は「青組」の人々である。彼らは人間至上主義であるため、人外の存在を一切許容しない。「青組」の区画には人外の居住地区は存在しない。
-　              <br>それとは対照的に「赤組」は人外との関係を強く持っている。彼らは己の区画の一部を人外に割譲し、その対価として人外の技術や力を味方につけることに成功した。そのため「赤組」の東側のエリアは人外のみが棲まう特別区画となっており、人間の侵入は推奨されていない。
-　              <br>件の区画に人間が入った場合どうなるかは、人外たちの気分次第と言うしかないだろう。一つ言えるのは、一枚壁を挟んだその先で人の理屈など通じるはずもないということだ。
-　              <br>暗黒中華街に棲まう人外の詳細な情報については、別途記載する。</p>
+                <p>本都市において人種という概念は希薄である。しかし「人間」か「それ以外」か、という区分は存在する。<br>人間でない存在は、街の中の特定の区画に集中して棲んでいる。彼らは特に人間と変わらないコミュニケーションを取ることが可能であり、人間と変わらずに日々を暮らしている。基本的には人間に危害を加えることもなく、非常に友好的である。街の人々も、その受容の程度には個人差があるが、それなりに普通に彼らに接している。<br>例外は「青組」の人々である。彼らは人間至上主義であるため、人外の存在を一切許容しない。「青組」の区画には人外の居住地区は存在しない。<br>それとは対照的に「赤組」は人外との関係を強く持っている。彼らは己の区画の一部を人外に割譲し、その対価として人外の技術や力を味方につけることに成功した。そのため「赤組」の東側のエリアは人外のみが棲まう特別区画となっており、人間の侵入は推奨されていない。<br>件の区画に人間が入った場合どうなるかは、人外たちの気分次第と言うしかないだろう。一つ言えるのは、一枚壁を挟んだその先で人の理屈など通じるはずもないということだ。<br>暗黒中華街に棲まう人外の詳細な情報については、別途記載する。</p>
             </div>
         </div>
+    </div>
+
     <script>
         function toggleDetail(element) {
             element.classList.toggle('active');
@@ -465,21 +388,15 @@
             const submenu = document.querySelector('.submenu > .menu-item');
             const submenuContent = document.querySelector('.submenu-content');
             
-            // メニューアイコンクリック
             if (menuIcon) {
                 menuIcon.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     hoverMenu.classList.toggle('show');
-                    
-                    // サブメニューが開いていたら閉じる
-                    if (submenuContent) {
-                        submenuContent.classList.remove('show');
-                    }
+                    if (submenuContent) submenuContent.classList.remove('show');
                 });
             }
             
-            // サブメニュートリガークリック
             if (submenu) {
                 submenu.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -488,7 +405,6 @@
                 });
             }
             
-            // メニュー外クリックで閉じる
             document.addEventListener('click', function(e) {
                 if (!e.target.closest('.hover-menu-container')) {
                     if (hoverMenu) hoverMenu.classList.remove('show');
@@ -497,7 +413,6 @@
             });
         }
         
-        // ページ読み込み完了後に初期化
         document.addEventListener('DOMContentLoaded', initMobileMenu);
     </script>
 
