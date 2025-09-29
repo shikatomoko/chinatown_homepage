@@ -561,5 +561,48 @@
             clickedImage.classList.add('active');
         }
     </script>
+    <script>
+        // モバイル対応のメニュー制御
+        function initMobileMenu() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const hoverMenu = document.querySelector('.hover-menu');
+            const submenu = document.querySelector('.submenu > .menu-item');
+            const submenuContent = document.querySelector('.submenu-content');
+            
+            // メニューアイコンクリック
+            if (menuIcon) {
+                menuIcon.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    hoverMenu.classList.toggle('show');
+                    
+                    // サブメニューが開いていたら閉じる
+                    if (submenuContent) {
+                        submenuContent.classList.remove('show');
+                    }
+                });
+            }
+            
+            // サブメニュートリガークリック
+            if (submenu) {
+                submenu.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    submenuContent.classList.toggle('show');
+                });
+            }
+            
+            // メニュー外クリックで閉じる
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.hover-menu-container')) {
+                    if (hoverMenu) hoverMenu.classList.remove('show');
+                    if (submenuContent) submenuContent.classList.remove('show');
+                }
+            });
+        }
+        
+        // ページ読み込み完了後に初期化
+        document.addEventListener('DOMContentLoaded', initMobileMenu);
+    </script>
 </body>
 </html>

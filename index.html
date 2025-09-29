@@ -189,6 +189,8 @@
             transition: all 0.3s ease;
             font-size: 20px;
             color: #333;
+            touch-action: manipulation;
+            user-select: none;
         }
         
         .menu-icon:hover {
@@ -212,10 +214,18 @@
             transition: all 0.3s ease;
         }
         
-        .hover-menu-container:hover .hover-menu {
+        .hover-menu-container:hover .hover-menu,
+        .hover-menu.show {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
+        }
+        
+        .submenu:hover .submenu-content,
+        .submenu-content.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
         }
         
         .menu-item {
@@ -230,6 +240,8 @@
             width: 100%;
             text-align: left;
             cursor: pointer;
+            touch-action: manipulation;
+            user-select: none;
         }
         
         .menu-item:hover {
@@ -264,11 +276,7 @@
             transition: all 0.3s ease;
         }
         
-        .submenu:hover .submenu-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-        }
+
         
         .submenu-item {
             display: block;
@@ -539,6 +547,72 @@
 
         // どのページから来てもアニメーションを再生（sessionStorageを削除）
         // sessionStorage.removeItem('visited'); // セッション記録を削除
+        
+        // モバイル対応のメニュー機能
+        function initMobileMenu() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const hoverMenu = document.querySelector('.hover-menu');
+            const submenu = document.querySelector('.submenu');
+            const submenuContent = document.querySelector('.submenu-content');
+            let menuOpen = false;
+            let submenuOpen = false;
+
+            // メニューアイコンのクリック/タップ処理
+            menuIcon.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                if (menuOpen) {
+                    hoverMenu.classList.remove('show');
+                    menuOpen = false;
+                } else {
+                    hoverMenu.classList.add('show');
+                    menuOpen = true;
+                }
+            });
+
+            // サブメニューのクリック/タップ処理
+            if (submenu) {
+                const submenuSpan = submenu.querySelector('span');
+                submenuSpan.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    if (submenuOpen) {
+                        submenuContent.classList.remove('show');
+                        submenuOpen = false;
+                    } else {
+                        submenuContent.classList.add('show');
+                        submenuOpen = true;
+                    }
+                });
+            }
+
+            // 外部クリックでメニューを閉じる
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.hover-menu-container')) {
+                    hoverMenu.classList.remove('show');
+                    if (submenuContent) submenuContent.classList.remove('show');
+                    menuOpen = false;
+                    submenuOpen = false;
+                }
+            });
+
+            // ESCキーでメニューを閉じる
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    hoverMenu.classList.remove('show');
+                    if (submenuContent) submenuContent.classList.remove('show');
+                    menuOpen = false;
+                    submenuOpen = false;
+                }
+            });
+        }
+
+        // DOMロード後にモバイルメニューを初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initMobileMenu();
+        });
         
         // アニメーション開始（0.5秒後開始）
         setTimeout(startAnimation, 500);
