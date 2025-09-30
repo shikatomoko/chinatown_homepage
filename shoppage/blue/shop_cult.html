@@ -21,22 +21,23 @@
     <div class="top-section">
         <!-- 店舗情報 -->
         <div class="shop-info">
-            <p>所属組織：<a href="../../colorpage/blue.html" class="color-link">蒼典街</a></p>
-            <p>エリア：中央・宗教エリア　営業時間：24時間　業種：宗教団体</p>
+            <p>所属組織：<a href="../../colorpage/blue.html" class="color-link">蒼殉街</a></p>
+            <p>場所：中央区 　従業員：教祖／司祭／修道女／信者代表</p>
         </div>
         
         <!-- メイン画像部分 -->
         <div class="main-image-container">
-            <img id="mainImage" class="main-image" src="../../shop_image/blue/other/cult.png" alt="教団本部のメイン画像">
+            <img id="mainImage" class="main-image" src="../../shop_image/blue/cult/Religious facility (altar).png" alt="教団本部のメイン画像">
         </div>
         
         <!-- サブ画像スライダー -->
         <div class="sub-images-container">
             <div class="sub-images-scroll">
-                <img class="sub-image active" src="../../shop_image/blue/other/cult.png" alt="教団本部外観" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/blue/other/cult_hall.png" alt="礼拝堂" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/blue/other/cult_chamber.png" alt="儀式の間" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/blue/other/cult_sanctuary.png" alt="聖域" onclick="changeMainImage(this)">
+                <img class="sub-image active" src="../../shop_image/blue/cult/Religious facility (exterior).png" alt="教団本部外観" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/blue/cult/Religious facility (bedroom).png" alt="教祖の住居" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/blue/cult/Religious facility (altar).png" alt="チャペル" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/blue/cult/Religious facility (huge chapel).png" alt="信者の寮" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/blue/cult/bedroom_blue.jpg" alt="地下聖堂" onclick="changeMainImage(this)">
             </div>
         </div>
     </div>
@@ -45,37 +46,38 @@
     <div class="bottom-content">
         <div class="content-section">
             <h2 class="section-title">概要</h2>
-            <p class="section-text">蒼典街の中心部に位置する謎に満ちた宗教団体の本部。表向きは平和を説く宗教組織だが、実際には古代の秘密の教義を継承している。地下には巨大な儀式場があり、秘密の儀式や禁断の研究が行われているとされる。</p>
+            <p class="section-text">蒼殉組の主軸を成す教団の本部。荘厳なチャペルや教祖の住居、信者の寮、儀式のための地下聖堂などを備える。</p>
+            <p class="section-text">外見は荘厳で神聖な雰囲気に包まれているが、内部では狂信と献身を強いる異様な空気が漂う。</p>
         </div>
         
         <div class="content-section">
-            <h2 class="section-title">利用方法・料金</h2>
+            <h2 class="section-title">利用方法</h2>
             <div class="service-list">
                 <div class="service-item">
-                    <div class="service-title">一般礼拝</div>
-                    <div class="service-price">献金：任意</div>
-                    <div class="service-requirement">信用値条件：なし</div>
+                    <div class="service-title">礼拝</div>
+                    <div class="service-price">料金：無料（献金が推奨され、額が多いほど優遇される）</div>
+                    <div class="service-requirement">必要信用値：20以上（信用が低いと入場は許されない）</div>
                     <div class="service-description">
-                        一般向けの礼拝への参加。平和と調和を説く教えを聞くことができる
+                        荘厳なチャペルでの祈りと瞑想。献金の額によって座席や待遇が決定される。
                     </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-title">信者向け集会</div>
-                    <div class="service-price">入会金：100,000円</div>
-                    <div class="service-requirement">信用値条件：30以上</div>
+                    <div class="service-title">告解</div>
+                    <div class="service-price">料金：10,000円〜（秘密保持の度合いや深刻さによって変動）</div>
+                    <div class="service-requirement">必要信用値：40以上（信者と認められていなければ利用不可）</div>
                     <div class="service-description">
-                        信者限定の集会への参加。より深い教義や秘伝の知識を学習可能
+                        司祭への告白と懺悔。秘密の重要度や危険性に応じて料金が設定される。
                     </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-title">秘密の儀式</div>
-                    <div class="service-price">招待制のみ</div>
-                    <div class="service-requirement">信用値条件：80以上</div>
+                    <div class="service-title">殉教</div>
+                    <div class="service-price">料金：なし（全てを捧げる行為のため）</div>
+                    <div class="service-requirement">必要信用値：80以上（教祖に選ばれし者のみ実行可能）</div>
                     <div class="service-description">
-                        地下聖域での特別な儀式への参加。古代の秘密を体験できる
+                        教団への完全なる献身を示す最終的な儀式。
                     </div>
-                    <div class="service-mechanics">
-                        超自然的な力の授与や禁断の知識の伝授が行われる
+                    <div class="service-warning">
+                        <strong>備考：</strong>成功すれば「最高の信仰値」を得るが、キャラクターとしての生存は保証されない。
                     </div>
                 </div>
             </div>
@@ -88,42 +90,38 @@
                     <div class="employee-icon">教</div>
                     <div class="employee-info">
                         <div class="employee-name">教祖</div>
-                        <div class="employee-role">教団統括管理</div>
+                        <div class="employee-role">教団の絶対的指導者</div>
                     </div>
                 </div>
                 <div class="person-item">
                     <div class="employee-icon">司</div>
                     <div class="employee-info">
-                        <div class="employee-name">司祭・修道女</div>
-                        <div class="employee-role">儀式執行・信者指導</div>
+                        <div class="employee-name">司祭</div>
+                        <div class="employee-role">儀式の執行・信者の指導</div>
+                    </div>
+                </div>
+                <div class="person-item">
+                    <div class="employee-icon">修</div>
+                    <div class="employee-info">
+                        <div class="employee-name">修道女</div>
+                        <div class="employee-role">日常の世話・儀式の補助</div>
+                    </div>
+                </div>
+                <div class="person-item">
+                    <div class="employee-icon">信</div>
+                    <div class="employee-info">
+                        <div class="employee-name">信者代表</div>
+                        <div class="employee-role">信者の統率・外部との交渉</div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="content-section">
-            <h2 class="section-title">その他の蒼典街店舗</h2>
-            <button class="blue-group-btn" onclick="showBlueGroupDetail()">蒼典街店舗一覧</button>
-        </div>
     </div>
     
-    <!-- オーバーレイ -->
-    <div class="overlay" id="overlay"></div>
-    
-    <!-- 青組詳細ポップアップ -->
-    <div class="group-detail" id="detail-blue">
-        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3>蒼典街の店舗</h3>
-        <ul class="shop-list">
-            <li><img src="../../shop_image/blue/museum/museumpng.png" class="shop-icon" alt="博物館"><a href="./shop_museum.html">博物館</a></li>
-            <li><img src="../../shop_image/blue/other/aquarium.png" class="shop-icon" alt="水族館"><a href="./shop_aquarium.html">水族館</a></li>
-            <li><img src="../../shop_image/blue/other/school.png" class="shop-icon" alt="学校"><a href="./shop_school.html">学校</a></li>
-            <li><img src="../../shop_image/blue/other/farm.png" class="shop-icon" alt="農場"><a href="./shop_farm.html">畑</a></li>
-            <li><img src="../../shop_image/blue/other/mine.png" class="shop-icon" alt="鉱山"><a href="./shop_mine.html">鉱山</a></li>
-            <li><img src="../../shop_image/blue/other/cult.png" class="shop-icon" alt="宗教施設"><a href="./shop_cult.html">宗教施設</a></li>
-        </ul>
+    <div class="content-section">
+        <button class="blue-group-btn" onclick="showBlueGroupDetail()">蒼殉街の店舗一覧</button>
     </div>
-
+    
     <script>
         function changeMainImage(clickedImage) {
             const mainImage = document.getElementById('mainImage');
@@ -137,8 +135,16 @@
             allSubImages.forEach(img => img.classList.remove('active'));
             clickedImage.classList.add('active');
         }
+        
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
     </script>
     <script src="bluepopup.js"></script>
     <script src="../../common/navigation.js"></script>
 </body>
 </html>
+
+
+

@@ -21,22 +21,25 @@
     <div class="top-section">
         <!-- 店舗情報 -->
         <div class="shop-info">
-            <p>所属組織：<a href="../../colorpage/blue.html" class="color-link">蒼典街</a></p>
-            <p>エリア：郊外・農業エリア　営業時間：05:00-18:00　業種：農業・畜産</p>
+            <p>所属組織：<a href="../../colorpage/blue.html" class="color-link">蒼殉街</a></p>
+            <p>エリア：郊外　　業種：農業・畜産</p>
         </div>
         
         <!-- メイン画像部分 -->
         <div class="main-image-container">
-            <img id="mainImage" class="main-image" src="../../shop_image/blue/other/farm.png" alt="畑のメイン画像">
+            <img id="mainImage" class="main-image" src="../../shop_image/blue/farm/Farm (Exterior).png" alt="畑のメイン画像">
         </div>
         
         <!-- サブ画像スライダー -->
         <div class="sub-images-container">
             <div class="sub-images-scroll">
-                <img class="sub-image active" src="../../shop_image/blue/other/farm.png" alt="畑全景" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/blue/other/farm_field.png" alt="農作地" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/blue/other/farm_barn.png" alt="農舎" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/blue/other/farm_greenhouse.png" alt="温室" onclick="changeMainImage(this)">
+                <img class="sub-image active" src="../../shop_image/blue/farm/Farm (Exterior).png" alt="畑全景" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/blue/farm/Farm (Cage).png" alt="農作地" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/blue/farm/Farm (Greenhouse).png" alt="農舎" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/blue/farm/Farm (Greenhouse2).png" alt="温室" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/blue/farm/Farm (Greenhouse3).png" alt="温室" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/blue/farm/Farm (Livestock Barn).png" alt="地下施設" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/blue/farm/Farm (Shop).png" alt="温室" onclick="changeMainImage(this)">
             </div>
         </div>
     </div>
@@ -101,29 +104,10 @@
             </div>
         </div>
         
-        <div class="content-section">
-            <h2 class="section-title">その他の蒼典街店舗</h2>
-            <button class="blue-group-btn" onclick="showBlueGroupDetail()">蒼典街店舗一覧</button>
-        </div>
+         <div class="content-section">
+        <button class="blue-group-btn" onclick="showBlueGroupDetail()">蒼殉街の店舗一覧</button>
     </div>
     
-    <!-- オーバーレイ -->
-    <div class="overlay" id="overlay"></div>
-    
-    <!-- 青組詳細ポップアップ -->
-    <div class="group-detail" id="detail-blue">
-        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3>蒼典街の店舗</h3>
-        <ul class="shop-list">
-            <li><img src="../../shop_image/blue/museum/museumpng.png" class="shop-icon" alt="博物館"><a href="./shop_museum.html">博物館</a></li>
-            <li><img src="../../shop_image/blue/other/aquarium.png" class="shop-icon" alt="水族館"><a href="./shop_aquarium.html">水族館</a></li>
-            <li><img src="../../shop_image/blue/other/school.png" class="shop-icon" alt="学校"><a href="./shop_school.html">学校</a></li>
-            <li><img src="../../shop_image/blue/other/farm.png" class="shop-icon" alt="農場"><a href="./shop_farm.html">畑</a></li>
-            <li><img src="../../shop_image/blue/other/mine.png" class="shop-icon" alt="鉱山"><a href="./shop_mine.html">鉱山</a></li>
-            <li><img src="../../shop_image/blue/other/cult.png" class="shop-icon" alt="宗教施設"><a href="./shop_cult.html">宗教施設</a></li>
-        </ul>
-    </div>
-
     <script>
         function changeMainImage(clickedImage) {
             const mainImage = document.getElementById('mainImage');
@@ -137,8 +121,18 @@
             allSubImages.forEach(img => img.classList.remove('active'));
             clickedImage.classList.add('active');
         }
+        
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
     </script>
     <script src="bluepopup.js"></script>
     <script src="../../common/navigation.js"></script>
 </body>
 </html>
+
+
+
+
+           

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../common/styles.css">
     <link rel="stylesheet" href="../../common/navigation.css">
     <link rel="stylesheet" href="shopblack.css">
+    <link rel="stylesheet" href="blackpopup.css">
 </head>
 <body>
     <div id="navigation-placeholder"></div>
@@ -81,36 +82,21 @@
         <div class="content-section">
             <h2 class="section-title">関係者</h2>
             <div class="person-list">
-                <a href="../../characterpage/character_aren.html" class="person-item">
-                    <div class="employee-icon">亞</div>
+                <a href="../../characterpage/black/character_kuro.html" class="person-item">
+                    <div class="employee-icon">クロ</div>
                     <div class="employee-info">
-                        <div class="employee-name">阿廉（あれん）</div>
-                        <div class="employee-role">城主</div>
+                        <div class="employee-name">クロ</div>
+                        <div class="employee-role">管理者</div>
                     </div>
                 </a>
             </div>
         </div>
-        
-        <div class="content-section">
-            <h2 class="section-title">その他の黒組店舗</h2>
-            <button class="black-group-btn" onclick="showBlackGroupDetail()">黒組店舗一覧</button>
-        </div>
-    </div>
     
     <!-- 黒組詳細ポップアップ -->
-    <div id="detail-black" class="group-detail">
-        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3>黒組店舗</h3>
-        <ul class="shop-list">
-            <li>
-                <img src="../../shop_image/black/castle/castle.jpg" alt="城" class="shop-icon">
-                <a href="shop_castle.html">城</a>
-            </li>
-        </ul>
+      <div class="content-section">
+        <button class="black-group-btn" onclick="showBlackGroupDetail()">黒組店舗一覧</button>
     </div>
     
-    <div id="overlay" class="overlay"></div>
-
     <script>
         function changeMainImage(clickedImage) {
             const mainImage = document.getElementById('mainImage');
@@ -125,44 +111,15 @@
             clickedImage.classList.add('active');
         }
         
-        function showBlackGroupDetail() {
-            hideGroupDetail();
-            
-            const detail = document.getElementById('detail-black');
-            const overlay = document.getElementById('overlay');
-            
-            if (detail && overlay) {
-                detail.classList.add('active');
-                overlay.classList.add('active');
-                
-                document.addEventListener('keydown', handleEscKey);
-            }
-        }
-        
-        function hideGroupDetail() {
-            const detail = document.querySelector('.group-detail.active');
-            const overlay = document.getElementById('overlay');
-            
-            if (detail) {
-                detail.classList.remove('active');
-            }
-            
-            if (overlay) {
-                overlay.classList.remove('active');
-            }
-            
-            document.removeEventListener('keydown', handleEscKey);
-        }
-        
-        function handleEscKey(event) {
-            if (event.key === 'Escape') {
-                hideGroupDetail();
-            }
-        }
-        
-        // オーバーレイクリックで閉じる
-        document.getElementById('overlay').addEventListener('click', hideGroupDetail);
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
     </script>
+    <script src="blackpopup.js"></script>
     <script src="../../common/navigation.js"></script>
 </body>
 </html>
+
+
+

@@ -113,7 +113,7 @@
     flex-shrink: 0;
 }
 
-.yellow-group-btn {
+.red-group-btn {
     background-color: #2a2a2a;
     color: white;
     border: none;
@@ -128,7 +128,7 @@
     display: block;
 }
 
-.yellow-group-btn:hover {
+.red-group-btn:hover {
     background-color: #01cd088a;
 }
 

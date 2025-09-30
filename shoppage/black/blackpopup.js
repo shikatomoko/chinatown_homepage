@@ -1,11 +1,9 @@
-// 青組詳細ポップアップのJavaScript
-
-function showBlueGroupDetail() {
+function showBlackGroupDetail() {
     hideGroupDetail();
     
     // 既存の要素をチェックし、なければ作成
     let overlay = document.getElementById('overlay');
-    let detail = document.getElementById('detail-blue');
+    let detail = document.getElementById('detail-black');
     
     if (!overlay) {
         overlay = document.createElement('div');
@@ -18,17 +16,14 @@ function showBlueGroupDetail() {
     if (!detail) {
         detail = document.createElement('div');
         detail.className = 'group-detail';
-        detail.id = 'detail-blue';
+        detail.id = 'detail-black';
         detail.innerHTML = `
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3>蒼殉街の店舗</h3>
+        <h3>黒組店舗</h3>
         <ul class="shop-list">
-            <li><img src="../../shop_image/blue/cult/Religious facility (altar).png" class="shop-icon" alt="教団本部"><a href="./shop_cult.html">教団本部</a></li>
-            <li><img src="../../shop_image/blue/school/School (Classroom).png" class="shop-icon" alt="学校"><a href="./shop_school.html">学校</a></li>
-            <li><img src="../../shop_image/blue/aquarium/Aquarium (Exterior).png" class="shop-icon" alt="水族館"><a href="./shop_aquarium.html">水族館</a></li>
-            <li><img src="../../shop_image/blue/museum/museum.png" class="shop-icon" alt="博物館"><a href="./shop_museum.html">博物館</a></li>
-            <li><img src="../../shop_image/blue/farm/Farm (Exterior).png" class="shop-icon" alt="畑"><a href="./shop_farm.html">畑</a></li>
-            <li><img src="../../shop_image/blue/mine/mine.png" class="shop-icon" alt="鉱山"><a href="./shop_mine.html">鉱山</a></li>
+            <li>
+                <img src="../../shop_image/black/castle/castle.jpg" alt="城" class="shop-icon"><a href="shop_castle.html">城</a>
+            </li>
         </ul>
         `;
         document.body.appendChild(detail);

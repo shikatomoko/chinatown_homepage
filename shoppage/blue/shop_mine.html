@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>鉱山</title>
+<!DOC    <title>鉱山</title>
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../../common/styles.css">
     <link rel="stylesheet" href="../../common/navigation.css">
@@ -21,22 +16,20 @@
     <div class="top-section">
         <!-- 店舗情報 -->
         <div class="shop-info">
-            <p>所属組織：<a href="../../colorpage/blue.html" class="color-link">蒼典街</a></p>
-            <p>エリア：郊外・工業エリア　営業時間：24時間　業種：採掘・精錬業</p>
+            <p>所属組織：<a href="../../colorpage/blue.html" class="color-link">蒼殉街</a></p>
+            <p>場所：郊外 　従業員：坑夫（人間・人外混成）／監督者（黄組配下の現地管理者）／護衛隊員</p>
         </div>
         
         <!-- メイン画像部分 -->
         <div class="main-image-container">
-            <img id="mainImage" class="main-image" src="../../shop_image/blue/other/mine.png" alt="鉱山のメイン画像">
+            <img id="mainImage" class="main-image" src="../../shop_image/blue/mine/mine.png" alt="鉱山のメイン画像">
         </div>
         
         <!-- サブ画像スライダー -->
         <div class="sub-images-container">
             <div class="sub-images-scroll">
-                <img class="sub-image active" src="../../shop_image/blue/other/mine.png" alt="鉱山外観" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/blue/other/mine_entrance.png" alt="鉱山入口" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/blue/other/mine_shaft.png" alt="採掘坑道" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/blue/other/mine_deep.png" alt="深層部" onclick="changeMainImage(this)">
+                <img class="sub-image active" src="../../shop_image/blue/mine/mine.png" alt="鉱山外観" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/blue/mine/mine_interior.png" alt="鉱山内部" onclick="changeMainImage(this)">
             </div>
         </div>
     </div>
@@ -45,37 +38,32 @@
     <div class="bottom-content">
         <div class="content-section">
             <h2 class="section-title">概要</h2>
-            <p class="section-text">蒼典街郊外にある巨大な鉱山施設。表向きは一般的な鉱物資源の採掘を行っているが、実際には地底深くで謎の物質の発掘も行われている。最深部には古代遺跡があるとされ、そこで発見される遺物は秘密裏に取引されている。</p>
+            <p class="section-text">地下深くに広がる鉱脈を掘り出す鉱山。貴金属・希少鉱石・呪的鉱石などを産出し、蒼殉街の財源の一翼を担う。採掘は危険を伴い、劣悪な労働環境と高い死亡率が常態化していると言われる。</p>
         </div>
         
         <div class="content-section">
-            <h2 class="section-title">利用方法・料金</h2>
+            <h2 class="section-title">利用方法</h2>
             <div class="service-list">
                 <div class="service-item">
-                    <div class="service-title">鉱山見学</div>
-                    <div class="service-price">見学料：2,000円</div>
-                    <div class="service-requirement">信用値条件：10以上</div>
+                    <div class="service-title">鉱物の購入</div>
+                    <div class="service-price">料金：一般鉱石1袋=2,000円〜5,000円／貴金属塊（小）=20,000円〜／希少鉱石=50,000円〜200,000円</div>
+                    <div class="service-requirement">必要信用値：一般購入は信用20〜、希少鉱石は信用70以上推奨</div>
                     <div class="service-description">
-                        一般エリアの鉱山見学。採掘作業の様子や設備を見ることができる
+                        鉱山で採掘された各種鉱物の購入が可能。一般的な鉱石から希少鉱石、呪的鉱石まで幅広く取り扱い。
+                    </div>
+                    <div class="service-warning">
+                        <strong>特記事項：</strong>呪的鉱石は触れるだけで副作用が出る場合がある（SAN減少・幻覚等）。購入時に簡易的な安全説明がなされるが、細部は自己責任。
                     </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-title">鉱物購入</div>
-                    <div class="service-price">市場価格</div>
-                    <div class="service-requirement">信用値条件：25以上</div>
+                    <div class="service-title">人材派遣</div>
+                    <div class="service-price">料金（目安）：一般労働者1人日=2,000円〜5,000円／熟練1人日=10,000円〜／護衛1人日=15,000円〜</div>
+                    <div class="service-requirement">必要信用値：50</div>
                     <div class="service-description">
-                        採掘された鉱物の直接購入。希少な鉱石や宝石も取り扱い
-                    </div>
-                </div>
-                <div class="service-item">
-                    <div class="service-title">深層部立ち入り</div>
-                    <div class="service-price">要相談</div>
-                    <div class="service-requirement">信用値条件：75以上</div>
-                    <div class="service-description">
-                        鉱山深層部への特別立ち入り。古代遺跡や謎の物質を調査可能
+                        坑内作業員、運搬要員、臨時護衛、熟練掘削手などの派遣サービス。短期・長期いずれも対応可能。
                     </div>
                     <div class="service-mechanics">
-                        古代文明の遺物や超常的な鉱物が発見されることがある
+                        危険な作業環境での経験豊富な人材を派遣。各種作業に特化した専門技能を持つ者も在籍。
                     </div>
                 </div>
             </div>
@@ -85,45 +73,34 @@
             <h2 class="section-title">従業員</h2>
             <div class="person-list">
                 <div class="person-item">
-                    <div class="employee-icon">鉱</div>
+                    <div class="employee-icon">坑</div>
                     <div class="employee-info">
-                        <div class="employee-name">鉱山長</div>
-                        <div class="employee-role">鉱山統括管理</div>
+                        <div class="employee-name">坑夫</div>
+                        <div class="employee-role">人間・人外混成の採掘作業員</div>
                     </div>
                 </div>
                 <div class="person-item">
-                    <div class="employee-icon">坑</div>
+                    <div class="employee-icon">監</div>
                     <div class="employee-info">
-                        <div class="employee-name">坑夫・技術者</div>
-                        <div class="employee-role">採掘・精錬作業</div>
+                        <div class="employee-name">監督者</div>
+                        <div class="employee-role">黄組配下の現地管理者</div>
+                    </div>
+                </div>
+                <div class="person-item">
+                    <div class="employee-icon">護</div>
+                    <div class="employee-info">
+                        <div class="employee-name">護衛隊員</div>
+                        <div class="employee-role">鉱山の警備・治安維持</div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="content-section">
-            <h2 class="section-title">その他の蒼典街店舗</h2>
-            <button class="blue-group-btn" onclick="showBlueGroupDetail()">蒼典街店舗一覧</button>
-        </div>
     </div>
     
-    <!-- オーバーレイ -->
-    <div class="overlay" id="overlay"></div>
-    
-    <!-- 青組詳細ポップアップ -->
-    <div class="group-detail" id="detail-blue">
-        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3>蒼典街の店舗</h3>
-        <ul class="shop-list">
-            <li><img src="../../shop_image/blue/museum/museumpng.png" class="shop-icon" alt="博物館"><a href="./shop_museum.html">博物館</a></li>
-            <li><img src="../../shop_image/blue/other/aquarium.png" class="shop-icon" alt="水族館"><a href="./shop_aquarium.html">水族館</a></li>
-            <li><img src="../../shop_image/blue/other/school.png" class="shop-icon" alt="学校"><a href="./shop_school.html">学校</a></li>
-            <li><img src="../../shop_image/blue/other/farm.png" class="shop-icon" alt="農場"><a href="./shop_farm.html">畑</a></li>
-            <li><img src="../../shop_image/blue/other/mine.png" class="shop-icon" alt="鉱山"><a href="./shop_mine.html">鉱山</a></li>
-            <li><img src="../../shop_image/blue/other/cult.png" class="shop-icon" alt="宗教施設"><a href="./shop_cult.html">宗教施設</a></li>
-        </ul>
+    <div class="content-section">
+        <button class="blue-group-btn" onclick="showBlueGroupDetail()">蒼殉街の店舗一覧</button>
     </div>
-
+    
     <script>
         function changeMainImage(clickedImage) {
             const mainImage = document.getElementById('mainImage');
@@ -137,8 +114,18 @@
             allSubImages.forEach(img => img.classList.remove('active'));
             clickedImage.classList.add('active');
         }
+        
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
     </script>
     <script src="bluepopup.js"></script>
     <script src="../../common/navigation.js"></script>
 </body>
 </html>
+
+
+
+
+           
