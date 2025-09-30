@@ -5,586 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>城</title>
     <link rel="stylesheet" href="../../style.css">
-    <style>
-        body {
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: #fff;
-            line-height: 1.6;
-        }
-        
-        .header {
-            background-image: url("../../picture/black_header.png");
-            background-size: cover;
-            padding: 40px 60px;
-            background-repeat: no-repeat;
-        }
-        
-        .title {
-            font-size: clamp(4rem, 12vw, 5.5rem);
-            color: #ffffff;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-            font-weight: normal;
-            letter-spacing: 0.1em;
-            margin: 0;
-        }
-        
-        .top-section {
-            padding: 0 40px 40px;
-            margin: 0 auto;
-            max-width: 1200px;
-        }
-        
-        .main-image-container {
-            position: relative;
-            width: 100%;
-            height: 60vh;
-            min-height: 400px;
-            overflow: hidden;
-            margin-bottom: 30px;
-        }
-        
-        .main-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.5s ease;
-        }
-        
-        .sub-images-container {
-            background: #000;
-            padding: 30px 0;
-        }
-        
-        .sub-images-scroll {
-            display: flex;
-            gap: 20px;
-            padding: 0 40px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-color: #f5f5f5 #000;
-        }
-        
-        .sub-images-scroll::-webkit-scrollbar {
-            height: 8px;
-        }
-        
-        .sub-images-scroll::-webkit-scrollbar-track {
-            background: #000;
-        }
-        
-        .sub-images-scroll::-webkit-scrollbar-thumb {
-            background: #f5f5f5;
-            border-radius: 4px;
-        }
-        
-        .sub-image {
-            flex-shrink: 0;
-            width: 160px;
-            height: 90px;
-            object-fit: cover;
-            cursor: pointer;
-            border: 2px solid #333;
-            transition: all 0.3s ease;
-        }
-        
-        .sub-image:hover {
-            border-color: #f5f5f5;
-            transform: scale(1.05);
-        }
-        
-        .sub-image.active {
-            border-color: #f5f5f5;
-            box-shadow: 0 0 15px rgba(245, 245, 245, 0.6);
-        }
-        
-        .shop-info {
-            padding: 20px 0;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .shop-info p {
-            font-size: 18px;
-            color: #e0e0e0;
-            margin: 8px 0;
-            font-weight: normal;
-        }
-        
-        .color-link {
-            color: #f5f5f5;
-            text-decoration: none;
-            font-weight: normal;
-            transition: color 0.3s ease;
-        }
-        
-        .color-link:hover {
-            color: #cccccc;
-        }
-        
-        .bottom-content {
-            background: #000;
-            padding: 60px 40px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .content-section {
-            margin-bottom: 80px;
-        }
-        
-        .content-section:last-of-type {
-            margin-bottom: 0;
-        }
-        
-        .section-title {
-            font-size: clamp(24px, 4vw, 32px);
-            color: #ffffff;
-            font-weight: normal;
-            margin-bottom: 30px;
-            letter-spacing: 0.05em;
-        }
-        
-        .section-text {
-            font-size: clamp(16px, 2.5vw, 18px);
-            color: #e0e0e0;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-        
-        .service-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .service-item {
-            background: #1a1a1a;
-            padding: 25px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .service-item:hover {
-            background: #2a2a2a;
-            transform: translateY(-3px);
-        }
-        
-        .service-title {
-            font-size: 22px;
-            color: #f5f5f5;
-            font-weight: normal;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #f5f5f5;
-            padding-bottom: 8px;
-        }
-        
-        .service-price {
-            font-size: 16px;
-            color: #ffffff;
-            font-weight: normal;
-            margin-bottom: 8px;
-        }
-        
-        .service-requirement {
-            font-size: 14px;
-            color: #888;
-            margin-bottom: 12px;
-            font-style: italic;
-        }
-        
-        .service-description {
-            font-size: 16px;
-            color: #e0e0e0;
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-        
-        .service-mechanics {
-            font-size: 14px;
-            color: #ccc;
-            margin-top: 12px;
-            padding-left: 16px;
-            border-left: 3px solid #f5f5f5;
-        }
-        
-        .service-warning {
-            font-size: 14px;
-            color: #ffffff;
-            background: transparent;
-            padding: 10px;
-            margin-top: 12px;
-            border-left: 4px solid #f5f5f5;
-            padding-left: 16px;
-        }
-        
-        .person-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .person-item {
-            background: #1a1a1a;
-            padding: 25px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            align-items: center;
-        }
-        
-        .person-item:hover {
-            background: #2a2a2a;
-            transform: translateY(-3px);
-        }
-        
-        .employee-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-right: 20px;
-            border: 3px solid #f5f5f5;
-            background: rgba(245, 245, 245, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #000;
-        }
-        
-        .employee-info {
-            flex: 1;
-        }
-        
-        .employee-name {
-            font-size: 20px;
-            color: #f5f5f5;
-            font-weight: normal;
-            margin-bottom: 5px;
-            border-bottom: 1px solid #f5f5f5;
-            padding-bottom: 5px;
-        }
-        
-        .employee-role {
-            font-size: 16px;
-            color: #e0e0e0;
-        }
-        
-        .black-group-btn {
-            background: #2a2a2a;
-            color: #fff;
-            border-radius: 8px;
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 20px auto;
-            display: block;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-        }
-        
-        .black-group-btn:hover {
-            background: #444;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* ホバーメニュー */
-        .hover-menu-container {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 2000;
-        }
-
-        .menu-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(40, 40, 40, 0.9);
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            border: 2px solid rgba(245, 245, 245, 0.3);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .menu-icon:hover {
-            background: rgba(60, 60, 60, 0.95);
-            border-color: rgba(245, 245, 245, 0.6);
-            transform: scale(1.05);
-        }
-
-        .hover-menu {
-            position: absolute;
-            top: 60px;
-            left: 0;
-            min-width: 200px;
-            background: rgba(30, 30, 30, 0.95);
-            border-radius: 10px;
-            padding: 15px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(245, 245, 245, 0.2);
-            backdrop-filter: blur(15px);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-
-        .hover-menu-container:hover .hover-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .menu-item, .submenu-item {
-            display: block;
-            padding: 10px 20px;
-            color: #e8e8e8;
-            text-decoration: none;
-            font-size: 14px;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-            font-weight: 500;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .menu-item:hover, .submenu-item:hover {
-            background: rgba(60, 60, 60, 0.8);
-            color: #f5f5f5;
-            transform: translateX(5px);
-        }
-
-        .menu-divider {
-            height: 1px;
-            background: rgba(245, 245, 245, 0.3);
-            margin: 10px 0;
-        }
-
-        .submenu {
-            position: relative;
-        }
-
-        .submenu-content {
-            position: absolute;
-            left: 100%;
-            top: 0;
-            min-width: 150px;
-            background: rgba(30, 30, 30, 0.95);
-            border-radius: 8px;
-            padding: 10px 0;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(245, 245, 245, 0.2);
-            backdrop-filter: blur(15px);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(-10px);
-            transition: all 0.3s ease;
-        }
-
-        .submenu:hover .submenu-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-        }
-
-        .color-black { color: #f5f5f5; }
-        .color-white { color: #ffffff; }
-        .color-red { color: #ff6b6b; }
-        .color-blue { color: #4fc3f7; }
-        .color-green { color: #43ff43; }
-        .color-yellow { color: #ffc107; }
-        
-        .group-detail {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(30, 30, 30, 0.95);
-            border: 2px solid rgba(245, 245, 245, 0.5);
-            border-radius: 15px;
-            padding: 25px;
-            max-width: 400px;
-            max-height: 70vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            display: none;
-        }
-        
-        .group-detail.active {
-            display: block;
-        }
-        
-        .group-detail h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
-            color: #f5f5f5;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            color: #ffffff;
-            font-size: 24px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        
-        .close-btn:hover {
-            color: #f5f5f5;
-        }
-        
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-            display: none;
-        }
-        
-        .overlay.active {
-            display: block;
-        }
-        
-        .shop-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .shop-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .shop-list a {
-            color: #e8e8e8;
-            text-decoration: none;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            margin-left: 12px;
-            font-weight: 500;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-        }
-        
-        .shop-list a:hover {
-            color: #f5f5f5;
-            text-decoration: none;
-            transform: translateX(3px);
-        }
-        
-        .shop-icon {
-            width: 28px;
-            height: 28px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid rgba(245, 245, 245, 0.5);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
-        }
-        
-        .shop-icon:hover {
-            transform: scale(1.1);
-            border-color: #f5f5f5;
-        }
-        
-        @media (max-width: 768px) {
-            .bottom-content {
-                padding: 40px 20px;
-            }
-            
-            .sub-images-scroll {
-                padding: 0 20px;
-            }
-            
-            .person-list, .service-list {
-                grid-template-columns: 1fr;
-            }
-
-            .hover-menu-container {
-                top: 15px;
-                left: 15px;
-            }
-
-            .menu-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
-            }
-
-            .hover-menu {
-                min-width: 180px;
-            }
-
-            .submenu-content {
-                position: fixed;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                min-width: 200px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .title {
-                font-size: 2.5rem;
-            }
-            
-            .main-image-container {
-                height: 40vh;
-                min-height: 300px;
-            }
-            
-            .sub-image {
-                width: 120px;
-                height: 68px;
-            }
-
-            .hover-menu-container {
-                top: 10px;
-                left: 10px;
-            }
-
-            .menu-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-
-            .hover-menu {
-                min-width: 160px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../../common/styles.css">
+    <link rel="stylesheet" href="../../common/navigation.css">
+    <link rel="stylesheet" href="shopblack.css">
 </head>
 <body>
+    <div id="navigation-placeholder"></div>
     <!-- ヘッダー部分（黒色背景） -->
     <div class="header">
         <h1 class="title">城</h1>
@@ -634,106 +60,57 @@
                 <div class="service-item">
                     <div class="service-title">収監</div>
                     <div class="service-description">
-                        反逆者や罪人を牢獄に閉じ込める。城の地下に存在する堅固な牢獄施設。
+                        罪人や政治犯が収監される牢獄。一度入ると脱出は困難。
                     </div>
                     <div class="service-mechanics">
-                        利用次第でNPCやPCの行動を制限することが可能。脱獄は極めて困難とされる。
+                        条件によって収監される可能性がある。脱出には高度な技能や協力者が必要。
                     </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-title">徴収</div>
+                    <div class="service-title">公開処刑</div>
                     <div class="service-description">
-                        税や物資を強制的に取り立てる。城の権威を背景とした強制的な資源回収。
+                        重罪者の処刑が公開で行われる。見せしめの効果がある。
                     </div>
                     <div class="service-warning">
-                        <strong>注意：</strong>判定次第で資源獲得や反乱発生が決まる。過度の徴収は民衆の反発を招く可能性がある。
-                    </div>
-                </div>
-                <div class="service-item">
-                    <div class="service-title">祝祭/処刑</div>
-                    <div class="service-description">
-                        街の人々を集めた大規模イベントを開催できる。城の威光を示す公式行事。
-                    </div>
-                    <div class="service-mechanics">
-                        祝祭は民衆の士気向上、処刑は見せしめ効果を持つ。いずれも城の権威を強化する重要な儀式。
+                        処刑の現場を目撃することで、精神的な影響を受ける可能性がある。
                     </div>
                 </div>
             </div>
         </div>
         
         <div class="content-section">
-            <h2 class="section-title">従業員</h2>
+            <h2 class="section-title">関係者</h2>
             <div class="person-list">
-                <div class="person-item">
-                    <div class="employee-icon">城</div>
+                <a href="../../characterpage/character_aren.html" class="person-item">
+                    <div class="employee-icon">亞</div>
                     <div class="employee-info">
-                        <div class="employee-name">城主</div>
-                        <div class="employee-role">城の統治者・最高権力者</div>
+                        <div class="employee-name">阿廉（あれん）</div>
+                        <div class="employee-role">城主</div>
                     </div>
-                </div>
-                <div class="person-item">
-                    <div class="employee-icon">衛</div>
-                    <div class="employee-info">
-                        <div class="employee-name">衛兵</div>
-                        <div class="employee-role">城の警備・治安維持</div>
-                    </div>
-                </div>
-                <div class="person-item">
-                    <div class="employee-icon">書</div>
-                    <div class="employee-info">
-                        <div class="employee-name">書記官</div>
-                        <div class="employee-role">文書管理・行政業務</div>
-                    </div>
-                </div>
+                </a>
             </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">その他の黒組店舗</h2>
+            <button class="black-group-btn" onclick="showBlackGroupDetail()">黒組店舗一覧</button>
         </div>
     </div>
     
-    <button class="black-group-btn" onclick="showBlackGroupDetail()">黒のその他の店舗</button>
-    
-    <!-- オーバーレイ -->
-    <div class="overlay" id="overlay"></div>
-    
     <!-- 黒組詳細ポップアップ -->
-    <div class="group-detail" id="detail-black">
+    <div id="detail-black" class="group-detail">
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3>黒の店舗</h3>
+        <h3>黒組店舗</h3>
         <ul class="shop-list">
-            <li><img src="../../shop_image/black/castle/castle.jpg" class="shop-icon" alt="城"><a href="./shop_castle.html">城</a></li>
-            <li><img src="../../shop_image/black/postoffice/postoffice.jpg" class="shop-icon" alt="郵便局"><a href="./shop_postoffice.html">郵便局</a></li>
-            <li><img src="../../shop_image/black/blackcafe/blackcafe.jpg" class="shop-icon" alt="黒市"><a href="./shop_blackcafe.html">カフェ</a></li>
-            <li><img src="../../shop_image/black/cleaner/cleaner.jpg" class="shop-icon" alt="掃除屋"><a href="./shop_cleaner.html">掃除屋</a></li>
+            <li>
+                <img src="../../shop_image/black/castle/castle.jpg" alt="城" class="shop-icon">
+                <a href="shop_castle.html">城</a>
+            </li>
         </ul>
     </div>
     
-    <!-- ホバーメニュー -->
-    <div class="hover-menu-container">
-        <div class="menu-icon">☰</div>
-        <div class="hover-menu">
-            <a href="../../index.html" class="menu-item">ホーム</a>
-            <a href="../../rules.html" class="menu-item">特殊ルール</a>
-            <a href="../../jinngai.html" class="menu-item">人外設定</a>
-            <a href="../../world.html" class="menu-item">世界観設定</a>
-            <a href="../../characters.html" class="menu-item">キャラクター一覧</a>
-            <a href="../../shops.html" class="menu-item">店舗一覧</a>
-            <a href="../../tools.html" class="menu-item">ツール</a>
+    <div id="overlay" class="overlay"></div>
 
-            <div class="menu-divider"></div>
-            
-            <div class="submenu">
-                <span class="menu-item">各街ホーム ▶</span>
-                <div class="submenu-content">
-                    <a href="../../colorpage/black.html" class="submenu-item color-black">黒</a>
-                    <a href="../../colorpage/white.html" class="submenu-item color-white">白葬街</a>
-                    <a href="../../colorpage/red.html" class="submenu-item color-red">呑紅街</a>
-                    <a href="../../colorpage/blue.html" class="submenu-item color-blue">蒼殉街</a>
-                    <a href="../../colorpage/green.html" class="submenu-item color-green">滲緑街</a>
-                    <a href="../../colorpage/yellow.html" class="submenu-item color-yellow">黄惑街</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
     <script>
         function changeMainImage(clickedImage) {
             const mainImage = document.getElementById('mainImage');
@@ -763,12 +140,12 @@
         }
         
         function hideGroupDetail() {
-            const details = document.querySelectorAll('.group-detail');
+            const detail = document.querySelector('.group-detail.active');
             const overlay = document.getElementById('overlay');
             
-            details.forEach(detail => {
+            if (detail) {
                 detail.classList.remove('active');
-            });
+            }
             
             if (overlay) {
                 overlay.classList.remove('active');
@@ -783,42 +160,9 @@
             }
         }
         
-        // モバイル対応のメニュー制御
-        function initMobileMenu() {
-            const menuIcon = document.querySelector('.menu-icon');
-            const hoverMenu = document.querySelector('.hover-menu');
-            const submenu = document.querySelector('.submenu > .menu-item');
-            const submenuContent = document.querySelector('.submenu-content');
-            
-            if (menuIcon) {
-                menuIcon.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    hoverMenu.classList.toggle('show');
-                    if (submenuContent) submenuContent.classList.remove('show');
-                });
-            }
-            
-            if (submenu) {
-                submenu.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    submenuContent.classList.toggle('show');
-                });
-            }
-            
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.hover-menu-container')) {
-                    if (hoverMenu) hoverMenu.classList.remove('show');
-                    if (submenuContent) submenuContent.classList.remove('show');
-                }
-            });
-        }
-        
-        document.addEventListener('DOMContentLoaded', initMobileMenu);
-        
         // オーバーレイクリックで閉じる
         document.getElementById('overlay').addEventListener('click', hideGroupDetail);
     </script>
+    <script src="../../common/navigation.js"></script>
 </body>
 </html>

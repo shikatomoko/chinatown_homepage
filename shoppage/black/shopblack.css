@@ -1,0 +1,442 @@
+/* shoppage/black 共通スタイル - 黒組店舗用 */
+
+/* 基本レイアウト */
+body {
+    background-color: #000;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* ヘッダー部分 */
+.header {
+    background-image: url("../../picture/black_header.png");
+    background-size: cover;
+    padding: 40px 60px;
+    background-repeat: no-repeat;
+}
+
+.title {
+    font-size: clamp(4rem, 12vw, 5.5rem);
+    color: #ffffff;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+    margin: 0;
+}
+
+/* メインセクション */
+.top-section {
+    padding: 0 40px 40px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* 店舗情報 */
+.shop-info {
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.shop-info p {
+    font-size: 18px;
+    color: #e0e0e0;
+    margin: 8px 0;
+    font-weight: normal;
+}
+
+/* カラーリンク（黒組用） */
+.color-link {
+    color: #f5f5f5;
+    text-decoration: none;
+    font-weight: normal;
+    transition: color 0.3s ease;
+}
+
+.color-link:hover {
+    color: #cccccc;
+}
+
+/* メイン画像コンテナ */
+.main-image-container {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    min-height: 400px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+}
+
+/* サブ画像スライダー */
+.sub-images-container {
+    background: #000;
+    padding: 30px 0;
+}
+
+.sub-images-scroll {
+    display: flex;
+    gap: 20px;
+    padding: 0 40px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #f5f5f5 #000;
+}
+
+.sub-images-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.sub-images-scroll::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.sub-images-scroll::-webkit-scrollbar-thumb {
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+
+.sub-image {
+    flex-shrink: 0;
+    width: 160px;
+    height: 90px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #333;
+    transition: all 0.3s ease;
+}
+
+.sub-image:hover {
+    border-color: #f5f5f5;
+    transform: scale(1.05);
+}
+
+.sub-image.active {
+    border-color: #f5f5f5;
+    box-shadow: 0 0 15px rgba(245, 245, 245, 0.6);
+}
+
+/* コンテンツセクション */
+.bottom-content {
+    background: #000;
+    padding: 60px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.content-section {
+    margin-bottom: 80px;
+}
+
+.content-section:last-of-type {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: clamp(24px, 4vw, 32px);
+    color: #ffffff;
+    font-weight: normal;
+    margin-bottom: 30px;
+    letter-spacing: 0.05em;
+}
+
+.section-text {
+    font-size: clamp(16px, 2.5vw, 18px);
+    color: #e0e0e0;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* サービス一覧 */
+.service-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.service-item {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.service-item:hover {
+    background: #2a2a2a;
+    transform: translateY(-3px);
+}
+
+.service-title {
+    font-size: 22px;
+    color: #f5f5f5;
+    font-weight: normal;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f5f5f5;
+    padding-bottom: 8px;
+}
+
+.service-price {
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.service-requirement {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+.service-description {
+    font-size: 16px;
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.service-mechanics {
+    font-size: 14px;
+    color: #ccc;
+    margin-top: 12px;
+    padding-left: 16px;
+    border-left: 3px solid #f5f5f5;
+}
+
+.service-warning {
+    font-size: 14px;
+    color: #ffffff;
+    background: transparent;
+    padding: 10px;
+    margin-top: 12px;
+    border-left: 4px solid #f5f5f5;
+    padding-left: 16px;
+}
+
+/* 人物一覧 */
+.person-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.person-item {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.person-item:hover {
+    background: #2a2a2a;
+    transform: translateY(-3px);
+}
+
+.employee-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+    border: 3px solid #f5f5f5;
+    background: rgba(245, 245, 245, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #000;
+}
+
+.employee-info {
+    flex: 1;
+}
+
+.employee-name {
+    font-size: 20px;
+    color: #f5f5f5;
+    font-weight: normal;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #f5f5f5;
+    padding-bottom: 5px;
+}
+
+.employee-role {
+    font-size: 16px;
+    color: #e0e0e0;
+}
+
+/* 黒組ボタン */
+.black-group-btn {
+    background: #2a2a2a;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 20px auto;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.black-group-btn:hover {
+    background: #444;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* モーダル・オーバーレイ */
+.group-detail.active {
+    display: block;
+}
+
+.group-detail h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #f5f5f5;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #f5f5f5;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* 店舗一覧 */
+.shop-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.shop-list li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.shop-list a {
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    margin-left: 12px;
+    font-weight: 500;
+    color: #e0e0e0;
+}
+
+.shop-list a:hover {
+    color: #f5f5f5;
+    text-decoration: none;
+    transform: translateX(3px);
+}
+
+.shop-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgba(245, 245, 245, 0.5);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.shop-icon:hover {
+    transform: scale(1.1);
+    border-color: #f5f5f5;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .header {
+        padding: 30px 30px;
+    }
+    
+    .top-section {
+        padding: 0 20px 30px;
+    }
+    
+    .bottom-content {
+        padding: 40px 20px;
+    }
+    
+    .sub-images-scroll {
+        padding: 0 20px;
+    }
+    
+    .person-list, .service-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-image-container {
+        height: 50vh;
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 20px 20px;
+    }
+    
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .main-image-container {
+        height: 40vh;
+        min-height: 300px;
+    }
+    
+    .sub-image {
+        width: 120px;
+        height: 68px;
+    }
+    
+    .top-section {
+        padding: 0 15px 20px;
+    }
+    
+    .bottom-content {
+        padding: 30px 15px;
+    }
+}

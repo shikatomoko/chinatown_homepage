@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<!DOC    <title>黒</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../common/navigation.css">PE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -191,55 +193,7 @@
             color: #666;
         }
         
-        /* ホバーメニューシステム */
-        .hover-menu-container {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 2000;
-        }
-        
-        .menu-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            font-size: 20px;
-            color: #333;
-        }
-        
-        .menu-icon:hover {
-            background: rgba(255, 255, 255, 1);
-            transform: scale(1.1);
-        }
-        
-        .hover-menu {
-            position: absolute;
-            top: 60px;
-            left: 0;
-            background: rgba(30, 30, 30, 0.95);
-            border-radius: 12px;
-            padding: 15px 0;
-            min-width: 180px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-        
-        .hover-menu-container:hover .hover-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
+
         
         .menu-item {
             display: block;
@@ -463,33 +417,8 @@
         </div>
     </div>
 
-    <!-- ホバーメニュー -->
-    <div class="hover-menu-container">
-        <div class="menu-icon">☰</div>
-        <div class="hover-menu">
-            <a href="../index.html" class="menu-item">ホーム</a>
-            <a href="../rules.html" class="menu-item">特殊ルール</a>
-            <a href="../jinngai.html" class="menu-item">人外設定</a>
-            <a href="../world.html" class="menu-item">世界観設定</a>
-            <a href="../characters.html" class="menu-item">キャラクター一覧</a>
-            <a href="../shops.html" class="menu-item">店舗一覧</a>
-            <a href="../tools.html" class="menu-item">ツール</a>
-            
-            <div class="menu-divider"></div>
-            
-            <div class="submenu">
-                <span class="menu-item">各街ホーム ▶</span>
-                <div class="submenu-content">
-                    <a href="black.html" class="submenu-item color-black">黒</a>
-                    <a href="white.html" class="submenu-item color-white">白葬街</a>
-                    <a href="red.html" class="submenu-item color-red">呑紅街</a>
-                    <a href="blue.html" class="submenu-item color-blue">蒼殉街</a>
-                    <a href="green.html" class="submenu-item color-green">滲緑街</a>
-                    <a href="yellow.html" class="submenu-item color-yellow">黄惑街</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
 
     <script>
         function changeMainImage(clickedImage) {
@@ -505,47 +434,11 @@
             clickedImage.classList.add('active');
         }
         
-        // モバイル対応のメニュー制御
-        function initMobileMenu() {
-            const menuIcon = document.querySelector('.menu-icon');
-            const hoverMenu = document.querySelector('.hover-menu');
-            const submenu = document.querySelector('.submenu > .menu-item');
-            const submenuContent = document.querySelector('.submenu-content');
-            
-            // メニューアイコンクリック
-            if (menuIcon) {
-                menuIcon.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    hoverMenu.classList.toggle('show');
-                    
-                    // サブメニューが開いていたら閉じる
-                    if (submenuContent) {
-                        submenuContent.classList.remove('show');
-                    }
-                });
-            }
-            
-            // サブメニュートリガークリック
-            if (submenu) {
-                submenu.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    submenuContent.classList.toggle('show');
-                });
-            }
-            
-            // メニュー外クリックで閉じる
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.hover-menu-container')) {
-                    if (hoverMenu) hoverMenu.classList.remove('show');
-                    if (submenuContent) submenuContent.classList.remove('show');
-                }
-            });
-        }
-        
-        // ページ読み込み完了後に初期化
-        document.addEventListener('DOMContentLoaded', initMobileMenu);
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
     </script>
+    <script src="../common/navigation.js"></script>
 </body>
 </html>

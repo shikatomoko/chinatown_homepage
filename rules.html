@@ -352,79 +352,17 @@
             </div>
         </div>
     </div>
+    <script src="common/navigation.js"></script>
     <script>
         function toggleDetail(element) {
             element.classList.toggle('active');
         }
         
-        // モバイル対応のメニュー制御
-        function initMobileMenu() {
-            const menuIcon = document.querySelector('.menu-icon');
-            const hoverMenu = document.querySelector('.hover-menu');
-            const submenu = document.querySelector('.submenu > .menu-item');
-            const submenuContent = document.querySelector('.submenu-content');
-            
-            // メニューアイコンクリック
-            if (menuIcon) {
-                menuIcon.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    hoverMenu.classList.toggle('show');
-                    
-                    // サブメニューが開いていたら閉じる
-                    if (submenuContent) {
-                        submenuContent.classList.remove('show');
-                    }
-                });
-            }
-            
-            // サブメニュートリガークリック
-            if (submenu) {
-                submenu.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    submenuContent.classList.toggle('show');
-                });
-            }
-            
-            // メニュー外クリックで閉じる
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.hover-menu-container')) {
-                    if (hoverMenu) hoverMenu.classList.remove('show');
-                    if (submenuContent) submenuContent.classList.remove('show');
-                }
-            });
-        }
-        
-        // ページ読み込み完了後に初期化
-        document.addEventListener('DOMContentLoaded', initMobileMenu);
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
     </script>
-    <!-- ホバーメニュー -->
-    <div class="hover-menu-container">
-        <div class="menu-icon">☰</div>
-        <div class="hover-menu">
-            <a href="index.html" class="menu-item">ホーム</a>
-            <a href="rules.html" class="menu-item">特殊ルール</a>
-            <a href="jinngai.html" class="menu-item">人外設定</a>
-            <a href="world.html" class="menu-item">世界観設定</a>
-            <a href="characters.html" class="menu-item">キャラクター一覧</a>
-            <a href="shops.html" class="menu-item">店舗一覧</a>
-            <a href="tools.html" class="menu-item">ツール</a>
-            
-            <div class="menu-divider"></div>
-            
-            <div class="submenu">
-                <span class="menu-item">各街ホーム ▶</span>
-                <div class="submenu-content">
-                    <a href="colorpage/black.html" class="submenu-item color-black">黒</a>
-                    <a href="colorpage/white.html" class="submenu-item color-white">白葬街</a>
-                    <a href="colorpage/red.html" class="submenu-item color-red">呑紅街</a>
-                    <a href="colorpage/blue.html" class="submenu-item color-blue">蒼殉街</a>
-                    <a href="colorpage/green.html" class="submenu-item color-green">滲緑街</a>
-                    <a href="colorpage/yellow.html" class="submenu-item color-yellow">黄惑街</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
 </body>
 </html>

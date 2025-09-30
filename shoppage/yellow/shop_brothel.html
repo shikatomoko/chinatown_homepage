@@ -1,575 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>娼館</title>
     <link rel="stylesheet" href="../../style.css">
-    <style>
-        body {
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: #fff;
-            line-height: 1.6;
-        }
-        
-        .header {
-            background-image: url("../../picture/yellow_header.png");
-            background-size: cover;
-            padding: 40px 60px;
-            background-repeat: no-repeat;
-        }
-        
-        .title {
-            font-size: clamp(4rem, 12vw, 5.5rem);
-            color: #ffffff;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-            font-weight: normal;
-            letter-spacing: 0.1em;
-            margin: 0;
-        }
-        
-        .top-section {
-            padding: 0 40px 40px;
-            margin: 0 auto;
-            max-width: 1200px;
-        }
-        
-        .main-image-container {
-            position: relative;
-            width: 100%;
-            height: 60vh;
-            min-height: 400px;
-            overflow: hidden;
-            margin-bottom: 30px;
-        }
-        
-        .main-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.5s ease;
-        }
-        
-        .sub-images-container {
-            background: #000;
-            padding: 30px 0;
-        }
-        
-        .sub-images-scroll {
-            display: flex;
-            gap: 20px;
-            padding: 0 40px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-color: #ffc107 #000;
-        }
-        
-        .sub-images-scroll::-webkit-scrollbar {
-            height: 8px;
-        }
-        
-        .sub-images-scroll::-webkit-scrollbar-track {
-            background: #000;
-        }
-        
-        .sub-images-scroll::-webkit-scrollbar-thumb {
-            background: #ffc107;
-            border-radius: 4px;
-        }
-        
-        .sub-image {
-            flex-shrink: 0;
-            width: 160px;
-            height: 90px;
-            object-fit: cover;
-            cursor: pointer;
-            border: 2px solid #333;
-            transition: all 0.3s ease;
-        }
-        
-        .sub-image:hover {
-            border-color: #ffc107;
-            transform: scale(1.05);
-        }
-        
-        .sub-image.active {
-            border-color: #ffc107;
-            box-shadow: 0 0 15px rgba(255, 193, 7, 0.6);
-        }
-        
-        .shop-info {
-            padding: 20px 0;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .shop-info p {
-            font-size: 18px;
-            color: #e0e0e0;
-            margin: 8px 0;
-            font-weight: normal;
-        }
-        
-        .color-link {
-            color: #ffc107;
-            text-decoration: none;
-            font-weight: normal;
-            transition: color 0.3s ease;
-        }
-        
-        .color-link:hover {
-            color: #ffdd54;
-        }
-        
-        .bottom-content {
-            background: #000;
-            padding: 60px 40px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .content-section {
-            margin-bottom: 80px;
-        }
-        
-        .content-section:last-of-type {
-            margin-bottom: 0;
-        }
-        
-        .section-title {
-            font-size: clamp(24px, 4vw, 32px);
-            color: #ffffff;
-            font-weight: normal;
-            margin-bottom: 30px;
-            letter-spacing: 0.05em;
-        }
-        
-        .section-text {
-            font-size: clamp(16px, 2.5vw, 18px);
-            color: #e0e0e0;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-        
-        .service-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .service-item {
-            background: #1a1a1a;
-            padding: 25px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .service-item:hover {
-            background: #2a2a2a;
-            transform: translateY(-3px);
-        }
-        
-        .service-title {
-            font-size: 22px;
-            color: #ffc107;
-            font-weight: normal;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #ffc107;
-            padding-bottom: 8px;
-        }
-        
-        .service-price {
-            font-size: 16px;
-            color: #ffffff;
-            font-weight: normal;
-            margin-bottom: 8px;
-        }
-        
-        .service-requirement {
-            font-size: 14px;
-            color: #888;
-            margin-bottom: 12px;
-            font-style: italic;
-        }
-        
-        .service-description {
-            font-size: 16px;
-            color: #e0e0e0;
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-        
-        .service-mechanics {
-            font-size: 14px;
-            color: #ccc;
-            margin-top: 12px;
-            padding-left: 16px;
-            border-left: 3px solid #ffc107;
-        }
-        
-        .person-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .person-item {
-            background: #1a1a1a;
-            padding: 25px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            align-items: center;
-        }
-        
-        .person-item:hover {
-            background: #2a2a2a;
-            transform: translateY(-3px);
-        }
-        
-        .employee-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-right: 20px;
-            border: 3px solid #ffc107;
-        }
-        
-        .employee-info {
-            flex: 1;
-        }
-        
-        .employee-name {
-            font-size: 20px;
-            color: #ffc107;
-            font-weight: normal;
-            margin-bottom: 5px;
-            border-bottom: 1px solid #ffc107;
-            padding-bottom: 5px;
-        }
-        
-        .employee-role {
-            font-size: 16px;
-            color: #e0e0e0;
-        }
-        
-        .yellow-group-btn {
-            background: #2a2a2a;
-            color: #fff;
-            border-radius: 8px;
-            border: none;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 20px auto;
-            display: block;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-        }
-        
-        .yellow-group-btn:hover {
-            background: #444;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* ホバーメニュー */
-        .hover-menu-container {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 2000;
-        }
-
-        .menu-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(40, 40, 40, 0.9);
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            border: 2px solid rgba(255, 193, 7, 0.3);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .menu-icon:hover {
-            background: rgba(60, 60, 60, 0.95);
-            border-color: rgba(255, 193, 7, 0.6);
-            transform: scale(1.05);
-        }
-
-        .hover-menu {
-            position: absolute;
-            top: 60px;
-            left: 0;
-            min-width: 200px;
-            background: rgba(30, 30, 30, 0.95);
-            border-radius: 10px;
-            padding: 15px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 193, 7, 0.2);
-            backdrop-filter: blur(15px);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-
-        .hover-menu-container:hover .hover-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .menu-item, .submenu-item {
-            display: block;
-            padding: 10px 20px;
-            color: #e8e8e8;
-            text-decoration: none;
-            font-size: 14px;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-            font-weight: 500;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .menu-item:hover, .submenu-item:hover {
-            background: rgba(60, 60, 60, 0.8);
-            color: #ffc107;
-            transform: translateX(5px);
-        }
-
-        .menu-divider {
-            height: 1px;
-            background: rgba(255, 193, 7, 0.3);
-            margin: 10px 0;
-        }
-
-        .submenu {
-            position: relative;
-        }
-
-        .submenu-content {
-            position: absolute;
-            left: 100%;
-            top: 0;
-            min-width: 150px;
-            background: rgba(30, 30, 30, 0.95);
-            border-radius: 8px;
-            padding: 10px 0;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 193, 7, 0.2);
-            backdrop-filter: blur(15px);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(-10px);
-            transition: all 0.3s ease;
-        }
-
-        .submenu:hover .submenu-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-        }
-
-        .color-black { color: #f5f5f5; }
-        .color-white { color: #ffffff; }
-        .color-red { color: #ff6b6b; }
-        .color-blue { color: #4fc3f7; }
-        .color-green { color: #43ff43; }
-        .color-yellow { color: #ffc107; }
-        
-        .group-detail {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(30, 30, 30, 0.95);
-            border: 2px solid rgba(255, 193, 7, 0.5);
-            border-radius: 15px;
-            padding: 25px;
-            max-width: 400px;
-            max-height: 70vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            display: none;
-        }
-        
-        .group-detail.active {
-            display: block;
-        }
-        
-        .group-detail h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
-            color: #ffc107;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            color: #ffffff;
-            font-size: 24px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        
-        .close-btn:hover {
-            color: #ffc107;
-        }
-        
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-            display: none;
-        }
-        
-        .overlay.active {
-            display: block;
-        }
-        
-        .shop-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .shop-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .shop-list a {
-            color: #e8e8e8;
-            text-decoration: none;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            margin-left: 12px;
-            font-weight: 500;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-        }
-        
-        .shop-list a:hover {
-            color: #ffc107;
-            text-decoration: none;
-            transform: translateX(3px);
-        }
-        
-        .shop-icon {
-            width: 28px;
-            height: 28px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 193, 7, 0.5);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
-        }
-        
-        .shop-icon:hover {
-            transform: scale(1.1);
-            border-color: #ffc107;
-        }
-        
-        @media (max-width: 768px) {
-            .bottom-content {
-                padding: 40px 20px;
-            }
-            
-            .sub-images-scroll {
-                padding: 0 20px;
-            }
-            
-            .person-list, .service-list {
-                grid-template-columns: 1fr;
-            }
-
-            .hover-menu-container {
-                top: 15px;
-                left: 15px;
-            }
-
-            .menu-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
-            }
-
-            .hover-menu {
-                min-width: 180px;
-            }
-
-            .submenu-content {
-                position: fixed;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                min-width: 200px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .title {
-                font-size: 2.5rem;
-            }
-            
-            .main-image-container {
-                height: 40vh;
-                min-height: 300px;
-            }
-            
-            .sub-image {
-                width: 120px;
-                height: 68px;
-            }
-
-            .hover-menu-container {
-                top: 10px;
-                left: 10px;
-            }
-
-            .menu-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-
-            .hover-menu {
-                min-width: 160px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../../common/styles.css">
+    <link rel="stylesheet" href="../../common/navigation.css">
+    <link rel="stylesheet" href="shopyellow.css">
+    <link rel="stylesheet" href="yellowpopup.css">
 </head>
 <body>
-    <!-- ヘッダー部分（黄色背景） -->
+    <div id="navigation-placeholder"></div>
     <div class="header">
         <h1 class="title">娼館</h1>
     </div>
@@ -579,158 +21,113 @@
         <!-- 店舗情報 -->
         <div class="shop-info">
             <p>所属組織：<a href="../../colorpage/yellow.html" class="color-link">黄惑街</a></p>
-            <p>エリア：周辺〜郊外エリア 　営業時間：24時間 　業種：娼館・遊廓</p>
+            <p>エリア：地下・裏通りエリア　営業時間：24時間　業種：娼婦・慰め</p>
         </div>
         
-        <!-- メイン画像部分 -->
+        <!-- ���C���摜���� -->
         <div class="main-image-container">
-            <img id="mainImage" class="main-image" src="../../shop_image/yellow/brothel/brothel.png" alt="娼館のメイン画像">
+            <img id="mainImage" class="main-image" src="../../shop_image/yellow/brothel/brothel.png" alt="���ق̃��C���摜">
         </div>
         
-        <!-- サブ画像スライダー -->
+        <!-- �T�u�摜�X���C�_�[ -->
         <div class="sub-images-container">
             <div class="sub-images-scroll">
-                <img class="sub-image active" src="../../shop_image/yellow/brothel/brothel.png" alt="娼館外観" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/yellow/brothel/brothel_corridor.png" alt="娼館廊下" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/yellow/brothel/brothel_office.png" alt="娼館事務所" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/yellow/brothel/brothel_subroom.png" alt="娼館個室" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../../shop_image/yellow/brothel/brothel_tatami.png" alt="娼館和室" onclick="changeMainImage(this)">
+                <img class="sub-image active" src="../../shop_image/yellow/brothel/brothel.png" alt="���يO��" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/yellow/brothel/brothel_corridor.png" alt="���٘L��" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/yellow/brothel/brothel_office.png" alt="���َ�����" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/yellow/brothel/brothel_subroom.png" alt="���ٌ�" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/yellow/brothel/brothel_tatami.png" alt="���٘a��" onclick="changeMainImage(this)">
             </div>
         </div>
     </div>
     
-    <!-- 下部コンテンツ（黒背景） -->
+    <!-- �����R���e���c�i���w�i�j -->
     <div class="bottom-content">
         <div class="content-section">
-            <h2 class="section-title">概要</h2>
-            <p class="section-text">黄惑街に網の目のように広がる娼館群。安宿と売春宿が合わさったような低層施設から、絢爛豪華な楼閣まで存在。客の懐具合や欲望に応じ、肉体的快楽・精神的慰め・禁断の儀式まで用意されている。</p>
+            <h2 class="section-title">�T�v</h2>
+            <p class="section-text">���f�X�ɖԂ̖ڂ̂悤�ɍL���鏩�ٌQ�B���h�Ɣ��t�h�����킳�����悤�Ȓ�w�{�݂���A��࣍��؂ȘO�t�܂ő��݁B�q�̉����~�]�ɉ����A���̓I���y�E���_�I�Ԃ߁E�֒f�̋V���܂ŗp�ӂ���Ă���B</p>
         </div>
         
         <div class="content-section">
-            <h2 class="section-title">利用方法・料金</h2>
+            <h2 class="section-title">���p���@�E����</h2>
             <div class="service-list">
                 <div class="service-item">
-                    <div class="service-title">梅ランク</div>
-                    <div class="service-price">料金：10,000円〜</div>
-                    <div class="service-requirement">必要信用値：10</div>
+                    <div class="service-title">�~�����N</div>
+                    <div class="service-price">����F10,000�~?</div>
+                    <div class="service-requirement">�K�v�M�p�l�F10</div>
                     <div class="service-description">
-                        路地裏にある安宿兼娼館。値段は安いが環境は劣悪。最低限のサービスを提供。
+                        �H�n���ɂ�����h�����فB�l�i�͈��������͗򈫁B�Œ���̃T�[�r�X��񋟁B
                     </div>
                     <div class="service-mechanics">
-                        <strong>判定：</strong>&lt;CON*5&gt;判定。失敗すると病気や疲労を得る。成功すれば安価で休養可能。
+                        <strong>����F</strong>&lt;CON*5&gt;����B���s����ƕa�C���J�𓾂�B��������Έ����ŋx�{�\�B
                     </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-title">竹ランク</div>
-                    <div class="service-price">料金：30,000円〜</div>
-                    <div class="service-requirement">必要信用値：30</div>
+                    <div class="service-title">�|�����N</div>
+                    <div class="service-price">����F30,000�~?</div>
+                    <div class="service-requirement">�K�v�M�p�l�F30</div>
                     <div class="service-description">
-                        装飾が施された一般的な娼館。身なりの整った娼妓が対応する。一室を貸し切り、食事と酒、一定以上の歓待を受けられる。
+                        �������{���ꂽ��ʓI�ȏ��فB�g�Ȃ�̐��������W���Ή�����B�ꎺ��݂��؂�A�H���Ǝ�A���ȏ�̊��҂�󂯂���B
                     </div>
                     <div class="service-mechanics">
-                        <strong>判定：</strong>&lt;交渉系技能&gt;。成功すれば追加情報（街の噂や秘密）が手に入る。失敗すると通常料金＋裏料金を請求される。
+                        <strong>����F</strong>&lt;��n�Z�\&gt;�B��������Βǉ����i�X�̉\��閧�j����ɓ���B���s����ƒʏ헿��{������𐿋������B
                     </div>
                 </div>
                 <div class="service-item">
-                    <div class="service-title">松ランク</div>
-                    <div class="service-price">料金：要相談</div>
-                    <div class="service-requirement">必要信用値：70</div>
+                    <div class="service-title">�������N</div>
+                    <div class="service-price">����F�v���k</div>
+                    <div class="service-requirement">�K�v�M�p�l�F70</div>
                     <div class="service-description">
-                        郊外の楼閣や隠れ屋敷にある高級娼館。政治家や組織幹部も訪れる最高級のサービスを提供。
+                        �x�O�̘O�t��B�ꉮ�~�ɂ��鍂�����فB�����Ƃ�g�D������K���ō����̃T�[�r�X��񋟁B
                     </div>
                     <div class="service-mechanics">
-                        <strong>判定：</strong>&lt;交渉系技能&gt;。成功すればVIP向けの人脈や裏契約が得られる。失敗すると組織にマークされ、命の保証が危うくなる。
+                        <strong>����F</strong>&lt;��n�Z�\&gt;�B���������VIP�����̐l���◠�_�񂪓�����B���s����Ƒg�D�Ƀ}�[�N����A���̕ۏ؂��낤���Ȃ�B
                     </div>
                 </div>
             </div>
         </div>
         
         <div class="content-section">
-            <h2 class="section-title">従業員</h2>
+            <h2 class="section-title">�]�ƈ�</h2>
             <div class="person-list">
                 <div class="person-item">
-                    <img src="../../character_icon/default_icon.png" alt="女将" class="employee-icon">
+                    <img src="../../character_icon/default_icon.png" alt="����" class="employee-icon">
                     <div class="employee-info">
-                        <div class="employee-name">女将</div>
-                        <div class="employee-role">店舗管理</div>
+                        <div class="employee-name">����</div>
+                        <div class="employee-role">�X�܊Ǘ�</div>
                     </div>
                 </div>
                 <div class="person-item">
-                    <img src="../../character_icon/default_icon.png" alt="娼妓" class="employee-icon">
+                    <img src="../../character_icon/default_icon.png" alt="���W" class="employee-icon">
                     <div class="employee-info">
-                        <div class="employee-name">娼妓</div>
-                        <div class="employee-role">接客業</div>
+                        <div class="employee-name">���W</div>
+                        <div class="employee-role">�ڋq��</div>
                     </div>
                 </div>
                 <div class="person-item">
-                    <img src="../../character_icon/default_icon.png" alt="娼夫" class="employee-icon">
+                    <img src="../../character_icon/default_icon.png" alt="���v" class="employee-icon">
                     <div class="employee-info">
-                        <div class="employee-name">娼夫</div>
-                        <div class="employee-role">接客業</div>
+                        <div class="employee-name">���v</div>
+                        <div class="employee-role">�ڋq��</div>
                     </div>
                 </div>
                 <div class="person-item">
-                    <img src="../../character_icon/default_icon.png" alt="用心棒" class="employee-icon">
+                    <img src="../../character_icon/default_icon.png" alt="�p�S�_" class="employee-icon">
                     <div class="employee-info">
-                        <div class="employee-name">用心棒</div>
-                        <div class="employee-role">警備</div>
+                        <div class="employee-name">�p�S�_</div>
+                        <div class="employee-role">�x��</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <button class="yellow-group-btn" onclick="showYellowGroupDetail()">黄組のその他の店舗</button>
-    
-    <!-- オーバーレイ -->
-    <div class="overlay" id="overlay"></div>
-    
-    <!-- 黄組詳細ポップアップ -->
-    <div class="group-detail" id="detail-yellow">
-        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3>黄惑街の店舗</h3>
-        <ul class="shop-list">
-            <li><img src="../../shop_image/yellow/casino/casino.png" class="shop-icon" alt="カジノ"><a href="./shop_casino.html">カジノ</a></li>
-            <li><img src="../../shop_image/yellow/auction/auction_stage.png" class="shop-icon" alt="オークション"><a href="./shop_auction.html">オークション</a></li>
-            <li><img src="../../shop_image/yellow/bank/bank_entrance.png" class="shop-icon" alt="銀行"><a href="./shop_bank.html">銀行</a></li>
-            <li><img src="../../shop_image/yellow/brothel/brothel.png" class="shop-icon" alt="娼館"><a href="./shop_brothel.html">娼館</a></li>
-            <li><img src="../../shop_image/yellow/courier/courier.png" class="shop-icon" alt="運び屋"><a href="./shop_courier.html">運び屋</a></li>
-            <li><img src="../../shop_image/yellow/hostclub/hostclub.png" class="shop-icon" alt="ホストクラブ"><a href="./shop_hostclub.html">ホストクラブ</a></li>
-            <li><img src="../../shop_image/yellow/hotel/hotel.png" class="shop-icon" alt="ホテル"><a href="./shop_hotel.html">ホテル</a></li>
-            <li><img src="../../shop_image/yellow/park/park.jpg" class="shop-icon" alt="遊園地"><a href="./shop_park.html">遊園地</a></li>
-            <li><img src="../../shop_image/yellow/trade/trade.png" class="shop-icon" alt="両替所"><a href="./shop_trade.html">両替所</a></li>
-            <li><img src="../../shop_image/yellow/cosmeticsurgery/cosmetic_surgery.png" class="shop-icon" alt="美容整形外科"><a href="./shop_cosmeticsurgery.html">美容整形外科</a></li>
-        </ul>
-    </div>
-    
-    <!-- ホバーメニュー -->
-    <div class="hover-menu-container">
-        <div class="menu-icon">☰</div>
-        <div class="hover-menu">
-            <a href="../../index.html" class="menu-item">ホーム</a>
-            <a href="../../rules.html" class="menu-item">特殊ルール</a>
-            <a href="../../jinngai.html" class="menu-item">人外設定</a>
-            <a href="../../world.html" class="menu-item">世界観設定</a>
-            <a href="../../characters.html" class="menu-item">キャラクター一覧</a>
-            <a href="../../shops.html" class="menu-item">店舗一覧</a>
-            <a href="../../tools.html" class="menu-item">ツール</a>
-            
-            <div class="menu-divider"></div>
-            
-            <div class="submenu">
-                <span class="menu-item">各街ホーム ▶</span>
-                <div class="submenu-content">
-                    <a href="../../colorpage/black.html" class="submenu-item color-black">黒</a>
-                    <a href="../../colorpage/white.html" class="submenu-item color-white">白葬街</a>
-                    <a href="../../colorpage/red.html" class="submenu-item color-red">呑紅街</a>
-                    <a href="../../colorpage/blue.html" class="submenu-item color-blue">蒼殉街</a>
-                    <a href="../../colorpage/green.html" class="submenu-item color-green">滲緑街</a>
-                    <a href="../../colorpage/yellow.html" class="submenu-item color-yellow">黄惑街</a>
-                </div>
-            </div>
+     <div class="content-section">
+            <button class="yellow-group-btn" onclick="showYellowGroupDetail()">黄惑街店舗一覧</button>
         </div>
     </div>
     
+
     <script>
         function changeMainImage(clickedImage) {
             const mainImage = document.getElementById('mainImage');
@@ -745,77 +142,12 @@
             clickedImage.classList.add('active');
         }
         
-        function showYellowGroupDetail() {
-            hideGroupDetail();
-            
-            const detail = document.getElementById('detail-yellow');
-            const overlay = document.getElementById('overlay');
-            
-            if (detail && overlay) {
-                detail.classList.add('active');
-                overlay.classList.add('active');
-                
-                document.addEventListener('keydown', handleEscKey);
-            }
-        }
-        
-        function hideGroupDetail() {
-            const details = document.querySelectorAll('.group-detail');
-            const overlay = document.getElementById('overlay');
-            
-            details.forEach(detail => {
-                detail.classList.remove('active');
-            });
-            
-            if (overlay) {
-                overlay.classList.remove('active');
-            }
-            
-            document.removeEventListener('keydown', handleEscKey);
-        }
-        
-        function handleEscKey(event) {
-            if (event.key === 'Escape') {
-                hideGroupDetail();
-            }
-        }
-        
-        // オーバーレイクリックで閉じる
-        document.getElementById('overlay').addEventListener('click', hideGroupDetail);
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
     </script>
-    <script>
-        function initMobileMenu() {
-            const menuIcon = document.querySelector('.menu-icon');
-            const hoverMenu = document.querySelector('.hover-menu');
-            const submenu = document.querySelector('.submenu > .menu-item');
-            const submenuContent = document.querySelector('.submenu-content');
-            
-            if (menuIcon) {
-                menuIcon.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    hoverMenu.classList.toggle('show');
-                    if (submenuContent) submenuContent.classList.remove('show');
-                });
-            }
-            
-            if (submenu) {
-                submenu.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    submenuContent.classList.toggle('show');
-                });
-            }
-            
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.hover-menu-container')) {
-                    if (hoverMenu) hoverMenu.classList.remove('show');
-                    if (submenuContent) submenuContent.classList.remove('show');
-                }
-            });
-        }
-        
-        document.addEventListener('DOMContentLoaded', initMobileMenu);
-    </script>
+    <script src="yellowpopup.js"></script>
+    <script src="../../common/navigation.js"></script>
 </body>
 </html>

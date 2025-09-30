@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>暗黒中華街</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="common/styles.css">
+    <link rel="stylesheet" href="common/navigation.css">
     <style>
         body {
             display: flex;
@@ -12,13 +14,9 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            margin: 0;
             padding: 15px;
             background: linear-gradient(145deg, #0f0f0f 0%, #1a1a1a 50%, #2a2a2a 100%);
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-            color: #e8e8e8;
             overflow-x: auto;
-            box-sizing: border-box;
         }
 
         /* オープニングアニメーション */
@@ -47,7 +45,6 @@
         }
 
         .opening-text {
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
             color: #e8e8e8;
             opacity: 0;
             transform: translateY(20px);
@@ -160,144 +157,11 @@
         img[alt="Map"]:hover {
             transform: scale(1.02);
         }
-        
-        /* ホバーメニューシステム */
-        .hover-menu-container {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 2000;
-            opacity: 0;
-            animation: menuFadeIn 1s ease-in-out forwards;
-        }
 
-        @keyframes menuFadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        
-        .menu-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            font-size: 20px;
-            color: #333;
-            touch-action: manipulation;
-            user-select: none;
-        }
-        
-        .menu-icon:hover {
-            background: rgba(255, 255, 255, 1);
-            transform: scale(1.1);
-        }
-        
-        .hover-menu {
-            position: absolute;
-            top: 60px;
-            left: 0;
-            background: rgba(30, 30, 30, 0.95);
-            border-radius: 12px;
-            padding: 15px 0;
-            min-width: 200px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-        
-        .hover-menu-container:hover .hover-menu,
-        .hover-menu.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .submenu:hover .submenu-content,
-        .submenu-content.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-        }
-        
-        .menu-item {
-            display: block;
-            padding: 12px 20px;
-            color: #e0e0e0;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            border: none;
-            background: none;
-            width: 100%;
-            text-align: left;
-            cursor: pointer;
-            touch-action: manipulation;
-            user-select: none;
-        }
-        
-        .menu-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            transform: translateX(5px);
-        }
-        
-        .menu-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.2);
-            margin: 8px 0;
-        }
-        
-        .submenu {
-            position: relative;
-        }
-        
-        .submenu-content {
-            position: absolute;
-            left: 100%;
-            top: 0;
-            background: rgba(30, 30, 30, 0.95);
-            border-radius: 12px;
-            padding: 10px 0;
-            min-width: 150px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(-10px);
-            transition: all 0.3s ease;
-        }
-        
 
-        
-        .submenu-item {
-            display: block;
-            padding: 10px 16px;
-            color: #e0e0e0;
-            text-decoration: none;
-            font-size: 13px;
-            transition: all 0.3s ease;
-        }
-        
-        .submenu-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
-        
-        .color-red { color: #cc2936; }
-        .color-blue { color: #2563eb; }
-        .color-green { color: #16a34a; }
-        .color-yellow { color: #eab308; }
-        .color-white { color: #e0e0e0; }
-        .color-black { color: #666; }
+
+
+
 
         /* スキップボタン */
         .skip-button {
@@ -334,18 +198,7 @@
                 max-width: 90%;
                 margin: 15px 0;
             }
-            .hover-menu-container {
-                top: 15px;
-                left: 15px;
-            }
-            .menu-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
-            }
-            .hover-menu {
-                min-width: 180px;
-            }
+
             .opening-container {
                 padding: 15px;
             }
@@ -367,18 +220,7 @@
         }
         
         @media (max-width: 480px) {
-            .hover-menu-container {
-                top: 10px;
-                left: 10px;
-            }
-            .menu-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-            .hover-menu {
-                min-width: 160px;
-            }
+
             .submenu-content {
                 position: fixed;
                 left: 50%;
@@ -443,34 +285,10 @@
         <img src="./picture/map.png" alt="Map" style="max-width: 40%; height: auto; margin-top: 20px; margin-bottom: 20px;">
     </div>
 
-    <!-- ホバーメニュー -->
-    <div class="hover-menu-container">
-        <div class="menu-icon">☰</div>
-        <div class="hover-menu">
-            <a href="index.html" class="menu-item">ホーム</a>
-            <a href="rules.html" class="menu-item">特殊ルール</a>
-            <a href="jinngai.html" class="menu-item">人外設定</a>
-            <a href="world.html" class="menu-item">世界観設定</a>
-            <a href="characters.html" class="menu-item">キャラクター一覧</a>
-            <a href="shops.html" class="menu-item">店舗一覧</a>
-            <a href="tools.html" class="menu-item">ツール</a>
-            
-            <div class="menu-divider"></div>
-            
-            <div class="submenu">
-                <span class="menu-item">各街ホーム ▶</span>
-                <div class="submenu-content">
-                    <a href="colorpage/black.html" class="submenu-item color-black">黒</a>
-                    <a href="colorpage/white.html" class="submenu-item color-white">白葬街</a>
-                    <a href="colorpage/red.html" class="submenu-item color-red">呑紅街</a>
-                    <a href="colorpage/blue.html" class="submenu-item color-blue">蒼殉街</a>
-                    <a href="colorpage/green.html" class="submenu-item color-green">滲緑街</a>
-                    <a href="colorpage/yellow.html" class="submenu-item color-yellow">黄惑街</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
 
+    <script src="common/navigation.js"></script>
     <script>
         let currentText = 0;
         const texts = document.querySelectorAll('.opening-text');
@@ -523,12 +341,10 @@
         function showMainContent() {
             const openingContainer = document.getElementById('opening-container');
             const mainContent = document.getElementById('main-content');
-            const menuContainer = document.querySelector('.hover-menu-container');
             
             openingContainer.classList.add('fade-out');
             mainContent.style.opacity = '1';
             mainContent.style.animationDelay = '1s';
-            menuContainer.style.animationDelay = '2s';
         }
 
         // スキップ機能
@@ -536,82 +352,18 @@
             clearTimeout(animationTimeout);
             const openingContainer = document.getElementById('opening-container');
             const mainContent = document.getElementById('main-content');
-            const menuContainer = document.querySelector('.hover-menu-container');
             
             openingContainer.style.display = 'none';
             mainContent.style.opacity = '1';
             mainContent.style.animation = 'none';
-            menuContainer.style.opacity = '1';
-            menuContainer.style.animation = 'none';
         }
 
         // どのページから来てもアニメーションを再生（sessionStorageを削除）
         // sessionStorage.removeItem('visited'); // セッション記録を削除
         
-        // モバイル対応のメニュー機能
-        function initMobileMenu() {
-            const menuIcon = document.querySelector('.menu-icon');
-            const hoverMenu = document.querySelector('.hover-menu');
-            const submenu = document.querySelector('.submenu');
-            const submenuContent = document.querySelector('.submenu-content');
-            let menuOpen = false;
-            let submenuOpen = false;
-
-            // メニューアイコンのクリック/タップ処理
-            menuIcon.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                if (menuOpen) {
-                    hoverMenu.classList.remove('show');
-                    menuOpen = false;
-                } else {
-                    hoverMenu.classList.add('show');
-                    menuOpen = true;
-                }
-            });
-
-            // サブメニューのクリック/タップ処理
-            if (submenu) {
-                const submenuSpan = submenu.querySelector('span');
-                submenuSpan.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    if (submenuOpen) {
-                        submenuContent.classList.remove('show');
-                        submenuOpen = false;
-                    } else {
-                        submenuContent.classList.add('show');
-                        submenuOpen = true;
-                    }
-                });
-            }
-
-            // 外部クリックでメニューを閉じる
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.hover-menu-container')) {
-                    hoverMenu.classList.remove('show');
-                    if (submenuContent) submenuContent.classList.remove('show');
-                    menuOpen = false;
-                    submenuOpen = false;
-                }
-            });
-
-            // ESCキーでメニューを閉じる
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    hoverMenu.classList.remove('show');
-                    if (submenuContent) submenuContent.classList.remove('show');
-                    menuOpen = false;
-                    submenuOpen = false;
-                }
-            });
-        }
-
-        // DOMロード後にモバイルメニューを初期化
+        // DOMロード後にナビゲーションを初期化
         document.addEventListener('DOMContentLoaded', function() {
-            initMobileMenu();
+            initNavigation();
         });
         
         // アニメーション開始（0.5秒後開始）

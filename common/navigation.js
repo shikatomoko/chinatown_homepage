@@ -1,9 +1,63 @@
 // ナビゲーションHTML生成関数
-function createNavigationHTML(currentPath = '') {
-    // 現在のパスに基づいてリンクのプレフィックスを決定
-    const isInSubfolder = currentPath.includes('/');
-    const linkPrefix = isInSubfolder ? '../' : '';
+function createNavigationHTML() {
+    // 現在のパスを取得
+    let currentPath = window.location.href || window.location.pathname || document.URL;
     
+    // パス検出のロジック（複数の方法でフォルダ構造を判定）
+    let linkPrefix = '';
+    
+    // Method 1: URL内のフォルダ名から判定
+    if (currentPath.includes('characterpage') || currentPath.includes('shoppage')) {
+        // 2階層深い（例：characterpage/red/character_aren.html）
+        linkPrefix = '../../';
+    } else if (currentPath.includes('colorpage')) {
+        // 1階層深い（例：colorpage/red.html）  
+        linkPrefix = '../';
+    } else {
+        // Method 2: navigation.jsファイルの相対位置から判定
+        const scripts = document.getElementsByTagName('script');
+        for (let script of scripts) {
+            if (script.src && script.src.includes('navigation.js')) {
+                const navPath = script.getAttribute('src') || script.src;
+                if (navPath.includes('../../common/navigation.js')) {
+                    linkPrefix = '../../';
+                    break;
+                } else if (navPath.includes('../common/navigation.js')) {
+                    linkPrefix = '../';
+                    break;
+                } else if (navPath.includes('common/navigation.js') && !navPath.includes('../')) {
+                    linkPrefix = '';
+                    break;
+                }
+            }
+        }
+        
+        // Method 3: HTMLファイル内のnavigation.cssリンクから判定（フォールバック）
+        if (!linkPrefix) {
+            const links = document.getElementsByTagName('link');
+            for (let link of links) {
+                if (link.href && link.href.includes('navigation.css')) {
+                    const cssPath = link.getAttribute('href') || link.href;
+                    if (cssPath.includes('../../common/navigation.css')) {
+                        linkPrefix = '../../';
+                        break;
+                    } else if (cssPath.includes('../common/navigation.css')) {
+                        linkPrefix = '../';
+                        break;
+                    } else if (cssPath.includes('common/navigation.css')) {
+                        linkPrefix = '';
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    
+    return createNavigationHTMLWithPrefix(linkPrefix);
+}
+
+// 指定されたプレフィックスでナビゲーションHTMLを生成
+function createNavigationHTMLWithPrefix(linkPrefix) {
     return `
     <!-- ホバーメニュー -->
     <div class="hover-menu-container">
@@ -69,9 +123,16 @@ function initMobileMenu() {
 }
 
 // ナビゲーションを初期化する関数
-function initNavigation(currentPath = '') {
-    // ナビゲーションHTMLを挿入
-    document.body.insertAdjacentHTML('beforeend', createNavigationHTML(currentPath));
+function initNavigation() {
+    // ナビゲーションプレースホルダーを見つける
+    const placeholder = document.getElementById('navigation-placeholder');
+    if (placeholder) {
+        // プレースホルダーにナビゲーションHTMLを挿入
+        placeholder.innerHTML = createNavigationHTML();
+    } else {
+        // プレースホルダーがない場合はbodyの最後に追加（後方互換性）
+        document.body.insertAdjacentHTML('beforeend', createNavigationHTML());
+    }
     
     // DOMContentLoadedイベントでモバイルメニューを初期化
     if (document.readyState === 'loading') {
