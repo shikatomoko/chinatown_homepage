@@ -1,0 +1,246 @@
+
+        
+        .header {
+            background-image: url("../../picture/red_header.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .title {
+            font-size: clamp(4rem, 10vw, 6.5rem);
+            color: #ffffff;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: normal;
+            letter-spacing: 0.1em;
+            margin: 0;
+        }
+        
+        .main-content {
+            padding: 60px 40px;
+            background: #1a1a1a;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 60px;
+            margin-bottom: 60px;
+            padding-bottom: 60px;
+            background: #1a1a1a;
+            border-bottom: 2px solid #cc2936;
+        }
+        
+        .character-img {
+            width: 300px;
+            height: auto;
+            background: scroll;
+            max-height: 500px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+        
+        
+        .info-box {
+            flex: 1;
+            min-width: 320px;
+        }
+        
+        .info-row {
+            font-size: 18px;
+            color: #f5f5f5;
+            background: #1a1a1a;
+            margin-bottom: 16px;
+            line-height: 1.6;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: normal;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #cc2936;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            font-size: clamp(24px, 4vw, 32px);
+            color: #ffffff;
+            font-weight: normal;
+            margin-bottom: 30px;
+            letter-spacing: 0.05em;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .section-text {
+            font-size: clamp(16px, 2.5vw, 18px);
+            color: #e0e0e0;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: normal;
+        }
+        
+        .color-link {
+            color: #ffffff;
+            text-decoration: underline;
+            transition: all 0.3s ease;
+        }
+        
+        .color-link:hover {
+            color: #e5e5e5;
+        }
+        
+        .shop-link {
+            color: #ffffff;
+            text-decoration: underline;
+            transition: all 0.3s ease;
+        }
+        
+        .shop-link:hover {
+            color: #e5e5e5;
+        }
+        
+        .character-link {
+            color: #ffffff;
+            text-decoration: underline;
+            transition: all 0.3s ease;
+        }
+        
+        .character-link:hover {
+            color: #e5e5e5;
+        }
+        
+        .character-relationships {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+        
+        .character-card {
+            background: #1a1a1a;
+            border-radius: 8px;
+            border: 1px solid #cc2936;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .character-card:hover {
+            background: #2a2a2a;
+            border-color: #dc2626;
+            transform: translateY(-2px);
+        }
+        
+        .character-link-card {
+            text-decoration: none;
+            color: inherit;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .character-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .character-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            margin-right: 12px;
+            object-fit: cover;
+        }
+        
+        .character-name {
+            font-size: 18px;
+            font-weight: normal;
+            color: #ffffff;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        
+        .character-description {
+            font-size: 15px;
+            color: #e8e8e8;
+            line-height: 1.6;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-weight: normal;
+        }
+        
+
+
+        
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 40px 20px;
+            }
+            
+            .top-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 40px;
+                margin-bottom: 40px;
+                padding-bottom: 40px;
+            }
+            
+            .character-img {
+                width: 250px;
+                max-height: 400px;
+            }
+            
+            .info-box {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .character-relationships {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .character-img {
+                width: 200px;
+                max-height: 320px;
+            }
+            
+
+            
+            .menu-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            
+            .hover-menu {
+                min-width: 140px;
+            }
+            
+            .submenu-content {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                min-width: 180px;
+            }
+        }
