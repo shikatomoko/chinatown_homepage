@@ -56,7 +56,7 @@
     background: none;
     border: none;
     font-size: 2rem;
-    color: #4caf50;
+    color: #ffffff;
     cursor: pointer;
     padding: 0;
     width: 30px;
@@ -67,14 +67,14 @@
 }
 
 .close-btn:hover {
-    color: #2e7d32;
+    color: #cccccc;
 }
 
 .shop-list {
     list-style: none;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
 
@@ -87,7 +87,20 @@
 }
 
 .shop-list li:hover {
-    background-color: #2e7d32;
+    background-color: #109706;
+}
+
+.shop-list a {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    width: 100%;
+}
+
+.shop-list a:hover {
+    color: #e0e0e0;
 }
 
 .shop-icon {
@@ -96,20 +109,11 @@
     object-fit: cover;
     border-radius: 5px;
     margin-right: 10px;
+    flex-shrink: 0;
 }
 
-.shop-list a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.shop-list a:hover {
-    color: #c8e6c9;
-}
-
-.green-group-btn {
-    background-color: #2d4a2e;
+.yellow-group-btn {
+    background-color: #2a2a2a;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -123,8 +127,8 @@
     display: block;
 }
 
-.green-group-btn:hover {
-    background-color: #1f3220;
+.yellow-group-btn:hover {
+    background-color: #01cd088a;
 }
 
 /* モバイル対応 */

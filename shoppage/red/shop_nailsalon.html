@@ -100,12 +100,10 @@
         </div>
     </div>
     
-    <button class="red-group-btn">赤組のその他の店舗</button>
+     <div class="content-section">
+        <button class="red-group-btn" onclick="showRedGroupDetail()">赤組の店舗一覧</button>
+    </div>
     
-    <div id="navigation-placeholder"></div>
-    
-    <script src="../../common/navigation.js"></script>
-    <script src="redpopup.js"></script>
     <script>
         function changeMainImage(clickedImage) {
             const mainImage = document.getElementById('mainImage');
@@ -125,7 +123,12 @@
             initNavigation();
         });
     </script>
+    <script src="redpopup.js"></script>
+    <script src="../../common/navigation.js"></script>
 </body>
 </html>
+
+
+
 
 

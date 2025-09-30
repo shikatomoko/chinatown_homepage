@@ -1,71 +1,25 @@
 // 赤組詳細ポップアップ専用JavaScript - redpopup.js
 
-/**
- * 赤組詳細ポップアップを表示する
- */
 function showRedGroupDetail() {
     hideGroupDetail();
     
-    const detail = document.getElementById('detail-red');
-    const overlay = document.getElementById('overlay');
+    // 既存の要素をチェックし、なければ作成
+    let overlay = document.getElementById('overlay');
+    let detail = document.getElementById('detail-red');
     
-    if (detail && overlay) {
-        detail.classList.add('active');
-        overlay.classList.add('active');
-        
-        // ESCキーイベントを追加
-        document.addEventListener('keydown', handleEscKey);
-        
-        // フォーカスをポップアップに移動（アクセシビリティ向上）
-        detail.setAttribute('tabindex', '-1');
-        detail.focus();
-    }
-}
-
-/**
- * 赤組詳細ポップアップを非表示にする
- */
-function hideGroupDetail() {
-    const details = document.querySelectorAll('.group-detail');
-    const overlay = document.getElementById('overlay');
-    
-    details.forEach(detail => {
-        detail.classList.remove('active');
-    });
-    
-    if (overlay) {
-        overlay.classList.remove('active');
-    }
-    
-    // ESCキーイベントを削除
-    document.removeEventListener('keydown', handleEscKey);
-}
-
-/**
- * ESCキーでポップアップを閉じる
- */
-function handleEscKey(event) {
-    if (event.key === 'Escape') {
-        hideGroupDetail();
-    }
-}
-
-/**
- * 赤組ポップアップのHTMLを動的に生成する
- */
-function createRedPopupHTML() {
-    // オーバーレイが存在しない場合は作成
-    if (!document.getElementById('overlay')) {
-        const overlay = document.createElement('div');
+    if (!overlay) {
+        overlay = document.createElement('div');
         overlay.className = 'overlay';
         overlay.id = 'overlay';
+        overlay.addEventListener('click', hideGroupDetail);
         document.body.appendChild(overlay);
     }
     
-    // 赤組詳細ポップアップが存在しない場合は作成
-    if (!document.getElementById('detail-red')) {
-        const popupHTML = `
-            <div class="group-detail" id="detail-red">
+    if (!detail) {
+        detail = document.createElement('div');
+        detail.className = 'group-detail';
+        detail.id = 'detail-red';
+        detail.innerHTML = `
                 <button class="close-btn">&times;</button>
                 <h3>呑紅街の店舗</h3>
                 <ul class="shop-list">
@@ -79,43 +33,50 @@ function createRedPopupHTML() {
                     <li><img src="../../shop_image/red/printing/printing.png" class="shop-icon" alt="印紙屋"><a href="./shop_stamp.html">印紙屋</a></li>
                     <li><img src="../../shop_image/red/restaurant/restaurant.png" class="shop-icon" alt="レストラン"><a href="./shop_redrestaurant.html">レストラン</a></li>
                 </ul>
-            </div>
         `;
-        document.body.insertAdjacentHTML('beforeend', popupHTML);
+        document.body.appendChild(detail);
+    }
+    
+    if (detail && overlay) {
+        detail.classList.add('active');
+        overlay.classList.add('active');
+        
+        document.addEventListener('keydown', handleEscKey);
+    }
+}
+
+function hideGroupDetail() {
+    const detail = document.querySelector('.group-detail.active');
+    const overlay = document.getElementById('overlay');
+    
+    if (detail) {
+        detail.classList.remove('active');
+    }
+    
+    if (overlay) {
+        overlay.classList.remove('active');
+    }
+    
+    document.removeEventListener('keydown', handleEscKey);
+}
+
+/**
+ * ESCキーでポップアップを閉じる処理
+ * @param {KeyboardEvent} event - キーボードイベント
+ */
+function handleEscKey(event) {
+    if (event.key === 'Escape') {
+        hideGroupDetail();
     }
 }
 
 /**
- * 赤組ポップアップ機能を初期化する
+ * DOMContentLoaded時の初期化
  */
-function initRedPopup() {
-    // HTML要素を動的に生成
-    createRedPopupHTML();
-    
+document.addEventListener('DOMContentLoaded', function() {
     // オーバーレイクリックで閉じる
     const overlay = document.getElementById('overlay');
     if (overlay) {
         overlay.addEventListener('click', hideGroupDetail);
     }
-    
-    // 閉じるボタンのクリックイベント
-    const closeBtn = document.querySelector('.close-btn');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', hideGroupDetail);
-    }
-    
-    // 赤組ボタンのクリックイベント
-    const redGroupBtn = document.querySelector('.red-group-btn');
-    if (redGroupBtn) {
-        redGroupBtn.addEventListener('click', showRedGroupDetail);
-    }
-}
-
-// DOM読み込み完了後に初期化
-document.addEventListener('DOMContentLoaded', function() {
-    initRedPopup();
 });
-
-// 外部から利用可能な関数をグローバルスコープに公開
-window.showRedGroupDetail = showRedGroupDetail;
-window.hideGroupDetail = hideGroupDetail;

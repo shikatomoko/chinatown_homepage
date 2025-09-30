@@ -279,7 +279,7 @@ body {
 
 /* 黄色グループボタン */
 .yellow-group-btn {
-    background: linear-gradient(135deg, #ffc107 0%, #ffdd54 100%);
+    background: #6d5306;
     color: #000000;
     border: none;
     padding: 15px 30px;

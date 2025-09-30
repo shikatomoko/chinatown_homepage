@@ -97,48 +97,10 @@
         </div>
     </div>
     
-   <button class="red-group-btn">赤組のその他の店舗</button>
-    
-    <div id="navigation-placeholder"></div>
-    
-    <script src="../../common/navigation.js"></script>
-    <script src="redpopup.js"></script>
-    <script>
-        function changeMainImage(clickedImage) {
-            const mainImage = document.getElementById('mainImage');
-            const allSubImages = document.querySelectorAll('.sub-image');
-            
-            // メイン画像を変更
-            mainImage.src = clickedImage.src;
-            mainImage.alt = clickedImage.alt;
-            
-            // アクティブクラスを更新
-            allSubImages.forEach(img => img.classList.remove('active'));
-            clickedImage.classList.add('active');
-        }
-        
-        // ナビゲーション初期化
-        document.addEventListener('DOMContentLoaded', function() {
-            initNavigation();
-        });
-    </script>
-</body>
-</html>
-
-
-                    <a href="../../colorpage/black.html" class="submenu-item color-black">黒</a>
-                    <a href="../../colorpage/white.html" class="submenu-item color-white">白葬街</a>
-                    <a href="../../colorpage/red.html" class="submenu-item color-red">呑紅街</a>
-                    <a href="../../colorpage/blue.html" class="submenu-item color-blue">蒼殉街</a>
-                    <a href="../../colorpage/green.html" class="submenu-item color-green">滲緑街</a>
-                    <a href="../../colorpage/yellow.html" class="submenu-item color-yellow">黄惑街</a>
-                </div>
-            </div>
-        </div>
+    <div class="content-section">
+        <button class="red-group-btn" onclick="showRedGroupDetail()">赤組の店舗一覧</button>
     </div>
     
-    <script src="../../common/navigation.js"></script>
-    <script src="redpopup.js"></script>
     <script>
         function changeMainImage(clickedImage) {
             const mainImage = document.getElementById('mainImage');
@@ -158,6 +120,8 @@
             initNavigation();
         });
     </script>
+    <script src="redpopup.js"></script>
+    <script src="../../common/navigation.js"></script>
 </body>
 </html>
 
