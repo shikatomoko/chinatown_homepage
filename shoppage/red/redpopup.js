@@ -35,6 +35,11 @@ function showRedGroupDetail() {
                 </ul>
         `;
         document.body.appendChild(detail);
+        // ×ボタンに閉じるイベントを追加
+        const closeBtn = detail.querySelector('.close-btn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', hideGroupDetail);
+        }
     }
     
     if (detail && overlay) {
@@ -45,6 +50,9 @@ function showRedGroupDetail() {
     }
 }
 
+/**
+ * ポップアップを非表示
+ */
 function hideGroupDetail() {
     const detail = document.querySelector('.group-detail.active');
     const overlay = document.getElementById('overlay');

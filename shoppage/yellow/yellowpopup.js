@@ -2,9 +2,6 @@
  * 黄惑街店舗ポップアップ機能
  */
 
-/**
- * 黄惑街店舗詳細ポップアップを表示
- */
 function showYellowGroupDetail() {
     hideGroupDetail();
     
