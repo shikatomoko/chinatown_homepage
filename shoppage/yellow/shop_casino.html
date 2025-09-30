@@ -122,6 +122,11 @@
             allSubImages.forEach(img => img.classList.remove('active'));
             clickedImage.classList.add('active');
         }
+        
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
     </script>
     <script src="yellowpopup.js"></script>
     <script src="../../common/navigation.js"></script>
