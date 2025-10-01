@@ -4,157 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ルール一覧</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="common/styles.css">
     <link rel="stylesheet" href="common/navigation.css">
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 15px;
-            background: linear-gradient(145deg, #0f0f0f 0%, #1a1a1a 50%, #2a2a2a 100%);
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-            color: #e8e8e8;
-            box-sizing: border-box;
-        }
-        h1 {
-            margin-top: 20px;
-            margin-bottom: 30px;
-            font-size: clamp(2em, 5vw, 3em);
-            font-weight: 300;
-            color: #ffffff;
-            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.8);
-            letter-spacing: 0.15em;
-            text-align: center;
-            width: 100%;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-        }
-        .rule-list {
-            width: 100%;
-            max-width: 800px;
-            margin-bottom: 40px;
-            padding: 0 20px;
-            box-sizing: border-box;
-        }
-        .rule-item {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            padding: 16px 20px;
-            transition: all 0.3s ease;
-            font-size: clamp(1em, 2.5vw, 1.1em);
-            font-weight: normal;
-            color: #ffffff;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-        }
-        .rule-item:hover {
-            background: #2a2a2a;
-            border-color: #555;
-            transform: translateY(-2px);
-        }
-        .rule-detail {
-            display: none;
-            padding: 16px 20px;
-            background: #111;
-            border-top: 1px solid #333;
-            font-size: clamp(0.9em, 2vw, 1em);
-            color: #e0e0e0;
-            margin-top: 12px;
-            border-radius: 0 0 8px 8px;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-        }
-        .active .rule-detail {
-            display: block;
-        }
-        ul, ol {
-            margin: 8px 0 8px 24px;
-        }
-        table {
-            width: 100%;
-            margin: 12px auto;
-            border-collapse: collapse;
-            background: #000;
-            color: #e0e0e0;
-            font-size: clamp(0.8em, 1.8vw, 0.95em);
-            border-radius: 4px;
-            overflow: hidden;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-        }
-        th, td {
-            border: 1px solid #333;
-            padding: 8px 10px;
-            text-align: left;
-            word-wrap: break-word;
-        }
-        th {
-            background: #1a1a1a;
-            color: #ffffff;
-            font-weight: normal;
-        }
-        
-
-        
-        /* モバイル対応 */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            h1 {
-                margin-top: 15px;
-                margin-bottom: 20px;
-                font-size: 2.2em;
-            }
-            .rule-list {
-                padding: 0 10px;
-                max-width: 100%;
-            }
-            .rule-item {
-                padding: 14px 16px;
-                margin-bottom: 12px;
-            }
-            .rule-detail {
-                padding: 14px 16px;
-            }
-            table {
-                font-size: 12px;
-            }
-            th, td {
-                padding: 6px 8px;
-            }
-
-            .hover-menu {
-                min-width: 160px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-
-            .hover-menu {
-                min-width: 140px;
-            }
-            .submenu-content {
-                position: fixed;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                min-width: 180px;
-            }
-            .rule-list {
-                max-width: 100%;
-            }
-        }
-    </style>
 </head>
 <body>
     <h1>特殊ルール一覧</h1>
-    <div class="rule-list">
-        <div class="rule-item" onclick="toggleDetail(this)">
-            麻薬ルール
-            <div class="rule-detail">
+    <div class="list">
+        <div class="list-item" onclick="toggleDetail(this)">
+            <div class="list-header">
+                <span class="list-title">麻薬ルール</span>
+            </div>
+            <div class="list-detail">
                 <ul>
                     <li>麻薬の種類
                         <table>
@@ -201,9 +61,11 @@
                 </ul>
             </div>
         </div>
-        <div class="rule-item" onclick="toggleDetail(this)">
-            お金ルール
-            <div class="rule-detail">
+        <div class="list-item" onclick="toggleDetail(this)">
+            <div class="list-header">
+                <span class="list-title">お金ルール</span>
+            </div>
+            <div class="list-detail">
                 <ul>
                     <li>初期値決定
                         <ul>
@@ -235,9 +97,11 @@
                 </ul>
             </div>
         </div>
-        <div class="rule-item" onclick="toggleDetail(this)">
-            拷問ルール
-            <div class="rule-detail">
+        <div class="list-item" onclick="toggleDetail(this)">
+            <div class="list-header">
+                <span class="list-title">拷問ルール</span>
+            </div>
+            <div class="list-detail">
                 <ol>
                     <li>拷問者：DEX*5ロール
                         <ul>
@@ -279,9 +143,11 @@
                 </ol>
             </div>
         </div>
-        <div class="rule-item" onclick="toggleDetail(this)">
-            信用ルール
-            <div class="rule-detail">
+        <div class="list-item" onclick="toggleDetail(this)">
+            <div class="list-header">
+                <span class="list-title">信用ルール</span>
+            </div>
+            <div class="list-detail">
                 <ul>
                     <li>各エリアで必要な信用値
                         <table>
@@ -301,9 +167,11 @@
                 </ul>
             </div>
         </div>
-        <div class="rule-item" onclick="toggleDetail(this)">
-            食事ルール
-            <div class="rule-detail">
+        <div class="list-item" onclick="toggleDetail(this)">
+            <div class="list-header">
+                <span class="list-title">食事ルール</span>
+            </div>
+            <div class="list-detail">
                 <ul>
                     <li>食事時に正気度チェック
                         <ul>
@@ -314,9 +182,11 @@
                 </ul>
             </div>
         </div>
-        <div class="rule-item" onclick="toggleDetail(this)">
-            仕事ルール
-            <div class="rule-detail">
+        <div class="list-item" onclick="toggleDetail(this)">
+            <div class="list-header">
+                <span class="list-title">仕事ルール</span>
+            </div>
+            <div class="list-detail">
                 <ul>
                     <li>仕事難易度ごとの信用値増減
                         <table>
@@ -330,9 +200,11 @@
                 </ul>
             </div>
         </div>
-        <div class="rule-item" onclick="toggleDetail(this)">
-            首絞めルール
-            <div class="rule-detail">
+        <div class="list-item" onclick="toggleDetail(this)">
+            <div class="list-header">
+                <span class="list-title">首絞めルール  </span>
+            </div>
+            <div class="list-detail">
                 <ul>
                     <li>組み付き・STR*5ロールで首絞め状態</li>
                     <li>首絞め状態：CON*5ロールで抵抗</li>
@@ -342,9 +214,11 @@
                 </ul>
             </div>
         </div>
-        <div class="rule-item" onclick="toggleDetail(this)">
-            卓後処理ルール
-            <div class="rule-detail">
+        <div class="list-item" onclick="toggleDetail(this)">
+            <div class="list-header">
+                <span class="list-title">卓後処理ルール</span>
+            </div>
+            <div class="list-detail">
                 <ul>
                     <li>SAN 1d10回復</li>
                     <li>信用成長（達成した仕事量による）</li>

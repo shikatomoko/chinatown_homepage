@@ -4,244 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>店舗一覧</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="common/styles.css">
     <link rel="stylesheet" href="common/navigation.css">
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 15px;
-            background: linear-gradient(145deg, #0f0f0f 0%, #1a1a1a 50%, #2a2a2a 100%);
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-            color: #e8e8e8;
-            box-sizing: border-box;
-        }
-        h1 {
-            margin-top: 20px;
-            margin-bottom: 30px;
-            font-size: clamp(2em, 5vw, 3em);
-            font-weight: 300;
-            color: #ffffff;
-            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.8);
-            letter-spacing: 0.15em;
-            text-align: center;
-            width: 100%;
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-        }
-        .map-area {
-            position: relative;
-            width: 90vw;
-            max-width: 1000px;
-            height: 70vh;
-            min-height: 500px;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .map-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            border-radius: 15px;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
-            border: 2px solid rgba(255, 255, 255, 0.15);
-        }
-        .group-label {
-            position: absolute;
-            font-size: clamp(18px, 4vw, 28px);
-            font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 8px 15px;
-            border-radius: 8px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            z-index: 10;
-        }
-        .group-label:hover {
-            transform: scale(1.1);
-            text-shadow: 0 4px 16px rgba(0, 0, 0, 1), 0 0 30px rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-        /* 各組のラベル位置と色 */
-        .label-yellow {
-            top: 20%;
-            left: 30%;
-            color: #fbc02d;
-            background: rgba(251, 192, 45, 0.15);
-        }
-        .label-black {
-            top: 18%;
-            right: 18%;
-            color: #f5f5f5;
-            background: rgba(245, 245, 245, 0.15);
-        }
-        .label-green {
-            top: 45%;
-            left: 10%;
-            color: #43ff43;
-            background: rgba(67, 255, 67, 0.15);
-        }
-        .label-white {
-            top: 40%;
-            right: 18%;
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.15);
-        }
-        .label-red {
-            bottom: 20%;
-            left: 40%;
-            color: #ff6b6b;
-            background: rgba(255, 107, 107, 0.15);
-        }
-        .label-blue {
-            top: 70%;
-            left: 80%;
-            color: #4fc3f7;
-            background: rgba(79, 195, 247, 0.15);
-        }
-        .group-detail {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(30, 30, 30, 0.95);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 25px;
-            max-width: 400px;
-            max-height: 70vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            display: none;
-        }
-        .group-detail.active {
-            display: block;
-        }
-        .group-detail h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            color: #ffffff;
-            font-size: 24px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        .close-btn:hover {
-            color: #ff6b6b;
-        }
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-            display: none;
-        }
-        .overlay.active {
-            display: block;
-        }
-        .shop-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .shop-list li {
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-        }
-        .shop-list a {
-            color: #e8e8e8;
-            text-decoration: none;
-            font-size: clamp(13px, 3vw, 16px);
-            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-            transition: all 0.3s ease;
-            margin-left: 8px;
-            font-weight: 500;
-        }
-        .shop-list a:hover {
-            color: #ffffff;
-            text-decoration: none;
-            text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
-            transform: translateX(3px);
-        }
-        .shop-icon {
-            width: clamp(20px, 4vw, 26px);
-            height: clamp(20px, 4vw, 26px);
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-            background: rgba(30, 30, 30, 0.9);
-            transition: all 0.3s ease;
-        }
-        .shop-icon:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
 
-
-        
-        /* モバイル対応 */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            h1 {
-                margin-top: 15px;
-                margin-bottom: 20px;
-                font-size: 2.2em;
-            }
-            .map-area {
-                height: 60vh;
-                min-height: 400px;
-            }
-            .group-label {
-                font-size: 16px;
-                padding: 6px 12px;
-            }
-            .group-detail {
-                max-width: 350px;
-                padding: 20px;
-            }
-
-        }
-        
-        @media (max-width: 480px) {
-            .group-label {
-                font-size: 14px;
-                padding: 5px 10px;
-            }
-            .group-detail {
-                max-width: 300px;
-                padding: 15px;
-            }
-
-        }
-    </style>
+       
 </head>
+
 <body>
     <h1>店舗一覧</h1>
+        <div id="navigation-placeholder"></div>
     
     <!-- オーバーレイ -->
     <div class="overlay" id="overlay"></div>
@@ -251,143 +22,27 @@
         <img src="./picture/map.png" alt="Map" class="map-img">
         
         <!-- 各組のラベル -->
-        <div class="group-label label-yellow" onclick="showGroupDetail('yellow')">黄惑街</div>
-        <div class="group-label label-black" onclick="showGroupDetail('black')">黒</div>
-        <div class="group-label label-green" onclick="showGroupDetail('green')">滲緑街</div>
-        <div class="group-label label-white" onclick="showGroupDetail('white')">白葬街</div>
-        <div class="group-label label-red" onclick="showGroupDetail('red')">呑紅街</div>
-        <div class="group-label label-blue" onclick="showGroupDetail('blue')">蒼殉街</div>
-    </div>
-    
-    <!-- 詳細ボックス群 -->
-    <div class="group-detail" id="detail-yellow">
-        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3 style="color:#b99e01; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='colorpage/yellow.html'" onmouseover="this.style.textShadow='0 2px 8px rgba(252, 251, 251, 0.8)'" onmouseout="this.style.textShadow='none'">黄惑街</h3>
-        <ul class="shop-list">
-            <li><img src="./shop_image/yellow/casino/casino.png" class="shop-icon" alt="カジノ"><a href="./shoppage/yellow/shop_casino.html">カジノ</a></li>
-            <li><img src="./shop_image/yellow/auction/auction_stage.png" class="shop-icon" alt="オークション"><a href="./shoppage/yellow/shop_auction.html">オークション</a></li>
-            <li><img src="./shop_image/yellow/bank/bank_entrance.png" class="shop-icon" alt="銀行"><a href="./shoppage/yellow/shop_bank.html">銀行</a></li>
-            <li><img src="./shop_image/yellow/brothel/brothel.png" class="shop-icon" alt="娼館"><a href="./shoppage/yellow/shop_brothel.html">娼館</a></li>
-            <li><img src="./shop_image/yellow/courier/courier.png" class="shop-icon" alt="運び屋"><a href="./shoppage/yellow/shop_courier.html">運び屋</a></li>
-            <li><img src="./shop_image/yellow/hostclub/hostclub.png" class="shop-icon" alt="ホストクラブ"><a href="./shoppage/yellow/shop_hostclub.html">ホストクラブ</a></li>
-            <li><img src="./shop_image/yellow/hotel/hotel.png" class="shop-icon" alt="ホテル"><a href="./shoppage/yellow/shop_hotel.html">ホテル</a></li>
-            <li><img src="./shop_image/yellow/park/park.jpg" class="shop-icon" alt="遊園地"><a href="./shoppage/yellow/shop_park.html">遊園地</a></li>
-            <li><img src="./shop_image/yellow/trade/trade.png" class="shop-icon" alt="交易所"><a href="./shoppage/yellow/shop_trade.html">両替屋</a></li>
-            <li><img src="./shop_image/yellow/cosmeticsurgery/cosmetic_surgery.png" class="shop-icon" alt="美容整形外科"><a href="./shoppage/yellow/shop_cosmeticsurgery.html">美容整形外科</a></li>
-        </ul>
-    </div>
-    
-    <div class="group-detail" id="detail-black">
-        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3 style="color:#fcfbfb; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='colorpage/black.html'" onmouseover="this.style.textShadow='0 2px 8px rgba(252, 251, 251, 0.8)'" onmouseout="this.style.textShadow='none'">黒</h3>
-        <ul class="shop-list">
-            <li><img src="./shop_image/black/castle/castle.jpg" class="shop-icon" alt="城"><a href="./shoppage/black/shop_castle.html">城</a></li>
-            <li><img src="./shop_image/black/clean/clean.jpg" class="shop-icon" alt="掃除屋"><a href="./shoppage/black/shop_cleaner.html">掃除屋</a></li>
-            <li><img src="./shop_image/black/postoffice/postoffice.jpg" class="shop-icon" alt="郵便局"><a href="./shoppage/black/shop_postoffice.html">郵便局</a></li>
-            <li><img src="./shop_image/black/blackcafe/blackcafe.jpg" class="shop-icon" alt="カフェ"><a href="./shoppage/black/shop_blackcafe.html">カフェ</a></li>
-        </ul>
-    </div>
-    
-    <div class="group-detail" id="detail-green">
-        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3 style="color:#43ff43; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='colorpage/green.html'" onmouseover="this.style.textShadow='0 2px 8px rgba(67, 255, 67, 0.8)'" onmouseout="this.style.textShadow='none'">滲緑街</h3>
-        <ul class="shop-list">
-            <li><img src="./shop_image/green/hospital/Hospital (Reception).png" class="shop-icon" alt="病院"><a href="./shoppage/green/shop_hospital.html">病院</a></li>
-            <li><img src="./shop_image/green/cakeshop/cakeshop.png" class="shop-icon" alt="ケーキ屋"><a href="./shoppage/green/shop_cakeshop.html">ケーキ屋</a></li>
-            <li><img src="./shop_image/green/incense/Incense Shop (Exterior).png" class="shop-icon" alt="お香屋"><a href="./shoppage/green/shop_incense.html">お香屋</a></li>
-            <li><img src="./shop_image/green/zoo/zoo.png" class="shop-icon" alt="動物園"><a href="./shoppage/green/shop_zoo.html">動物園</a></li>
-            <li><img src="./shop_image/green/lab/lab_coldroom.png" class="shop-icon" alt="研究所"><a href="./shoppage/green/shop_laboratory.html">研究所</a></li>
-        </ul>
-    </div>
-    
-    <div class="group-detail" id="detail-white">
-        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3 style="color:#ffffff; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='colorpage/white.html'" onmouseover="this.style.textShadow='0 2px 8px rgba(255, 255, 255, 0.8)'" onmouseout="this.style.textShadow='none'">白葬街</h3>
-        <ul class="shop-list">
-            <li><img src="./shop_image/white/butcher/butcher.jpg" class="shop-icon" alt="肉屋"><a href="./shoppage/white/shop_butcher.html">肉屋</a></li>
-            <li><img src="./shop_image/white/leather/Leather Shop (Workshop).png" class="shop-icon" alt="皮屋"><a href="./shoppage/white/shop_leather.html">皮屋</a></li>
-            <li><img src="./shop_image/white/undertaker/undertaker.png" class="shop-icon" alt="葬儀屋"><a href="./shoppage/white/shop_undertaker.html">葬儀屋</a></li>
-        </ul>
-    </div>
-    
-    <div class="group-detail" id="detail-red">
-        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3 style="color:#ff6b6b; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='colorpage/red.html'" onmouseover="this.style.textShadow='0 2px 8px rgba(255, 107, 107, 0.8)'" onmouseout="this.style.textShadow='none'">呑紅街</h3>
-        <ul class="shop-list">
-            <li><img src="./shop_image/red/nailsalon/nailsalon.png" class="shop-icon" alt="ネイルサロン"><a href="./shoppage/red/shop_nailsalon.html">ネイルサロン</a></li>
-            <li><img src="./shop_image/red/tailor/tailor.png" class="shop-icon" alt="テーラー"><a href="./shoppage/red/shop_tailor.html">テーラー</a></li>
-            <li><img src="./shop_image/red/antique/antique.png" class="shop-icon" alt="骨董楼"><a href="./shoppage/red/shop_antique.html">骨董楼</a></li>
-            <li><img src="./shop_image/red/spa/spa.png" class="shop-icon" alt="湯治屋"><a href="./shoppage/red/shop_spa.html">湯治屋</a></li>
-            <li><img src="./shop_image/red/informer/informer.png" class="shop-icon" alt="情報屋"><a href="./shoppage/red/shop_informer.html">情報屋</a></li>
-            <li><img src="./shop_image/red/torture/torture.png" class="shop-icon" alt="拷問屋"><a href="./shoppage/red/shop_torture.html">拷問屋</a></li>
-            <li><img src="./shop_image/red/tattoo/tattoo.png" class="shop-icon" alt="刺青屋"><a href="./shoppage/red/shop_tattoo.html">刺青屋</a></li>
-            <li><img src="./shop_image/red/printing/printing.png" class="shop-icon" alt="印紙屋"><a href="./shoppage/red/shop_stamp.html">印紙屋</a></li>
-            <li><img src="./shop_image/red/restaurant/restaurant.png" class="shop-icon" alt="レストラン"><a href="./shoppage/red/shop_redrestaurant.html">レストラン</a></li>
-        </ul>
-    </div>
-    
-    <div class="group-detail" id="detail-blue">
-        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3 style="color:#4fc3f7; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='colorpage/blue.html'" onmouseover="this.style.textShadow='0 2px 8px rgba(79, 195, 247, 0.8)'" onmouseout="this.style.textShadow='none'">蒼殉街</h3>
-        <ul class="shop-list">
-            <li><img src="./shop_image/blue/cult/Religious facility (huge chapel).png" class="shop-icon" alt="教団"><a href="./shoppage/blue/shop_cult.html">教団</a></li>
-            <li><img src="./shop_image/blue/school/School (Exterior).png" class="shop-icon" alt="学校"><a href="./shoppage/blue/shop_school.html">学校</a></li>
-            <li><img src="./shop_image/blue/museum/museum.png" class="shop-icon" alt="博物館"><a href="./shoppage/blue/shop_museum.html">博物館</a></li>
-            <li><img src="./shop_image/blue/aquarium/Aquarium (huge tank).png" class="shop-icon" alt="水族館"><a href="./shoppage/blue/shop_aquarium.html">水族館</a></li>
-            <li><img src="./shop_image/blue/farm/Farm (Exterior).png" class="shop-icon" alt="畑"><a href="./shoppage/blue/shop_farm.html">畑</a></li>
-            <li><img src="./shop_image/blue/mine/mine.png" class="shop-icon" alt="鉱山"><a href="./shoppage/blue/shop_mine.html">鉱山</a></li>
-        </ul>
+
+        <div class="group-label label-yellow" onclick="showYellowGroupDetail()">黄惑街</div>
+        <div class="group-label label-black" onclick="showBlackGroupDetail()">黒</div>
+        <div class="group-label label-green" onclick="showGreenGroupDetail()">滲緑街</div>
+        <div class="group-label label-white" onclick="showWhiteGroupDetail()">白葬街</div>
+        <div class="group-label label-red" onclick="showRedGroupDetail()">呑紅街</div>
+        <div class="group-label label-blue" onclick="showBlueGroupDetail()">蒼殉街</div>
     </div>
     
     <!-- ナビゲーション（JavaScript で動的生成） -->
     <div id="navigation-placeholder"></div>
     
-    <script src="common/navigation.js"></script>
+    <script src="bluepopup.js"></script>
+    <script src="blackpopup.js"></script>
+    <script src="whitepopup.js"></script>
+    <script src="greenpopup.js"></script>
+    <script src="redpopup.js"></script>
+    <script src="yellowpopup.js"></script>
+    <script src="../../common/navigation.js"></script>
+      <script src="common/navigation.js"></script>
     <script>
-        function showGroupDetail(groupName) {
-            // すべての詳細を非表示にする
-            hideGroupDetail();
-            
-            // 指定されたグループの詳細を表示
-            const detail = document.getElementById('detail-' + groupName);
-            const overlay = document.getElementById('overlay');
-            
-            if (detail && overlay) {
-                detail.classList.add('active');
-                overlay.classList.add('active');
-                
-                // ESCキーで閉じる
-                document.addEventListener('keydown', handleEscKey);
-            }
-        }
-        
-        function hideGroupDetail() {
-            // すべての詳細ボックスを非表示にする
-            const details = document.querySelectorAll('.group-detail');
-            const overlay = document.getElementById('overlay');
-            
-            details.forEach(detail => {
-                detail.classList.remove('active');
-            });
-            
-            if (overlay) {
-                overlay.classList.remove('active');
-            }
-            
-            // ESCキーのイベントリスナーを削除
-            document.removeEventListener('keydown', handleEscKey);
-        }
-        
-        function handleEscKey(event) {
-            if (event.key === 'Escape') {
-                hideGroupDetail();
-            }
-        }
-        
-        // オーバーレイをクリックして閉じる
-        document.getElementById('overlay').addEventListener('click', hideGroupDetail);
-        
-        // ナビゲーション初期化
         document.addEventListener('DOMContentLoaded', function() {
             initNavigation();
         });

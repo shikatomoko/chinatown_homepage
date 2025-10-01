@@ -7,31 +7,197 @@ body {
     padding: 0;
     box-sizing: border-box;
     color: #e8e8e8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 15px;
+    background: #1a1a1a;
+    overflow-x: auto;
 }
+
+
 
 /* 全体的なボックスサイジング */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
-/* 共通のタイトルスタイル */
+/* 共通のテキストスタイル */
 .title {
     font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
     font-weight: bold;
     text-align: center;
 }
 
+ h1 {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            font-size: clamp(2em, 5vw, 3em);
+            color: #ffffff;
+            letter-spacing: 0.15em;
+            text-align: center;
+            width: 100%;
+        }
+
+/*　共通のリストスタイル */
+ .list {
+            width: 80%;
+            max-width: 800px;
+            margin-bottom: 40px;
+            padding: 0 20px;
+            box-sizing: border-box;
+ }
+
+ .list-item {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+.list-item:hover {
+            background: #2a2a2a;
+            border-color: #555;
+            transform: translateY(-2px);
+        }
+.list-header {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+        }
+        
+.list-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 2px solid #333;
+            background: #111;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+.list-icon:hover {
+            border-color: #555;
+            transform: scale(1.05);
+        }
+
+.list-title {
+            font-size: clamp(1em, 2.5vw, 1.1em);
+            font-weight: normal;
+            color: #ffffff;
+        }
+
+.list-detail {
+            display: none;
+            padding: 16px 20px;
+            background: #111;
+            border-top: 1px solid #333;
+            font-size: clamp(0.9em, 2vw, 1em);
+            color: #e0e0e0;
+            margin-top: 0;
+            border-radius: 0 0 8px 8px;
+            line-height: 1.6;
+        }
+
+.active .list-detail {
+            display: block;
+        }
+.list-detail p {
+            margin: 8px 0;
+        }
+
+/* 共通のキャラクターリストスタイル */
+.character-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: clamp(25px, 5vw, 40px);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+.character-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(40, 40, 40, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: clamp(16px, 3vw, 20px) clamp(18px, 3vw, 22px) clamp(10px, 2vw, 12px);
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            min-width: 120px;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+.character-item:hover {
+            background: rgba(50, 50, 50, 0.95);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            color: inherit;
+        }
+        
+.character-icon {
+            width: clamp(50px, 10vw, 64px);
+            height: clamp(50px, 10vw, 64px);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(30, 30, 30, 0.9);
+            margin-bottom: clamp(8px, 2vw, 12px);
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+        }
+        
+.character-icon:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+.character-name {
+            font-size: clamp(13px, 2.5vw, 15px);
+            font-weight: normal;
+            text-align: center;
+            margin-top: 3px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+            transition: all 0.3s ease;
+            word-wrap: break-word;
+            hyphens: auto;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            color: #ffffff;
+        }
+
 /* 共通のセクションスタイル */
 .section {
     margin: 20px 0;
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 40px;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .section-title {
     font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: clamp(1.5em, 4vw, 2em);
     margin-bottom: 15px;
     color: #fff;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 15px 0;
+    text-align: center;
+    
 }
 
 .section-text {
@@ -39,6 +205,239 @@ body {
     line-height: 1.7;
     margin-bottom: 12px;
 }
+
+/* マップセクション */
+
+.map-area {
+    position: relative;
+    width: 90vw;
+    max-width: 1000px;
+    height: 70vh;
+    min-height: 500px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 15px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.group-label {
+            position: absolute;
+            font-size: clamp(18px, 4vw, 28px);
+            cursor: pointer;
+
+            padding: 8px 15px;
+
+        }
+        .group-label:hover {
+            transform: scale(1.1);
+
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        .label-yellow {
+            top: 20%;
+            left: 30%;
+            color: #fbc02d;
+            background: rgb(48, 47, 47);
+        }
+        .label-black {
+            top: 18%;
+            right: 18%;
+            color: #f5f5f5;
+            background: rgb(48, 47, 47);
+        }
+        .label-green {
+            top: 45%;
+            left: 10%;
+            color: #43ff43;
+            background: rgb(48, 47, 47);
+        }
+        .label-white {
+            top: 40%;
+            right: 18%;
+            color: #ffffff;
+            background: rgb(48, 47, 47);
+        }
+        .label-red {
+            bottom: 20%;
+            left: 40%;
+            color: #ff6b6b;
+            background: rgb(48, 47, 47);
+        }
+        .label-blue {
+            top: 70%;
+            left: 80%;
+            color: #4fc3f7;
+            background: rgb(48, 47, 47);
+        }
+
+/* テーブル設定 */
+
+ table {
+            width: 100%;
+            margin: 12px auto;
+            border-collapse: collapse;
+            background: #000;
+            color: #e0e0e0;
+            font-size: clamp(0.8em, 1.8vw, 0.95em);
+            border-radius: 4px;
+            overflow: hidden;
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px 10px;
+            text-align: left;
+            word-wrap: break-word;
+        }
+        th {
+            background: #1a1a1a;
+            color: #ffffff;
+            font-weight: normal;
+        }
+
+/* 各色詳細ポップアップ */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.group-detail {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(0.8);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.group-detail.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.group-detail h3 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    color: #cccccc;
+}
+
+.shop-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.shop-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.shop-list li:hover {
+    background-color: #250697;
+}
+
+.shop-list a {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    width: 100%;
+}
+
+.shop-list a:hover {
+    color: #e0e0e0;
+}
+
+.shop-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.blue-group-btn {
+    background-color: #2a2a2a;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: auto;
+    margin: 20px auto 0;
+    display: block;
+}
+
+.blue-group-btn:hover {
+    background-color: #1501cd8a;
+}
+
 
 /* 共通のリンクスタイル */
 .color-link {
@@ -93,6 +492,109 @@ body {
     margin: 20px auto;
 }
 
+/*オープニングアニメーション */
+.animation-opening-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            overflow: hidden;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+
+.text-container {
+            max-width: 95%;
+            width: 100%;
+            text-align: center;
+            line-height: 1.6;
+            font-size: clamp(12px, 2vw, 18px);
+        }
+
+.opening-text {
+            color: #e8e8e8;
+            opacity: 0;
+            transform: translateY(20px);
+            display: block;
+            margin-bottom: 0.8em;
+            letter-spacing: 0.02em;
+            transition: all 0.8s ease;
+        }
+
+.opening-text.final {
+            font-size: clamp(16px, 2.8vw, 24px);
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            margin-top: 1.5em;
+            opacity: 0;
+            display: none;
+        }
+
+.opening-text.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+.opening-text.hide {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.5s ease;
+        }
+
+ /* 一文字ずつ表示するアニメーション */
+.final-text-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #000;
+            z-index: 3001;
+            opacity: 0;
+        }
+
+.final-text-container.show {
+            opacity: 1;
+        }
+
+.final-char {
+            font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+            font-size: clamp(20px, 3.5vw, 32px);
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+            opacity: 0;
+            transform: translateY(30px);
+            display: inline-block;
+            margin: 0 0.05em;
+        }
+
+.final-char.appear {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.4s ease;
+        }
+
+.opening-container.fade-out {
+            animation: fadeOut 1.5s ease-in-out forwards;
+        }
+
+@keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+
 /* レスポンシブデザイン - タブレット */
 @media (max-width: 768px) {
     .main-content {
@@ -122,6 +624,28 @@ body {
         padding: 20px 0;
     }
 }
+
+ /* スキップボタン */
+        .skip-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            z-index: 3002;
+            backdrop-filter: blur(5px);
+        }
+
+        .skip-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
 
 /* レスポンシブデザイン - モバイル */
 @media (max-width: 480px) {

@@ -1,11 +1,11 @@
-// 青組詳細ポップアップのJavaScript
+// 赤組詳細ポップアップ専用JavaScript - redpopup.js
 
-function showBlueGroupDetail() {
+function showWhiteGroupDetail() {
     hideGroupDetail();
     
     // 既存の要素をチェックし、なければ作成
     let overlay = document.getElementById('overlay');
-    let detail = document.getElementById('detail-blue');
+    let detail = document.getElementById('detail-white');
     
     if (!overlay) {
         overlay = document.createElement('div');
@@ -18,20 +18,22 @@ function showBlueGroupDetail() {
     if (!detail) {
         detail = document.createElement('div');
         detail.className = 'group-detail';
-        detail.id = 'detail-blue';
+        detail.id = 'detail-white';
         detail.innerHTML = `
-        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3>蒼殉街の店舗</h3>
-        <ul class="shop-list">
-            <li><img src="../../shop_image/blue/cult/Religious facility (altar).png" class="shop-icon" alt="教団本部"><a href="./shop_cult.html">教団本部</a></li>
-            <li><img src="../../shop_image/blue/school/School (Classroom).png" class="shop-icon" alt="学校"><a href="./shop_school.html">学校</a></li>
-            <li><img src="../../shop_image/blue/aquarium/Aquarium (Exterior).png" class="shop-icon" alt="水族館"><a href="./shop_aquarium.html">水族館</a></li>
-            <li><img src="../../shop_image/blue/museum/museum.png" class="shop-icon" alt="博物館"><a href="./shop_museum.html">博物館</a></li>
-            <li><img src="../../shop_image/blue/farm/Farm (Exterior).png" class="shop-icon" alt="畑"><a href="./shop_farm.html">畑</a></li>
-            <li><img src="../../shop_image/blue/mine/mine.png" class="shop-icon" alt="鉱山"><a href="./shop_mine.html">鉱山</a></li>
-        </ul>
+            <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
+            <h3>白葬街の店舗</h3>
+            <ul class="shop-list">
+            <li><img src="../../shop_image/white/butcher/butcher.jpg" class="shop-icon" alt="肉屋"><a href="./shop_butcher.html">肉屋</a></li>
+            <li><img src="../../shop_image/white/leather/Leather Shop (Workshop).png" class="shop-icon" alt="皮屋"><a href="./shop_leather.html">皮屋</a></li>
+            <li><img src="../../shop_image/white/undertaker/Undertaker Shop (Exterior).png" class="shop-icon" alt="葬儀屋"><a href="./shop_undertaker.html">葬儀屋</a></li>
+            </ul>
         `;
         document.body.appendChild(detail);
+        // ×ボタンに閉じるイベントを追加
+        const closeBtn = detail.querySelector('.close-btn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', hideGroupDetail);
+        }
     }
     
     if (detail && overlay) {
@@ -80,3 +82,5 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.addEventListener('click', hideGroupDetail);
     }
 });
+
+window.showWhiteGroupDetail = showWhiteGroupDetail;

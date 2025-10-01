@@ -4,175 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>人外一覧</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="common/styles.css">
     <link rel="stylesheet" href="common/navigation.css">
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 15px;
-            background: linear-gradient(145deg, #0f0f0f 0%, #1a1a1a 50%, #2a2a2a 100%);
-        }
-        h1 {
-            margin-top: 20px;
-            margin-bottom: 30px;
-            font-size: clamp(2em, 5vw, 3em);
-            font-weight: 300;
-            color: #ffffff;
-            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1), 0 2px 4px rgba(0, 0, 0, 0.8);
-            letter-spacing: 0.15em;
-            text-align: center;
-            width: 100%;
-        }
-        .species-list {
-            width: 100%;
-            max-width: 800px;
-            margin-bottom: 40px;
-            padding: 0 20px;
-            box-sizing: border-box;
-        }
-        .species-item {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .species-item:hover {
-            background: #2a2a2a;
-            border-color: #555;
-            transform: translateY(-2px);
-        }
-        .species-header {
-            display: flex;
-            align-items: center;
-            padding: 16px 20px;
-        }
-        .species-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 20px;
-            border: 2px solid #333;
-            background: #111;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-        .species-icon:hover {
-            border-color: #555;
-            transform: scale(1.05);
-        }
-        .species-title {
-            font-size: clamp(1em, 2.5vw, 1.1em);
-            font-weight: normal;
-            color: #ffffff;
-        }
-        .species-detail {
-            display: none;
-            padding: 16px 20px;
-            background: #111;
-            border-top: 1px solid #333;
-            font-size: clamp(0.9em, 2vw, 1em);
-            color: #e0e0e0;
-            margin-top: 0;
-            border-radius: 0 0 8px 8px;
-            line-height: 1.6;
-        }
-        .active .species-detail {
-            display: block;
-        }
-        .species-detail p {
-            margin: 8px 0;
-        }
-
-        /* モバイル対応 */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            h1 {
-                margin-top: 15px;
-                margin-bottom: 20px;
-                font-size: 2.2em;
-            }
-            .species-list {
-                padding: 0 10px;
-                max-width: 100%;
-            }
-            .species-header {
-                padding: 14px 16px;
-            }
-            .species-icon {
-                width: 45px;
-                height: 45px;
-                margin-right: 15px;
-            }
-            .species-detail {
-                padding: 14px 16px;
-            }
-            .hover-menu-container {
-                top: 15px;
-                left: 15px;
-            }
-            .menu-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
-            }
-            .hover-menu {
-                min-width: 160px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-
-            .menu-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-            .hover-menu {
-                min-width: 140px;
-            }
-            .submenu-content {
-                position: fixed;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                min-width: 180px;
-            }
-            .species-header {
-                padding: 12px 14px;
-            }
-            .species-icon {
-                width: 40px;
-                height: 40px;
-                margin-right: 12px;
-            }
-            .species-detail {
-                padding: 12px 14px;
-                font-size: 13px;
-            }
-        }
-    </style>
-</head>
+    </head>
 <body>
     <!-- ナビゲーション（JavaScript で動的生成） -->
     <div id="navigation-placeholder"></div>
     
     <h1>人外一覧</h1>
-    <div class="species-list">
-        <div class="species-item" onclick="toggleDetail(this)">
-            <div class="species-header">
-                <img src="./nonhuman_illustlation/huuri.png" alt="風狸アイコン" class="species-icon">
-                <span class="species-title">風狸</span>
+    <div class="list">
+        <div class="list-item" onclick="toggleDetail(this)">
+            <div class="list-header">
+                <img src="./nonhuman_illustlation/huuri.png" alt="風狸アイコン" class="list-icon">
+                <span class="list-title">風狸</span>
             </div>
-            <div class="species-detail">
+            <div class="list-detail">
                 <p>風の信仰を持つ狸</p>
                 <p>▶︎外見：狸の耳と尻尾を持つ半獣。外見は風のようにそよぎ、視界で収めてもまるで蜃気楼のように映る</p>
                 <p>▶︎能力：風を介して全ての音を聞くことができる。諜報索敵に長けている</p>
@@ -180,12 +26,12 @@
                 <p>▶︎クトゥルフ接続：あとで考える</p>
             </div>
         </div>
-        <div class="species-item" onclick="toggleDetail(this)">
-            <div class="species-header">
-                <img src="species_icon/shokuryu.png" alt="燭龍アイコン" class="species-icon">
-                <span class="species-title">燭龍（しょくりゅう）</span>
+        <div class="list-item" onclick="toggleDetail(this)">
+            <div class="list-header">
+                <img src="species_icon/shokuryu.png" alt="燭龍アイコン" class="list-icon">
+                <span class="list-title">燭龍（しょくりゅう）</span>
             </div>
-            <div class="species-detail">
+            <div class="list-detail">
                 <p>中国神話の「燭龍（燭陰）」をモチーフにした存在。<br>伝承では、目を閉じると夜になり、目を開けると昼になるという赤い龍神。</p>
                 <p>▶外見：目は燃える松明のように赤く光り、鱗は煤で黒ずんだ龍。体長は10mを超えるが、暗黒中華街では幻影によって人の姿を取る。</p>
                 <p>▶︎能力：眼を閉じることで周囲に「夜」を生み、開けると「昼」を呼ぶ。つまり局所的に暗黒や光を支配できる。</p>
@@ -193,12 +39,12 @@
                 <p>▶︎クトゥルフ接続：ニャルラトホテプの「千の貌」の一つと関係があるとされる。燭龍のまぶたは異界の扉であり、目を凝視すれば別世界を垣間見る</p>
             </div>
         </div>
-        <div class="species-item" onclick="toggleDetail(this)">
-            <div class="species-header">
-                <img src="species_icon/toutetsu.png" alt="饕餮アイコン" class="species-icon">
-                <span class="species-title">饕餮（とうてつ）</span>
+        <div class="list-item" onclick="toggleDetail(this)">
+            <div class="list-header">
+                <img src="species_icon/toutetsu.png" alt="饕餮アイコン" class="list-icon">
+                <span class="list-title">饕餮（とうてつ）</span>
             </div>
-            <div class="species-detail">
+            <div class="list-detail">
                 <p>中国神話の「四凶」のひとつ、際限ない食欲の怪物。</p>
                 <p>▶︎外見：獣と人の混じった体。口だけが異様に大きく、腹は人間の顔で覆われている。</p>
                 <p>▶︎能力：何でも食べる。人間を食えばその人格を吸収し、顔を腹に刻み込む。街では「食べた者になりすます」ことが可能。</p>
@@ -206,12 +52,12 @@
                 <p>▶︎クトゥルフ接続：ショゴスの眷属。肉体を喰らい取り込み、変形する性質が近い。饕餮の内部は「原形質スープ」で満たされている。</p>
             </div>
         </div>
-        <div class="species-item" onclick="toggleDetail(this)">
-            <div class="species-header">
-                <img src="species_icon/mouryou.png" alt="魍魎アイコン" class="species-icon">
-                <span class="species-title">魍魎（もうりょう）</span>
+        <div class="list-item" onclick="toggleDetail(this)">
+            <div class="list-header">
+                <img src="species_icon/mouryou.png" alt="魍魎アイコン" class="list-icon">
+                <span class="list-title">魍魎（もうりょう）</span>
             </div>
-            <div class="species-detail">
+            <div class="list-detail">
                 <p>死者の魂や妖気が集合したもの。</p>
                 <p>▶︎外見：子供のような影が群れでまとわりつく。近づくと「影に噛まれる」感覚に襲われる。</p>
                 <p>▶︎能力：死体を操る。魍魎に憑かれた死体は声を発し、かつての生活を真似る。</p>
@@ -219,12 +65,12 @@
                 <p>▶︎クトゥルフ接続：奈落の死霊「ナイトゴーント」と関連。魍魎はその幼生とも言われる。夢の中でナイトゴーントに攫われる者は、目覚めれば魍魎に取り憑かれる。</p>
             </div>
         </div>
-        <div class="species-item" onclick="toggleDetail(this)">
-            <div class="species-header">
-                <img src="species_icon/toubi.png" alt="燈魅アイコン" class="species-icon">
-                <span class="species-title">燈魅（とうび）</span>
+        <div class="list-item" onclick="toggleDetail(this)">
+            <div class="list-header">
+                <img src="species_icon/toubi.png" alt="燈魅アイコン" class="list-icon">
+                <span class="list-title">燈魅（とうび）</span>
             </div>
-            <div class="species-detail">
+            <div class="list-detail">
                 <p>狐火・鬼火をモチーフにした人外。</p>
                 <p>▶︎外見：灯籠や提灯に宿る炎の精。人の形を取るときは、白装束の舞姫の姿で現れる。</p>
                 <p>▶︎能力：人の「未来」を灯すことができる。提灯の炎を覗くと、自分の未来の断片が映る。ただしその未来を見た者は、その運命に抗えなくなる。</p>
@@ -232,12 +78,12 @@
                 <p>▶︎クトゥルフ接続：アザトースの夢の火花。人間の時間と生命を炎に変換する存在。</p>
             </div>
         </div>
-        <div class="species-item" onclick="toggleDetail(this)">
-            <div class="species-header">
-                <img src="species_icon/kojo.png" alt="蠱女アイコン" class="species-icon">
-                <span class="species-title">蠱女（こじょ）</span>
+        <div class="list-item" onclick="toggleDetail(this)">
+            <div class="list-header">
+                <img src="species_icon/kojo.png" alt="蠱女アイコン" class="list-icon">
+                <span class="list-title">蠱女（こじょ）</span>
             </div>
-            <div class="species-detail">
+            <div class="list-detail">
                 <p>「蠱毒（こどく）」の呪術から派生した存在。</p>
                 <p>▶︎外見：人間の女性の姿だが、腹部は透明で、中に無数の虫が蠢いている。</p>
                 <p>▶︎能力：体内の虫を使って人を操る。虫を飲ませることで対象の感情や記憶を侵食できる。</p>

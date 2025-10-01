@@ -1,11 +1,11 @@
 // 赤組詳細ポップアップ専用JavaScript - redpopup.js
 
-function showWhiteGroupDetail() {
+function showRedGroupDetail() {
     hideGroupDetail();
     
     // 既存の要素をチェックし、なければ作成
     let overlay = document.getElementById('overlay');
-    let detail = document.getElementById('detail-white');
+    let detail = document.getElementById('detail-red');
     
     if (!overlay) {
         overlay = document.createElement('div');
@@ -18,15 +18,21 @@ function showWhiteGroupDetail() {
     if (!detail) {
         detail = document.createElement('div');
         detail.className = 'group-detail';
-        detail.id = 'detail-white';
+        detail.id = 'detail-red';
         detail.innerHTML = `
-            <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-            <h3>白葬街の店舗</h3>
-            <ul class="shop-list">
-            <li><img src="../../shop_image/white/butcher/butcher.jpg" class="shop-icon" alt="肉屋"><a href="./shop_butcher.html">肉屋</a></li>
-            <li><img src="../../shop_image/white/leather/Leather Shop (Workshop).png" class="shop-icon" alt="皮屋"><a href="./shop_leather.html">皮屋</a></li>
-            <li><img src="../../shop_image/white/undertaker/Undertaker Shop (Exterior).png" class="shop-icon" alt="葬儀屋"><a href="./shop_undertaker.html">葬儀屋</a></li>
-            </ul>
+                <button class="close-btn">&times;</button>
+                <h3>呑紅街の店舗</h3>
+                <ul class="shop-list">
+                    <li><img src="../../shop_image/red/nailsalon/nailsalon.png" class="shop-icon" alt="ネイルサロン"><a href="./shop_nailsalon.html">ネイルサロン</a></li>
+                    <li><img src="../../shop_image/red/tailor/tailor.png" class="shop-icon" alt="テーラー"><a href="./shop_tailor.html">テーラー</a></li>
+                    <li><img src="../../shop_image/red/antique/antique.png" class="shop-icon" alt="骨董楼"><a href="./shop_antique.html">骨董楼</a></li>
+                    <li><img src="../../shop_image/red/spa/spa.png" class="shop-icon" alt="湯治屋"><a href="./shop_spa.html">湯治屋</a></li>
+                    <li><img src="../../shop_image/red/informer/informer.png" class="shop-icon" alt="情報屋"><a href="./shop_informer.html">情報屋</a></li>
+                    <li><img src="../../shop_image/red/torture/torture.png" class="shop-icon" alt="拷問屋"><a href="./shop_torture.html">拷問屋</a></li>
+                    <li><img src="../../shop_image/red/tattoo/tattoo.png" class="shop-icon" alt="刺青屋"><a href="./shop_tattoo.html">刺青屋</a></li>
+                    <li><img src="../../shop_image/red/printing/printing.png" class="shop-icon" alt="印紙屋"><a href="./shop_stamp.html">印紙屋</a></li>
+                    <li><img src="../../shop_image/red/restaurant/restaurant.png" class="shop-icon" alt="レストラン"><a href="./shop_redrestaurant.html">レストラン</a></li>
+                </ul>
         `;
         document.body.appendChild(detail);
         // ×ボタンに閉じるイベントを追加
@@ -82,3 +88,5 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.addEventListener('click', hideGroupDetail);
     }
 });
+
+window.showRedGroupDetail = showRedGroupDetail;

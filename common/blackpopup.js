@@ -1,11 +1,9 @@
-// 緑組詳細ポップアップのJavaScript
-
-function showGreenGroupDetail() {
+function showBlackGroupDetail() {
     hideGroupDetail();
     
     // 既存の要素をチェックし、なければ作成
     let overlay = document.getElementById('overlay');
-    let detail = document.getElementById('detail-green');
+    let detail = document.getElementById('detail-black');
     
     if (!overlay) {
         overlay = document.createElement('div');
@@ -18,16 +16,14 @@ function showGreenGroupDetail() {
     if (!detail) {
         detail = document.createElement('div');
         detail.className = 'group-detail';
-        detail.id = 'detail-green';
+        detail.id = 'detail-black';
         detail.innerHTML = `
         <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3>滲緑街の店舗</h3>
+        <h3>黒組店舗</h3>
         <ul class="shop-list">
-            <li><img src="../../shop_image/green/hospital/Hospital (Exterior).png" class="shop-icon" alt="病院"><a href="./shop_hospital.html">病院</a></li>
-            <li><img src="../../shop_image/green/cakeshop/cakeshop.png" class="shop-icon" alt="ケーキ屋"><a href="./shop_cakeshop.html">ケーキ屋</a></li>
-            <li><img src="../../shop_image/green/lab/lab_warehouse.jpg" class="shop-icon" alt="研究所"><a href="./shop_laboratory.html">研究所</a></li>
-            <li><img src="../../shop_image/green/incense/Incense Shop (Exterior).png" class="shop-icon" alt="お香屋"><a href="./shop_incense.html">お香屋</a></li>
-            <li><img src="../../shop_image/green/zoo/zoo.png" class="shop-icon" alt="動物園"><a href="./shop_zoo.html">動物園</a></li>
+            <li>
+                <img src="../../shop_image/black/castle/castle.jpg" alt="城" class="shop-icon"><a href="shop_castle.html">城</a>
+            </li>
         </ul>
         `;
         document.body.appendChild(detail);
@@ -79,3 +75,5 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.addEventListener('click', hideGroupDetail);
     }
 });
+
+window.showBlackGroupDetail = showBlackGroupDetail;
