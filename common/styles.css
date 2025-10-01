@@ -1,12 +1,22 @@
-/* 共通スタイル - 全ページで使用される基本的なスタイル設定 */
+/* 統合CSS - 全ページで使用される完全なスタイル設定 */
 
-/* 基本的なフォント設定 */
-body {
-    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+/* 基本的なリセット・フォント設定 */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
     color: #e8e8e8;
+    background: #000;
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+/* ホームページ用のbody */
+body.home-page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,40 +24,639 @@ body {
     min-height: 100vh;
     padding: 15px;
     background: #1a1a1a;
-    overflow-x: auto;
-}
-
-
-
-/* 全体的なボックスサイジング */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-/* 共通のテキストスタイル */
-.title {
-    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
-    font-weight: bold;
     text-align: center;
 }
 
+/* キャラクターページ・ショップページ用のbody */
+body.character-page,
+body.shop-page {
+    background: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =================================
+   ヘッダースタイル（全色対応）
+================================= */
+
+/* 基本ヘッダー */
+.header {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 300px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 80px 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 各色のヘッダー背景 */
+.header.red { background-image: url("../picture/red_header.png"); }
+.header.blue { background-image: url("../picture/blue_header.png"); }
+.header.green { background-image: url("../picture/green_header.png"); }
+.header.yellow { background-image: url("../picture/yellow_header.png"); }
+.header.white { background-image: url("../picture/white_header.png"); }
+.header.black { background-image: url("../picture/black_header.png"); }
+
+
+
+/* =================================
+   タイトル・テキストスタイル
+================================= */
+
+.title {
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+    font-weight: normal;
+    text-align: center;
+    color: #ffffff;
+    letter-spacing: 0.1em;
+    margin: 0;
+}
+
+/* ページタイトル（キャラクター・ショップページ用） */
+.title.page-title {
+    font-size: clamp(4rem, 10vw, 6.5rem);
+}
+
+/* ホームページタイトル */
+.title.home-title {
+    font-weight: bold;
+}
+
+/* =================================
+   メインコンテンツレイアウト
+================================= */
+
+/* キャラクター・ショップページ用メインコンテンツ */
+.main-content {
+    max-width: 1200px;
+    width: 100%;
+    padding: 60px 40px;
+    background: #000;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* ホームページ用メインコンテンツ */
+.main-content.home {
+    background: rgba(40, 40, 40, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    margin: 20px auto;
+}
+
+/* トップセクション（キャラクター画像とプロフィール用） */
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+    margin-bottom: 60px;
+    padding-bottom: 60px;
+    border-bottom: 2px solid;
+}
+
+/* ショップページ用トップセクション（縦並び） */
+.top-section.shop-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+}
+
+/* 色別のボーダーカラー */
+.top-section.red { border-bottom-color: #cc2936; }
+.top-section.blue { border-bottom-color: #4fc3f7; }
+.top-section.green { border-bottom-color: #43ff43; }
+.top-section.yellow { border-bottom-color: #fbc02d; }
+.top-section.white { border-bottom-color: #ffffff; }
+.top-section.black { border-bottom-color: #666666; }
+
+/* キャラクター画像 */
+.character-img {
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+/* プロフィール情報ボックス */
+.info-box {
+    flex: 1;
+    min-width: 320px;
+    text-align: left;
+}
+
+.info-row {
+    font-size: 18px;
+    color: #f5f5f5;
+    background: #000;
+    margin-bottom: 16px;
+    line-height: 1.6;
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+    font-weight: normal;
+}
+
+/* =================================
+   ショップページ専用スタイル
+================================= */
+
+/* ショップ情報 */
+.shop-info {
+    padding: 30px 40px;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.shop-info p {
+    font-size: 18px;
+    color: #e0e0e0;
+    margin: 12px 0;
+    font-weight: normal;
+    line-height: 1.5;
+}
+
+/* メイン画像コンテナ */
+.main-image-container {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    min-height: 300px;
+    max-height: 500px;
+    overflow: hidden;
+    margin: 40px auto 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: #000;
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+    display: block;
+}
+
+/* サブ画像スライダー */
+.sub-images-container {
+    background: #000;
+    padding: 30px 0;
+    position: relative;
+}
+
+.sub-images-scroll {
+    display: flex;
+    gap: 20px;
+    padding: 0 40px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #666 #000;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Webkitブラウザ用スクロールバースタイル */
+.sub-images-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.sub-images-scroll::-webkit-scrollbar-track {
+    background: #000;
+    border-radius: 4px;
+}
+
+.sub-images-scroll::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.sub-images-scroll::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+.sub-image {
+    flex-shrink: 0;
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    border: 2px solid transparent;
+}
+
+.sub-image:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.sub-image.active {
+    opacity: 1;
+    transform: scale(1.05);
+    border-color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.sub-image:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+    opacity: 1;
+}
+
+/* サービス一覧 */
+.service-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 30px auto 0;
+    justify-items: center;
+    width: 100%;
+}
+
+.service-item {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.service-item:hover {
+    background: #2a2a2a;
+    transform: translateY(-3px);
+}
+
+.service-title {
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid;
+}
+
+.service-description {
+    font-size: 16px;
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+/* 人物一覧 */
+.person-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 30px auto 0;
+    justify-items: center;
+    width: 100%;
+}
+
+.person-item {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.person-item:hover {
+    background: #2a2a2a;
+    transform: translateY(-3px);
+}
+
+.employee-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+    border: 3px solid;
+}
+
+.employee-info {
+    flex: 1;
+}
+
+.employee-name {
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid;
+}
+
+.employee-role {
+    font-size: 16px;
+    color: #e0e0e0;
+}
+
+/* =================================
+   色別テーマスタイル
+================================= */
+
+/* 赤組テーマ */
+.red .service-title,
+.red .employee-name,
+.red .employee-icon { border-color: #cc2936; }
+.red .color-link { color: #df290e; }
+.red .color-link:hover { color: #ff4533; }
+.red .character-card { border-color: #cc2936; }
+.red .character-card:hover { border-color: #dc2626; }
+.red-group-btn {
+    background: #2a2a2a;
+    color: #fff;
+    border: 2px solid #cc2936;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.red-group-btn:hover {
+    background: #cc2936;
+    color: #fff;
+}
+
+/* 青組テーマ */
+.blue .service-title,
+.blue .employee-name,
+.blue .employee-icon { border-color: #4fc3f7; }
+.blue .color-link { color: #4fc3f7; }
+.blue .color-link:hover { color: #29b6f6; }
+.blue .character-card { border-color: #4fc3f7; }
+.blue .character-card:hover { border-color: #29b6f6; }
+.blue-group-btn {
+    background: #2a2a2a;
+    color: #fff;
+    border: 2px solid #4fc3f7;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.blue-group-btn:hover {
+    background: #4fc3f7;
+    color: #000;
+}
+
+/* 緑組テーマ */
+.green .service-title,
+.green .employee-name,
+.green .employee-icon { border-color: #43ff43; }
+.green .color-link { color: #43ff43; }
+.green .color-link:hover { color: #66ff66; }
+.green .character-card { border-color: #43ff43; }
+.green .character-card:hover { border-color: #66ff66; }
+.green-group-btn {
+    background: #2a2a2a;
+    color: #fff;
+    border: 2px solid #43ff43;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.green-group-btn:hover {
+    background: #43ff43;
+    color: #000;
+}
+
+/* 黄組テーマ */
+.yellow .service-title,
+.yellow .employee-name,
+.yellow .employee-icon { border-color: #fbc02d; }
+.yellow .color-link { color: #fbc02d; }
+.yellow .color-link:hover { color: #fdd835; }
+.yellow .character-card { border-color: #fbc02d; }
+.yellow .character-card:hover { border-color: #fdd835; }
+.yellow-group-btn {
+    background: #2a2a2a;
+    color: #fff;
+    border: 2px solid #fbc02d;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.yellow-group-btn:hover {
+    background: #fbc02d;
+    color: #000;
+}
+
+/* 白組テーマ */
+.white .service-title,
+.white .employee-name,
+.white .employee-icon { border-color: #ffffff; }
+.white .color-link { color: #ffffff; }
+.white .color-link:hover { color: #e5e5e5; }
+.white .character-card { border-color: #ffffff; }
+.white .character-card:hover { border-color: #e5e5e5; }
+.white-group-btn {
+    background: #2a2a2a;
+    color: #fff;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.white-group-btn:hover {
+    background: #ffffff;
+    color: #000;
+}
+
+/* 黒組テーマ */
+.black .service-title,
+.black .employee-name,
+.black .employee-icon { border-color: #666666; }
+.black .color-link { color: #f5f5f5; }
+.black .color-link:hover { color: #e5e5e5; }
+.black .character-card { border-color: #666666; }
+.black .character-card:hover { border-color: #888888; }
+.black-group-btn {
+    background: #2a2a2a;
+    color: #fff;
+    border: 2px solid #666666;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.black-group-btn:hover {
+    background: #666666;
+    color: #fff;
+}
+
+/* =================================
+   セクション・キャラクター関係
+================================= */
+
+/* セクション */
+.section {
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid;
+    text-align: center;
+    width: 100%;
+}
+
+.section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+/* 色別セクションボーダー */
+.red .section { border-bottom-color: #cc2936; }
+.blue .section { border-bottom-color: #4fc3f7; }
+.green .section { border-bottom-color: #43ff43; }
+.yellow .section { border-bottom-color: #fbc02d; }
+.white .section { border-bottom-color: #ffffff; }
+.black .section { border-bottom-color: #666666; }
+
+.section-title {
+    font-size: clamp(24px, 4vw, 32px);
+    color: #ffffff;
+    font-weight: normal;
+    margin-bottom: 30px;
+    letter-spacing: 0.05em;
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+    text-align: center;
+}
+
+.section-text {
+    font-size: clamp(16px, 2.5vw, 18px);
+    color: #e0e0e0;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+    font-weight: normal;
+    text-align: left;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* キャラクター関係 */
+.character-relationships {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin: 30px auto 0;
+    justify-items: center;
+    width: 100%;
+}
+
+.character-card {
+    background: #000;
+    border-radius: 8px;
+    border: 1px solid;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.character-card:hover {
+    background: #111;
+    transform: translateY(-2px);
+}
+
+.character-link-card {
+    text-decoration: none;
+    color: inherit;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.character-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.character-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover;
+}
+
+.character-name {
+    font-size: 18px;
+    font-weight: normal;
+    color: #ffffff;
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+}
+
+.character-description {
+    font-size: 15px;
+    color: #e8e8e8;
+    line-height: 1.6;
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+    font-weight: normal;
+}
+
+/* =================================
+   共通リンクスタイル
+================================= */
+
+.color-link,
+.shop-link,
+.character-link {
+    text-decoration: underline;
+    transition: all 0.3s ease;
+}
+
+.color-link:hover,
+.shop-link:hover,
+.character-link:hover {
+    color: #e5e5e5;
+}
+
  h1 {
-            margin-top: 20px;
-            margin-bottom: 30px;
+            margin: 20px auto 30px;
             font-size: clamp(2em, 5vw, 3em);
             color: #ffffff;
             letter-spacing: 0.15em;
             text-align: center;
             width: 100%;
+            display: block;
         }
 
 /*　共通のリストスタイル */
  .list {
             width: 80%;
             max-width: 800px;
-            margin-bottom: 40px;
+            margin: 0 auto 40px;
             padding: 0 20px;
             box-sizing: border-box;
+            text-align: left;
  }
 
  .list-item {
@@ -117,7 +726,53 @@ body {
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: clamp(25px, 5vw, 40px);
             width: 100%;
+            max-width: 1080px;
             box-sizing: border-box;
+            justify-items: center;
+            margin: 0 auto;
+        }
+        
+        /* 横最大6個に制限 */
+        @supports (grid-template-columns: subgrid) {
+            .character-list {
+                grid-template-columns: repeat(auto-fit, minmax(140px, calc((100% - 5 * clamp(25px, 5vw, 40px)) / 6)));
+            }
+        }
+        
+        @media (min-width: 1080px) {
+            .character-list {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+        
+        @media (max-width: 1079px) and (min-width: 900px) {
+            .character-list {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+        
+        @media (max-width: 899px) and (min-width: 720px) {
+            .character-list {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        @media (max-width: 719px) and (min-width: 540px) {
+            .character-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 539px) and (min-width: 360px) {
+            .character-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 359px) {
+            .character-list {
+                grid-template-columns: 1fr;
+            }
         }
         
 .character-item {
@@ -180,24 +835,25 @@ body {
         }
 
 /* 共通のセクションスタイル */
-.section {
-    margin: 20px 0;
+.section.home-section {
+    margin: 20px auto;
     width: 100%;
     max-width: 1000px;
     margin-bottom: 40px;
     padding: 0 20px;
     box-sizing: border-box;
+    text-align: center;
 }
 
-.section-title {
-    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+.section-title.home-title {
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '済明朝', serif;
     font-size: clamp(1.5em, 4vw, 2em);
     margin-bottom: 15px;
     color: #fff;
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     padding: 15px 0;
     text-align: center;
-    
+    width: 100%;
 }
 
 .section-text {
@@ -214,7 +870,7 @@ body {
     max-width: 1000px;
     height: 70vh;
     min-height: 500px;
-    margin-bottom: 30px;
+    margin: 0 auto 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -284,6 +940,7 @@ body {
 
  table {
             width: 100%;
+            max-width: 800px;
             margin: 12px auto;
             border-collapse: collapse;
             background: #000;
@@ -595,15 +1252,86 @@ body {
             100% { opacity: 0; visibility: hidden; }
         }
 
-/* レスポンシブデザイン - タブレット */
+/* =================================
+   レスポンシブデザイン
+================================= */
+
+/* タブレット（768px以下） */
 @media (max-width: 768px) {
+    .header {
+        min-height: 200px;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        padding: 60px 20px;
+    }
+    
     .main-content {
         padding: 40px 20px;
+    }
+    
+    .main-content.home {
         border-radius: 10px;
     }
     
-    .title {
-        font-size: 2rem;
+    .title.page-title {
+        font-size: clamp(3rem, 8vw, 4rem);
+    }
+    
+    .top-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+    }
+    
+    .shop-info {
+        padding: 25px 30px;
+        margin: 0 auto 30px;
+    }
+    
+    .shop-info p {
+        font-size: 16px;
+        margin: 10px 0;
+    }
+    
+    .character-img {
+        width: 250px;
+        max-height: 400px;
+    }
+    
+    .info-box {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .character-relationships {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .service-list,
+    .person-list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .main-image-container {
+        height: 50vh;
+        min-height: 250px;
+        max-height: 400px;
+        margin-bottom: 20px;
+    }
+
+    .sub-images-scroll {
+        padding: 0 20px;
+        gap: 15px;
+    }
+    
+    .sub-image {
+        width: 120px;
+        height: 80px;
     }
     
     .section-title {
@@ -618,10 +1346,6 @@ body {
     .card {
         padding: 15px;
         margin: 10px 0;
-    }
-    
-    .header {
-        padding: 20px 0;
     }
 }
 
@@ -647,16 +1371,31 @@ body {
             transform: scale(1.05);
         }
 
-/* レスポンシブデザイン - モバイル */
+/* スマートフォン（480px以下） */
 @media (max-width: 480px) {
+    .header {
+        min-height: 150px;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        padding: 40px 15px;
+    }
+    
     .main-content {
         padding: 30px 15px;
+    }
+    
+    .main-content.home {
         border-radius: 8px;
         margin: 10px;
     }
     
-    .title {
-        font-size: 1.8rem;
+    .title.page-title {
+        font-size: 2.5rem;
+    }
+    
+    .character-img {
+        width: 200px;
+        max-height: 320px;
     }
     
     .section-title {
@@ -674,13 +1413,80 @@ body {
         border-radius: 8px;
     }
     
-    .header {
-        padding: 15px 0;
-    }
-    
     .button {
         padding: 8px 16px;
         font-size: 0.9rem;
+    }
+    
+    .service-item,
+    .person-item {
+        padding: 20px;
+    }
+    
+    .employee-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .employee-name {
+        font-size: 18px;
+    }
+    
+    .service-title {
+        font-size: 20px;
+    }
+    
+    .shop-info {
+        padding: 20px 20px;
+        margin: 0 auto 20px;
+        border-radius: 8px;
+    }
+    
+    .shop-info p {
+        font-size: 15px;
+        margin: 8px 0;
+        line-height: 1.4;
+    }
+    
+    .main-image-container {
+        height: 40vh;
+        min-height: 200px;
+        max-height: 300px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+    }
+
+    .sub-images-container {
+        padding: 20px 0;
+    }
+
+    .sub-images-scroll {
+        padding: 0 15px;
+        gap: 10px;
+    }
+    
+    .sub-image {
+        width: 100px;
+        height: 70px;
+        border-radius: 6px;
+    }
+    
+    .menu-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .hover-menu {
+        min-width: 140px;
+    }
+    
+    .submenu-content {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 180px;
     }
 }
 
@@ -750,12 +1556,16 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
+    justify-items: center;
+    margin: 0 auto;
 }
 
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
+    justify-items: center;
+    margin: 0 auto;
 }
 
 /* 共通のスペーシング */

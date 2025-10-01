@@ -1,4 +1,18 @@
-// 赤組詳細ポップアップ専用JavaScript - redpopup.js
+// 詳細ポップアップ専用JavaScript - whitepopup.js
+
+function getCorrectPath(relativePath) {
+    const currentPath = window.location.pathname;
+    const pathSegments = currentPath.split('/').filter(segment => segment !== '');
+    
+    // HTMLファイルを除いた階層数を計算
+    const htmlFile = pathSegments[pathSegments.length - 1];
+    const isHtmlFile = htmlFile && htmlFile.endsWith('.html');
+    const depth = isHtmlFile ? pathSegments.length - 1 : pathSegments.length;
+    
+    // ルートからの相対パスを生成
+    const prefix = depth > 0 ? '../'.repeat(depth) : './';
+    return prefix + relativePath;
+}
 
 function showWhiteGroupDetail() {
     hideGroupDetail();
@@ -23,9 +37,9 @@ function showWhiteGroupDetail() {
             <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
             <h3>白葬街の店舗</h3>
             <ul class="shop-list">
-            <li><img src="../../shop_image/white/butcher/butcher.jpg" class="shop-icon" alt="肉屋"><a href="./shop_butcher.html">肉屋</a></li>
-            <li><img src="../../shop_image/white/leather/Leather Shop (Workshop).png" class="shop-icon" alt="皮屋"><a href="./shop_leather.html">皮屋</a></li>
-            <li><img src="../../shop_image/white/undertaker/Undertaker Shop (Exterior).png" class="shop-icon" alt="葬儀屋"><a href="./shop_undertaker.html">葬儀屋</a></li>
+            <li><img src="${getCorrectPath('shop_image/white/butcher/butcher.jpg')}" class="shop-icon" alt="肉屋"><a href="${getCorrectPath('white/shop_butcher.html')}">肉屋</a></li>
+            <li><img src="${getCorrectPath('shop_image/white/leather/Leather Shop (Workshop).png')}" class="shop-icon" alt="皮屋"><a href="${getCorrectPath('white/shop_leather.html')}">皮屋</a></li>
+            <li><img src="${getCorrectPath('shop_image/white/undertaker/Undertaker Shop (Exterior).png')}" class="shop-icon" alt="葬儀屋"><a href="${getCorrectPath('white/shop_undertaker.html')}">葬儀屋</a></li>
             </ul>
         `;
         document.body.appendChild(detail);

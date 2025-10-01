@@ -1,3 +1,84 @@
+// 黒組詳細ポップアップのJavaScript
+
+// パス検出のロジック（navigation.jsと同じシステム）
+function detectLinkPrefix() {
+    // 現在のパスを取得
+    let currentPath = window.location.href || window.location.pathname || document.URL;
+    
+    let linkPrefix = '';
+    
+    // Method 1: URL内のフォルダ名から判定
+    if (currentPath.includes('characterpage') || currentPath.includes('shoppage')) {
+        // 2階層深い（例：shoppage/black/shop_castle.html）
+        linkPrefix = '../../';
+    } else if (currentPath.includes('colorpage')) {
+        // 1階層深い（例：colorpage/black.html）  
+        linkPrefix = '../';
+    } else {
+        // Method 2: blackpopup.jsファイルの相対位置から判定
+        const scripts = document.getElementsByTagName('script');
+        for (let script of scripts) {
+            if (script.src && script.src.includes('blackpopup.js')) {
+                const popupPath = script.getAttribute('src') || script.src;
+                if (popupPath.includes('../../common/blackpopup.js')) {
+                    linkPrefix = '../../';
+                    break;
+                } else if (popupPath.includes('../common/blackpopup.js')) {
+                    linkPrefix = '../';
+                    break;
+                } else if (popupPath.includes('common/blackpopup.js') && !popupPath.includes('../')) {
+                    linkPrefix = '';
+                    break;
+                }
+            }
+        }
+        
+        // Method 3: HTMLファイル内のCSSリンクから判定（フォールバック）
+        if (!linkPrefix) {
+            const links = document.getElementsByTagName('link');
+            for (let link of links) {
+                if (link.href && (link.href.includes('styles.css') || link.href.includes('navigation.css'))) {
+                    const cssPath = link.getAttribute('href') || link.href;
+                    if (cssPath.includes('../../common/')) {
+                        linkPrefix = '../../';
+                        break;
+                    } else if (cssPath.includes('../common/')) {
+                        linkPrefix = '../';
+                        break;
+                    } else if (cssPath.includes('common/')) {
+                        linkPrefix = '';
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    return linkPrefix;
+}
+
+// 黒組店舗一覧HTMLを生成する関数
+function createBlackShopListHTML() {
+    const linkPrefix = detectLinkPrefix();
+    const currentPath = window.location.href || window.location.pathname || document.URL;
+    
+    // shoppage/black/内からの呼び出しかどうかを判定
+    const isInShoppage = currentPath.includes('shoppage') && currentPath.includes('black');
+    
+    // shopページへのリンクパス
+    const shopLinkPrefix = isInShoppage ? '' : linkPrefix + 'shoppage/black/';
+    
+    return `
+        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
+        <h3>黒組店舗</h3>
+        <ul class="shop-list">
+            <li><img src="${linkPrefix}shop_image/black/castle/castle.jpg" class="shop-icon" alt="城"><a href="${shopLinkPrefix}shop_castle.html">城</a></li>
+        </ul>
+    `;
+}
+
+
+
 function showBlackGroupDetail() {
     hideGroupDetail();
     
@@ -17,15 +98,7 @@ function showBlackGroupDetail() {
         detail = document.createElement('div');
         detail.className = 'group-detail';
         detail.id = 'detail-black';
-        detail.innerHTML = `
-        <button class="close-btn" onclick="hideGroupDetail()">&times;</button>
-        <h3>黒組店舗</h3>
-        <ul class="shop-list">
-            <li>
-                <img src="../../shop_image/black/castle/castle.jpg" alt="城" class="shop-icon"><a href="shop_castle.html">城</a>
-            </li>
-        </ul>
-        `;
+        detail.innerHTML = createBlackShopListHTML();
         document.body.appendChild(detail);
     }
     
@@ -65,15 +138,27 @@ function handleEscKey(event) {
     }
 }
 
-/**
- * DOMContentLoaded時の初期化
- */
-document.addEventListener('DOMContentLoaded', function() {
-    // オーバーレイクリックで閉じる
+// 黒組ポップアップを初期化する関数
+function initBlackPopup() {
+    // オーバーレイクリックで閉じるイベントを設定
     const overlay = document.getElementById('overlay');
     if (overlay) {
         overlay.addEventListener('click', hideGroupDetail);
     }
-});
+}
 
+// 初期化処理（navigation.jsと同じパターン）
+function initializeBlackPopup() {
+    // DOMContentLoadedイベントで初期化
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initBlackPopup);
+    } else {
+        initBlackPopup();
+    }
+}
+
+// グローバル関数として公開
 window.showBlackGroupDetail = showBlackGroupDetail;
+
+// 初期化実行
+initializeBlackPopup();
