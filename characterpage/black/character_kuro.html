@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クロ</title>
+    <link rel="stylesheet" href="../../common/styles.css">
+    <link rel="stylesheet" href="../../common/navigation.css">
+</head>
+<body class="black">
+    <!-- ヘッダー部分（黒色背景） -->
+    <div class="header">
+        <h1 class="title">クロ</h1>
+    </div>
+    
+    <div class="main-content">
+        <div class="top-section">
+            <img src="../../character_fullbody/kuro.png" alt="クロ" class="character-img">
+            <div class="info-box">
+                <div class="info-row">
+                    所属色：<a href="../../colorpage/black.html" class="color-link">黒</a>
+                </div>
+                <div class="info-row">
+                    階級：幹部
+                </div>
+                <div class="info-row">
+                    仕事：裁判官
+                </div>
+                <div class="info-row">
+                    年齢：不明
+                </div>
+                <div class="info-row">
+                    種族：人間
+                </div>
+                <div class="info-row">
+                    一人称：俺
+                </div>
+                <div class="info-row">
+                    二人称：お前
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">性格</h2>
+            <p class="section-text">仲間であろうが家族であろうが、必要とあれば一切の躊躇なく殺すことができる冷酷さを持つ。しかしその一方で、彼の執務室には整然と飾られた家族写真がある。そのどちらが本当のクロなのかは、周囲だけでなく、本人さえも分かっていない。</p>
+            <p class="section-text">彼の言葉や行動は時に矛盾して見えるが、それは「善悪」という概念を超えた独自の価値観で動いているからである。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">仕事について</h2>
+            <p class="section-text">裁判官として、街における「最終的な裁定」を下す存在。通常の裁判は形式に過ぎず、クロの言葉一つで無罪も有罪も決まる。</p>
+            <p class="section-text">彼の判断基準は正義でも法律でもなく、「クロ自身の納得」であり、それが絶対の規範とされている。そのため、クロが下した判決はどれほど理不尽でも覆されることはない。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">過去</h2>
+            <p class="section-text">兄であるシロと共に幼少期を過ごし、かつては互いをかけがえのない存在と信じていた。しかし、とある事件をきっかけに決別し、二人の道は大きく分かたれることになる。</p>
+            <p class="section-text">クロにとってシロは今も「自分の半身」であり続けているが、それは愛情とも憎悪とも区別できない複雑な感情に歪んでいる。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">能力</h2>
+            <p class="section-text">不明</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">人間関係</h2>
+            <div class="character-relationships">
+                <!-- シロ（白組） -->
+                <div class="character-card">
+                    <a href="../../characterpage/white/character_shiro.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/shiro_icon.png" alt="シロ" class="character-avatar">
+                            <span class="character-name">シロ</span>
+                        </div>
+                        <div class="character-description">独占欲にも似た感情を抱いている。シロは自分と同じ思想を抱き、同じ方向を向いていると信じ込んでいるため、彼の意向を無視することが多い。しかしその裏には、失われた「兄弟としての絆」を渇望する想いも隠れている。</div>
+                    </a>
+                </div>
+                
+                <!-- サギリ（黒組） -->
+                <div class="character-card">
+                    <a href="character_sagiri.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/sagiri_icon.png" alt="サギリ" class="character-avatar">
+                            <span class="character-name">サギリ</span>
+                        </div>
+                        <div class="character-description">「パパ」と呼ばれて慕われている。クロ自身もその呼び名を否定せず、むしろ受け入れているが、その愛情が純粋なものかどうかは誰にも分からない。</div>
+                    </a>
+                </div>
+                
+                <!-- マスター（謎の存在） -->
+                <div class="character-card">
+                    <div class="character-link-card">
+                        <div class="character-info">
+                            <div style="width: 48px; height: 48px; border-radius: 50%; margin-right: 12px; border: 3px solid #666666; background: rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: center; font-weight: bold; color: #fff;">M</div>
+                            <span class="character-name">マスター</span>
+                        </div>
+                        <div class="character-description">ひととおりの信頼を寄せている。内心で彼のことをどうとらえているのかは窺えない。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
+    <script src="../../common/navigation.js"></script>
+    <script>
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
+    </script>
+</body>
+</html>

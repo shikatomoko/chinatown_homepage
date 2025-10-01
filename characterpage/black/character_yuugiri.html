@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夕霧</title>
+    <link rel="stylesheet" href="../../common/styles.css">
+    <link rel="stylesheet" href="../../common/navigation.css">
+</head>
+<body class="black">
+    <!-- ヘッダー部分（黒色背景） -->
+    <div class="header">
+        <h1 class="title">夕霧</h1>
+    </div>
+    
+    <div class="main-content">
+        <div class="top-section">
+            <img src="../../character_fullbody/yuugiri.png" alt="夕霧" class="character-img">
+            <div class="info-box">
+                <div class="info-row">
+                    所属色：<a href="../../colorpage/black.html" class="color-link">黒</a>
+                </div>
+                <div class="info-row">
+                    階級：幹部補佐
+                </div>
+                <div class="info-row">
+                    仕事：裁判官補佐
+                </div>
+                <div class="info-row">
+                    年齢：不明
+                </div>
+                <div class="info-row">
+                    種族：不明
+                </div>
+                <div class="info-row">
+                    一人称：私
+                </div>
+                <div class="info-row">
+                    二人称：○○さん
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">性格</h2>
+            <p class="section-text">基本的には温厚で腰が低く、常に落ち着いた声音で語りかける。その柔らかさゆえに、人は思わず心を許してしまい、彼の言葉を「正しいもの」と受け入れてしまう。誤った道を歩んだ者がいれば、叱責するのではなく、抱きしめるような優しさで正しき道へ導く。</p>
+            <p class="section-text">そのため彼は「正義と善の象徴」と信じられているが、彼自身もまたその幻影を完全に信じ込んでいる。――夕霧にとっての正義とは、彼が信奉する存在と同義であり、そこに疑念は一切ない。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">仕事について</h2>
+            <p class="section-text">暗黒中華街における「罪と罰」を決定する裁判官。形式的に証拠や証言を集めるが、それは儀式に過ぎず、最終的な判決は彼の胸中にある「正義」によって下される。</p>
+            <p class="section-text">有罪とされた者は処刑、追放、あるいは「矯正」と呼ばれる精神改造を施され、彼の信じる正義に従う存在へと変えられる。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">過去</h2>
+            <p class="section-text">彼の出自は謎に包まれており、いつどこから現れたのかも分からない。幼少期や血縁を知る者は誰も存在せず、まるで「正義」という概念が人の姿を取って具現化したかのようだと噂される。</p>
+            <p class="section-text">彼自身もまた、自らの過去を覚えていないように振る舞う。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">能力</h2>
+            <p class="section-text">不明</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">人間関係</h2>
+            <div class="character-relationships">
+                <!-- クロ（黒組） -->
+                <div class="character-card">
+                    <a href="character_kuro.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/kuro_icon.png" alt="クロ" class="character-avatar">
+                            <span class="character-name">クロ</span>
+                        </div>
+                        <div class="character-description">神と等しく信奉しており、その意向に逆らうことは絶対にできない。夕霧の正義の基盤は、クロの存在そのものである。</div>
+                    </a>
+                </div>
+                
+                <!-- シロ（白組） -->
+                <div class="character-card">
+                    <a href="../../characterpage/white/character_shiro.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/shiro_icon.png" alt="シロ" class="character-avatar">
+                            <span class="character-name">シロ</span>
+                        </div>
+                        <div class="character-description">幼子を導くような態度で接するが、内心では「やがて誤りを犯すならば正すべき対象」と冷徹に判断している。</div>
+                    </a>
+                </div>
+                
+                <!-- サギリ（黒組） -->
+                <div class="character-card">
+                    <a href="character_sagiri.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/sagiri_icon.png" alt="サギリ" class="character-avatar">
+                            <span class="character-name">サギリ</span>
+                        </div>
+                        <div class="character-description">表向きは同僚として信頼を寄せ、意見を尊重する姿勢を見せる。しかし夕霧にとってサギリもまた「正義から逸れれば矯正すべき存在」であり、常に注意深く観察している。</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
+    <script src="../../common/navigation.js"></script>
+    <script>
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
+    </script>
+</body>
+</html>

@@ -382,6 +382,17 @@ body.shop-page {
 .red .color-link:hover { color: #ff4533; }
 .red .character-card { border-color: #cc2936; }
 .red .character-card:hover { border-color: #dc2626; }
+.red .section { border-bottom-color: #cc2936; }
+.red .top-section { border-bottom-color: #cc2936; }
+
+/* 赤組キャラクターページのヘッダー背景 */
+.red .header {
+    background-image: url("../picture/red_header.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .red-group-btn {
     background: #2a2a2a;
     color: #fff;
@@ -405,6 +416,14 @@ body.shop-page {
 .blue .color-link:hover { color: #29b6f6; }
 .blue .character-card { border-color: #4fc3f7; }
 .blue .character-card:hover { border-color: #29b6f6; }
+.blue .section { border-bottom-color: #4fc3f7; }
+.blue .top-section { border-bottom-color: #4fc3f7; }
+
+/* 青組キャラクターページのヘッダー背景 */
+.blue .header {
+    background-color: #1e3a8a;
+    background-image: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+}
 .blue-group-btn {
     background: #2a2a2a;
     color: #fff;
@@ -428,6 +447,14 @@ body.shop-page {
 .green .color-link:hover { color: #66ff66; }
 .green .character-card { border-color: #43ff43; }
 .green .character-card:hover { border-color: #66ff66; }
+.green .section { border-bottom-color: #43ff43; }
+.green .top-section { border-bottom-color: #43ff43; }
+
+/* 緑組キャラクターページのヘッダー背景 */
+.green .header {
+    background-color: #166534;
+    background-image: linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #4ade80 100%);
+}
 .green-group-btn {
     background: #2a2a2a;
     color: #fff;
@@ -451,6 +478,14 @@ body.shop-page {
 .yellow .color-link:hover { color: #fdd835; }
 .yellow .character-card { border-color: #fbc02d; }
 .yellow .character-card:hover { border-color: #fdd835; }
+.yellow .section { border-bottom-color: #fbc02d; }
+.yellow .top-section { border-bottom-color: #fbc02d; }
+
+/* 黄組キャラクターページのヘッダー背景 */
+.yellow .header {
+    background-color: #ca8a04;
+    background-image: linear-gradient(135deg, #eab308 0%, #facc15 50%, #fde047 100%);
+}
 .yellow-group-btn {
     background: #2a2a2a;
     color: #fff;
@@ -474,6 +509,22 @@ body.shop-page {
 .white .color-link:hover { color: #e5e5e5; }
 .white .character-card { border-color: #ffffff; }
 .white .character-card:hover { border-color: #e5e5e5; }
+.white .section { border-bottom-color: #ffffff; }
+.white .top-section { border-bottom-color: #ffffff; }
+
+/* 白組キャラクターページのヘッダー背景 */
+.white .header {
+    background-color: #374151;
+    background-image: linear-gradient(135deg, #6b7280 0%, #9ca3af 50%, #d1d5db 100%);
+}
+.white .section { border-bottom-color: #ffffff; }
+.white .top-section { border-bottom-color: #ffffff; }
+
+/* 白組キャラクターページのヘッダー背景 */
+.white .header {
+    background-color: #374151;
+    background-image: linear-gradient(135deg, #6b7280 0%, #9ca3af 50%, #d1d5db 100%);
+}
 .white-group-btn {
     background: #2a2a2a;
     color: #fff;
@@ -497,6 +548,14 @@ body.shop-page {
 .black .color-link:hover { color: #e5e5e5; }
 .black .character-card { border-color: #666666; }
 .black .character-card:hover { border-color: #888888; }
+.black .section { border-bottom-color: #666666; }
+.black .top-section { border-bottom-color: #666666; }
+
+/* 黒組キャラクターページのヘッダー背景 */
+.black .header {
+    background-color: #111827;
+    background-image: linear-gradient(135deg, #1f2937 0%, #374151 50%, #4b5563 100%);
+}
 .black-group-btn {
     background: #2a2a2a;
     color: #fff;
@@ -1583,4 +1642,714 @@ body.shop-page {
 
 .padding-small {
     padding: 10px;
+}
+
+/* =================================
+   カラーページスタイル（全色対応）
+================================= */
+
+/* カラーページ基本設定 */
+body.color-page {
+    background-color: #000;
+    color: #fff;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* ヘッダー設定 */
+.color-page .header {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 60px 40px;
+    text-align: left;
+}
+
+/* 赤テーマヘッダー */
+.color-page.red .header {
+    background: linear-gradient(135deg, #8B0000, #DC143C, #FF6347);
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.color-page.red .header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(139, 0, 0, 0.9) 0%, 
+        rgba(220, 20, 60, 0.8) 50%, 
+        rgba(255, 99, 71, 0.7) 100%);
+    z-index: 0;
+}
+
+.color-page.red .title {
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* 青テーマヘッダー */
+.color-page.blue .header {
+    background: linear-gradient(135deg, #1e3a8a, #1e40af);
+}
+
+/* 緑テーマヘッダー */
+.color-page.green .header {
+    background: linear-gradient(135deg, #166534, #16a34a);
+}
+
+/* 黄テーマヘッダー */
+.color-page.yellow .header {
+    background: linear-gradient(135deg, #ca8a04, #eab308);
+}
+
+/* 白テーマヘッダー */
+.color-page.white .header {
+    background: linear-gradient(135deg, #e5e5e5, #d0d0d0);
+}
+
+/* 黒テーマヘッダー */
+.color-page.black .header {
+    background: linear-gradient(135deg, #1f2937, #374151);
+}
+
+.color-page .title {
+    font-size: clamp(4rem, 10vw, 6.5rem);
+    color: #ffffff;
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+    margin: 0;
+}
+
+.color-page.red .title {
+    font-size: clamp(5rem, 15vw, 6.5rem);
+}
+
+.color-page.white .title {
+    color: #333333;
+}
+
+/* メインコンテンツ */
+.color-page .main-content {
+    padding: 0;
+    margin: 0;
+}
+
+.color-page .main-image-container {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    min-height: 400px;
+    overflow: hidden;
+    border-bottom: 1px solid #333;
+}
+
+.color-page .main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+    display: block;
+}
+
+/* サブ画像コンテナ */
+.color-page .sub-images-container {
+    background: #000;
+    padding: 30px 0;
+}
+
+.color-page .sub-images-scroll {
+    display: flex;
+    gap: 20px;
+    padding: 0 40px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff #000;
+}
+
+.color-page .sub-images-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.color-page .sub-images-scroll::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.color-page .sub-images-scroll::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 4px;
+}
+
+.color-page .sub-image {
+    flex-shrink: 0;
+    width: 160px;
+    height: 90px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 3px solid #222;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    opacity: 0.7;
+}
+
+.color-page .sub-image:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.color-page .sub-image:hover {
+    transform: scale(1.05);
+}
+
+.color-page .sub-image.active {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* 色別のサブ画像ホバー・アクティブ効果 */
+.color-page.red .sub-image:hover,
+.color-page.red .sub-image.active {
+    border-color: #cc2936;
+    opacity: 1;
+}
+
+.color-page.red .sub-image.active {
+    box-shadow: 0 0 20px rgba(204, 41, 54, 0.8);
+    border-width: 4px;
+}
+
+.color-page.blue .sub-image:hover,
+.color-page.blue .sub-image.active {
+    border-color: #2563eb;
+}
+
+.color-page.blue .sub-image.active {
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.6);
+}
+
+.color-page.green .sub-image:hover,
+.color-page.green .sub-image.active {
+    border-color: #16a34a;
+}
+
+.color-page.green .sub-image.active {
+    box-shadow: 0 0 15px rgba(22, 163, 74, 0.6);
+}
+
+.color-page.yellow .sub-image:hover,
+.color-page.yellow .sub-image.active {
+    border-color: #eab308;
+}
+
+.color-page.yellow .sub-image.active {
+    box-shadow: 0 0 15px rgba(234, 179, 8, 0.6);
+}
+
+.color-page.white .sub-image:hover,
+.color-page.white .sub-image.active {
+    border-color: #e5e5e5;
+}
+
+.color-page.white .sub-image.active {
+    box-shadow: 0 0 15px rgba(229, 229, 229, 0.6);
+}
+
+.color-page.black .sub-image:hover,
+.color-page.black .sub-image.active {
+    border-color: #666;
+}
+
+.color-page.black .sub-image.active {
+    box-shadow: 0 0 15px rgba(102, 102, 102, 0.6);
+}
+
+/* ボトムコンテンツ */
+.color-page .bottom-content {
+    background: #000;
+    padding: 60px 40px;
+    margin-bottom: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.color-page .content-section {
+    margin-bottom: 50px;
+    max-width: 1400px;
+    margin-left: 0;
+    margin-right: auto;
+    position: relative;
+    padding-left: 30px;
+    width: 100%;
+}
+
+.color-page .content-section::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #666;
+}
+
+/* 色別の縦線 */
+.color-page.red .content-section::before {
+    background: #cc2936;
+}
+
+.color-page.blue .content-section::before {
+    background: #2563eb;
+}
+
+.color-page.green .content-section::before {
+    background: #16a34a;
+}
+
+.color-page.yellow .content-section::before {
+    background: #eab308;
+}
+
+.color-page.white .content-section::before {
+    background: #e5e5e5;
+}
+
+.color-page.black .content-section::before {
+    background: #666;
+}
+
+.color-page .content-section:last-of-type {
+    margin-bottom: 0;
+}
+
+.color-page .section-title {
+    font-size: clamp(24px, 4vw, 32px);
+    color: #ffffff;
+    font-weight: normal;
+    margin-bottom: 30px;
+    letter-spacing: 0.05em;
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+    text-align: left;
+}
+
+.color-page .section-text {
+    font-size: clamp(16px, 2.5vw, 18px);
+    color: #e0e0e0;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+    text-align: left;
+}
+
+/* 人物・店舗リスト */
+.color-page .person-list,
+.color-page .shop-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.color-page .person-item,
+.color-page .shop-item {
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    background: #1a1a1a;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 8px;
+    border: 1px solid #333;
+    min-height: 80px;
+}
+
+.color-page .person-item:hover,
+.color-page .shop-item:hover {
+    background: #2a2a2a;
+    transform: translateX(5px);
+}
+
+.color-page .person-item.disabled {
+    cursor: default;
+}
+
+.color-page .person-item.disabled:hover {
+    background: #1a1a1a;
+    transform: none;
+}
+
+.color-page .role-label {
+    font-weight: normal;
+    min-width: 120px;
+    margin-right: 16px;
+    font-size: 15px;
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+}
+
+/* 色別のロールラベル */
+.color-page.red .role-label { color: #cc2936; }
+.color-page.blue .role-label { color: #2563eb; }
+.color-page.green .role-label { color: #16a34a; }
+.color-page.yellow .role-label { color: #eab308; }
+.color-page.white .role-label { color: #e5e5e5; }
+.color-page.black .role-label { color: #666; }
+
+.color-page .person-name,
+.color-page .shop-name {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+}
+
+/* 色別のホバー効果 */
+.color-page.red .person-item:hover .person-name:not(.unknown-person),
+.color-page.red .shop-item:hover .shop-name {
+    color: #cc2936;
+}
+
+.color-page.blue .person-item:hover .person-name:not(.unknown-person),
+.color-page.blue .shop-item:hover .shop-name {
+    color: #2563eb;
+}
+
+.color-page.green .person-item:hover .person-name:not(.unknown-person),
+.color-page.green .shop-item:hover .shop-name {
+    color: #16a34a;
+}
+
+.color-page.yellow .person-item:hover .person-name:not(.unknown-person),
+.color-page.yellow .shop-item:hover .shop-name {
+    color: #eab308;
+}
+
+.color-page.white .person-item:hover .person-name:not(.unknown-person),
+.color-page.white .shop-item:hover .shop-name {
+    color: #e5e5e5;
+}
+
+.color-page.black .person-item:hover .person-name:not(.unknown-person),
+.color-page.black .shop-item:hover .shop-name {
+    color: #666;
+}
+
+.color-page .unknown-person {
+    color: #888;
+    font-style: italic;
+}
+
+.color-page .person-item.disabled:hover .unknown-person {
+    color: #888;
+}
+
+/* メニュースタイル */
+.color-page .menu-item {
+    display: block;
+    padding: 12px 18px;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+}
+
+.color-page .menu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transform: translateX(5px);
+}
+
+.color-page .menu-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 8px 0;
+}
+
+.color-page .submenu {
+    position: relative;
+}
+
+.color-page .submenu-content {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background: rgba(30, 30, 30, 0.95);
+    border-radius: 12px;
+    padding: 10px 0;
+    min-width: 130px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.color-page .submenu:hover .submenu-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.color-page .submenu-item {
+    display: block;
+    padding: 10px 14px;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+}
+
+.color-page .submenu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* 色クラス（汎用） */
+.color-red { color: #cc2936; }
+.color-blue { color: #2563eb; }
+.color-green { color: #16a34a; }
+.color-yellow { color: #eab308; }
+.color-white { color: #e5e5e5; }
+.color-black { color: #666; }
+
+/* PC表示時の調整 */
+@media (min-width: 1200px) {
+    .color-page .content-section {
+        max-width: 1600px;
+        padding-left: 60px;
+    }
+    
+    .color-page .bottom-content {
+        padding: 80px 60px;
+    }
+    
+    .color-page .person-list,
+    .color-page .shop-list {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 24px;
+    }
+}
+
+/* PC表示時の調整 */
+@media (min-width: 1200px) {
+    .color-page .content-section {
+        max-width: 1600px;
+        padding-left: 60px;
+    }
+    
+    .color-page .bottom-content {
+        padding: 80px 60px;
+    }
+    
+    .color-page .person-list,
+    .color-page .shop-list {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 24px;
+    }
+    
+    .color-page .person-item,
+    .color-page .shop-item {
+        min-height: 90px;
+        padding: 28px;
+    }
+}
+
+/* カラーページ レスポンシブ */
+@media (max-width: 768px) {
+    .color-page .header {
+        padding: 40px 20px;
+    }
+    
+    .color-page .bottom-content {
+        padding: 40px 20px;
+    }
+    
+    .color-page .sub-images-scroll {
+        padding: 0 20px;
+    }
+    
+    .color-page .person-list,
+    .color-page .shop-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .color-page .content-section {
+        padding-left: 20px;
+    }
+    
+    .color-page .hover-menu-container {
+        top: 15px;
+        left: 15px;
+    }
+    
+    .color-page .menu-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    .color-page .hover-menu {
+        min-width: 160px;
+    }
+}
+
+@media (max-width: 480px) {
+    .color-page .title {
+        font-size: 2.5rem;
+    }
+    
+    .color-page .main-image-container {
+        height: 40vh;
+        min-height: 300px;
+    }
+    
+    .color-page .sub-image {
+        width: 120px;
+        height: 68px;
+    }
+    
+    .color-page .hover-menu-container {
+        top: 10px;
+        left: 10px;
+    }
+    
+    .color-page .menu-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .color-page .hover-menu {
+        min-width: 140px;
+    }
+    
+    .color-page .submenu-content {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 180px;
+    }
+}
+
+/* =================================
+   ツールページスタイル
+================================= */
+
+body.tools-page {
+    background: #000;
+    color: #e8e8e8;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+body.tools-page h1 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.tools-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.tool-card {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    border-color: #666;
+}
+
+.tool-card h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.tool-card p {
+    color: #ccc;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.tool-link {
+    display: inline-block;
+    background: linear-gradient(135deg, #333 0%, #555 100%);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    border: 1px solid #666;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.tool-link:hover {
+    background: linear-gradient(135deg, #555 0%, #777 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.tool-link.external-link::after {
+    content: " ↗";
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    body.tools-page {
+        padding: 15px;
+    }
+    
+    body.tools-page h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    
+    .tools-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 15px 0;
+    }
+    
+    .tool-card {
+        padding: 15px;
+    }
 }
