@@ -1,0 +1,148 @@
+<!DOC    <title>研究所</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../common/styles.css">
+    <link rel="stylesheet" href="../../common/navigation.css">
+    <link rel="stylesheet" href="shopgreen.css">
+    <link rel="stylesheet" href="greenpopup.css">
+</head>
+<body>
+    <div id="navigation-placeholder"></div>l lang="ja">
+    <!-- ヘッダー部分（緑色背景） -->
+    <div class="header">
+        <h1 class="title">研究所</h1>
+    </div>
+    
+    <!-- メインコンテンツ -->
+  <div class="top-section shop-layout">
+        <!-- 店舗情報 -->
+        <div class="shop-info">
+            <p>所属組織：<a href="../../colorpage/green.html" class="color-link">滲緑街</a></p>
+            <p>場所：郊外（滲緑街の最深部） 　業種：民間兼組織管理の研究棟 </p>
+        </div>
+        
+        <!-- メイン画像部分 -->
+        <div class="main-image-container">
+            <img id="mainImage" class="main-image" src="../../shop_image/green/lab/lab_warehouse.jpg" alt="研究所のメイン画像">
+        </div>
+        
+        <!-- サブ画像スライダー -->
+        <div class="sub-images-container">
+            <div class="sub-images-scroll">
+                <img class="sub-image active" src="../../shop_image/green/lab/lab_warehouse.jpg" alt="研究所倉庫" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/green/lab/lab_coldroom.png" alt="研究所冷凍室" onclick="changeMainImage(this)">
+                <img class="sub-image" src="../../shop_image/green/lab/warehouse_green.png" alt="薬品保管庫" onclick="changeMainImage(this)">
+            </div>
+        </div>
+    </div>
+    
+    <!-- 下部コンテンツ（黒背景） -->
+    <div class="bottom-content">
+        <div class="content-section">
+            <h2 class="section-title">概要</h2>
+            <p class="section-text">滲緑街（緑組）最奥にある民間兼組織管理の研究棟。高度な設備と危険物管理能力を持ち、「生体」「呪物」「異能」などを扱う研究が行われる。立ち入りできる者は極めて限定され、外部への情報漏洩は厳罰の対象。所内では倫理よりも「有用性」と「成果」が最優先される。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">利用方法</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-title">研究アクセス</div>
+                    <div class="service-price">費用：10,000円〜50,000円</div>
+                    <div class="service-requirement">必要信用値：60</div>
+                    <div class="service-description">
+                        研究成果の閲覧、既存データの購入、短期の研究見学（ツアー）。
+                    </div>
+                    <div class="service-mechanics">
+                        <strong>詳細：</strong>許可がおりれば臨時バッジで通行可能だが、アクセス制限区域は進入不可。
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-title">委託研究</div>
+                    <div class="service-price">小規模：200,000円〜／中規模：1,000,000円〜／禁忌級：要協議（数百万円〜）</div>
+                    <div class="service-requirement">必要信用値：70</div>
+                    <div class="service-description">
+                        特定の課題（治療薬開発、特殊合金試作、呪的解析 等）を研究所に委託する。
+                    </div>
+                    <div class="service-mechanics">
+                        <strong>手続き：</strong>企画書提出→倫理・安全審査（形骸的な場合あり）→契約書締結→中間報告（週単位）→成果物納品。
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-title">治験／被験者登録</div>
+                    <div class="service-price">費用：無料（報酬あり）</div>
+                    <div class="service-requirement">必要信用値：なし</div>
+                    <div class="service-description">
+                        新薬・改造技術・異能増幅装置などの人体（あるいは人外）治験。報酬や特殊効果を得られる代わりに高リスク。
+                    </div>
+                    <div class="service-bonus">
+                        <strong>報酬：</strong>金銭（数万〜数十万）、薬品、能力付与アイテムなど。成功で一時的／恒久的強化が得られることもある。場合によっては死ぬ。
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">従業員</h2>
+            <div class="person-list">
+                <div class="person-item">
+                    <div class="employee-icon">所</div>
+                    <div class="employee-info">
+                        <div class="employee-name">所長</div>
+                        <div class="employee-role">表向きは白衣の学者</div>
+                    </div>
+                </div>
+                <div class="person-item">
+                    <div class="employee-icon">研</div>
+                    <div class="employee-info">
+                        <div class="employee-name">研究員</div>
+                        <div class="employee-role">人間・人外混成</div>
+                    </div>
+                </div>
+                <div class="person-item">
+                    <div class="employee-icon">監</div>
+                    <div class="employee-info">
+                        <div class="employee-name">監視要員</div>
+                        <div class="employee-role">施設警備・情報管理</div>
+                    </div>
+                </div>
+                <div class="person-item">
+                    <div class="employee-icon">技</div>
+                    <div class="employee-info">
+                        <div class="employee-name">技術補佐</div>
+                        <div class="employee-role">設備管理・実験支援</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+     <div class="content-section">
+            <button class="green-group-btn" onclick="showGreenGroupDetail()">滲緑街のその他の店舗</button>
+        </div>
+    </div>
+    
+
+
+    <script>
+        function changeMainImage(clickedImage) {
+            const mainImage = document.getElementById('mainImage');
+            const allSubImages = document.querySelectorAll('.sub-image');
+            
+            // メイン画像を変更
+            mainImage.src = clickedImage.src;
+            mainImage.alt = clickedImage.alt;
+            
+            // アクティブクラスを更新
+            allSubImages.forEach(img => img.classList.remove('active'));
+            clickedImage.classList.add('active');
+        }
+        
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
+    </script>
+    <script src="../../common/greenpopup.js"></script>
+    <script src="../../common/navigation.js"></script>
+</body>
+</html>
