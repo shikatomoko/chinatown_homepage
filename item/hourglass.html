@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>砂時計 - 暗黒中華街</title>
+    <link rel="stylesheet" href="common/styles.css">
+    <link rel="stylesheet" href="common/navigation.css">
+</head>
+<body>
+    
+    <!-- ヘッダー部分 -->
+    <div class="header">
+        <h1 class="title page-title">砂時計</h1>
+    </div>
+    
+    <!-- メインコンテンツ -->
+    <div class="main-content">
+        <div class="content-section">
+            <h2 class="section-title">砂時計について</h2>
+            <p class="section-text">街の中央には高さ10m以上はあろうという巨大な砂時計が設置されている。</p>
+            <p class="section-text">砂時計は12時間で砂が落ち切り、またくるりと回転する。街の人々はこの12時間を半日と定義し、活動している。砂時計の回転を日の出と日没に重ね合わせているのである。</p>
+            <p class="section-text">時計が回転し「朝」が訪れると、街中の明かりが灯る。提灯や灯籠がゆらゆらとざわめくその様は、まるで百鬼夜行のようであろう。人々は明るくなった街で思い思いに日中の時間を過ごす。</p>
+            <p class="section-text">そうして12時間が経ち時計が回ると、ぱたりと街の明かりが消える。この現象を街の人々は「夜」と呼んでいる。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">時間の概念</h2>
+            <p class="section-text">本都市においては「朝」「夜」という定義は厳密には意味を為さない。何故ならば常夜の地下都市に太陽など昇るはずもないからである。</p>
+            <p class="section-text">この街で時間を司るのは太陽でなく、砂である。</p>
+            <p class="section-text">現代では砂時計による時間指標以外にも、表の街から奪ったスマートフォンや時計などを用いて時間を把握している人々もいる。</p>
+        </div>
+    </div>
+
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
+
+    <script src="common/navigation.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
+    </script>
+</body>
+</html>

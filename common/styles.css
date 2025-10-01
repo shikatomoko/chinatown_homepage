@@ -46,14 +46,14 @@ body.shop-page {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 300px;
+    min-height: 250px;
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    padding: 80px 40px;
-    text-align: center;
+    padding: 60px 40px;
+    text-align: left;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 /* 各色のヘッダー背景 */
@@ -73,7 +73,7 @@ body.shop-page {
 .title {
     font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
     font-weight: normal;
-    text-align: center;
+    text-align: left;
     color: #ffffff;
     letter-spacing: 0.1em;
     margin: 0;
@@ -81,7 +81,8 @@ body.shop-page {
 
 /* ページタイトル（キャラクター・ショップページ用） */
 .title.page-title {
-    font-size: clamp(4rem, 10vw, 6.5rem);
+    font-size: clamp(5rem, 12vw, 8rem);
+    text-align: center;
 }
 
 /* ホームページタイトル */
@@ -1333,7 +1334,7 @@ body.shop-page {
     }
     
     .title.page-title {
-        font-size: clamp(3rem, 8vw, 4rem);
+        font-size: clamp(4rem, 10vw, 5.5rem);
     }
     
     .top-section {
@@ -1449,7 +1450,7 @@ body.shop-page {
     }
     
     .title.page-title {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
     }
     
     .character-img {
@@ -1962,7 +1963,7 @@ body.color-page {
 .color-page .shop-item {
     display: flex;
     align-items: center;
-    padding: 24px;
+    padding: 28px;
     background: #1a1a1a;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -1970,7 +1971,7 @@ body.color-page {
     color: inherit;
     border-radius: 8px;
     border: 1px solid #333;
-    min-height: 80px;
+    min-height: 90px;
 }
 
 .color-page .person-item:hover,
@@ -2351,5 +2352,72 @@ body.tools-page h1 {
     
     .tool-card {
         padding: 15px;
+    }
+}
+
+/* =================================
+   アイコンボタン（world.html用）
+================================= */
+
+.icon-button-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 40px 0;
+    padding: 0 20px;
+}
+
+.icon-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: #2a2a2a;
+    border: 2px solid #444;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    cursor: pointer;
+}
+
+.icon-button:hover {
+    background: #3a3a3a;
+    border-color: #666;
+    transform: translateY(-3px);
+}
+
+.icon-button .icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.icon-button .button-text {
+    font-size: 16px;
+    font-weight: normal;
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .icon-button-container {
+        gap: 15px;
+        margin: 30px 0;
+    }
+    
+    .icon-button {
+        padding: 15px;
+        min-width: 100px;
+    }
+    
+    .icon-button .icon {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+    }
+    
+    .icon-button .button-text {
+        font-size: 14px;
     }
 }

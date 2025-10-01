@@ -4,26 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>世界観設定</title>
-    <link rel="stylesheet" href="/common/styles.css">
+    <link rel="stylesheet" href="common/styles.css">
     <link rel="stylesheet" href="common/navigation.css">
 </head>
 <body>
-    <h1>世界観設定</h1>
-    <h2>概要</h2>
-    <h3>通常の世界から隔離された、常夜の犯罪都市。本都市の中では一般的な法規・倫理は一切の制約とならず、個々を縛るのは己自身のみである。
-    <br>表の世界では実行することが不可能な行為でも、この街では咎められることがない。社会が成熟し、悪が廃絶されても尚残る暗部。それを集約させた街がここ、暗黒中華街であった。
-    <br>この街に集う人間は当然表の世界に居場所のない者である。もしくは自ら望んで、泥水に身を浸そうと選択した者であるのかもしれない。更に言えば、そこに棲まう者たちは厳密に言えば「人間」とすら呼べないのかもしれない。
-    <br>何にせよ、この街の者に共通するものがたった一つだけある。</h3>
-    <h2>彼らは紛れもない、悪である。</h2>
     
-    <div class="species-list">
-        <div class="species-item" onclick="toggleDetail(this)">
+    <!-- アイコンボタンコンテナ -->
+    <div class="icon-button-container">
+        <a href="item/hourglass.html" class="icon-button">
+            <span class="icon">⏳</span>
+            <span class="button-text">砂時計</span>
+        </a>
+        <a href="item/mirror.html" class="icon-button">
+            <span class="icon">🪞</span>
+            <span class="button-text">鏡</span>
+        </a>
+    </div>
+    
+    <div class="list">
+        <div class="list-item" onclick="toggleDetail(this)">
             通貨
             <div class="species-detail">
                 <p>現代日本の貨幣(円)は本都市においては意味をなさない。持ち込みたい場合は「両替屋」で交換をする必要がある。レートは100円＝1歯程度。両替屋の気分次第ではもう少し足元を見られることもあるだろう。物価は表の世界のものと然程変わらない。かつてこの街では、人間、もしくはそれ以外のいきものの歯が通貨として利用されていた。その名残は現在の通貨単位の表記にも表れている。５０年前ほどに、「黄組」によって中央銀行が設立された。以降この街にも硬貨がもたらされ、現代では物理的な歯を取引に用いることはほぼない</p>
             </div>
         </div>
-        <div class="species-item" onclick="toggleDetail(this)">
+        <div class="list-item" onclick="toggleDetail(this)">
             交通機関
             <div class="species-detail">
                 <p>本都市の交通機関は「船」と「鉄道」の二つに分類される。</p>

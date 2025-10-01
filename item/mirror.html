@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鏡 - 暗黒中華街</title>
+    <link rel="stylesheet" href="common/styles.css">
+    <link rel="stylesheet" href="common/navigation.css">
+</head>
+<body>
+    
+    <!-- ヘッダー部分 -->
+    <div class="header">
+        <h1 class="title page-title">鏡</h1>
+    </div>
+    
+    <!-- メインコンテンツ -->
+    <div class="main-content">
+        <div class="content-section">
+            <h2 class="section-title">鏡について</h2>
+            <p class="section-text">蒼殉街の教祖が所有しているとされる鏡。大きさは姿見ほどであり、教団の一番奥深くに大切に飾られている。</p>
+            <p class="section-text">この鏡こそが教団の権威を保ち、蒼殉街を他の色と拮抗させるために役立っている力なのである。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">鏡の効果</h2>
+            <p class="section-text">この鏡には暗黒中華街で起きているすべての事象が映る。鏡であるため表示されるのは映像だけであり、音声的・身体的情報は共有されない。</p>
+            <p class="section-text">その力の使用には何らかの代償が必要とされているが、詳細は不明である。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">現在の所有者</h2>
+            <p class="section-text">現在は蒼殉街の教祖が所有しているが、そこに至るまでの経緯や、そもそも誰の所有物だったのかといった点は一切不明である。</p>
+        </div>
+    </div>
+
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
+
+    <script src="common/navigation.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
+    </script>
+</body>
+</html>
