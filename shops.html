@@ -6,13 +6,11 @@
     <title>店舗一覧</title>
     <link rel="stylesheet" href="common/styles.css">
     <link rel="stylesheet" href="common/navigation.css">
-
-       
 </head>
 
 <body>
     <h1>店舗一覧</h1>
-        <div id="navigation-placeholder"></div>
+    <div id="navigation-placeholder"></div>
     
     <!-- オーバーレイ -->
     <div class="overlay" id="overlay"></div>
@@ -22,7 +20,6 @@
         <img src="./picture/map.png" alt="Map" class="map-img">
         
         <!-- 各組のラベル -->
-
         <div class="group-label label-yellow" onclick="showYellowGroupDetail()">黄惑街</div>
         <div class="group-label label-black" onclick="showBlackGroupDetail()">黒</div>
         <div class="group-label label-green" onclick="showGreenGroupDetail()">滲緑街</div>
@@ -31,17 +28,13 @@
         <div class="group-label label-blue" onclick="showBlueGroupDetail()">蒼殉街</div>
     </div>
     
-    <!-- ナビゲーション（JavaScript で動的生成） -->
-    <div id="navigation-placeholder"></div>
-    
-    <script src="bluepopup.js"></script>
-    <script src="blackpopup.js"></script>
-    <script src="whitepopup.js"></script>
-    <script src="greenpopup.js"></script>
-    <script src="redpopup.js"></script>
-    <script src="yellowpopup.js"></script>
-    <script src="../../common/navigation.js"></script>
-      <script src="common/navigation.js"></script>
+    <script src="common/bluepopup.js"></script>
+    <script src="common/blackpopup.js"></script>
+    <script src="common/whitepopup.js"></script>
+    <script src="common/greenpopup.js"></script>
+    <script src="common/redpopup.js"></script>
+    <script src="common/yellowpopup.js"></script>
+    <script src="common/navigation.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             initNavigation();
