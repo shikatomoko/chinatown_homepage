@@ -10,8 +10,20 @@
 <body>
     
     <!-- ヘッダー部分 -->
-    <div class="header">
-        <h1 class="title page-title">鏡</h1>
+   <div class="header">
+        <h1 class="title">鏡</h1>
+    </div>
+    
+    <!-- メイン画像部分 -->
+    <div class="main-image-container">
+        <img id="mainImage" class="main-image" src="../../picture/mirror.png" alt="鏡のメイン画像">
+    </div>
+    
+    <!-- サブ画像スライダー -->
+    <div class="sub-images-container">
+        <div class="sub-images-scroll">
+            <img class="sub-image active" src="../../picture/mirror.png" alt="鏡" onclick="changeMainImage(this)">
+        </div>
     </div>
     
     <!-- メインコンテンツ -->

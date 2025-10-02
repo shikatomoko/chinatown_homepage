@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>リス</title>
     <link rel="stylesheet" href="../../common/styles.css">
-    <link rel="stylesheet" href="../../common/navigation.css">
 </head>
-<body class="red">
+<body class="character-page red">
     <!-- ヘッダー部分（赤色背景） -->
-    <div class="header">
-        <h1 class="title">リス</h1>
+       <div class="header" style="background-image: url('../../picture/red_header.png');">
+        <h1 class="title page-title">リス</h1>
     </div>
     
     <div class="main-content">
@@ -24,7 +23,7 @@
                     階級：幹部
                 </div>
                 <div class="info-row">
-                    仕事：商品・資材の調達
+                    仕事：周辺、郊外エリアにおける人材斡旋・人員管理 / 他の色との渉外担当
                 </div>
                 <div class="info-row">
                     年齢：29歳
@@ -35,68 +34,84 @@
                 <div class="info-row">
                     一人称：俺
                 </div>
+                <div class="info-row">
+                    二人称：お前
+                </div>
             </div>
         </div>
         
-        <div class="section">
-            <h2 class="section-title">性格</h2>
-            <p class="section-text">妹（リコ）の正反対で、非常に生真面目な性格。頭が良いからか心配性な部分もある。自分では自身のことを冷酷無比な存在だと思っているが、全くそんなことはなく、一度関わった人間のことは最後まで気にかけてしまう。<a href="character_riko.html" class="character-link">リコ</a>とは双子だが、性格は正反対である。</p>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">仕事について</h2>
-            <p class="section-text">人材斡旋業は呑紅街の影響力を外部に広げるための重要な事業であり、リスが主導している。表向きは「人材派遣」と称しているが、実際にはスラムや表の街から人間を仕入れ、赤組に有用な形で再分配しているのだ。従業員、用心棒、時に娼婦としても。リスは組織の外れにいた人間を「最後まで見届ける」姿勢を貫いており、スラムで消える命に葬儀を出したり、働けなくなった人間に最低限の衣食住を与えるなどしている。表には出ないが、彼の人柄を慕っている人間は少なくない。</p>
-            <p class="section-text">また、他の色との渉外も担当しており、血気盛んなリコが前面に立つと交渉が決裂しかねない場面では、常にリスが出張って事態を収める。赤組の中では「リコが剣ならリスは盾」と評されることもある。</p>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">過去</h2>
-            <p class="section-text">双子の<a href="character_riko.html" class="character-link">リコ</a>と共に幼い時に暗黒中華街に誘拐されてやってきた。もともとは<a href="../../colorpage/green.html" class="color-link">滲緑街</a>の実験のための被検体として入手されたのだが、リコと共に病院を抜け出して赤組の区画まで流れ着いた。リコほどの武力は持たないが、人との付き合いが上手く、組織に馴染んでいった。</p>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">能力</h2>
-            <p class="section-text">交渉術と人脈作りに長けている。武力では<a href="character_riko.html" class="character-link">リコ</a>に劣るが、一般的な大人の男性よりは強い。銃器の扱いも心得ており、必要に応じて戦闘にも参加する。何より信頼できる人柄が最大の武器である。</p>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">人間関係</h2>
-            <div class="character-relationships">
-                <!-- リコ（赤組） -->
-                <div class="character-card">
-                    <a href="character_riko.html" class="character-link-card">
-                        <div class="character-info">
-                            <img src="../../character_icon/riko_icon.png" alt="リコ" class="character-avatar">
-                            <span class="character-name">リコ</span>
-                        </div>
-                        <div class="character-description">実の双子の妹。正反対の性格だが、深いところでは理解し合っている。妹の無茶を心配しつつも見守っている。</div>
-                    </a>
-                </div>
-                <!-- 阿蓮（赤組） -->
-                <div class="character-card">
-                    <a href="character_aren.html" class="character-link-card">
-                        <div class="character-info">
-                            <img src="../../character_icon/aren_icon.png" alt="阿蓮" class="character-avatar">
-                            <span class="character-name">阿蓮</span>
-                        </div>
-                        <div class="character-description">仕事上のつながりで頻繁に顔を合わせる。阿蓮の博識さを尊敬しているが、その冷徹さには時々戸惑いを感じる。</div>
-                    </a>
-                </div>
-                <!-- 阿瑠（赤組） -->
-                <div class="character-card">
-                    <a href="character_aru.html" class="character-link-card">
-                        <div class="character-info">
-                            <img src="../../character_icon/aru_icon.png" alt="阿瑠" class="character-avatar">
-                            <span class="character-name">阿瑠</span>
-                        </div>
-                        <div class="character-description">湯治屋での取引を通じて知り合った。阿瑠の繊細さを理解し、兄貴分として気にかけている。</div>
-                    </a>
+        <div class="bottom-section">
+            <div class="section">
+                <h2 class="section-title">性格</h2>
+                <p class="section-text">妹（リコ）の正反対で、非常に生真面目な性格。頭が良いからか心配性な部分もある。自分では自身のことを冷酷無比な存在だと思っているが、全くそんなことはなく、一度関わった人間のことは最後まで気にかけてしまう。</p>
+                <p class="section-text">心配性で、さまざまな仕事を一人で引き受けてしまう節がある。その根底にあるのは、妹のリコに対する強い劣等感と自己嫌悪である。</p>
+            </div>            
+            <div class="section">
+                <h2 class="section-title">仕事について</h2>
+                <p class="section-text">基本的にはリコが拾ってきた人間を適切な場所へと配置する業務を行なっている。場合によっては表の街から非合法的な手段で人間を入手することもある。そうして得た人材を彼は赤組に有用な形で再分配しているのだ。従業員、用心棒、時に娼婦としても。</p>
+                <p class="section-text">リスは組織の外れにいた人間を最後まで見届ける姿勢を貫いており、スラムで消える命に葬儀を出したり、働けなくなった人間に最低限の衣食住を与えるなどしている。そのため彼の人柄を慕っている人間は少なくない。</p>
+                <p class="section-text">また、他の色との渉外も担当しており、血気盛んなリコが前面に立つと交渉が決裂しかねない場面では、常にリスが出張って事態を収める。</p>
+            </div>            
+            <div class="section">
+                <h2 class="section-title">過去</h2>
+                <p class="section-text">リコと同じく、外の街から暗黒中華街にやってきた存在。その具体的な経緯はリコと同様。二人が血を分けた兄妹なのか、それとも意図的に似せられた存在なのかは不明である。</p>
+                <p class="section-text">彼はリコと異なって戦う力もなければ、当時は対人交渉術もまともになかった。今の人脈や対話能力は、血の滲むような努力の先に手に入れた後天的なものである。</p>
+                <p class="section-text">リコとともに先代幹部に取り上げられた後は、得意の口先でリコを後ろから支える役割を果たし続けてきた。彼の今までの人生は全てリコによって形作られ、リコのために捧げられたものである。</p>
+                <p class="section-text">しかし彼がこの先どのような生き様を選ぶのかは、誰にもわからない。</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">能力</h2>
+                <p class="section-text">交渉術、管理能力、そして膨大な人脈。彼自身は武力に乏しく、直接的な戦闘は不得手だが、必要とあらば人材をすぐに集めることで問題を解決できる。また、情報屋や医療班とのコネも深いため、間接的な戦いにおいては赤組の中でも最も頼りになる存在。</p>
+            </div>            
+            <div class="section">
+                <h2 class="section-title">人間関係</h2>
+                <div class="character-relationships">
+                    <!-- リコ（赤組） -->
+                    <div class="character-card">
+                        <a href="character_riko.html" class="character-link-card">
+                            <div class="character-info">
+                                <img src="../../character_icon/riko_icon.png" alt="リコ" class="character-avatar">
+                                <span class="character-name">リコ</span>
+                            </div>
+                            <div class="character-description">双子と噂される存在。互いを認めつつも、ややリコの奔放さに振り回されがち。</div>
+                        </a>
+                    </div>
+                    <!-- ミミコ（赤組） -->
+                    <div class="character-card">
+                        <a href="character_mimiko.html" class="character-link-card">
+                            <div class="character-info">
+                                <img src="../../character_icon/mimiko_icon.png" alt="ミミコ" class="character-avatar">
+                                <span class="character-name">ミミコ</span>
+                            </div>
+                            <div class="character-description">合理的で冷徹ですらあるミミコの仕事のやり方は、リスとも相性がいい。生真面目な人間同士、性格が合うのだろう。</div>
+                        </a>
+                    </div>
+                    <!-- 陽炎（赤組） -->
+                    <div class="character-card">
+                        <a href="character_kagerou.html" class="character-link-card">
+                            <div class="character-info">
+                                <img src="../../character_icon/kagerou_icon.png" alt="陽炎" class="character-avatar">
+                                <span class="character-name">陽炎</span>
+                            </div>
+                            <div class="character-description">命令通りに動かない彼に相当手を焼いている。陽炎が放棄した細かい雑務を片付けるのは、半ば慣習的にリスの仕事となっている。</div>
+                        </a>
+                    </div>
+                    <!-- 風花（赤組） -->
+                    <div class="character-card">
+                        <a href="character_huuka.html" class="character-link-card">
+                            <div class="character-info">
+                                <img src="../../character_icon/huuka_icon.png" alt="風花" class="character-avatar">
+                                <span class="character-name">風花</span>
+                            </div>
+                            <div class="character-description">明るく、少し危なっかしい彼女のことを若干不安げに見守っている。</div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ホバーメニュー -->
     <!-- ナビゲーション（JavaScript で動的生成） -->
     <div id="navigation-placeholder"></div>
     <script src="../../common/navigation.js"></script>

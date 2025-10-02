@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>烏色</title>
+    <link rel="stylesheet" href="../../common/styles.css">
+    <link rel="stylesheet" href="../../common/navigation.css">
+</head>
+<body class="black">
+    <!-- ヘッダー部分（黒色背景） -->
+    <div class="header">
+        <h1 class="title">烏色</h1>
+    </div>
+    
+    <div class="main-content">
+        <div class="top-section">
+            <img src="../../character_fullbody/uiro.png" alt="烏色" class="character-img">
+            <div class="info-box">
+                <div class="info-row">
+                    所属色：<a href="../../colorpage/black.html" class="color-link">黒</a>
+                </div>
+                <div class="info-row">
+                    階級：下級構成員
+                </div>
+                <div class="info-row">
+                    仕事：暗殺者
+                </div>
+                <div class="info-row">
+                    年齢：13歳
+                </div>
+                <div class="info-row">
+                    種族：不明
+                </div>
+                <div class="info-row">
+                    一人称：ぼく
+                </div>
+                <div class="info-row">
+                    二人称：あなた
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">性格</h2>
+            <p class="section-text">一見すれば素直で純真な子供であるが、素直で純真だからこそ生じる恐ろしさというものも存在する。彼は純粋な知的好奇心に基づいて人を殺し、傷つけ、壊す。まるでまだ善悪を知らない子供が虫を引き裂いて遊ぶように。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">仕事について</h2>
+            <p class="section-text">小柄な体躯と敏捷性により、決して誰にも悟らずに確実に殺しを執行する。対象は依頼次第であり、烏色自身に誰を殺して誰を殺さないのか決定するイデオロギーは一切存在しない。男でも女でも、子供でも大人でも、人でも人でなくても、烏色の前では彼らはただの壊していいおもちゃにすぎない。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">過去</h2>
+            <p class="section-text">彼自身は自分がクロの実子であると主張しているが、誰もそれを信じてなどいない。彼の出自は明白に記録に残されている。</p>
+            <p class="section-text">彼は表の街で誕生したのちに捨てられ、児童養護施設へと贈られた。その後三歳ごろまで養護施設にて育てられたが、自身で家出を試み、最終的に暗黒中華街まで辿り着いたのである。</p>
+            <p class="section-text">そんな彼がなぜクロの傘下に取り立てられたのか。その経緯は文字通りのブラックボックスとなっている。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">能力</h2>
+            <p class="section-text">手先が非常に器用であるため、小さなナイフを用いて人を丁寧に細かくして殺すことが出来る。また子供が故に、本来人が入ることを想定されていないような狭い隙間でさえも、彼の自由な行動領域となる。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">人間関係</h2>
+            <div class="character-relationships">
+                <!-- クロ（黒組） -->
+                <div class="character-card">
+                    <a href="character_kuro.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/kuro_icon.png" alt="クロ" class="character-avatar">
+                            <span class="character-name">クロ</span>
+                        </div>
+                        <div class="character-description">父親のように慕っているが、実際血が繋がっているのかは定かではない。本人はクロが実の父親だと固く信じている。</div>
+                    </a>
+                </div>
+                
+                <!-- サギリ（黒組） -->
+                <div class="character-card">
+                    <a href="character_sagiri.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/sagiri_icon.png" alt="サギリ" class="character-avatar">
+                            <span class="character-name">サギリ</span>
+                        </div>
+                        <div class="character-description">父親を独占する邪魔な存在だと思っている。いつか殺したい。</div>
+                    </a>
+                </div>
+                
+                <!-- ネコ（白組） -->
+                <div class="character-card">
+                    <a href="../white/character_neko.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/neko_icon.png" alt="ネコ" class="character-avatar">
+                            <span class="character-name">ネコ</span>
+                        </div>
+                        <div class="character-description">いつも仕事の最中やクロとの約束の直前などにちょっかいをかけられて迷惑している。</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
+    <script src="../../common/navigation.js"></script>
+    <script>
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
+    </script>
+</body>
+</html>

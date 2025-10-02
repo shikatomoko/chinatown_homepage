@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メイ</title>
+    <link rel="stylesheet" href="../../common/styles.css">
+    <link rel="stylesheet" href="../../common/navigation.css">
+    <link rel="stylesheet" href="character_red.css">
+</head>
+<body class="red">
+    <!-- ヘッダー部分（赤色背景） -->
+        <div class="header" style="background-image: url('../../picture/red_header.png');">
+        <h1 class="title">メイ</h1>
+    </div>
+    
+    <div class="main-content">
+        <div class="top-section">
+            <img src="../../character_fullbody/mei.png" alt="メイ" class="character-img">
+            <div class="info-box">
+                <div class="info-row">
+                    所属色：<a href="../../colorpage/red.html" class="color-link">呑紅街</a>
+                </div>
+                <div class="info-row">
+                    階級：下級構成員
+                </div>
+                <div class="info-row">
+                    仕事：<a href="../../shoppage/red/shop_restaurant.html" class="shop-link">レストランシェフ</a>
+                </div>
+                <div class="info-row">
+                    年齢：31歳
+                </div>
+                <div class="info-row">
+                    種族：饕餮（とうてつ）
+                </div>
+                <div class="info-row">
+                    一人称：わたし
+                </div>
+                <div class="info-row">
+                    二人称：あなた
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">外見</h2>
+            <p class="section-text">饕餮特有の異様に大きな口をマスクで隠している。だがお腹が露出する服を好むため、腹部にある巨大な目が常に相手をじっと見つめている。黒髪をゆるくまとめ、優雅で落ち着いた雰囲気を漂わせる。近づけば香辛料と肉の匂いが混じる独特の香りがする。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">性格</h2>
+            <p class="section-text">おっとりとした物腰で、誰に対しても柔らかな笑みを絶やさない。怒る姿を見た者はいないが、彼女の料理を粗末に扱った相手だけは例外。微笑を浮かべながら冷徹に「食べ物」として処理する。そのため彼女のレストランでは、客は誰も料理を残さない。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">仕事について</h2>
+            <p class="section-text">その腕前は街中で評判。彼女の料理を食べに来る客は後を絶たないが、食材の出所は決して明かされない。肉屋や皮屋と密接に取引していると噂される。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">人間関係</h2>
+            <div class="character-relationships">
+                <!-- シロ（白組） -->
+                <div class="character-card">
+                    <a href="../white/character_shiro.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/shiro_icon.png" alt="シロ" class="character-avatar">
+                            <span class="character-name">シロ</span>
+                        </div>
+                        <div class="character-description">彼女の料理の常連客であり、特別に「毒見役」として扱っている節がある。</div>
+                    </a>
+                </div>
+                <!-- 綾（赤組） -->
+                <div class="character-card">
+                    <a href="character_aya.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/aya_icon.png" alt="綾" class="character-avatar">
+                            <span class="character-name">綾</span>
+                        </div>
+                        <div class="character-description">客として通ってきており、なにかと二人で行動することが多い。メイは姉のように綾を可愛がっている。</div>
+                    </a>
+                </div>
+                <!-- 燿（黄組） -->
+                <div class="character-card">
+                    <a href="../yellow/character_you.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/you_icon.png" alt="燿" class="character-avatar">
+                            <span class="character-name">燿</span>
+                        </div>
+                        <div class="character-description">時折厨房を覗きに来るが、彼女の「食材」の扱い方に興味を持っている様子。</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ホバーメニュー -->
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
+    <script src="../../common/navigation.js"></script>
+    <script>
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
+    </script>
+</body>
+</html>
