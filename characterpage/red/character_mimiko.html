@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ミミコ</title>
-    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../../common/styles.css">
     <link rel="stylesheet" href="../../common/navigation.css">
-    <link rel="stylesheet" href="character_red.css">
 </head>
-<body class="red">
+<body class="character-page red">
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
+    
     <!-- ヘッダー部分（赤色背景） -->
     <div class="header">
         <h1 class="title">ミミコ</h1>
@@ -45,51 +46,64 @@
                 </div>
             </div>
         </div>
+        
         <div class="bottom-section">
-            <h2>性格</h2>
-            <p>非常に合理的。利益率の高さで人を評価する。根本的な部分で人間に心を開いていないが、合理的なので他者を邪険に扱うことはしない。キラキラしていて綺麗なものが好き。人間はキラキラしていなくて汚いので嫌い。でも爪を彩れば汚い人間の見てくれも少しくらいはマシになると思っている。</p>
-            <h2>仕事について</h2>
-            <p>昼間営業のネイルサロンは彼女の個人的な趣味もあるが、比較的富裕層の様々な色の人間が来るため、接客を通じて情報収集を行っているという側面もある。彼女の見た目と雰囲気から警戒心を解いて、機密情報を話してしまう人間はかなり多いのだ。<br>
-            夜間営業に関しては、資材調達以外の意味はあまりない。赤組の中で軽微なやらかしをした人間は、まずミミコの元に送られる。爪剥ぎは最も軽い懲罰の一つである。</p>
-            <h2>過去</h2>
-            <p>赤組外縁部のスラム出身。生まれた時から両親はなく、暗黒中華街の外に出たこともない。彼女は他の人間に比べて非常に頭が良く、それを利用してスラムのコミュニティの中の頂点に立った。しかしそれでもスラムはスラムでしかなく、貧困と死が隣り合わせの環境で彼女は育ったのである。彼女の人間不信はこの生育環境から発生したものだ。<br>
-            スラムの中で多くの仲間の死を見送りながら、彼女はどうにか大量の金を貯め、ある日自身のコミュニティのすべての人間を見捨てて単身で中央区までやってきた。のちに自分自身をリコへと売り込み、才能を認められ、現在の地位を築き上げたのである。</p>
-            <h2>能力</h2>
-            <p>非常に頭が良く、暗黒中華街のことから表の街のことまで多くの知識を持っている。スラムに落ちていた本が彼女の知識の源流である。また手先が器用であり、彼女の施すネイルは評価が高い。逆に力仕事はとても苦手。戦闘も得意ではない。</p>
-            <h2>人間関係</h2>
-            <div class="character-relationships">
-                <!-- サギリ（黒組） -->
-                <div class="character-card" style="background: rgba(0, 0, 0, 0.8);">
-                    <a href="../black/character_sagiri.html" class="character-link-card">
-                        <div class="character-info">
-                            <img src="../../character_icon/sagiri_icon.png" alt="サギリ" class="character-avatar">
-                            <span class="character-name">サギリ</span>
-                        </div>
-                        <div class="character-description">ネイルサロンの顧客として出会い、今ではかけがえのない親友。唯一ミミコが様々な利害を超えてかかわりと続けている存在。</div>
-                    </a>
-                </div>
-                <!-- リコ（赤組） -->
-                <div class="character-card">
-                    <a href="./character_riko.html" class="character-link-card">
-                        <div class="character-info">
-                            <img src="../../character_icon/riko_icon.png" alt="リコ" class="character-avatar">
-                            <span class="character-name">リコ</span>
-                        </div>
-                        <div class="character-description">直属の上司であり、中央区に出てきたミミコを拾った恩人。</div>
-                    </a>
+            <div class="section">
+                <h2 class="section-title">性格</h2>
+                <p class="section-text">非常に合理的。利益率の高さで人を評価する。根本的な部分で人間に心を開いていないが、合理的なので他者を邪険に扱うことはしない。キラキラしていて綺麗なものが好き。人間はキラキラしていなくて汚いので嫌い。でも爪を彩れば汚い人間の見てくれも少しくらいはマシになると思っている。</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">仕事について</h2>
+                <p class="section-text">昼間営業のネイルサロンは彼女の個人的な趣味もあるが、比較的富裕層の様々な色の人間が来るため、接客を通じて情報収集を行っているという側面もある。彼女の見た目と雰囲気から警戒心を解いて、機密情報を話してしまう人間はかなり多いのだ。</p>
+                <p class="section-text">夜間営業に関しては、資材調達以外の意味はあまりない。赤組の中で軽微なやらかしをした人間は、まずミミコの元に送られる。爪剥ぎは最も軽い懲罰の一つである。</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">過去</h2>
+                <p class="section-text">赤組外縁部のスラム出身。生まれた時から両親はなく、暗黒中華街の外に出たこともない。彼女は他の人間に比べて非常に頭が良く、それを利用してスラムのコミュニティの中の頂点に立った。しかしそれでもスラムはスラムでしかなく、貧困と死が隣り合わせの環境で彼女は育ったのである。彼女の人間不信はこの生育環境から発生したものだ。</p>
+                <p class="section-text">スラムの中で多くの仲間の死を見送りながら、彼女はどうにか大量の金を貯め、ある日自身のコミュニティのすべての人間を見捨てて単身で中央区までやってきた。のちに自分自身をリコへと売り込み、才能を認められ、現在の地位を築き上げたのである。</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">能力</h2>
+                <p class="section-text">非常に頭が良く、暗黒中華街のことから表の街のことまで多くの知識を持っている。スラムに落ちていた本が彼女の知識の源流である。また手先が器用であり、彼女の施すネイルは評価が高い。逆に力仕事はとても苦手。戦闘も得意ではない。</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">人間関係</h2>
+                <div class="character-relationships">
+                    <!-- サギリ（黒組） -->
+                    <div class="character-card" style="background: rgba(0, 0, 0, 0.8);">
+                        <a href="../black/character_sagiri.html" class="character-link-card">
+                            <div class="character-info">
+                                <img src="../../character_icon/sagiri_icon.png" alt="サギリ" class="character-avatar">
+                                <span class="character-name">サギリ</span>
+                            </div>
+                            <div class="character-description">ネイルサロンの顧客として出会い、今ではかけがえのない親友。唯一ミミコが様々な利害を超えてかかわりと続けている存在。</div>
+                        </a>
+                    </div>
+                    <!-- リコ（赤組） -->
+                    <div class="character-card">
+                        <a href="./character_riko.html" class="character-link-card">
+                            <div class="character-info">
+                                <img src="../../character_icon/riko_icon.png" alt="リコ" class="character-avatar">
+                                <span class="character-name">リコ</span>
+                            </div>
+                            <div class="character-description">直属の上司であり、中央区に出てきたミミコを拾った恩人。</div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- ナビゲーション（JavaScript で動的生成） -->
-    <div id="navigation-placeholder"></div>
-    <script src="../../common/navigation.js"></script>
+
     <script>
         // ナビゲーション初期化
         document.addEventListener('DOMContentLoaded', function() {
             initNavigation();
         });
     </script>
+    <script src="../../common/navigation.js"></script>
 </body>
 </html>

@@ -7,50 +7,40 @@
     <link rel="stylesheet" href="common/styles.css">
     <link rel="stylesheet" href="common/navigation.css">
 </head>
-<body>
+<body class="world-page">
+    <div id="navigation-placeholder"></div>
+    
+    <!-- ヘッダー部分 -->
+    <div class="header">
+        <h1>世界観設定</h1>
+    </div>
     
     <!-- アイコンボタンコンテナ -->
+      <div class="section">
+        <h2 class="section-title">アイテム</h2>
     <div class="icon-button-container">
-        <a href="item/hourglass.html" class="icon-button">
-            <span class="icon">⏳</span>
+        <a href="world/item/hourglass.html" class="icon-button">
+            <img src="picture/hourglass.png" alt="砂時計" class="icon">
             <span class="button-text">砂時計</span>
         </a>
-        <a href="item/mirror.html" class="icon-button">
+        <a href="world/item/mirror.html" class="icon-button">
             <span class="icon">🪞</span>
             <span class="button-text">鏡</span>
         </a>
     </div>
-    
-    <div class="list">
-        <div class="list-item" onclick="toggleDetail(this)">
-            通貨
-            <div class="species-detail">
-                <p>現代日本の貨幣(円)は本都市においては意味をなさない。持ち込みたい場合は「両替屋」で交換をする必要がある。レートは100円＝1歯程度。両替屋の気分次第ではもう少し足元を見られることもあるだろう。物価は表の世界のものと然程変わらない。かつてこの街では、人間、もしくはそれ以外のいきものの歯が通貨として利用されていた。その名残は現在の通貨単位の表記にも表れている。５０年前ほどに、「黄組」によって中央銀行が設立された。以降この街にも硬貨がもたらされ、現代では物理的な歯を取引に用いることはほぼない</p>
-            </div>
-        </div>
-        <div class="list-item" onclick="toggleDetail(this)">
-            交通機関
-            <div class="species-detail">
-                <p>本都市の交通機関は「船」と「鉄道」の二つに分類される。</p>
-                <p>・船<br>街中に放射状に張り巡らされた水路を船で移動することができる。金のない庶民でも利用可能な、一般的なものである。<br>河川は中央の「砂時計広場(仮名)」を上流とし、街の端へと流れていく。水質も上流の方では比較的淀みが少ないが、端に至るにつれて様々な悪臭を放ち、有害物質も溶け込んだものへと変わる。下流の方で万が一河川へと転落すれば、生きて陸へと上がることは難しいだろう。<br>あくまでも船はこの河川を水の流れに従って動くものである。そのため上から下への移動は可能だが、下から上への移動は物理的に不可能である。<br>加えて河川の形状のため、船を使って別の組のテリトリーに移動することは不可能である。あくまでも船は、同一の組のテリトリー内を上から下へと移動するための交通機関でしかない。<br>船しか利用できないような貧民は、この街ではいつまで経っても上になど這い上がれないのだ。<br>船便の運営はそれぞれの区画の組に委ねられている。比較的新規参入もしやすいビジネスである。</p>
-                <p>・鉄道<br>街全体を環状に走る鉄道である。駅は各区画に1-2個程度存在する。<br>鉄道の最大の特徴は、船では不可能な区画間の移動が可能であることである。「黄組」から「緑組」、「緑組」から「赤組」と、乗客は自由にテリトリーを横断できる。更に船とは異なり、乗車することによる死のリスクも格段に低い。<br>その代わりに、鉄道を利用することができるのは本当に限られた一部の人間だけである。<br>鉄道を利用するためには法外な金だけでなく、「信用」が必要である。その顔と名前が街中に轟くような存在でなければ、乗車することは不可能なのだ。<br>鉄道の運営は「黒組」の管轄である。万が一許諾なく鉄道に乗ろうとしたり、その架線に危害を加えるようなものがいれば、「黒組」は制裁を行うことを躊躇わないだろう。</p>
-            </div>
-        </div>
-        <div class="species-item" onclick="toggleDetail(this)">
-            時間/明かり
-            <div class="species-detail">
-                <p>本都市においては「朝」「夜」という定義は厳密には意味を為さない。何故ならば常夜の地下都市に太陽など昇るはずもないからである。<br>この街で時間を司るのは太陽でなく、砂である。<br>街の中央には高さ１０ｍ以上はあろうという砂時計が設置されている。砂時計は１２時間で落ち切り、またくるりと回転する。街の人々はこの１２時間を半日と定義し、活動している。砂時計の回転を日の出と日没に重ね合わせているのである。<br>時計が回転し「朝」が訪れると、街中の明かりが灯る。提灯や灯籠がゆらゆらとざわめくその様は、まるで百鬼夜行のようであろう。人々は明るくなった街で思い思いに日中の時間を過ごす。<br>そうして１２時間が経ち時計が回ると、ぱたりと街の明かりが消える。この現象を街の人々は「夜」と呼んでいる。<br>現代では砂時計による時間指標以外にも、表の街から奪ったスマートフォンや時計などを用いて時間を把握している人々もいる。</p>
-            </div>
-        </div>
-        <div class="species-item" onclick="toggleDetail(this)">
-            人種
-            <div class="species-detail">
-                <p>本都市において人種という概念は希薄である。しかし「人間」か「それ以外」か、という区分は存在する。<br>人間でない存在は、街の中の特定の区画に集中して棲んでいる。彼らは特に人間と変わらないコミュニケーションを取ることが可能であり、人間と変わらずに日々を暮らしている。基本的には人間に危害を加えることもなく、非常に友好的である。街の人々も、その受容の程度には個人差があるが、それなりに普通に彼らに接している。<br>例外は「青組」の人々である。彼らは人間至上主義であるため、人外の存在を一切許容しない。「青組」の区画には人外の居住地区は存在しない。<br>それとは対照的に「赤組」は人外との関係を強く持っている。彼らは己の区画の一部を人外に割譲し、その対価として人外の技術や力を味方につけることに成功した。そのため「赤組」の東側のエリアは人外のみが棲まう特別区画となっており、人間の侵入は推奨されていない。<br>件の区画に人間が入った場合どうなるかは、人外たちの気分次第と言うしかないだろう。一つ言えるのは、一枚壁を挟んだその先で人の理屈など通じるはずもないということだ。<br>暗黒中華街に棲まう人外の詳細な情報については、別途記載する。</p>
-            </div>
-        </div>
     </div>
 
-    <script src="common/navigation.js"></script>
+     <div class="section">
+        <h2 class="section-title">イベント</h2>
+    <div class="icon-button-container">
+        <a href="world/event/redfestival.html" class="icon-button">
+            <img src="shop_image/red/street/streetfood2.png" alt="祭" class="icon">
+            <span class="button-text">呑紅街の祭典</span>
+        </a>
+    </div>
+    </div>
+    
+
     <script>
         function toggleDetail(element) {
             element.classList.toggle('active');
@@ -60,8 +50,6 @@
             initNavigation();
         });
     </script>
-
-    <!-- ナビゲーション（JavaScript で動的生成） -->
-    <div id="navigation-placeholder"></div>
+    <script src="common/navigation.js"></script>
 </body>
 </html>

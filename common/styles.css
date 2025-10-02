@@ -331,15 +331,18 @@ body.shop-page {
 }
 
 .person-item {
-    background: #1a1a1a;
-    padding: 25px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    align-items: center;
-}
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            min-height: 60px;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
 .person-item:hover {
     background: #2a2a2a;
@@ -378,26 +381,23 @@ body.shop-page {
 /* 赤組テーマ */
 .red .service-title,
 .red .employee-name,
-.red .employee-icon { border-color: #cc2936; }
-.red .color-link { color: #df290e; }
-.red .color-link:hover { color: #ff4533; }
-.red .character-card { border-color: #cc2936; }
-.red .character-card:hover { border-color: #dc2626; }
-.red .section { border-bottom-color: #cc2936; }
-.red .top-section { border-bottom-color: #cc2936; }
+.red .employee-icon { border-color: #f44336; }
+.red .color-link { color: #f44336; }
+.red .color-link:hover { color: #e53935; }
+.red .character-card { border-color: #f44336; }
+.red .character-card:hover { border-color: #e53935; }
+.red .section { border-bottom-color: #f44336; }
+.red .top-section { border-bottom-color: #f44336; }
 
-/* 赤組キャラクターページのヘッダー背景 */
+/* 青組キャラクターページのヘッダー背景 */
 .red .header {
-    background-image: url("../picture/red_header.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: #dd0a06;
+    background-image: linear-gradient(135deg, #e90a0a 0%, #f12d0f 50%, #850909 100%);
 }
-
 .red-group-btn {
     background: #2a2a2a;
     color: #fff;
-    border: 2px solid #cc2936;
+    border: 2px solid #f44336;
     border-radius: 8px;
     padding: 12px 24px;
     font-size: 16px;
@@ -405,8 +405,8 @@ body.shop-page {
     transition: all 0.3s ease;
 }
 .red-group-btn:hover {
-    background: #cc2936;
-    color: #fff;
+    background: #f44336;
+    color: #000;
 }
 
 /* 青組テーマ */
@@ -693,9 +693,20 @@ body.shop-page {
     transition: all 0.3s ease;
 }
 
-.color-link:hover,
+.shop-link,
+.character-link {
+    color: #ffffff;
+    text-decoration: underline;
+    text-decoration-color: #ffffff;
+}
+
 .shop-link:hover,
 .character-link:hover {
+    color: #ffffff;
+    text-decoration-color: #cccccc;
+}
+
+.color-link:hover {
     color: #e5e5e5;
 }
 
@@ -1669,33 +1680,11 @@ body.color-page {
 
 /* 赤テーマヘッダー */
 .color-page.red .header {
-    background: linear-gradient(135deg, #8B0000, #DC143C, #FF6347);
-    padding: 60px 40px;
-    position: relative;
-    overflow: hidden;
+    background-image: url("../picture/red_header.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-
-.color-page.red .header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, 
-        rgba(139, 0, 0, 0.9) 0%, 
-        rgba(220, 20, 60, 0.8) 50%, 
-        rgba(255, 99, 71, 0.7) 100%);
-    z-index: 0;
-}
-
-.color-page.red .title {
-    position: relative;
-    z-index: 1;
-    color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-}
-
 /* 青テーマヘッダー */
 .color-page.blue .header {
     background: linear-gradient(135deg, #1e3a8a, #1e40af);
@@ -1728,6 +1717,7 @@ body.color-page {
     font-weight: normal;
     letter-spacing: 0.1em;
     margin: 0;
+    text-align: center; 
 }
 
 .color-page.red .title {
@@ -2163,19 +2153,8 @@ body.color-page {
     
     .color-page .person-list,
     .color-page .shop-list {
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
-    
-    .color-page .person-item,
-    .color-page .shop-item {
-        min-height: 90px;
-        padding: 28px;
-    }
-}
-
-/* カラーページ レスポンシブ */
-@media (max-width: 768px) {
     .color-page .header {
         padding: 40px 20px;
     }
@@ -2210,8 +2189,8 @@ body.color-page {
     
     .color-page .hover-menu {
         min-width: 160px;
-    }
-}
+    }}
+
 
 @media (max-width: 480px) {
     .color-page .title {
@@ -2253,171 +2232,161 @@ body.color-page {
 }
 
 /* =================================
-   ツールページスタイル
-================================= */
-
-body.tools-page {
-    background: #000;
-    color: #e8e8e8;
-    min-height: 100vh;
-    padding: 20px;
-}
-
-body.tools-page h1 {
-    color: #fff;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.5em;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-}
-
-.tools-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
-}
-
-.tool-card {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-    border: 1px solid #444;
-    border-radius: 8px;
-    padding: 20px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-}
-
-.tool-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-    border-color: #666;
-}
-
-.tool-card h3 {
-    color: #fff;
-    margin-bottom: 15px;
-    font-size: 1.3em;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-}
-
-.tool-card p {
-    color: #ccc;
-    margin-bottom: 15px;
-    line-height: 1.6;
-}
-
-.tool-link {
-    display: inline-block;
-    background: linear-gradient(135deg, #333 0%, #555 100%);
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    border: 1px solid #666;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.tool-link:hover {
-    background: linear-gradient(135deg, #555 0%, #777 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-}
-
-.tool-link.external-link::after {
-    content: " ↗";
-    font-size: 0.8em;
-    margin-left: 5px;
-}
-
-/* レスポンシブ対応 */
-@media (max-width: 768px) {
-    body.tools-page {
-        padding: 15px;
-    }
-    
-    body.tools-page h1 {
-        font-size: 2em;
-        margin-bottom: 20px;
-    }
-    
-    .tools-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 15px 0;
-    }
-    
-    .tool-card {
-        padding: 15px;
-    }
-}
-
-/* =================================
-   アイコンボタン（world.html用）
+   アイコンボタンコンテナ
 ================================= */
 
 .icon-button-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin: 40px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    max-width: 1000px;
+    gap: 15px;
+    margin: 20px auto;
     padding: 0 20px;
+}
+
+/* PC表示時に最大6個に制限 */
+@media (min-width: 900px) {
+    .icon-button-container {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (max-width: 899px) and (min-width: 720px) {
+    .icon-button-container {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (max-width: 719px) and (min-width: 540px) {
+    .icon-button-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 539px) and (min-width: 360px) {
+    .icon-button-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 359px) {
+    .icon-button-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .icon-button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    background: #2a2a2a;
-    border: 2px solid #444;
-    border-radius: 12px;
+    justify-content: space-between;
+    padding: 10px;
+    background: #1a1a1a;
+    border: 2px solid #333;
+    border-radius: 8px;
     text-decoration: none;
     color: #ffffff;
     transition: all 0.3s ease;
-    min-width: 120px;
-    cursor: pointer;
+    min-height: 120px;
+    aspect-ratio: 1;
+    position: relative;
 }
 
 .icon-button:hover {
-    background: #3a3a3a;
-    border-color: #666;
-    transform: translateY(-3px);
+    background: #2a2a2a;
+    border-color: #555;
+    transform: translateY(-2px);
 }
 
 .icon-button .icon {
-    font-size: 2rem;
+    width: calc(100% - 8px);
+    height: calc(100% - 30px);
     margin-bottom: 8px;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    border-radius: 6px;
+    overflow: hidden;
 }
 
-.icon-button .button-text {
-    font-size: 16px;
-    font-weight: normal;
-    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+.icon-button .icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.icon-button .icon:not(:has(img)) {
+    font-size: clamp(40px, 6vw, 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-text {
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-top: auto;
+    padding: 5px 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
 }
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .icon-button-container {
-        gap: 15px;
-        margin: 30px 0;
+        gap: 12px;
+        padding: 0 15px;
     }
     
     .icon-button {
-        padding: 15px;
-        min-width: 100px;
+        padding: 8px;
+        min-height: 100px;
     }
     
     .icon-button .icon {
-        font-size: 1.5rem;
+        width: calc(100% - 6px);
+        height: calc(100% - 25px);
         margin-bottom: 6px;
     }
     
-    .icon-button .button-text {
-        font-size: 14px;
+    .icon-button .icon:not(:has(img)) {
+        font-size: clamp(35px, 5vw, 45px);
+    }
+    
+    .button-text {
+        font-size: 12px;
+        padding: 4px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .icon-button-container {
+        gap: 10px;
+    }
+    
+    .icon-button {
+        padding: 6px;
+        min-height: 80px;
+    }
+    
+    .icon-button .icon {
+        width: calc(100% - 4px);
+        height: calc(100% - 20px);
+        margin-bottom: 4px;
+    }
+    
+    .icon-button .icon:not(:has(img)) {
+        font-size: clamp(30px, 4vw, 40px);
+    }
+    
+    .button-text {
+        font-size: 11px;
+        padding: 3px 0;
     }
 }

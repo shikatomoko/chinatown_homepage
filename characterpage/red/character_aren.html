@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>阿蓮</title>
     <link rel="stylesheet" href="../../common/styles.css">
+    <link rel="stylesheet" href="../../common/navigation.css">
 </head>
-<body class="red">
+<body class="character-page red">
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
+    
     <!-- ヘッダー部分（赤色背景） -->
     <div class="header">
         <h1 class="title">阿蓮</h1>
@@ -25,7 +29,7 @@
                 <div class="info-row">
                     仕事：<a href="../../shoppage/red/shop_antique.html" class="shop-link">骨董楼の経営</a>
                 </div>
-                 <div class="info-row">
+                <div class="info-row">
                     年齢：３８歳
                 </div>
                 <div class="info-row">
@@ -43,84 +47,83 @@
             </div>
         </div>
         
-        <div class="section">
-            <h2 class="section-title">性格</h2>
-            <p class="section-text">穏やかで理知的。ただし非常に猜疑心が強く、骨董を見抜くように人間の心の底を覗き込む癖がある。会話の中で相手の欲望や恐怖を見抜くことを楽しんでいる。人間の愚かしさや欲深さを冷笑しつつも、それを糧に生きている現実主義者。</p>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">仕事について</h2>
-            <p class="section-text">骨董楼は表向きは古美術や古書を扱う店だが、実態は赤組の「裏市場」の一角を担っている。違法な呪具や、呪われた骨董品、人間の臓器や死体を利用した「工芸品」すら扱っていると噂される。顧客は富裕層のコレクターから、怪異を求める人外まで多岐にわたる。</p>
-            <p class="section-text">阿蓮は鑑定眼に優れており、本物と贋作を即座に見抜くことができるため、骨董楼は「外れのない店」として信頼を集めている。一方で、裏社会の権力者にとっては「自分の秘密を握っている危険人物」でもある。</p>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">過去</h2>
-            <p class="section-text">暗黒中華街に流れ着く前の経歴は一切不明。本人は「古き国で官吏をしていた」と語るが、誰もその真偽を確かめたことはない。かつては学者肌だったとも言われるが、今や血塗られた骨董と呪物に囲まれて暮らしている。</p>
-            <p class="section-text">彼の過去を探ろうとした者は例外なく消息を絶っており、阿蓮自身が彼らを「骨董品」にしてしまったのではないかという噂もある。</p>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">能力</h2>
-            <p class="section-text">圧倒的な鑑定眼と広い知識。古美術、宗教儀礼、呪術的アイテムに関する情報には精通している。また、人間の心理を読むのも得意で、交渉や尋問においては驚くべき成果を上げる。肉体的な力は大したことがないが、毒や薬物を用いた暗殺術を心得ている。</p>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">人間関係</h2>
-            <div class="character-relationships">
-                <!-- リス（赤組） -->
-                <div class="character-card">
-                    <a href="character_risu.html" class="character-link-card">
-                        <div class="character-info">
-                            <img src="../../character_icon/risu_icon.png" alt="リス" class="character-avatar">
-                            <span class="character-name">リス</span>
-                        </div>
-                        <div class="character-description">仕事柄よく顔を合わせる。リスの誠実さを評価しているが、その人情深さを「弱さ」と見ている節がある。</div>
-                    </a>
-                </div>
-                <!-- リコ（赤組） -->
-                <div class="character-card">
-                    <a href="character_riko.html" class="character-link-card">
-                        <div class="character-info">
-                            <img src="../../character_icon/riko_icon.png" alt="リコ" class="character-avatar">
-                            <span class="character-name">リコ</span>
-                        </div>
-                        <div class="character-description">ビジネス上の顧客でもあり、阿蓮が扱う希少品を買い付けることもある。だが、お互いが決して心を許さない関係。</div>
-                    </a>
-                </div>
-                <!-- 陽炎（赤組） -->
-                <div class="character-card">
-                    <a href="character_kagerou.html" class="character-link-card">
-                        <div class="character-info">
-                            <img src="../../character_icon/kagerou_icon.png" alt="陽炎" class="character-avatar">
-                            <span class="character-name">陽炎</span>
-                        </div>
-                        <div class="character-description">互いに人間を観察対象として楽しんでいる奇妙な友誼関係にある。</div>
-                    </a>
-                </div>
-                <!-- 阿瑠（赤組） -->
-                <div class="character-card">
-                    <a href="character_aru.html" class="character-link-card">
-                        <div class="character-info">
-                            <img src="../../character_icon/aru_icon.png" alt="阿瑠" class="character-avatar">
-                            <span class="character-name">阿瑠</span>
-                        </div>
-                        <div class="character-description">血縁的なつながりはないが、自身の名前の一文字を与えるなど息子のように扱っている。</div>
-                    </a>
+        <div class="bottom-section">
+            <div class="section">
+                <h2 class="section-title">性格</h2>
+                <p class="section-text">穏やかで理知的。ただし非常に猜疑心が強く、骨董を見抜くように人間の心の底を覗き込む癖がある。会話の中で相手の欲望や恐怖を見抜くことを楽しんでいる。人間の愚かしさや欲深さを冷笑しつつも、それを糧に生きている現実主義者。</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">仕事について</h2>
+                <p class="section-text">骨董楼は表向きは古美術や古書を扱う店だが、実態は赤組の「裏市場」の一角を担っている。違法な呪具や、呪われた骨董品、人間の臓器や死体を利用した「工芸品」すら扱っていると噂される。顧客は富裕層のコレクターから、怪異を求める人外まで多岐にわたる。</p>
+                <p class="section-text">阿蓮は鑑定眼に優れており、本物と贋作を即座に見抜くことができるため、骨董楼は「外れのない店」として信頼を集めている。一方で、裏社会の権力者にとっては「自分の秘密を握っている危険人物」でもある。</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">過去</h2>
+                <p class="section-text">暗黒中華街に流れ着く前の経歴は一切不明。本人は「古き国で官吏をしていた」と語るが、誰もその真偽を確かめたことはない。かつては学者肌だったとも言われるが、今や血塗られた骨董と呪物に囲まれて暮らしている。</p>
+                <p class="section-text">彼の過去を探ろうとした者は例外なく消息を絶っており、阿蓮自身が彼らを「骨董品」にしてしまったのではないかという噂もある。</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">能力</h2>
+                <p class="section-text">圧倒的な鑑定眼と広い知識。古美術、宗教儀礼、呪術的アイテムに関する情報には精通している。また、人間の心理を読むのも得意で、交渉や尋問においては驚くべき成果を上げる。肉体的な力は大したことがないが、毒や薬物を用いた暗殺術を心得ている。</p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">人間関係</h2>
+                <div class="character-relationships">
+                    <!-- リス（赤組） -->
+                    <div class="character-card">
+                        <a href="character_risu.html" class="character-link-card">
+                            <div class="character-info">
+                                <img src="../../character_icon/risu_icon.png" alt="リス" class="character-avatar">
+                                <span class="character-name">リス</span>
+                            </div>
+                            <div class="character-description">仕事柄よく顔を合わせる。リスの誠実さを評価しているが、その人情深さを「弱さ」と見ている節がある。</div>
+                        </a>
+                    </div>
+                    <!-- リコ（赤組） -->
+                    <div class="character-card">
+                        <a href="character_riko.html" class="character-link-card">
+                            <div class="character-info">
+                                <img src="../../character_icon/riko_icon.png" alt="リコ" class="character-avatar">
+                                <span class="character-name">リコ</span>
+                            </div>
+                            <div class="character-description">ビジネス上の顧客でもあり、阿蓮が扱う希少品を買い付けることもある。だが、お互いが決して心を許さない関係。</div>
+                        </a>
+                    </div>
+                    <!-- 陽炎（赤組） -->
+                    <div class="character-card">
+                        <a href="character_kagerou.html" class="character-link-card">
+                            <div class="character-info">
+                                <img src="../../character_icon/kagerou_icon.png" alt="陽炎" class="character-avatar">
+                                <span class="character-name">陽炎</span>
+                            </div>
+                            <div class="character-description">互いに人間を観察対象として楽しんでいる奇妙な友誼関係にある。</div>
+                        </a>
+                    </div>
+                    <!-- 阿瑠（赤組） -->
+                    <div class="character-card">
+                        <a href="character_aru.html" class="character-link-card">
+                            <div class="character-info">
+                                <img src="../../character_icon/aru_icon.png" alt="阿瑠" class="character-avatar">
+                                <span class="character-name">阿瑠</span>
+                            </div>
+                            <div class="character-description">血縁的なつながりはないが、自身の名前の一文字を与えるなど息子のように扱っている。</div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ホバーメニュー -->
-    <!-- ナビゲーション（JavaScript で動的生成） -->
-    <div id="navigation-placeholder"></div>
-    <script src="../../common/navigation.js"></script>
     <script>
         // ナビゲーション初期化
         document.addEventListener('DOMContentLoaded', function() {
             initNavigation();
         });
     </script>
+    <script src="../../common/navigation.js"></script>
 </body>
 </html>

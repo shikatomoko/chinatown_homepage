@@ -4,18 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>砂時計 - 暗黒中華街</title>
-    <link rel="stylesheet" href="common/styles.css">
-    <link rel="stylesheet" href="common/navigation.css">
+    <link rel="stylesheet" href="../../common/styles.css">
+    <link rel="stylesheet" href="../../common/navigation.css">
 </head>
-<body>
+<body class="world-page">
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
     
     <!-- ヘッダー部分 -->
     <div class="header">
-        <h1 class="title page-title">砂時計</h1>
+        <h1 class="title">砂時計</h1>
+    </div>
+    
+    <!-- メイン画像部分 -->
+    <div class="main-image-container">
+        <img id="mainImage" class="main-image" src="../../picture/hourglass.png" alt="砂時計のメイン画像">
+    </div>
+    
+    <!-- サブ画像スライダー -->
+    <div class="sub-images-container">
+        <div class="sub-images-scroll">
+            <img class="sub-image active" src="../../picture/hourglass.png" alt="砂時計" onclick="changeMainImage(this)">
+        </div>
     </div>
     
     <!-- メインコンテンツ -->
-    <div class="main-content">
+    <div class="bottom-content">
         <div class="content-section">
             <h2 class="section-title">砂時計について</h2>
             <p class="section-text">街の中央には高さ10m以上はあろうという巨大な砂時計が設置されている。</p>
@@ -32,14 +46,25 @@
         </div>
     </div>
 
-    <!-- ナビゲーション（JavaScript で動的生成） -->
-    <div id="navigation-placeholder"></div>
-
-    <script src="common/navigation.js"></script>
     <script>
+        function changeMainImage(clickedImage) {
+            const mainImage = document.getElementById('mainImage');
+            const allSubImages = document.querySelectorAll('.sub-image');
+            
+            // メイン画像を変更
+            mainImage.src = clickedImage.src;
+            mainImage.alt = clickedImage.alt;
+            
+            // アクティブクラスを更新
+            allSubImages.forEach(img => img.classList.remove('active'));
+            clickedImage.classList.add('active');
+        }
+        
+        // ナビゲーション初期化
         document.addEventListener('DOMContentLoaded', function() {
             initNavigation();
         });
     </script>
+    <script src="../../common/navigation.js"></script>
 </body>
 </html>

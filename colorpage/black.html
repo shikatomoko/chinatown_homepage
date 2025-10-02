@@ -8,32 +8,35 @@
     <link rel="stylesheet" href="../common/navigation.css">
 </head>
 <body class="color-page black">
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
+    
     <!-- ヘッダー部分（黒背景） -->
     <div class="header">
         <h1 class="title">黒組</h1>
     </div>
     
     <!-- メイン画像部分 -->
-        <div class="main-image-container">
-            <img id="mainImage" class="main-image" src="../shop_image/black/castle/black_main.png" alt="黒組のメイン画像">
+    <div class="main-image-container">
+        <img id="mainImage" class="main-image" src="../shop_image/black/castle/black_main.png" alt="黒組のメイン画像">
+    </div>
+    
+    <!-- サブ画像スライダー -->
+    <div class="sub-images-container">
+        <div class="sub-images-scroll">
+            <img class="sub-image active" src="../shop_image/black/castle/black_main.png" alt="黒の城" onclick="changeMainImage(this)">
+            <img class="sub-image" src="../shop_image/black/street/backdoor.png" alt="黒の裏通り" onclick="changeMainImage(this)">
+            <img class="sub-image" src="../shop_image/black/street/garden.png" alt="黒の庭園" onclick="changeMainImage(this)">
+            <img class="sub-image" src="../shop_image/black/castle/castle.jpg" alt="黒の城の内側" onclick="changeMainImage(this)">
+            <img class="sub-image" src="../shop_image/black/castle/castle_spring.png" alt="黒の城（春）" onclick="changeMainImage(this)">
         </div>
-        
-        <!-- サブ画像スライダー -->
-        <div class="sub-images-container">
-            <div class="sub-images-scroll">
-                 <img class="sub-image active" src="../shop_image/black/castle/black_main.png" alt="黒の城" onclick="changeMainImage(this)">
-                <img class="sub-image active" src="../shop_image/black/street/backdoor.png" alt="黒の裏通り" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../shop_image/black/street/garden.png" alt="黒の庭園" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../shop_image/black/castle/castle.jpg" alt="黒の城の内側" onclick="changeMainImage(this)">
-                <img class="sub-image" src="../shop_image/black/castle/castle_spring.png" alt="黒の城（春）" onclick="changeMainImage(this)">
-            </div>
-        </div>
+    </div>
     
     <!-- 下部コンテンツ（黒背景） -->
     <div class="bottom-content">
         <div class="content-section">
             <h2 class="section-title">組織概要</h2>
-            <p class="section-text">暗黒中華街は「黒」「<a href="./white.html" style="color: #ffffff; text-decoration: underline; transition: all 0.3s ease;" onmouseover="this.style.color='#e5e5e5'" onmouseout="this.style.color='#ffffff'">白葬街</a>」「<a href="./yellow.html" style="color: #ffffff; text-decoration: underline; transition: all 0.3s ease;" onmouseover="this.style.color='#e5e5e5'" onmouseout="this.style.color='#ffffff'">黄惑街</a>」「<a href="./blue.html" style="color: #ffffff; text-decoration: underline; transition: all 0.3s ease;" onmouseover="this.style.color='#e5e5e5'" onmouseout="this.style.color='#ffffff'">蒼殉街</a>」「<a href="./red.html" style="color: #ffffff; text-decoration: underline; transition: all 0.3s ease;" onmouseover="this.style.color='#e5e5e5'" onmouseout="this.style.color='#ffffff'">呑紅街</a>」「<a href="./green.html" style="color: #ffffff; text-decoration: underline; transition: all 0.3s ease;" onmouseover="this.style.color='#e5e5e5'" onmouseout="this.style.color='#ffffff'">滲緑街</a>」に分割されて統治されているが、その権力は均衡しているわけではない。６色の中で明確に黒だけは、この街において特別な意味を持っているのである。</p>
+            <p class="section-text">暗黒中華街は「黒」「<a href="./white.html" class="color-link">白葬街</a>」「<a href="./yellow.html" class="color-link">黄惑街</a>」「<a href="./blue.html" class="color-link">蒼殉街</a>」「<a href="./red.html" class="color-link">呑紅街</a>」「<a href="./green.html" class="color-link">滲緑街</a>」に分割されて統治されているが、その権力は均衡しているわけではない。６色の中で明確に黒だけは、この街において特別な意味を持っているのである。</p>
             <p class="section-text">「黒組」の仕事は基本的には殺しである。人、人でないもの、全ての命あるものを殺す。それが黒の仕事であり、最も原初的な悪である。しかし「黒組」が担うのはそれだけでない。鉄道の運営や、治安維持組織の所有、更に街中の最大の重要拠点である城の管理。街での揉め事が発生した際の仲裁を行うのも「黒組」のみに許された特権である。</p>
             <p class="section-text">この街の中枢の全てを牛耳っているのが「黒組」であると言えるだろう。</p>
         </div>
@@ -46,7 +49,7 @@
         <div class="content-section">
             <h2 class="section-title">主要人物</h2>
             <div class="person-list">
-                 <a href="../characterpage/black/character_kuro.html" class="person-item">
+                <a href="../characterpage/black/character_kuro.html" class="person-item">
                     <span class="role-label">幹部：</span>
                     <span class="person-name">クロ</span>
                 </a>
@@ -64,7 +67,7 @@
         <div class="content-section">
             <h2 class="section-title">店舗情報</h2>
             <div class="shop-list">
-                 <a href="../shoppage/black/shop_castle.html" class="shop-item">
+                <a href="../shoppage/black/shop_castle.html" class="shop-item">
                     <span class="shop-name">城</span>
                 </a>
                 <a href="../shoppage/black/shop_cleaner.html" class="shop-item">
@@ -78,9 +81,7 @@
                 </a>
             </div>
         </div>
-
-    <!-- ナビゲーション（JavaScript で動的生成） -->
-    <div id="navigation-placeholder"></div>
+    </div>
 
     <script>
         function changeMainImage(clickedImage) {

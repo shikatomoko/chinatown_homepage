@@ -7,10 +7,10 @@ function createNavigationHTML() {
     let linkPrefix = '';
     
     // Method 1: URL内のフォルダ名から判定
-    if (currentPath.includes('characterpage') || currentPath.includes('shoppage')) {
-        // 2階層深い（例：characterpage/red/character_aren.html）
+    if (currentPath.includes('characterpage') || currentPath.includes('shoppage') || currentPath.includes('world_detail')) {
+        // 2階層深い（例：characterpage/red/character_aren.html, character_ss/ss_yellow1.html）
         linkPrefix = '../../';
-    } else if (currentPath.includes('colorpage')) {
+    } else if (currentPath.includes('colorpage') || currentPath.includes('character_ss')) {
         // 1階層深い（例：colorpage/red.html）  
         linkPrefix = '../';
     } else {
@@ -70,6 +70,7 @@ function createNavigationHTMLWithPrefix(linkPrefix) {
             <a href="${linkPrefix}characters.html" class="menu-item">キャラクター一覧</a>
             <a href="${linkPrefix}pc.html" class="menu-item">PC一覧</a>
             <a href="${linkPrefix}shops.html" class="menu-item">店舗一覧</a>
+            <a href="${linkPrefix}ss_index.html" class="menu-item">断片集</a>
             <a href="${linkPrefix}tools.html" class="menu-item">ツール</a>
             
             <div class="menu-divider"></div>

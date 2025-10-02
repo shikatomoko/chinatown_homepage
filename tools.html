@@ -4,39 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ツール一覧 - 暗黒中華街</title>
-    <link rel="stylesheet" href="common/navigation.css">
     <link rel="stylesheet" href="common/styles.css">
+    <link rel="stylesheet" href="common/navigation.css">
 </head>
-<body class="tools-page">
-    <h1>ツール一覧</h1>
-    
-    <div class="tools-container">
-        <div class="tool-card">
-            <h3>NPCジェネレーター</h3>
-            <p>ランダムなNPC（ノンプレイヤーキャラクター）を生成するツールです。キャラクターの技能値などを自動で作成します。</p>
-            <a href="./plugin/npc_generator_0921.html" class="tool-link">NPCジェネレーターを起動</a>
-        </div>
-
-        <div class="tool-card">
-            <h3>食べ物ジェネレーター</h3>
-            <p>食事の内容を生成できるアプリケーションです。名称や特徴、変動SAN値を確認できます</p>
-            <a href="https://aistudio.google.com/apps/drive/1zqxS19m3t2pdVS5NSeSBxF6qXWtl97my?showPreview=true&showAssistant=true" class="tool-link external-link" target="_blank" rel="noopener noreferrer">食べ物ジェネレーターを開く</a>
-        </div>
-        <div class="tool-card">
-            <h3>年表ジェネレーター</h3>
-            <p>歴史的な出来事を基にした年表を生成するツールです。重要な出来事や年を自動で作成します。</p>
-            <a href="./plugin/chronicliner-3.1.0/app.html" class="tool-link external-link" target="_blank" rel="noopener noreferrer">年表ジェネレーターを開く</a>
-        </div>
-
-        <div class="tool-card">
-            <h3>シナリオジェネレーター</h3>
-            <p>世界観に沿ったシナリオを生成することができます</p>
-            <a href="https://ai.studio/apps/drive/1HqR8Ijof3KCdS7-JVUknFqREzK9LhS6V" class="tool-link external-link" target="_blank" rel="noopener noreferrer">AIツールを開く</a>
-        </div>
-    </div>
-
+<body class="world-page">
     <!-- ナビゲーション（JavaScript で動的生成） -->
     <div id="navigation-placeholder"></div>
+    
+    <!-- ヘッダー部分 -->
+    <div class="header">
+        <h1>ツール一覧</h1>
+    </div>
+    
+    <!-- メインコンテンツ -->
+    <div class="main-content">
+        <div class="bottom-section">
+            <div class="section">
+                <h2 class="section-title">ツール一覧</h2>
+                <div class="shop-list">
+                    <div class="shop-item">
+                        <div class="shop-info">
+                            <span class="shop-name">NPCジェネレーター</span>
+                            <p class="section-text">ランダムなNPC（ノンプレイヤーキャラクター）を生成するツールです。キャラクターの技能値などを自動で作成します。</p>
+                            <a href="./plugin/npc_generator_0921.html" class="color-link">NPCジェネレーターを起動</a>
+                        </div>
+                    </div>
+
+                    <div class="shop-item">
+                        <div class="shop-info">
+                            <span class="shop-name">食べ物ジェネレーター</span>
+                            <p class="section-text">食事の内容を生成できるアプリケーションです。名称や特徴、変動SAN値を確認できます。</p>
+                            <a href="https://aistudio.google.com/apps/drive/1zqxS19m3t2pdVS5NSeSBxF6qXWtl97my?showPreview=true&showAssistant=true" class="color-link" target="_blank" rel="noopener noreferrer">食べ物ジェネレーターを開く</a>
+                        </div>
+                    </div>
+
+                    <div class="shop-item">
+                        <div class="shop-info">
+                            <span class="shop-name">年表ジェネレーター</span>
+                            <p class="section-text">歴史的な出来事を基にした年表を生成するツールです。重要な出来事や年を自動で作成します。</p>
+                            <a href="./plugin/chronicliner-3.1.0/app.html" class="color-link" target="_blank" rel="noopener noreferrer">年表ジェネレーターを開く</a>
+                        </div>
+                    </div>
+
+                    <div class="shop-item">
+                        <div class="shop-info">
+                            <span class="shop-name">シナリオジェネレーター</span>
+                            <p class="section-text">世界観に沿ったシナリオを生成することができます。</p>
+                            <a href="https://ai.studio/apps/drive/1HqR8Ijof3KCdS7-JVUknFqREzK9LhS6V" class="color-link" target="_blank" rel="noopener noreferrer">AIツールを開く</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <script src="common/navigation.js"></script>
     <script>
