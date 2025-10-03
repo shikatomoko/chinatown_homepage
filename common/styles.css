@@ -1657,16 +1657,73 @@ body.shop-page {
 }
 
 /* =================================
-   カラーページ大画面対応修正
+   カラーページ全画面表示修正
 ================================= */
 
-/* サブ画像コンテナの中央配置 */
+/* カラーページ基本設定 */
+.color-page {
+    min-height: 100vh;
+    width: 100%;
+    background: #000;
+    overflow-x: hidden;
+}
+
+/* ヘッダー部分の調整 */
+.color-page .header {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 300px;
+    padding: 80px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.color-page .header .title {
+    font-size: clamp(5rem, 12vw, 8rem);
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+}
+
+/* メイン画像コンテナの全画面対応 */
+.color-page .main-image-container {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    height: 70vh;
+    min-height: 400px;
+    max-height: 600px;
+    overflow: hidden;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.color-page .main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+}
+
+/* サブ画像コンテナの全画面対応 */
 .color-page .sub-images-container {
     background: #000;
-    padding: 30px 0;
-    /* 中央配置のための修正 */
+    padding: 40px 0;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
     display: flex;
     justify-content: center;
+    overflow-x: hidden;
 }
 
 .color-page .sub-images-scroll {
@@ -1677,126 +1734,301 @@ body.shop-page {
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: #ffffff #000;
-    /* 大画面での幅制限と中央配置 */
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1400px;
+    width: 100%;
     justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* ボトムコンテンツの中央配置 */
+.color-page .sub-image {
+    flex-shrink: 0;
+    width: 180px;
+    height: 120px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    border: 2px solid transparent;
+}
+
+.color-page .sub-image:hover,
+.color-page .sub-image.active {
+    opacity: 1;
+    transform: scale(1.05);
+    border-color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* ボトムコンテンツの全画面対応 */
 .color-page .bottom-content {
     background: #000;
-    padding: 60px 40px;
-    margin-bottom: 40px;
-    width: 100%;
-    box-sizing: border-box;
-    /* 大画面でのコンテンツ中央配置 */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 80px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: auto;
 }
 
-/* コンテンツセクションの幅制限 */
+/* コンテンツセクションの中央配置 */
 .color-page .content-section {
-    margin-bottom: 50px;
-    max-width: 1200px;
-    margin-left: 0;
-    margin-right: 0;
-    position: relative;
-    padding-left: 30px;
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    padding: 0 60px;
     box-sizing: border-box;
+    position: relative;
 }
 
-/* 人物・店舗リストの幅制限と中央配置 */
+.color-page .content-section h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+}
+
+/* 人物・店舗リストの全画面対応 */
 .color-page .person-list,
 .color-page .shop-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
+    gap: 24px;
     width: 100%;
     max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
     box-sizing: border-box;
+    justify-content: center;
 }
+
+/* 人物・店舗アイテムの調整 */
+.color-page .person-item,
+.color-page .shop-item {
+    display: flex;
+    align-items: center;
+    padding: 20px 24px;
+    background: #1a1a1a;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    min-height: 80px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+}
+
+.color-page .person-item:hover,
+.color-page .shop-item:hover {
+    background: #2a2a2a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* ロールラベルの調整 */
+.color-page .role-label {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: normal;
+    margin-right: 16px;
+    min-width: 80px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.color-page .person-name,
+.color-page .shop-name {
+    font-size: 18px;
+    font-weight: normal;
+    color: #ffffff;
+    flex: 1;
+    font-family: 'Armor Mincho', '装甲明朝', 'Yu Mincho', '游明朝', serif;
+}
+
+/* 色別テーマの全画面対応 */
+.color-page.red .person-item:hover,
+.color-page.red .shop-item:hover { border-color: #f44336; }
+.color-page.red .role-label { background: rgba(244, 67, 54, 0.2); }
+
+.color-page.blue .person-item:hover,
+.color-page.blue .shop-item:hover { border-color: #4fc3f7; }
+.color-page.blue .role-label { background: rgba(79, 195, 247, 0.2); }
+
+.color-page.green .person-item:hover,
+.color-page.green .shop-item:hover { border-color: #43ff43; }
+.color-page.green .role-label { background: rgba(67, 255, 67, 0.2); }
+
+.color-page.yellow .person-item:hover,
+.color-page.yellow .shop-item:hover { border-color: #fbc02d; }
+.color-page.yellow .role-label { background: rgba(251, 192, 45, 0.2); }
+
+.color-page.white .person-item:hover,
+.color-page.white .shop-item:hover { border-color: #ffffff; }
+.color-page.white .role-label { background: rgba(255, 255, 255, 0.2); }
+
+.color-page.black .person-item:hover,
+.color-page.black .shop-item:hover { border-color: #666666; }
+.color-page.black .role-label { background: rgba(102, 102, 102, 0.2); }
 
 /* 大画面時の調整（1200px以上） */
 @media (min-width: 1200px) {
-    .color-page .content-section {
-        max-width: 1200px;
-        padding-left: 60px;
+    .color-page .header {
+        min-height: 350px;
+        padding: 100px 0;
+    }
+    
+    .color-page .main-image-container {
+        height: 75vh;
+        max-height: 700px;
+    }
+    
+    .color-page .sub-images-container {
+        padding: 50px 0;
+    }
+    
+    .color-page .sub-images-scroll {
+        max-width: 1400px;
+        padding: 0 60px;
+        justify-content: center;
+    }
+    
+    .color-page .sub-image {
+        width: 200px;
+        height: 133px;
     }
     
     .color-page .bottom-content {
-        padding: 80px 60px;
-        align-items: center;
+        padding: 100px 0;
+    }
+    
+    .color-page .content-section {
+        padding: 0 80px;
+        margin-bottom: 80px;
     }
     
     .color-page .person-list,
     .color-page .shop-list {
-        grid-template-columns: repeat(auto-fit, minmax(350px, 400px));
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 30px;
         max-width: 1200px;
-        gap: 24px;
-        justify-content: center;
     }
     
-    /* サブ画像スライドの大画面対応 */
-    .color-page .sub-images-scroll {
-        max-width: 1200px;
-        justify-content: center;
+    .color-page .person-item,
+    .color-page .shop-item {
+        padding: 24px 30px;
+        min-height: 90px;
     }
 }
 
 /* 超大画面での調整（1600px以上） */
 @media (min-width: 1600px) {
-    .color-page .person-list,
-    .color-page .shop-list {
-        grid-template-columns: repeat(3, 400px);
-        max-width: 1200px;
-        justify-content: center;
+    .color-page .header {
+        min-height: 400px;
+        padding: 120px 0;
+    }
+    
+    .color-page .main-image-container {
+        height: 80vh;
+        max-height: 800px;
     }
     
     .color-page .sub-images-scroll {
-        max-width: 1400px;
-        justify-content: center;
+        max-width: 1600px;
+        padding: 0 80px;
     }
     
     .color-page .content-section {
-        max-width: 1200px;
+        max-width: 1400px;
+        padding: 0 100px;
+    }
+    
+    .color-page .person-list,
+    .color-page .shop-list {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1400px;
+        gap: 40px;
+    }
+    
+    .color-page .person-item,
+    .color-page .shop-item {
+        max-width: 450px;
     }
 }
 
 /* タブレット表示の調整（769px-1199px） */
 @media (max-width: 1199px) and (min-width: 769px) {
-    .color-page .person-list,
-    .color-page .shop-list {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        max-width: 900px;
+    .color-page .header {
+        min-height: 250px;
+        padding: 60px 0;
+    }
+    
+    .color-page .main-image-container {
+        height: 60vh;
+        min-height: 350px;
+        max-height: 500px;
+    }
+    
+    .color-page .sub-images-container {
+        padding: 30px 0;
     }
     
     .color-page .sub-images-scroll {
-        max-width: 900px;
         padding: 0 30px;
+        max-width: 900px;
+    }
+    
+    .color-page .sub-image {
+        width: 150px;
+        height: 100px;
+    }
+    
+    .color-page .bottom-content {
+        padding: 60px 0;
     }
     
     .color-page .content-section {
+        padding: 0 40px;
+        margin-bottom: 50px;
         max-width: 900px;
-        padding-left: 40px;
     }
     
-    .color-page .bottom-content {
-        padding: 50px 30px;
+    .color-page .person-list,
+    .color-page .shop-list {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 20px;
+        max-width: 900px;
     }
 }
 
-/* タブレット（768px以下）の調整を上書き */
+/* タブレット（768px以下）の調整 */
 @media (max-width: 768px) {
     .color-page .header {
+        min-height: 200px;
         padding: 40px 20px;
     }
     
-    .color-page .bottom-content {
-        padding: 40px 20px;
+    .color-page .header .title {
+        font-size: clamp(3rem, 10vw, 4.5rem);
+    }
+    
+    .color-page .main-image-container {
+        height: 50vh;
+        min-height: 250px;
+        max-height: 400px;
+    }
+    
+    .color-page .sub-images-container {
+        padding: 20px 0;
     }
     
     .color-page .sub-images-scroll {
@@ -1806,45 +2038,59 @@ body.shop-page {
     
     .color-page .sub-image {
         width: 120px;
-        height: 68px;
+        height: 80px;
+    }
+    
+    .color-page .bottom-content {
+        padding: 40px 0;
+    }
+    
+    .color-page .content-section {
+        padding: 0 20px;
+        margin-bottom: 40px;
     }
     
     .color-page .person-list,
     .color-page .shop-list {
         grid-template-columns: 1fr;
         gap: 16px;
-        max-width: 100%;
-    }
-    
-    .color-page .content-section {
-        padding-left: 20px;
-        max-width: 100%;
     }
     
     .color-page .person-item,
     .color-page .shop-item {
-        padding: 20px;
+        padding: 18px 20px;
         min-height: 70px;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    .color-page .role-label {
+        margin-right: 0;
+        margin-bottom: 8px;
+        min-width: auto;
     }
 }
 
 /* スマートフォン（480px以下）の調整 */
 @media (max-width: 480px) {
-    .color-page .title {
-        font-size: clamp(2.5rem, 8vw, 3.5rem);
+    .color-page .header {
+        min-height: 180px;
+        padding: 30px 15px;
     }
     
-    .color-page .header {
-        padding: 30px 15px;
+    .color-page .header .title {
+        font-size: clamp(2.5rem, 8vw, 3.5rem);
     }
     
     .color-page .main-image-container {
         height: 40vh;
-        min-height: 250px;
+        min-height: 200px;
+        max-height: 300px;
     }
     
     .color-page .sub-images-container {
-        padding: 20px 0;
+        padding: 15px 0;
     }
     
     .color-page .sub-images-scroll {
@@ -1854,125 +2100,83 @@ body.shop-page {
     
     .color-page .sub-image {
         width: 100px;
-        height: 60px;
+        height: 67px;
     }
     
     .color-page .bottom-content {
-        padding: 30px 15px;
-        margin-bottom: 20px;
+        padding: 30px 0;
     }
     
     .color-page .content-section {
-        padding-left: 15px;
+        padding: 0 15px;
+        margin-bottom: 30px;
+    }
+    
+    .color-page .content-section h2 {
+        font-size: clamp(1.5rem, 5vw, 2rem);
         margin-bottom: 30px;
     }
     
     .color-page .person-item,
     .color-page .shop-item {
-        padding: 16px;
+        padding: 16px 18px;
         min-height: 60px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-    
-    .color-page .role-label {
-        min-width: auto;
-        margin-right: 0;
-        margin-bottom: 4px;
-        font-size: 14px;
     }
     
     .color-page .person-name,
     .color-page .shop-name {
-        font-size: 15px;
+        font-size: 16px;
+    }
+    
+    .color-page .role-label {
+        font-size: 13px;
+        padding: 4px 10px;
     }
 }
 
 /* 極小画面（320px以下）の調整 */
 @media (max-width: 320px) {
-    .color-page .title {
-        font-size: 2rem;
-    }
-    
     .color-page .header {
+        min-height: 160px;
         padding: 25px 10px;
-    }
-    
-    .color-page .bottom-content {
-        padding: 25px 10px;
-    }
-    
-    .color-page .content-section {
-        padding-left: 12px;
     }
     
     .color-page .sub-images-scroll {
         padding: 0 10px;
     }
     
+    .color-page .content-section {
+        padding: 0 12px;
+    }
+    
+    .color-page .bottom-content {
+        padding: 25px 0;
+    }
+    
     .color-page .sub-image {
         width: 90px;
-        height: 54px;
-    }
-}
-
-/* 縦長画面（横幅が狭い場合）の調整 */
-@media (max-aspect-ratio: 3/4) {
-    .color-page .main-image-container {
-        height: 50vh;
-        max-height: 400px;
-    }
-}
-
-/* 横長画面（横幅が広い場合）の調整 */
-@media (min-aspect-ratio: 16/9) and (min-width: 1200px) {
-    .color-page .main-image-container {
-        height: 65vh;
-        max-height: 600px;
+        height: 60px;
     }
 }
 
 /* 画面の向きに応じた調整 */
 @media (orientation: landscape) and (max-height: 600px) {
     .color-page .main-image-container {
-        height: 70vh;
+        height: 80vh;
         min-height: 300px;
     }
     
     .color-page .header {
-        padding: 30px 20px;
+        min-height: 150px;
+        padding: 30px 0;
     }
 }
 
-/* 高解像度画面での調整 */
+/* 高解像度画面での画像最適化 */
 @media (min-resolution: 2dppx) {
-    .color-page .sub-image {
+    .color-page .sub-image,
+    .color-page .main-image {
         image-rendering: -webkit-optimize-contrast;
         image-rendering: crisp-edges;
-    }
-}
-
-/* フレックスボックスのフォールバック */
-@supports not (display: grid) {
-    .color-page .person-list,
-    .color-page .shop-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .color-page .person-item,
-    .color-page .shop-item {
-        flex: 0 1 350px;
-        margin: 10px;
-    }
-}
-
-/* グリッドレイアウトの最適化 */
-@supports (display: grid) {
-    .color-page .person-list,
-    .color-page .shop-list {
-        grid-auto-rows: minmax(90px, auto);
     }
 }
