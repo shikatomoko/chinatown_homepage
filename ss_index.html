@@ -6,6 +6,29 @@
     <title>断片集</title>
     <link rel="stylesheet" href="common/styles.css">
     <link rel="stylesheet" href="common/navigation.css">
+    <style>
+        /* Fix character icon scaling */
+        .icon-button .icon {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+        }
+        
+        .icon-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            padding: 10px;
+        }
+        
+        .button-text {
+            margin-top: 8px;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body class="world-page">
     <!-- ナビゲーション（JavaScript で動的生成） -->
@@ -47,8 +70,8 @@
             <div class="section">
                 <h2 class="section-title">黄惑街</h2>
                 <div class="icon-button-container">
-                    <a href="character_ss/ss_lady1.html" class="icon-button">
-                        <img src="character_icon/lady_icon.png" alt="レディ" class="icon">
+                    <a href="character_ss/ss_ai1.html" class="icon-button">
+                        <img src="character_icon/ai_icon.png" alt="アイ" class="icon">
                         <span class="button-text">動乱</span>
                     </a>
                 </div>

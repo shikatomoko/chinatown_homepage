@@ -2298,6 +2298,15 @@ body.color-page {
     transform: translateY(-2px);
 }
 
+.icon {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    display: block;
+}
+
 .icon-button .icon {
     width: calc(100% - 8px);
     height: calc(100% - 30px);
