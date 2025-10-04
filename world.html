@@ -7,45 +7,40 @@
     <link rel="stylesheet" href="common/styles.css">
     <link rel="stylesheet" href="common/navigation.css">
 </head>
-<body class="world-page">
+<body>
+    <!-- ナビゲーション（JavaScript で動的生成） -->
     <div id="navigation-placeholder"></div>
+    <h1>世界観設定</h1>
     
-    <!-- ヘッダー部分 -->
-    <div class="header">
-        <h1>世界観設定</h1>
-    </div>
-    
-    <!-- アイコンボタンコンテナ -->
-      <div class="section">
-        <h2 class="section-title">アイテム</h2>
-    <div class="icon-button-container">
-        <a href="world_detail/item/hourglass.html" class="icon-button">
-            <img src="picture/hourglass.png" alt="砂時計" class="icon">
-            <span class="button-text">砂時計</span>
-        </a>
-        <a href="world_detail/item/mirror.html" class="icon-button">
-            <img src="picture/mirror.png" alt="鏡" class="icon">
-            <span class="button-text">鏡</span>
-        </a>
-    </div>
-    </div>
+     <!-- アイテムセクション -->
+            <div class="section">
+                <h2 class="section-title">アイテム</h2>
+                <div class="character-list">
+                    <a href="world_detail/item/hourglass.html" class="character-item">
+                        <img src="picture/hourglass.png" alt="砂時計" class="character-icon">
+                        <div class="character-name">砂時計</div>
+                    </a>
+                    <a href="world_detail/item/mirror.html" class="character-item">
+                        <img src="picture/mirror.png" alt="鏡" class="character-icon">
+                        <div class="character-name">鏡</div>
+                    </a>
+                </div>
+            </div>
 
-     <div class="section">
-        <h2 class="section-title">イベント</h2>
-    <div class="icon-button-container">
-        <a href="world/event/redfestival.html" class="icon-button">
-            <img src="shop_image/red/street/streetfood2.png" alt="祭" class="icon">
-            <span class="button-text">呑紅街の祭典</span>
-        </a>
+            <!-- イベントセクション -->
+            <div class="section">
+                <h2 class="section-title">イベント</h2>
+                <div class="character-list">
+                    <a href="world/event/redfestival.html" class="character-item">
+                        <img src="shop_image/red/street/streetfood2.png" alt="祭" class="character-icon">
+                        <div class="character-name">呑紅街の祭典</div>
+                    </a>
+                </div>
+            </div>
     </div>
-    </div>
-    
 
     <script>
-        function toggleDetail(element) {
-            element.classList.toggle('active');
-        }
-        
+        // ナビゲーション初期化
         document.addEventListener('DOMContentLoaded', function() {
             initNavigation();
         });
