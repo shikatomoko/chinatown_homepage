@@ -3,57 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>鏡 - 暗黒中華街</title>
+    <title>鏡 - レポート</title>
     <link rel="stylesheet" href="../../common/styles.css">
-    <link rel="stylesheet" href="common/navigation.css">
+    <link rel="stylesheet" href="../../common/navigation.css">
+    <style>
+        .report-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            color: #333;
+            line-height: 1.6;
+            font-family: 'MS Gothic', monospace;
+        }
+        .report-header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+        }
+        .report-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .report-meta {
+            text-align: left;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #f5f5f5;
+            border-left: 4px solid #666;
+        }
+        .section-header {
+            font-size: 16px;
+            font-weight: bold;
+            background: #333;
+            color: white;
+            padding: 8px 12px;
+            margin: 25px 0 10px 0;
+        }
+        .report-text {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .note {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .emphasis {
+            font-weight: bold;
+            color: #d00;
+        }
+    </style>
 </head>
 <body>
-    
-    <!-- ヘッダー部分 -->
-   <div class="header">
-        <h1 class="title">鏡</h1>
-    </div>
-    
-    <!-- メイン画像部分 -->
-    <div class="main-image-container">
-        <img id="mainImage" class="main-image" src="../../picture/mirror.png" alt="鏡のメイン画像">
-    </div>
-    
-    <!-- サブ画像スライダー -->
-    <div class="sub-images-container">
-        <div class="sub-images-scroll">
-            <img class="sub-image active" src="../../picture/mirror.png" alt="鏡" onclick="changeMainImage(this)">
-        </div>
-    </div>
-    
-    <!-- メインコンテンツ -->
-    <div class="main-content">
-        <div class="content-section">
-            <h2 class="section-title">鏡について</h2>
-            <p class="section-text">蒼殉街の教祖が所有しているとされる鏡。大きさは姿見ほどであり、教団の一番奥深くに大切に飾られている。</p>
-            <p class="section-text">この鏡こそが教団の権威を保ち、蒼殉街を他の色と拮抗させるために役立っている力なのである。</p>
-        </div>
-        
-        <div class="content-section">
-            <h2 class="section-title">鏡の効果</h2>
-            <p class="section-text">この鏡には暗黒中華街で起きているすべての事象が映る。鏡であるため表示されるのは映像だけであり、音声的・身体的情報は共有されない。</p>
-            <p class="section-text">その力の使用には何らかの代償が必要とされているが、詳細は不明である。</p>
-        </div>
-        
-        <div class="content-section">
-            <h2 class="section-title">現在の所有者</h2>
-            <p class="section-text">現在は蒼殉街の教祖が所有しているが、そこに至るまでの経緯や、そもそも誰の所有物だったのかといった点は一切不明である。</p>
-        </div>
-    </div>
-
     <!-- ナビゲーション（JavaScript で動的生成） -->
     <div id="navigation-placeholder"></div>
+    
+    <div class="report-container">
+        <div class="report-header">
+            <div class="report-title">鏡について</div>
+        </div>
+        
+        <div class="report-meta">
+            <div><strong>作成日時：</strong>2025/10/05 更新</div>
+            <div><strong>作成者：</strong>蒼殉街　教団員</div>
+        </div>
 
-    <script src="common/navigation.js"></script>
+        <div class="section-header">【概要】</div>
+        <p class="report-text">本報告は、「鏡」と呼称される神聖遺物の現状および観測結果を、教祖様への報告としてまとめたものである。鏡は、我らが教団の象徴的存在「顕現の巫具（アピアリオン）」のひとつであり、人と神、人と影、人と自己の境界をつなぐ媒介体として崇められてきた。近年、外部組織の干渉により破損が確認されたため、信仰的価値の維持と再生の可否について早急な判断を仰ぐ必要がある。</p>
+
+        <div class="section-header">【歴史について】</div>
+        <p class="report-text">鏡の起源は、蒼殉街成立以前の"沈黙期"にまで遡ると伝えられている。当時、街は夜ごと霧に覆われ、人々は自己の姿を失い、他者の影にのみ存在を見出したという。その混乱の中、最初の教祖が「水面のごとく透徹したもの」を祈祷によって固定化し、それが現在の鏡の原型となった。以後、鏡は教団儀式の中心として、自己省察・懺悔・変容の三段階を導く道具として用いられ、「真なる我を映す聖面」として崇められてきた。</p>
+
+        <div class="section-header">【外観特徴】</div>
+        <p class="report-text">鏡は直径約80センチメートルの円形構造で、枠は黒鉄と白磁が交互に嵌め込まれている。表面は通常の鏡と異なり、光を正確に反射しない。視線を注ぐ者は、自身の姿ではなく「自己が他者であったかもしれない像」を目撃する。</p>
+        
+        <p class="report-text">鏡面の周縁には肉眼では識別困難な微細な紋様が刻まれており、周期的に僅かな呼吸音に似た振動を放つ。教団の解析班によれば、この紋様は「旧時代の神聖文字」または「心理共鳴構造」であり、見る者の内的信仰強度に応じて形を変化させるという。</p>
+
+        <div class="section-header">【最近起きたインシデント】</div>
+        <p class="report-text">2025年9月30日未明、外部組織が鏡の安置室に侵入した形跡が確認された。現場では儀式台の防壁が破壊され、鏡面の一部に蜘蛛の巣状の亀裂が生じていた。</p>
+        
+        <p class="report-text">修復班による処置の結果、鏡の機能の約70%は保持されているが、反射領域の中央に視覚的空洞が発生しており、現在も安定化処理が続けられている。</p>
+
+        <div class="section-header">【付記】</div>
+        <p class="report-text">鏡は未だ完全に沈黙していない。昨夜、祈祷室の温度が急激に低下し、鏡面のひび割れ部から<span class="emphasis">「声のような反射音」</span>が確認された。それは明瞭な言語ではないが、「見られている」という感覚を伴うものであり、鏡の内部に依然として何らかの意識的存在が残存していると考えられる。</p>
+        
+        <p class="report-text">教祖様の御指示を仰ぎ、次回儀式において鏡を再び"目覚め"させるべきか、あるいは完全に封印すべきか、早急なご判断をお願い申し上げます。</p>
+
+        <div class="note">
+            <strong>（以上、蒼殉街 教団員 記）</strong>
+        </div>
+    </div>
+
     <script>
+        // ナビゲーション初期化
         document.addEventListener('DOMContentLoaded', function() {
             initNavigation();
         });
     </script>
+    <script src="../../common/navigation.js"></script>
 </body>
 </html>
