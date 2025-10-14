@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解体屋</title>
+    <link rel="stylesheet" href="../../common/styles.css">
+    <link rel="stylesheet" href="../../common/navigation.css">
+    <link rel="stylesheet" href="shopred.css">
+    <link rel="stylesheet" href="redpopup.css">
+    </head>
+<body>
+    <div id="navigation-placeholder"></div>
+    <!-- ヘッダー部分（赤色背景） -->
+    <div class="header">
+        <h1 class="title">解体屋</h1>
+    </div>
+    
+    <!-- メインコンテンツ -->
+  <div class="top-section shop-layout">
+        <!-- 店舗情報 -->
+        <div class="shop-info">
+            <p>所属組織：<a href="../../colorpage/red.html" class="color-link">呑紅街</a></p>
+            <p>エリア：郊外　営業時間：不明　業態：解体業</p>
+        </div>
+        
+        <!-- メイン画像部分 -->
+        <div class="main-image-container">
+            <img id="mainImage" class="main-image" src="../../shop_image/red/demolition/demolition.png" alt="解体屋のメイン画像">
+        </div>
+        
+        <!-- サブ画像スライダー -->
+        <div class="sub-images-container">
+            <div class="sub-images-scroll">
+                <img class="sub-image active" src="../../shop_image/red/demolition/demolition.png" alt="解体屋" onclick="changeMainImage(this)">
+            </div>
+        </div>
+    </div>
+    
+    <!-- 下部コンテンツ（黒背景） -->
+    <div class="bottom-content">
+        <div class="content-section">
+            <h2 class="section-title">概要</h2>
+            <p class="section-text">家から人までなんだって、文字通り破壊するだけ破壊する店。周辺被害をどの程度抑えてくれるかは積まれた金の量による。もしくは店主である炎良の機嫌と、それから腹の空き具合にもよるだろう。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">利用方法</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="service-title">無機物破壊</div>
+                    <div class="service-description">
+                        依頼された家を解体する。解体されたのちの残骸は解体屋側が引き取る。<br>
+                        必要信用値：10<br>
+                        料金：50,000～
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-title">有機物破壊</div>
+                    <div class="service-description">
+                        食べる、砕くなど手段は問わず、どのような有機物でも破壊する。家でも人でもなんでも。<br>
+                        必要信用値：10<br>
+                        料金：不明（炎良の空腹度に依存）
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">従業員</h2>
+            <div class="person-list">
+                <a href="../../characterpage/red/character_enra.html" class="person-item">
+                    <img src="../../character_icon/enra_icon.png" alt="炎良" class="employee-icon">
+                    <div class="employee-info">
+                        <div class="employee-name">炎良</div>
+                        <div class="employee-role">店主</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <button class="red-group-btn" onclick="showRedGroupDetail()">呑紅街の店舗一覧</button>
+    </div>
+    
+    <script>
+        function changeMainImage(clickedImage) {
+            const mainImage = document.getElementById('mainImage');
+            const allSubImages = document.querySelectorAll('.sub-image');
+            
+            // メイン画像を変更
+            mainImage.src = clickedImage.src;
+            mainImage.alt = clickedImage.alt;
+            
+            // アクティブクラスを更新
+            allSubImages.forEach(img => img.classList.remove('active'));
+            clickedImage.classList.add('active');
+        }
+        
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
+    </script>
+    <script src="../../common/redpopup.js"></script>
+    <script src="../../common/navigation.js"></script>
+</body>
+</html>
+
+
+
+

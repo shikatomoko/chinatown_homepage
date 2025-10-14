@@ -80,7 +80,7 @@ function createRedShopListHTML() {
             <li><img src="${linkPrefix}shop_image/red/torture/torture.png" class="shop-icon" alt="拷問屋"><a href="${shopLinkPrefix}shop_torture.html">拷問屋</a></li>
             <li><img src="${linkPrefix}shop_image/red/tattoo/tattoo.png" class="shop-icon" alt="刺青屋"><a href="${shopLinkPrefix}shop_tattoo.html">刺青屋</a></li>
             <li><img src="${linkPrefix}shop_image/red/printing/printing.png" class="shop-icon" alt="印紙屋"><a href="${shopLinkPrefix}shop_stamp.html">印紙屋</a></li>
-            <li><img src="${linkPrefix}shop_image/red/restaurant/restaurant.png" class="shop-icon" alt="レストラン"><a href="${shopLinkPrefix}shop_redrestaurant.html">レストラン</a></li>
+            <li><img src="${linkPrefix}shop_image/red/shrine/Shrine (Exterior).png" class="shop-icon" alt="神社"><a href="${shopLinkPrefix}shop_shrine.html">神社</a></li>
         </ul>
     `;
 }

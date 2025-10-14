@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神社</title>
+    <link rel="stylesheet" href="../../common/styles.css">
+    <link rel="stylesheet" href="../../common/navigation.css">
+    <link rel="stylesheet" href="shopred.css">
+    <link rel="stylesheet" href="redpopup.css">
+    </head>
+<body>
+    <div id="navigation-placeholder"></div>
+    <!-- ヘッダー部分（赤色背景） -->
+    <div class="header">
+        <h1 class="title">神社</h1>
+    </div>
+    
+    <!-- メインコンテンツ -->
+  <div class="top-section shop-layout">
+        <!-- 店舗情報 -->
+        <div class="shop-info">
+            <p>所属組織：<a href="../../colorpage/red.html" class="color-link">呑紅街</a></p>
+            <p>エリア：郊外 　営業時間：不明　業態：儀式の遂行・管理</p>
+        </div>
+        
+        <!-- メイン画像部分 -->
+        <div class="main-image-container">
+            <img id="mainImage" class="main-image" src="../../shop_image/red/shrine/Shrine (Exterior).png" alt="神社のメイン画像">
+        </div>
+        
+        <!-- サブ画像スライダー -->
+        <div class="sub-images-container">
+            <div class="sub-images-scroll">
+                <img class="sub-image active" src="../../shop_image/red/shrine/Shrine (Exterior).png" alt="神社外観" onclick="changeMainImage(this)">
+                <img class="sub-image active" src="../../shop_image/red/shrine/Shrine (Gate).png" alt="神社門" onclick="changeMainImage(this)">
+                <img class="sub-image active" src="../../shop_image/red/shrine/Shrine (Interior).png" alt="神社内部" onclick="changeMainImage(this)">
+                <img class="sub-image active" src="../../shop_image/red/shrine/Shrine (Offering Box).png" alt="神社の賽銭箱" onclick="changeMainImage(this)">
+                <img class="sub-image active" src="../../shop_image/red/shrine/Shrine (Torii Gate).png" alt="神社の鳥居" onclick="changeMainImage(this)">
+            </div>
+        </div>
+    </div>
+    
+    <!-- 下部コンテンツ（黒背景） -->
+    <div class="bottom-content">
+        <div class="content-section">
+            <h2 class="section-title">概要</h2>
+            <p class="section-text">一般人は境内に一歩も踏み入れることを許されない、文字通りの神域。本殿には祭で使われる神輿が祀られているが、接触できるのは神主である禰伽だけである。どれほどの信用がある人物が金を積もうと、禰伽はこの境内に立ち入ることを決して許さない。</p>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">利用方法</h2>
+            <p class="section-text">なし。特定のシナリオクリアによってアンロックされる。</p>
+        </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">従業員</h2>
+            <div class="person-list">
+                <a href="../../characterpage/red/character_neyuka.html" class="person-item">
+                    <img src="../../character_icon/neyuka_icon.png" alt="禰伽" class="employee-icon">
+                    <div class="employee-info">
+                        <div class="employee-name">禰伽</div>
+                        <div class="employee-role">神主</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <button class="red-group-btn" onclick="showRedGroupDetail()">呑紅街の店舗一覧</button>
+    </div>
+    
+    <script>
+        function changeMainImage(clickedImage) {
+            const mainImage = document.getElementById('mainImage');
+            const allSubImages = document.querySelectorAll('.sub-image');
+            
+            // メイン画像を変更
+            mainImage.src = clickedImage.src;
+            mainImage.alt = clickedImage.alt;
+            
+            // アクティブクラスを更新
+            allSubImages.forEach(img => img.classList.remove('active'));
+            clickedImage.classList.add('active');
+        }
+        
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
+    </script>
+    <script src="../../common/redpopup.js"></script>
+    <script src="../../common/navigation.js"></script>
+</body>
+</html>
