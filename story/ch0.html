@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 0: 暗黒中華街にようこそ！</title>
+    <link rel="stylesheet" href="../common/styles.css">
+    <link rel="stylesheet" href="../common/navigation.css">
+</head>
+<body class="shop-page">
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
+    
+    <!-- ヘッダー部分 -->
+    <div class="header black">
+        <h1>Chapter 0: 暗黒中華街にようこそ！</h1>
+    </div>
+    
+    <div class="main-content">
+        <!-- メイン画像ギャラリー -->
+        <div class="main-image-container">
+            <img id="main-image" src="../arts/c0_aoi.png" alt="Chapter 0 Gallery" class="main-image">
+        </div>
+        
+        <!-- サブ画像スライダー -->
+        <div class="sub-images-container">
+            <div class="sub-images-scroll">
+                <img src="../arts/c0_aoi.png" alt="葵" class="sub-image active" onclick="changeMainImage('../arts/c0_aoi.png', this)">
+                <img src="../arts/c0_enra.png" alt="陽炎" class="sub-image" onclick="changeMainImage('../arts/c0_enra.png', this)">
+            </div>
+        </div>
+        
+        <!-- セクション内容 -->
+        <div class="section black">
+            <h2 class="section-title">Section 0</h2>
+            <div class="character-list">
+                <a href="../characterpage/blue/character_aoi.html" class="character-item">
+                    <img src="../character_icon/aoi_icon.png" alt="葵" class="character-icon">
+                    <span class="character-name">葵</span>
+                </a>
+                <a href="../characterpage/blue/character_hitoyo.html" class="character-item">
+                    <img src="../character_icon/hitoyo_icon.png" alt="ヒトヨ" class="character-icon">
+                    <span class="character-name">ヒトヨ</span>
+                </a>
+            </div>
+            <p class="section-text">あなたは不可思議な鳥の声で目を覚ます。目の前には青い中華服を纏った少女がいた。</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 1</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_kagerou.html" class="character-item">
+                    <img src="../character_icon/kagerou_icon.png" alt="陽炎" class="character-icon">
+                    <span class="character-name">陽炎</span>
+                </a>
+                <a href="../characterpage/red/character_huuka.html" class="character-item">
+                    <img src="../character_icon/huuka_icon.png" alt="風花" class="character-icon">
+                    <span class="character-name">風花</span>
+                </a>
+            </div>
+            <p class="section-text">街の片隅にある拷問屋では、今日も血と肉のはじける音が響いている。今日の獲物は、ひとりの蒼殉街の男性だった。彼は拷問の末、蒼殉街で発生した鏡の破損事件について口走る。</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 2</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_kagerou.html" class="character-item">
+                    <img src="../character_icon/kagerou_icon.png" alt="陽炎" class="character-icon">
+                    <span class="character-name">陽炎</span>
+                </a>
+                <a href="../characterpage/red/character_mimiko.html" class="character-item">
+                    <img src="../character_icon/mimiko_icon.png" alt="ミミコ" class="character-icon">
+                    <span class="character-name">ミミコ</span>
+                </a>
+                <a href="../characterpage/blue/character_aoi.html" class="character-item">
+                    <img src="../character_icon/aoi_icon.png" alt="葵" class="character-icon">
+                    <span class="character-name">葵</span>
+                </a>
+            </div>
+            <p class="section-text">仕事を終えた陽炎はミミコの営むネイルサロンへと訪れる。そこでは葵がミミコに施術を受けているところであった。彼女は近日中に行われる祭りについて話をする。</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 3</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_riko.html" class="character-item">
+                    <img src="../character_icon/riko_icon.png" alt="リコ" class="character-icon">
+                    <span class="character-name">リコ</span>
+                </a>
+                <a href="../characterpage/black/character_yuugiri.html" class="character-item">
+                    <img src="../character_icon/yuugiri_icon.png" alt="夕霧" class="character-icon">
+                    <span class="character-name">夕霧</span>
+                </a>
+            </div>
+            <p class="section-text">リコは祭りも近くなり、仕事に忙殺されて体調不良に陥っているリスを心配し、夕霧に相談に向かう。リスはどうやら頭の中に響く奇妙な声に悩まされているらしい</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 4</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_riko.html" class="character-item">
+                    <img src="../character_icon/riko_icon.png" alt="リコ" class="character-icon">
+                    <span class="character-name">リコ</span>
+                </a>
+                <a href="../characterpage/red/character_risu.html" class="character-item">
+                    <img src="../character_icon/risu_icon.png" alt="リス" class="character-icon">
+                    <span class="character-name">リス</span>
+                </a>
+            </div>
+            <p class="section-text">リコはリスと二人で近隣の飲食店へと向かう。二人は食事を前に、かつて彼らが滲緑街の研究室から逃げ出した過去について追憶する。リスは自身の頭の中に存在する奇妙な声の存在を打ち明け、リコと共に事態解決を図り始める。</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 5</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_riko.html" class="character-item">
+                    <img src="../character_icon/riko_icon.png" alt="リコ" class="character-icon">
+                    <span class="character-name">リコ</span>
+                </a>
+                <a href="../characterpage/red/character_risu.html" class="character-item">
+                    <img src="../character_icon/risu_icon.png" alt="リス" class="character-icon">
+                    <span class="character-name">リス</span>
+                </a>
+                <a href="../characterpage/red/character_neyuka.html" class="character-item">
+                    <img src="../character_icon/neyuka_icon.png" alt="禰伽" class="character-icon">
+                    <span class="character-name">禰伽</span>
+                </a>
+            </div>
+            <p class="section-text">リコとリスは祭りを主宰する神社へと向かい、禰伽と話す。禰伽は祭神である月神についての秘密を語る。月神は毎年一定以上の人間を捕食しなければ満足しない存在なのだと彼は告げる。リスは月神そのものを破壊するための方策を練る。</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 6</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_huuka.html" class="character-item">
+                    <img src="../character_icon/huuka_icon.png" alt="風花" class="character-icon">
+                    <span class="character-name">風花</span>
+                </a>
+                <a href="../characterpage/blue/character_aoi.html" class="character-item">
+                    <img src="../character_icon/aoi_icon.png" alt="葵" class="character-icon">
+                    <span class="character-name">葵</span>
+                </a>
+                <a href="../characterpage/red/character_risu.html" class="character-item">
+                    <img src="../character_icon/risu_icon.png" alt="リス" class="character-icon">
+                    <span class="character-name">リス</span>
+                </a>
+            </div>
+            <p class="section-text">風花は屋台を開いている葵と会話をしている。葵は祭りの日に向けて新作メニューを用意しているらしい。風花はそれに含まれる薬を隠して持ち帰り、リスへと事態を報告する。</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 7</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_riko.html" class="character-item">
+                    <img src="../character_icon/riko_icon.png" alt="リコ" class="character-icon">
+                    <span class="character-name">リコ</span>
+                </a>
+                <a href="../characterpage/red/character_kagerou.html" class="character-item">
+                    <img src="../character_icon/kagerou_icon.png" alt="陽炎" class="character-icon">
+                    <span class="character-name">陽炎</span>
+                </a>
+                <a href="../characterpage/red/character_huuka.html" class="character-item">
+                    <img src="../character_icon/huuka_icon.png" alt="風花" class="character-icon">
+                    <span class="character-name">風花</span>
+                </a>
+                <a href="../characterpage/red/character_mimiko.html" class="character-item">
+                    <img src="../character_icon/mimiko_icon.png" alt="ミミコ" class="character-icon">
+                    <span class="character-name">ミミコ</span>
+                </a>
+                <a href="../characterpage/red/character_aren.html" class="character-item">
+                    <img src="../character_icon/aren_icon.png" alt="阿蓮" class="character-icon">
+                    <span class="character-name">阿蓮</span>
+                </a>
+                <a href="../characterpage/red/character_aru.html" class="character-item">
+                    <img src="../character_icon/aru_icon.png" alt="阿瑠" class="character-icon">
+                    <span class="character-name">阿瑠</span>
+                </a>
+            </div>
+            <p class="section-text">リコは祭りの当日に発生するテロに幹部が巻き込まれないよう、当日は本部に籠るよう説得を試みる。</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 8</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_aren.html" class="character-item">
+                    <img src="../character_icon/aren_icon.png" alt="阿蓮" class="character-icon">
+                    <span class="character-name">阿蓮</span>
+                </a>
+                <a href="../characterpage/red/character_aru.html" class="character-item">
+                    <img src="../character_icon/aru_icon.png" alt="阿瑠" class="character-icon">
+                    <span class="character-name">阿瑠</span>
+                </a>
+            </div>
+            <p class="section-text">阿蓮は風花から持ち込まれた、蒼殉街が用いている薬を鑑定する。それは服用した対象者に痛烈な喉の渇きを与え、中毒症状を覚えさせるようなものであった。</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 9</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_enra.html" class="character-item">
+                    <img src="../character_icon/enra_icon.png" alt="炎良" class="character-icon">
+                    <span class="character-name">炎良</span>
+                </a>
+                <a href="../characterpage/green/character_yuki.html" class="character-item">
+                    <img src="../character_icon/yuki_icon.png" alt="ユキ" class="character-icon">
+                    <span class="character-name">ユキ</span>
+                </a>
+            </div>
+            <p class="section-text">祭りの数週間前、スラム街ではユキが炎良に接触し取引を行っていた。資源の提供の代わりに、祭りの当日にテロを起こす。その契約に炎良は乗り、着々と準備を進め始める</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 10</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_risu.html" class="character-item">
+                    <img src="../character_icon/risu_icon.png" alt="リス" class="character-icon">
+                    <span class="character-name">リス</span>
+                </a>
+            </div>
+            <p class="section-text">祭りの当日、リスはいきなり警備のメンバーに対して神輿の運行ルートが変更になったことを告げる。リスは自身の計画の実行のために街中を走り回る。</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 11</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_kagerou.html" class="character-item">
+                    <img src="../character_icon/kagerou_icon.png" alt="陽炎" class="character-icon">
+                    <span class="character-name">陽炎</span>
+                </a>
+                <a href="../characterpage/red/character_huuka.html" class="character-item">
+                    <img src="../character_icon/huuka_icon.png" alt="風花" class="character-icon">
+                    <span class="character-name">風花</span>
+                </a>
+            </div>
+            <p class="section-text">祭りがはじまると、陽炎と風花は本部を抜け出す。二人はしばらくともに屋台を楽しんだのち、花火がはじまるころになるとふと陽炎は姿を消す</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 12</h2>
+            <div class="character-list">
+                <a href="../characterpage/blue/character_aoi.html" class="character-item">
+                    <img src="../character_icon/aoi_icon.png" alt="葵" class="character-icon">
+                    <span class="character-name">葵</span>
+                </a>
+                <a href="../characterpage/red/character_huuka.html" class="character-item">
+                    <img src="../character_icon/huuka_icon.png" alt="風花" class="character-icon">
+                    <span class="character-name">風花</span>
+                </a>
+            </div>
+            <p class="section-text">陽炎とはぐれた風花は葵の屋台の方へと流れ着く。奇妙なまんじゅうを売っている葵の店はいよいよ混沌に巻き込まれ、結果として葵は口封じのために殺された。風花は一通りの後始末をつけて本部に戻る。そしてリコのもとへと向かう際に盛大な爆発音を聞き、次に走り去るミミコとすれ違った。</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 13</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_risu.html" class="character-item">
+                    <img src="../character_icon/risu_icon.png" alt="リス" class="character-icon">
+                    <span class="character-name">リス</span>
+                </a>
+            </div>
+            <p class="section-text">リスは神輿の安全管理のために警備部門と仕事を行っていたが、ふと、耐えようもない頭痛にさいなまれる。頭の中に聞こえる声は鮮明な少女の声となり、リスは意識を失う。意識を失うと同時に爆発音があたりに響き渡る。</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 14</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_neyuka.html" class="character-item">
+                    <img src="../character_icon/neyuka_icon.png" alt="禰伽" class="character-icon">
+                    <span class="character-name">禰伽</span>
+                </a>
+            </div>
+            <p class="section-text">禰伽が神社で儀式を行っていると、どこかから爆発音が響き渡る。同時に禰伽の頭の中に少女の声が響き、少女は禰伽の内側を喰らいつくす</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 15</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_enra.html" class="character-item">
+                    <img src="../character_icon/enra_icon.png" alt="炎良" class="character-icon">
+                    <span class="character-name">炎良</span>
+                </a>
+                <a href="../characterpage/green/character_yuki.html" class="character-item">
+                    <img src="../character_icon/yuki_icon.png" alt="ユキ" class="character-icon">
+                    <span class="character-name">ユキ</span>
+                </a>
+            </div>
+            <p class="section-text">炎良はユキの指示に従って街の地下へと忍び込み、爆発物を仕掛ける。紆余曲折在りながら計画は成功し、神輿は盛大に爆破される。炎良はミミコを殺すために街を彷徨い始める</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 16</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_riko.html" class="character-item">
+                    <img src="../character_icon/riko_icon.png" alt="リコ" class="character-icon">
+                    <span class="character-name">リコ</span>
+                </a>
+                <a href="../characterpage/red/character_mimiko.html" class="character-item">
+                    <img src="../character_icon/mimiko_icon.png" alt="ミミコ" class="character-icon">
+                    <span class="character-name">ミミコ</span>
+                </a>
+            </div>
+            <p class="section-text">本部にて姿を消した陽炎と風花の話をしていた二人の声は、爆音で遮られる。リコは件の爆発がスラムから齎された可能性があることをくちばしり、ミミコはリコの制止を振りきって下町へと走っていく。街は爆発のせいで阿鼻叫喚の様となっているが、その中で、真後ろから自身を狙ったかのような爆発音を聞く。</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 17</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_mimiko.html" class="character-item">
+                    <img src="../character_icon/mimiko_icon.png" alt="ミミコ" class="character-icon">
+                    <span class="character-name">ミミコ</span>
+                </a>
+                <a href="../characterpage/red/character_enra.html" class="character-item">
+                    <img src="../character_icon/enra_icon.png" alt="炎良" class="character-icon">
+                    <span class="character-name">炎良</span>
+                </a>
+            </div>
+            <p class="section-text">ミミコは長年の因縁の相手と遭遇する。二人の対話は平行線のまま終わり、炎良はミミコを巻き込む形で爆死する。しかしミミコはどういうわけか、軽傷であった。</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">Section 18</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_mimiko.html" class="character-item">
+                    <img src="../character_icon/mimiko_icon.png" alt="ミミコ" class="character-icon">
+                    <span class="character-name">ミミコ</span>
+                </a>
+                <a href="../characterpage/red/character_kagerou.html" class="character-item">
+                    <img src="../character_icon/kagerou_icon.png" alt="陽炎" class="character-icon">
+                    <span class="character-name">陽炎</span>
+                </a>
+            </div>
+            <p class="section-text">ミミコを庇ったのは陽炎だった。ミミコは恩人であるはずの陽炎を無視して炎良の死体を拾い上げ、傷塗れのまま二人は帰還する。</p>
+        </div>
+        
+        <!-- 追憶セクション -->
+        <div class="section black">
+            <h2 class="section-title">追憶 1</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_riko.html" class="character-item">
+                    <img src="../character_icon/riko_icon.png" alt="リコ" class="character-icon">
+                    <span class="character-name">リコ</span>
+                </a>
+                <a href="../characterpage/red/character_risu.html" class="character-item">
+                    <img src="../character_icon/risu_icon.png" alt="リス" class="character-icon">
+                    <span class="character-name">リス</span>
+                </a>
+            </div>
+            <p class="section-text">幼少期の二人は滲緑街のラボからの脱出を試みる</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">追憶 2</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_kagerou.html" class="character-item">
+                    <img src="../character_icon/kagerou_icon.png" alt="陽炎" class="character-icon">
+                    <span class="character-name">陽炎</span>
+                </a>
+                <a href="../characterpage/yellow/character_hina.html" class="character-item">
+                    <img src="../character_icon/hina_icon.png" alt="雛" class="character-icon">
+                    <span class="character-name">雛</span>
+                </a>
+            </div>
+            <p class="section-text">黄惑街で、親友の二人は今日も幸せな日々を送っている。誕生日の前日の夜の逃避行。</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">追憶 3</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_mimiko.html" class="character-item">
+                    <img src="../character_icon/mimiko_icon.png" alt="ミミコ" class="character-icon">
+                    <span class="character-name">ミミコ</span>
+                </a>
+                <a href="../characterpage/red/character_mimi.html" class="character-item">
+                    <img src="../character_icon/mimi_icon.png" alt="ミミ" class="character-icon">
+                    <span class="character-name">ミミ</span>
+                </a>
+                <a href="../characterpage/red/character_enra.html" class="character-item">
+                    <img src="../character_icon/enra_icon.png" alt="炎良" class="character-icon">
+                    <span class="character-name">炎良</span>
+                </a>
+            </div>
+            <p class="section-text">スラム街での平穏な毎日は、しかし少しずつ破綻していく。兄弟であった彼らは文字通り空中分解する。</p>
+        </div>
+        
+        <div class="section black">
+            <h2 class="section-title">追憶 4</h2>
+            <div class="character-list">
+                <a href="../characterpage/red/character_enra.html" class="character-item">
+                    <img src="../character_icon/enra_icon.png" alt="炎良" class="character-icon">
+                    <span class="character-name">炎良</span>
+                </a>
+            </div>
+            <p class="section-text">ナナとミミのいなくなったスラム街で、炎良は少しずつ着実にこわれていく</p>
+        </div>
+    </div>
+    
+    <script>
+        // 共通ナビゲーション初期化関数をインポート
+        function initNavigation() {
+            // navigation.jsで定義される関数
+        }
+        
+        // メイン画像切り替え関数
+        function changeMainImage(imageSrc, clickedElement) {
+            const mainImage = document.getElementById('main-image');
+            const subImages = document.querySelectorAll('.sub-image');
+            
+            // メイン画像を変更
+            mainImage.src = imageSrc;
+            
+            // 全てのサブ画像からactiveクラスを削除
+            subImages.forEach(img => img.classList.remove('active'));
+            
+            // クリックされた画像にactiveクラスを追加
+            clickedElement.classList.add('active');
+        }
+        
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
+    </script>
+    <script src="../common/navigation.js"></script>
+</body>
+</html>
