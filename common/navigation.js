@@ -73,6 +73,7 @@ function createNavigationHTMLWithPrefix(linkPrefix) {
             <a href="${linkPrefix}ss_index.html" class="menu-item">断片集</a>
             <a href="${linkPrefix}tools.html" class="menu-item">ツール</a>
             <a href="${linkPrefix}story.html" class="menu-item">ストーリー</a>
+            <a href="${linkPrefix}gallery.html" class="menu-item">ギャラリー</a>
             
             <div class="menu-divider"></div>
             

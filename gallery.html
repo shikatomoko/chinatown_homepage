@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画廊</title>
+    <link rel="stylesheet" href="common/styles.css">
+    <link rel="stylesheet" href="common/navigation.css">
+</head>
+<body class="character-page">
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
+    
+    <!-- ヘッダー部分 -->
+    <div class="header">
+        <h1 class="title">画廊</h1>
+    </div>
+    
+    <div class="main-content">
+        <!-- 呑紅街セクション -->
+        <div class="section">
+            <h2 class="section-title">呑紅街</h2>
+            <div class="gallery-container">
+                <div class="main-image-container">
+                    <img src="arts/red01.png" alt="呑紅街 画像1" class="main-image" id="red-main-image">
+                </div>
+                <div class="sub-images-container">
+                    <img src="arts/red01.png" alt="呑紅街 画像1" class="sub-image" onclick="switchImage('red-main-image', 'arts/red01.png')">
+                    <img src="arts/red02.png" alt="呑紅街 画像2" class="sub-image" onclick="switchImage('red-main-image', 'arts/red02.png')">
+                </div>
+            </div>
+        </div>
+
+        <!-- 黄惑街セクション -->
+        <div class="section">
+            <h2 class="section-title">黄惑街</h2>
+            <div class="gallery-container">
+                <div class="main-image-container">
+                    <img src="arts/yellow01.png" alt="黄惑街 画像1" class="main-image" id="yellow-main-image">
+                </div>
+                <div class="sub-images-container">
+                    <img src="arts/yellow01.png" alt="黄惑街 画像1" class="sub-image" onclick="switchImage('yellow-main-image', 'arts/yellow01.png')">
+                </div>
+            </div>
+        </div>
+
+        <!-- 蒼殉街セクション -->
+        <div class="section">
+            <h2 class="section-title">蒼殉街</h2>
+            <div class="gallery-container">
+                <div class="main-image-container">
+                    <img src="arts/blue01.png" alt="蒼殉街 画像1" class="main-image" id="blue-main-image">
+                </div>
+                <div class="sub-images-container">
+                    <img src="arts/blue01.png" alt="蒼殉街 画像1" class="sub-image" onclick="switchImage('blue-main-image', 'arts/blue01.png')">
+                </div>
+            </div>
+        </div>
+
+        <!-- 滲緑街セクション -->
+        <div class="section">
+            <h2 class="section-title">滲緑街</h2>
+            <div class="gallery-container">
+                <div class="main-image-container">
+                    <img src="arts/green01.png" alt="滲緑街 画像1" class="main-image" id="green-main-image">
+                </div>
+                <div class="sub-images-container">
+                    <img src="arts/green01.png" alt="滲緑街 画像1" class="sub-image" onclick="switchImage('green-main-image', 'arts/green01.png')">
+                </div>
+            </div>
+        </div>
+
+        <!-- 白葬街セクション -->
+        <div class="section">
+            <h2 class="section-title">白葬街</h2>
+            <div class="gallery-container">
+                <div class="main-image-container">
+                    <img src="arts/white01.png" alt="白葬街 画像1" class="main-image" id="white-main-image">
+                </div>
+                <div class="sub-images-container">
+                    <img src="arts/white01.png" alt="白葬街 画像1" class="sub-image" onclick="switchImage('white-main-image', 'arts/white01.png')">
+                </div>
+            </div>
+        </div>
+
+        <!-- 黒セクション -->
+        <div class="section">
+            <h2 class="section-title">黒</h2>
+            <div class="gallery-container">
+                <div class="main-image-container">
+                    <img src="arts/black01.png" alt="黒 画像1" class="main-image" id="black-main-image">
+                </div>
+                <div class="sub-images-container">
+                    <img src="arts/black01.png" alt="黒 画像1" class="sub-image" onclick="switchImage('black-main-image', 'arts/black01.png')">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 画像切り替え機能
+        function switchImage(mainImageId, newSrc) {
+            const mainImage = document.getElementById(mainImageId);
+            mainImage.src = newSrc;
+        }
+
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
+    </script>
+    <script src="common/navigation.js"></script>
+</body>
+</html>
