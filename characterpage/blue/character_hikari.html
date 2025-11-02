@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヒカリ</title>
+    <link rel="stylesheet" href="../../common/styles.css">
+    <link rel="stylesheet" href="../../common/navigation.css">
+</head>
+<body class="blue">
+    <!-- ヘッダー部分（青色背景） -->
+    <div class="header">
+        <h1 class="title">ヒカリ</h1>
+    </div>
+    
+    <div class="main-content">
+        <div class="top-section">
+            <img src="../../character_fullbody/hikari.png" alt="ヒカリ" class="character-img">
+            <div class="info-box">
+                <div class="info-row">
+                    所属色：<a href="../../colorpage/blue.html" class="color-link">蒼殉街</a>
+                </div>
+                <div class="info-row">
+                    階級：中間構成員
+                </div>
+                <div class="info-row">
+                    仕事：生徒会長
+                </div>
+                <div class="info-row">
+                    年齢：１7
+                </div>
+                <div class="info-row">
+                    種族：人間
+                </div>
+                <div class="info-row">
+                    一人称：私
+                </div>
+                <div class="info-row">
+                    二人称：あなた
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">性格</h2>
+            <p class="section-text">人当たりがよく明るい性格。高校生らしく何一つの影を滲ませることなく楽しく日々を暮らしている。一方で非常に強い信仰心を持ち、学生としての自分と一切矛盾することなく学友を殺すことができる。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">仕事について</h2>
+            <p class="section-text">学校における学生の統括管理の補助、教員のサポートを行っている。自由に緩く動かせる駒として、外の街への派遣などにも柔軟に対応する。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">過去</h2>
+            <p class="section-text">蒼殉街の中で生まれ育った。彼女が幼い時から両親は「この宗教は間違っている」「自分たちと一緒に逃げ出そう」と言い聞かせてきたが、彼女は彼女の手で両親を密告し、処刑台に送った。何故ならば両親よりも何よりも、信仰こそが彼女の中で絶対の基盤であったからである</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">能力</h2>
+            <p class="section-text">拳銃の扱いに長けている。少しでも教団にとって異端に近しい発言をしたものはすぐさまに処刑する。その判断の速さと割り切りの容赦無さが彼女をより強い存在としているのである</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">人間関係</h2>
+            <div class="character-relationships">
+                <!-- 葵 -->
+                <div class="character-card">
+                    <a href="character_aoi.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/aoi_icon.png" alt="葵" class="character-avatar">
+                            <span class="character-name">葵</span>
+                        </div>
+                        <div class="character-description">学友の一人。外の街で穢れに長時間露爆した彼女を救ってあげた</div>
+                    </a>
+                </div>
+                
+                <!-- ヒイロ -->
+                <div class="character-card">
+                    <a href="character_hiiro.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/hiiro_icon.png" alt="ヒイロ" class="character-avatar">
+                            <span class="character-name">ヒイロ</span>
+                        </div>
+                        <div class="character-description">コミュニケーション能力に長けていない彼のフォローをすることが多い。同年代の友人としてよく一緒に出掛けている。</div>
+                    </a>
+                </div>
+                
+                <!-- レイ -->
+                <div class="character-card">
+                    <a href="character_rei.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/rei_icon.png" alt="レイ" class="character-avatar">
+                            <span class="character-name">レイ</span>
+                        </div>
+                        <div class="character-description">レイの娘たちの世話をするなど、仕事上の協力関係。信仰心の強い彼のことを信頼しており、共に異端を追放するべく精力的に活動している。</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
+    <script src="../../common/navigation.js"></script>
+    <script>
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
+    </script>
+</body>
+</html>
