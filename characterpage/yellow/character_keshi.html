@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>芥子</title>
+    <link rel="stylesheet" href="../../common/styles.css">
+    <link rel="stylesheet" href="../../common/navigation.css">
+</head>
+<body class="yellow">
+    <!-- ヘッダー部分（黄色背景） -->
+    <div class="header">
+        <h1 class="title">芥子</h1>
+    </div>
+    
+    <div class="main-content">
+        <div class="top-section">
+            <img src="../../character_fullbody/keshi.png" alt="芥子" class="character-img">
+            <div class="info-box">
+                <div class="info-row">
+                    所属色：<a href="../../colorpage/yellow.html" class="color-link">黄惑街</a>
+                </div>
+                <div class="info-row">
+                    階級：幹部
+                </div>
+                <div class="info-row">
+                   仕事：人材管理、斡旋、経理
+                </div>
+                 <div class="info-row">
+                    年齢：45
+                </div>
+                <div class="info-row">
+                    種族：人間？
+                </div>
+                <div class="info-row">
+                    一人称：俺
+                </div>
+                <div class="info-row">
+                    二人称：お前
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">性格</h2>
+            <p class="section-text">怠惰な老年の男性。そもそも執務室で姿を見かけることはほとんどなく、大抵は外を勝手気ままに出歩いている。楽しいこと、面白いこと、刺激的なものだけを愛し、他のすべてに興味がない。つまりは退屈でしかない事務仕事など、彼の"やるべきこと"には該当しないのである。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">仕事について</h2>
+            <p class="section-text">黄惑街における最高権力者にして、すべての指揮を行うことを求められる立ち位置にある。しかし彼自身は一切そのような権力にも職務にも興味がなく、来週新発売のアイスクリームを一番に食べることだけを考えている。甘いものは嫌いなくせに。</p>
+        </div>
+        <div class="section">
+            <h2 class="section-title">過去</h2>
+            <p class="section-text">本人曰く、「記憶がない」らしい。その言葉通り、芥子の現在に至るまでのすべての過程に関する情報はこの街のどこにも存在しない。どれほど優秀な情報屋であっても彼の記録を辿ることは叶わない。</p>
+            <p class="section-text">まるで、意図的に全てを闇に伏したかのように。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">能力</h2>
+            <p class="section-text">まるで羽でも生えているかのように、ふと姿を消し、別の場所に忽然と現れる。その様から彼は人間ではないのではという噂も一部では流れているが、芥子自身はそれを完全に否定している。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">人間関係</h2>
+            <div class="character-relationships">
+                <!-- 巫琴 -->
+                <div class="character-card">
+                    <a href="character_mikoto.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/mikoto_icon.png" alt="巫琴" class="character-avatar">
+                            <span class="character-name">巫琴</span>
+                        </div>
+                        <div class="character-description">すべての仕事を押し付けている相手。罪悪感など感じてもいないが、仕事のしすぎには気を付けろよと定期的に口だけはさんでいる。</div>
+                    </a>
+                </div>
+                <!-- 山吹 -->
+                <div class="character-card">
+                    <a href="character_yamabuki.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/yamabuki_icon.png" alt="山吹" class="character-avatar">
+                            <span class="character-name">山吹</span>
+                        </div>
+                        <div class="character-description">よく一緒に飲んでいる。山吹に現在は１２０万程度貸しているし、その金は巫琴の財布からかすめ取ったものである。</div>
+                    </a>
+                </div>
+                <!-- リコ -->
+                <div class="character-card">
+                    <a href="../../characterpage/red/character_riko.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/riko_icon.png" alt="リコ" class="character-avatar">
+                            <span class="character-name">リコ</span>
+                        </div>
+                        <div class="character-description">単純で扱いやすいのでよく揶揄い交じりに遊んでいる。仲がいいらしい。</div>
+                    </a>
+                </div>
+                <!-- シロ -->
+                <div class="character-card">
+                    <a href="../../characterpage/white/character_shiro.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/shiro_icon.png" alt="シロ" class="character-avatar">
+                            <span class="character-name">シロ</span>
+                        </div>
+                        <div class="character-description">何やら付き合い自体はよくあるらしいが、二人で会話しているところを目撃したものは漏れなく消される。</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ホバーメニュー -->
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
+    <script src="../../common/navigation.js"></script>
+    <script>
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
+    </script>
+</body>
+</html>
