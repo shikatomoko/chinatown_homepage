@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キャラクター誕生日カレンダー</title>
+    <link rel="stylesheet" href="common/navigation.css">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin: 40px 0;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .month-section {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #3a3a3a;
+        }
+
+        .month-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4a4a4a;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .birthday-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .birthday-item {
+            margin-bottom: 15px;
+            padding: 12px;
+            background-color: #252525;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .birthday-item:hover {
+            background-color: #2d2d2d;
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .birthday-item.red { border-left-color: #dc143c; }
+        .birthday-item.yellow { border-left-color: #ffd700; }
+        .birthday-item.blue { border-left-color: #4169e1; }
+        .birthday-item.green { border-left-color: #32cd32; }
+        .birthday-item.white { border-left-color: #f0f0f0; }
+        .birthday-item.black { border-left-color: #696969; }
+
+        .birthday-date {
+            font-weight: bold;
+            color: #ffd700;
+            margin-right: 10px;
+            font-size: 1.1em;
+        }
+
+        .character-name {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .character-name:hover {
+            color: #ffd700;
+        }
+
+        .zodiac {
+            color: #888;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+
+        .color-legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background-color: #2a2a2a;
+            border-radius: 5px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+
+        .legend-color.red { background-color: #dc143c; }
+        .legend-color.yellow { background-color: #ffd700; }
+        .legend-color.blue { background-color: #4169e1; }
+        .legend-color.green { background-color: #32cd32; }
+        .legend-color.white { background-color: #f0f0f0; }
+        .legend-color.black { background-color: #696969; }
+    </style>
+</head>
+<body>
+    <div id="navigation"></div>
+
+    <div class="container">
+        <h1>🎂 キャラクター誕生日カレンダー</h1>
+
+        <div class="color-legend">
+            <div class="legend-item">
+                <div class="legend-color red"></div>
+                <span>呑紅街</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color yellow"></div>
+                <span>黄惑街</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color blue"></div>
+                <span>蒼殉街</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color green"></div>
+                <span>滲緑街</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color white"></div>
+                <span>白葬街</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color black"></div>
+                <span>黒</span>
+            </div>
+        </div>
+
+        <div class="calendar-grid">
+            <!-- 1月 -->
+            <div class="month-section">
+                <h2 class="month-title">1月 - January</h2>
+                <ul class="birthday-list">
+                    <li class="birthday-item red">
+                        <span class="birthday-date">1/5</span>
+                        <a href="characterpage/red/character_mimi.html" class="character-name">ミミ</a>
+                        <span class="zodiac">やぎ座</span>
+                    </li>
+                    <li class="birthday-item yellow">
+                        <span class="birthday-date">1/19</span>
+                        <a href="characterpage/yellow/character_mikoto.html" class="character-name">巫琴</a>
+                        <span class="zodiac">やぎ座</span>
+                    </li>
+                    <li class="birthday-item blue">
+                        <span class="birthday-date">1/25</span>
+                        <a href="characterpage/blue/character_hari.html" class="character-name">玻璃</a>
+                        <span class="zodiac">みずがめ座</span>
+                    </li>
+                    <li class="birthday-item red">
+                        <span class="birthday-date">1/29</span>
+                        <a href="characterpage/red/character_mimiko.html" class="character-name">ミミコ</a>
+                        <span class="zodiac">みずがめ座</span>
+                    </li>
+                    <li class="birthday-item white">
+                        <span class="birthday-date">1/30</span>
+                        <a href="characterpage/white/character_inui.html" class="character-name">犬威</a>
+                        <span class="zodiac">みずがめ座</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 2月 -->
+            <div class="month-section">
+                <h2 class="month-title">2月 - February</h2>
+                <ul class="birthday-list">
+                    <li class="birthday-item black">
+                        <span class="birthday-date">2/1</span>
+                        <a href="characterpage/black/character_yuugiri.html" class="character-name">夕霧</a>
+                        <span class="zodiac">みずがめ座</span>
+                    </li>
+                    <li class="birthday-item red">
+                        <span class="birthday-date">2/10</span>
+                        <a href="characterpage/red/character_you.html" class="character-name">葉</a>
+                        <span class="zodiac">みずがめ座</span>
+                    </li>
+                    <li class="birthday-item yellow">
+                        <span class="birthday-date">2/27</span>
+                        <a href="characterpage/yellow/character_yamabuki.html" class="character-name">山吹</a>
+                        <span class="zodiac">おうし座</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 3月 -->
+            <div class="month-section">
+                <h2 class="month-title">3月 - March</h2>
+                <ul class="birthday-list">
+                    <li class="birthday-item green">
+                        <span class="birthday-date">3/3</span>
+                        <a href="characterpage/green/character_yuki.html" class="character-name">雪</a>
+                        <span class="zodiac">うお座</span>
+                    </li>
+                    <li class="birthday-item red">
+                        <span class="birthday-date">3/7</span>
+                        <a href="characterpage/red/character_aren.html" class="character-name">阿蓮</a>
+                        <span class="zodiac">うお座</span>
+                    </li>
+                    <li class="birthday-item red">
+                        <span class="birthday-date">3/8</span>
+                        <a href="characterpage/red/character_huuka.html" class="character-name">風花</a>
+                        <span class="zodiac">うお座</span>
+                    </li>
+                    <li class="birthday-item yellow">
+                        <span class="birthday-date">3/12</span>
+                        <a href="characterpage/yellow/character_ran.html" class="character-name">蘭</a>
+                        <span class="zodiac">うお座</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 4月 -->
+            <div class="month-section">
+                <h2 class="month-title">4月 - April</h2>
+                <ul class="birthday-list">
+                    <li class="birthday-item green">
+                        <span class="birthday-date">4/10</span>
+                        <a href="characterpage/green/character_suzuran.html" class="character-name">スズラン</a>
+                        <span class="zodiac">おひつじ座</span>
+                    </li>
+                    <li class="birthday-item blue">
+                        <span class="birthday-date">4/12</span>
+                        <a href="characterpage/blue/character_yuumi.html" class="character-name">優海</a>
+                        <span class="zodiac">おひつじ座</span>
+                    </li>
+                    <li class="birthday-item white">
+                        <span class="birthday-date">4/15</span>
+                        <a href="characterpage/white/character_mitsuru.html" class="character-name">満</a>
+                        <span class="zodiac">おうし座</span>
+                    </li>
+                    <li class="birthday-item black">
+                        <span class="birthday-date">4/16</span>
+                        <a href="characterpage/black/character_mumyou.html" class="character-name">無明</a>
+                        <span class="zodiac">おひつじ座</span>
+                    </li>
+                    <li class="birthday-item blue">
+                        <span class="birthday-date">4/29</span>
+                        <a href="characterpage/blue/character_aoi.html" class="character-name">葵</a>
+                        <span class="zodiac">おうし座</span>
+                    </li>
+                    <li class="birthday-item yellow">
+                        <span class="birthday-date">4/30</span>
+                        <a href="characterpage/yellow/character_hina.html" class="character-name">雛</a>
+                        <span class="zodiac">おうし座</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 5月 -->
+            <div class="month-section">
+                <h2 class="month-title">5月 - May</h2>
+                <ul class="birthday-list">
+                    <li class="birthday-item black">
+                        <span class="birthday-date">5/5</span>
+                        <a href="characterpage/black/character_uiro.html" class="character-name">有色</a>
+                        <span class="zodiac">おうし座</span>
+                    </li>
+                    <li class="birthday-item yellow">
+                        <span class="birthday-date">5/10</span>
+                        <a href="characterpage/yellow/character_ruka.html" class="character-name">三日月ルカ</a>
+                        <span class="zodiac">おうし座</span>
+                    </li>
+                    <li class="birthday-item yellow">
+                        <span class="birthday-date">5/13</span>
+                        <a href="characterpage/yellow/character_hiyori.html" class="character-name">ヒヨリ</a>
+                        <span class="zodiac">おうし座</span>
+                    </li>
+                    <li class="birthday-item green">
+                        <span class="birthday-date">5/18</span>
+                        <a href="characterpage/green/character_neiro.html" class="character-name">音色</a>
+                        <span class="zodiac">おうし座</span>
+                    </li>
+                    <li class="birthday-item red">
+                        <span class="birthday-date">5/30</span>
+                        <a href="characterpage/red/character_risu.html" class="character-name">莉洲</a>
+                        <span class="zodiac">ふたご座</span>
+                    </li>
+                    <li class="birthday-item red">
+                        <span class="birthday-date">5/30</span>
+                        <a href="characterpage/red/character_riko.html" class="character-name">リコ</a>
+                        <span class="zodiac">ふたご座</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 6月 -->
+            <div class="month-section">
+                <h2 class="month-title">6月 - June</h2>
+                <ul class="birthday-list">
+                    <li class="birthday-item blue">
+                        <span class="birthday-date">6/1</span>
+                        <a href="characterpage/blue/character_yuuka.html" class="character-name">優華</a>
+                        <span class="zodiac">ふたご座</span>
+                    </li>
+                    <li class="birthday-item blue">
+                        <span class="birthday-date">6/9</span>
+                        <a href="characterpage/blue/character_kai.html" class="character-name">灰</a>
+                        <span class="zodiac">ふたご座</span>
+                    </li>
+                    <li class="birthday-item blue">
+                        <span class="birthday-date">6/10</span>
+                        <a href="characterpage/blue/character_madoka.html" class="character-name">円</a>
+                        <span class="zodiac">ふたご座</span>
+                    </li>
+                    <li class="birthday-item white">
+                        <span class="birthday-date">6/27</span>
+                        <a href="characterpage/white/character_neko.html" class="character-name">猫</a>
+                        <span class="zodiac">かに座</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 7月 -->
+            <div class="month-section">
+                <h2 class="month-title">7月 - July</h2>
+                <ul class="birthday-list">
+                    <li class="birthday-item yellow">
+                        <span class="birthday-date">7/1</span>
+                        <a href="characterpage/yellow/character_keshi.html" class="character-name">芥子</a>
+                        <span class="zodiac">かに座</span>
+                    </li>
+                    <li class="birthday-item red">
+                        <span class="birthday-date">7/10</span>
+                        <a href="characterpage/red/character_neyuka.html" class="character-name">音結花</a>
+                        <span class="zodiac">かに座</span>
+                    </li>
+                    <li class="birthday-item red">
+                        <span class="birthday-date">7/11</span>
+                        <a href="characterpage/red/character_shuka.html" class="character-name">朱華</a>
+                        <span class="zodiac">かに座</span>
+                    </li>
+                    <li class="birthday-item black">
+                        <span class="birthday-date">7/17</span>
+                        <a href="characterpage/black/character_kuro.html" class="character-name">クロ</a>
+                        <span class="zodiac">かに座</span>
+                    </li>
+                    <li class="birthday-item red">
+                        <span class="birthday-date">7/20</span>
+                        <a href="characterpage/red/character_aya.html" class="character-name">紋</a>
+                        <span class="zodiac">かに座</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 8月 -->
+            <div class="month-section">
+                <h2 class="month-title">8月 - August</h2>
+                <ul class="birthday-list">
+                    <li class="birthday-item red">
+                        <span class="birthday-date">8/2</span>
+                        <a href="characterpage/red/character_enra.html" class="character-name">炎良</a>
+                        <span class="zodiac">しし座</span>
+                    </li>
+                    <li class="birthday-item black">
+                        <span class="birthday-date">8/10</span>
+                        <a href="characterpage/black/character_sagiri.html" class="character-name">サギリ</a>
+                        <span class="zodiac">しし座</span>
+                    </li>
+                    <li class="birthday-item blue">
+                        <span class="birthday-date">8/17</span>
+                        <a href="characterpage/blue/character_hiiro.html" class="character-name">ヒイロ</a>
+                        <span class="zodiac">しし座</span>
+                    </li>
+                    <li class="birthday-item blue">
+                        <span class="birthday-date">8/31</span>
+                        <a href="characterpage/blue/character_ryuu.html" class="character-name">リュウ</a>
+                        <span class="zodiac">うお座</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 9月 -->
+            <div class="month-section">
+                <h2 class="month-title">9月 - September</h2>
+                <ul class="birthday-list">
+                    <li class="birthday-item red">
+                        <span class="birthday-date">9/2</span>
+                        <a href="characterpage/red/character_kagerou.html" class="character-name">陽炎</a>
+                        <span class="zodiac">おとめ座</span>
+                    </li>
+                    <li class="birthday-item red">
+                        <span class="birthday-date">9/18</span>
+                        <a href="characterpage/red/character_mei.html" class="character-name">メイ</a>
+                        <span class="zodiac">おとめ座</span>
+                    </li>
+                    <li class="birthday-item blue">
+                        <span class="birthday-date">9/24</span>
+                        <a href="characterpage/blue/character_hikari.html" class="character-name">ヒカリ</a>
+                        <span class="zodiac">てんびん座</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 10月 -->
+            <div class="month-section">
+                <h2 class="month-title">10月 - October</h2>
+                <ul class="birthday-list">
+                    <li class="birthday-item green">
+                        <span class="birthday-date">10/12</span>
+                        <a href="characterpage/green/character_hisen.html" class="character-name">緋泉</a>
+                        <span class="zodiac">てんびん座</span>
+                    </li>
+                    <li class="birthday-item green">
+                        <span class="birthday-date">10/12</span>
+                        <a href="characterpage/green/character_misen.html" class="character-name">未泉</a>
+                        <span class="zodiac">てんびん座</span>
+                    </li>
+                    <li class="birthday-item yellow">
+                        <span class="birthday-date">10/20</span>
+                        <a href="characterpage/yellow/character_ai.html" class="character-name">アイ</a>
+                        <span class="zodiac">てんびん座</span>
+                    </li>
+                    <li class="birthday-item blue">
+                        <span class="birthday-date">10/30</span>
+                        <a href="characterpage/blue/character_seiren.html" class="character-name">静蓮</a>
+                        <span class="zodiac">さそり座</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 11月 -->
+            <div class="month-section">
+                <h2 class="month-title">11月 - November</h2>
+                <ul class="birthday-list">
+                    <li class="birthday-item white">
+                        <span class="birthday-date">11/16</span>
+                        <a href="characterpage/white/character_hakuro.html" class="character-name">白狼</a>
+                        <span class="zodiac">さそり座</span>
+                    </li>
+                    <li class="birthday-item white">
+                        <span class="birthday-date">11/30</span>
+                        <a href="characterpage/white/character_shiro.html" class="character-name">シロ</a>
+                        <span class="zodiac">いて座</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 12月 -->
+            <div class="month-section">
+                <h2 class="month-title">12月 - December</h2>
+                <ul class="birthday-list">
+                    <li class="birthday-item red">
+                        <span class="birthday-date">12/14</span>
+                        <a href="characterpage/red/character_aru.html" class="character-name">アル</a>
+                        <span class="zodiac">いて座</span>
+                    </li>
+                    <li class="birthday-item blue">
+                        <span class="birthday-date">12/29</span>
+                        <a href="characterpage/blue/character_rei.html" class="character-name">レイ</a>
+                        <span class="zodiac">やぎ座</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="common/navigation.js"></script>
+    <script>
+        initNavigation();
+    </script>
+</body>
+</html>
