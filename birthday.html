@@ -61,11 +61,11 @@
 
         .birthday-item {
             margin-bottom: 15px;
-            padding: 12px;
             background-color: #252525;
             border-radius: 8px;
             transition: all 0.3s ease;
             border-left: 4px solid transparent;
+            position: relative;
         }
 
         .birthday-item:hover {
@@ -81,6 +81,14 @@
         .birthday-item.white { border-left-color: #f0f0f0; }
         .birthday-item.black { border-left-color: #696969; }
 
+        .birthday-link {
+            display: block;
+            padding: 12px;
+            color: #ffffff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
         .birthday-date {
             font-weight: bold;
             color: #ffd700;
@@ -90,12 +98,10 @@
 
         .character-name {
             color: #ffffff;
-            text-decoration: none;
             font-size: 1.1em;
-            transition: color 0.3s ease;
         }
 
-        .character-name:hover {
+        .birthday-item:hover .character-name {
             color: #ffd700;
         }
 
