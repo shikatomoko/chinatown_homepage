@@ -57,18 +57,12 @@
         }
 
         .birthday-item {
-            margin-bottom: 10px;
-        }
-
-        .birthday-link {
-            display: block;
+            margin-bottom: 15px;
             padding: 12px;
             background-color: #252525;
             border-radius: 6px;
             transition: all 0.3s ease;
-            border-left: 3px solid #555;
-            text-decoration: none;
-            color: inherit;
+            border-left: 4px solid transparent;
         }
 
         .birthday-link:hover {
@@ -77,12 +71,12 @@
             transform: translateX(3px);
         }
 
-        .birthday-item.red .birthday-link { border-left-color: #8b4545; }
-        .birthday-item.yellow .birthday-link { border-left-color: #8b8b45; }
-        .birthday-item.blue .birthday-link { border-left-color: #45558b; }
-        .birthday-item.green .birthday-link { border-left-color: #458b45; }
-        .birthday-item.white .birthday-link { border-left-color: #888; }
-        .birthday-item.black .birthday-link { border-left-color: #555; }
+        .birthday-item.red { border-left-color: #dc143c; }
+        .birthday-item.yellow { border-left-color: #ffd700; }
+        .birthday-item.blue { border-left-color: #4169e1; }
+        .birthday-item.green { border-left-color: #32cd32; }
+        .birthday-item.white { border-left-color: #f0f0f0; }
+        .birthday-item.black { border-left-color: #696969; }
 
         .birthday-date {
             font-weight: bold;
@@ -91,7 +85,14 @@
         }
 
         .character-name {
-            color: #d0d0d0;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .character-name:hover {
+            color: #ffd700;
         }
 
         .zodiac {
