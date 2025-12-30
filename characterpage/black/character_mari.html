@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茉莉</title>
+    <link rel="stylesheet" href="../../common/styles.css">
+    <link rel="stylesheet" href="../../common/navigation.css">
+</head>
+<body class="black">
+    <!-- ヘッダー部分（黒色背景） -->
+    <div class="header">
+        <h1 class="title">茉莉</h1>
+    </div>
+    
+    <div class="main-content">
+        <div class="top-section">
+            <img src="../../character_fullbody/mari.png" alt="茉莉" class="character-img">
+            <div class="info-box">
+                <div class="info-row">
+                    所属色：<a href="../../colorpage/black.html" class="color-link">黒</a>
+                </div>
+                <div class="info-row">
+                    階級：下級構成員
+                </div>
+                <div class="info-row">
+                    仕事：車掌
+                </div>
+                <div class="info-row">
+                    年齢：27
+                </div>
+                <div class="info-row">
+                    種族：人間
+                </div>
+                <div class="info-row">
+                    一人称：オレ
+                </div>
+                <div class="info-row">
+                    二人称：あんた
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">性格</h2>
+            <p class="section-text">竹を割ったようなあっけらかんとした性格。何事も深く考えず、上から与えられた指示をそのまま行動に移す。それによって自身や他者に不幸な結果が訪れてもあまりに気にしない。自分の意思やエゴといったものが極端に薄い人間。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">仕事について</h2>
+            <p class="section-text">暗黒中華街を一周する電車の車掌をしている。仕事をする上で彼が重視しているのは、ほんの僅かなことだけである。定刻通りに発車し、定刻通りに到着すること。それだけ。その目的の達成のためならばどんな悪事にでも手を染める。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">過去</h2>
+            <p class="section-text">暗黒中華街の出身。両親は黒の区域で今も現役で働いている官僚。しかし彼は両親ほど頭が良くなかったので、コネで入手した今の仕事を漫然と続けている。特に出世欲などはない。普通にこの仕事を続けながら、結婚したりして幸せな家庭を築いたりしたいと思っている。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">能力</h2>
+            <p class="section-text">厄介な乗客を制圧して線路下に投げ捨てることができる程度には筋力がある。モテるために筋トレを日夜しているから。それ以外に特筆するべきところはない、至って普通の人間である。頭の出来は平均以下。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">人間関係</h2>
+            <div class="character-relationships">
+                <!-- 無明 -->
+                <div class="character-card">
+                    <a href="character_mumyou.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/mumyou_icon.png" alt="無明" class="character-avatar">
+                            <span class="character-name">無明</span>
+                        </div>
+                        <div class="character-description">父親の友人で、幼少期より親しみがある。定期的に自身の小さい頃のネタでイジってくるのでそれなりに面倒に思っている。</div>
+                    </a>
+                </div>
+                
+                <!-- 未弦 -->
+                <div class="character-card">
+                    <a href="../white/character_mitsuru.html" class="character-link-card">
+                        <div class="character-info">
+                            <img src="../../character_icon/mitsuru_icon.png" alt="未弦" class="character-avatar">
+                            <span class="character-name">未弦</span>
+                        </div>
+                        <div class="character-description">無明のバーでたまに会う。それなりに親しい友人なのかもしれない。未弦がオレンジジュースを飲んでいる時、茉莉はリンゴジュースを飲んでいる。</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ナビゲーション（JavaScript で動的生成） -->
+    <div id="navigation-placeholder"></div>
+    <script src="../../common/navigation.js"></script>
+    <script>
+        // ナビゲーション初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavigation();
+        });
+    </script>
+</body>
+</html>
